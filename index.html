@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Глаза Проктолога</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      animation: fadeIn 2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 10px;
+    }
+    nav a {
+      color: #00cccc;
+      text-decoration: none;
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+    video {
+      max-width: 100%;
+      margin-top: 20px;
+      border: 2px solid #00cccc;
+      border-radius: 10px;
+    }
+    footer {
+      background-color: #1f1f1f;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+    .form-section {
+      margin-top: 2rem;
+    }
+    input, textarea, button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 80%;
+      max-width: 500px;
+      background: #262626;
+      border: 1px solid #555;
+      color: #fff;
+      border-radius: 5px;
+    }
+    button {
+      background: #00cccc;
+      color: #000;
+      cursor: pointer;
+    }
+    .lang-switcher {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>Глаза Проктолога</header>
+  <nav>
+    <a href="#about">О нас</a>
+    <a href="#video">Видео</a>
+    <a href="#form">Связь</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>👁️ Добро пожаловать!</h2>
+      <p>Этот проект посвящён необычному взгляду на медицину — со стороны проктолога. Без шуток и со вкусом. Мы исследуем не то, что видно всем — а то, что скрыто от глаз.</p>
+    </section>
+
+    <section id="video">
+      <h2>🎥 Образовательное видео</h2>
+      <video controls>
+        <source src="video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+      </video>
+    </section>
+
+    <section id="form" class="form-section">
+      <h2>📬 Связаться с нами</h2>
+      <form>
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Сообщение"></textarea>
+        <button type="submit">Отправить</button>
+      </form>
+    </section>
+
+    <div class="lang-switcher">
+      <button onclick="setLang('ru')">🇷🇺 Русский</button>
+      <button onclick="setLang('en')">🇬🇧 English</button>
+      <button onclick="setLang('ka')">🇬🇪 ქართული</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Glaza Proktologa. Все права защищены.
+  </footer>
+
+  <script>
+    const texts = {
+      ru: {
+        welcome: "Добро пожаловать!",
+        about: "Этот проект посвящён необычному взгляду на медицину — со стороны проктолога..."
+      },
+      en: {
+        welcome: "Welcome!",
+        about: "This project is dedicated to a unique medical perspective — from a proctologist's view..."
+      },
+      ka: {
+        welcome: "მოგესალმებით!",
+        about: "პროექტი ეხება მედიცინის უჩვეულო ხედვას — პროქტოლოგის თვალით..."
+      }
+    };
+    function setLang(lang) {
+      document.querySelector('#about h2').innerText = texts[lang].welcome;
+      document.querySelector('#about p').innerText = texts[lang].about;
+    }
+  </script>
+</body>
+</html>
