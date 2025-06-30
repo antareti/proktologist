@@ -71,6 +71,23 @@
     .lang-switcher {
       margin-top: 1rem;
     }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 300px;
+      max-width: 90%;
+      border-radius: 8px;
+      border: 2px solid #00cccc;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -78,6 +95,7 @@
   <nav>
     <a href="#about">О нас</a>
     <a href="#video">Видео</a>
+    <a href="#gallery">Галерея</a>
     <a href="#form">Связь</a>
   </nav>
 
@@ -93,6 +111,15 @@
         <source src="video.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
       </video>
+    </section>
+
+    <section id="gallery">
+      <h2>🖼️ Галерея</h2>
+      <div class="gallery">
+        <img src="images/doctor1.jpg" alt="Проктолог в работе">
+        <img src="images/scope.jpg" alt="Эндоскоп">
+        <img src="images/joke.png" alt="Юмор и медицина">
+      </div>
     </section>
 
     <section id="form" class="form-section">
