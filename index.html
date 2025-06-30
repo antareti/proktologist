@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <title>Глаза Проктолога</title>
-  <meta name="description" content="Необычный взгляд на медицину — со стороны проктолога." />
-  <meta name="keywords" content="проктология, медицина, здоровье, видео, отзывы" />
+  <meta name="description" content="Необычный взгляд на медицину — со стороны проктолога. Образовательные видео, галерея и связь через Telegram." />
+  <meta name="keywords" content="проктология, медицина, видео, галерея, здоровье, консультация" />
   <meta name="author" content="Glaza Proktologa" />
+  
+  <!-- Open Graph для соцсетей -->
   <meta property="og:title" content="Глаза Проктолога" />
-  <meta property="og:description" content="Образовательный проект о медицине и здоровье." />
-  <meta property="og:image" content="images/review_woman_ru.jpg" />
+  <meta property="og:description" content="Необычный взгляд на медицину — со стороны проктолога. Образовательные видео, галерея и связь через Telegram." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://твой-домен.ру" />
+  <meta property="og:image" content="https://твой-домен.ру/images/Gemini_Generated_Image_62xki062xki062xk.png" />
+
   <style>
     body {
       margin: 0;
@@ -17,6 +23,7 @@
       color: #e0e0e0;
       font-family: Arial, sans-serif;
       animation: fadeIn 2s ease;
+      line-height: 1.5;
     }
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -39,23 +46,66 @@
     nav a {
       color: #00cccc;
       text-decoration: none;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+    nav a:hover {
+      color: #66ffff;
     }
     main {
       padding: 2rem;
       text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     video {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
+      width: 500px;
+      height: 300px;
+      object-fit: cover;
       margin-top: 20px;
       border: 2px solid #00cccc;
       border-radius: 10px;
+      max-width: 100%;
+      height: auto;
     }
-    .gallery, .review {
+    footer {
+      background-color: #1f1f1f;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+    }
+    .form-section {
+      margin-top: 2rem;
+    }
+    input, textarea, button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 80%;
+      max-width: 500px;
+      background: #262626;
+      border: 1px solid #555;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      background: #00cccc;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #33ffff;
+    }
+    .lang-switcher {
+      margin-top: 1rem;
+    }
+    .gallery {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 1rem;
       margin-top: 2rem;
     }
@@ -64,71 +114,69 @@
       max-width: 90%;
       border-radius: 8px;
       border: 2px solid #00cccc;
-    }
-    #reviews .review {
-      flex-direction: column;
-      align-items: center;
-    }
-    #reviews img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 2px solid #00cccc;
-      object-fit: cover;
-    }
-    .review-text {
-      font-style: italic;
-      margin-top: 1rem;
-      max-width: 600px;
-      text-align: center;
-    }
-    .review {
-      display: none;
-    }
-    .review.active {
-      display: flex;
-    }
-    .lang-switcher button {
-      margin: 10px;
-      padding: 8px 16px;
-      background: #00cccc;
-      border: none;
-      color: #000;
-      font-weight: bold;
-      border-radius: 6px;
+      transition: transform 0.3s;
       cursor: pointer;
     }
-    footer {
-      background-color: #1f1f1f;
-      text-align: center;
-      padding: 10px;
-      font-size: 0.9em;
+    .gallery img:hover {
+      transform: scale(1.05);
+      border-color: #66ffff;
+    }
+    .telegram-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 14px 28px;
+      background: linear-gradient(45deg, #0088cc, #00cccc);
+      color: #000;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0, 204, 204, 0.6);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .telegram-link:hover {
+      background: linear-gradient(45deg, #00cccc, #66ffff);
+      box-shadow: 0 6px 14px rgba(102, 255, 255, 0.8);
+    }
+
+    /* Адаптивность */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      video {
+        width: 100%;
+        height: auto;
+      }
+      .gallery img {
+        width: 90%;
+      }
+      input, textarea, button {
+        width: 95%;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>Глаза Проктолога</header>
-
   <nav>
     <a href="#about">О нас</a>
     <a href="#video">Видео</a>
     <a href="#gallery">Галерея</a>
-    <a href="#reviews">Отзывы</a>
     <a href="#form">Связь</a>
   </nav>
 
   <main>
-
     <section id="about">
       <h2>👁️ Добро пожаловать!</h2>
-      <p>Этот проект посвящён необычному взгляду на медицину — со стороны проктолога. Без шуток и со вкусом.</p>
+      <p>Этот проект посвящён необычному взгляду на медицину — со стороны проктолога. Без шуток и со вкусом. Мы исследуем не то, что видно всем — а то, что скрыто от глаз.</p>
     </section>
 
     <section id="video">
       <h2>🎥 Образовательное видео</h2>
-      <video controls autoplay muted loop>
-        <source src="pr.mp4" type="video/mp4">
+      <video autoplay loop muted playsinline controls>
+        <source src="pr.mp4" type="video/mp4" />
         Ваш браузер не поддерживает видео.
       </video>
     </section>
@@ -136,55 +184,54 @@
     <section id="gallery">
       <h2>🖼️ Галерея</h2>
       <div class="gallery">
-        <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="1">
-        <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="2">
-        <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="3">
+        <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Изображение 1" />
+        <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Изображение 2" />
+        <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Изображение 3" />
+        <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Изображение 4" />
+        <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Изображение 5" />
+        <img src="images/problembo-result-20250521163816.jpg" alt="Изображение 6" />
+        <img src="images/unnamed (13).png" alt="Изображение 7" />
       </div>
     </section>
 
-    <section id="reviews">
-      <h2>💬 Отзывы</h2>
-
-      <div class="review active" id="review-ru">
-        <img src="images/review_woman_ru.jpg" alt="Женщина 1">
-        <p class="review-text">Очень познавательный сайт. Узнала то, о чём раньше стеснялась спросить. Спасибо вам! 🙏</p>
-      </div>
-
-      <div class="review" id="review-en">
-        <img src="images/review_woman_en.jpg" alt="Woman 2">
-        <p class="review-text">Very insightful! I learned a lot and felt safe reading this. Great project! 💙</p>
-      </div>
-
-      <div class="review" id="review-ka">
-        <img src="images/review_woman_ka.jpg" alt="ქალი 3">
-        <p class="review-text">ძალიან კარგი პროექტია. ბევრი რამ გავიგე. მადლობა ამ საქმეში გულწრფელობისთვის. 🌟</p>
-      </div>
-
-      <div class="lang-switcher">
-        <button onclick="showReview('ru')">🇷🇺</button>
-        <button onclick="showReview('en')">🇬🇧</button>
-        <button onclick="showReview('ka')">🇬🇪</button>
-      </div>
-    </section>
-
-    <section id="form">
+    <section id="form" class="form-section">
       <h2>📬 Связаться с нами</h2>
-      <p>Напиши нам в Telegram:</p>
-      <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" style="color:#00cccc; font-weight:bold;">Перейти в чат</a>
+      <p>Напиши нам прямо в Telegram:</p>
+      <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="telegram-link">
+        💬 Перейти в Telegram чат
+      </a>
     </section>
 
+    <div class="lang-switcher">
+      <button onclick="setLang('ru')">🇷🇺 Русский</button>
+      <button onclick="setLang('en')">🇬🇧 English</button>
+      <button onclick="setLang('ka')">🇬🇪 ქართული</button>
+    </div>
   </main>
 
   <footer>
-    &copy; 2025 Glaza Proktologa
+    &copy; 2025 Glaza Proktologa. Все права защищены.
   </footer>
 
   <script>
-    function showReview(lang) {
-      document.querySelectorAll('.review').forEach(r => r.classList.remove('active'));
-      document.getElementById('review-' + lang).classList.add('active');
+    const texts = {
+      ru: {
+        welcome: "Добро пожаловать!",
+        about: "Этот проект посвящён необычному взгляду на медицину — со стороны проктолога..."
+      },
+      en: {
+        welcome: "Welcome!",
+        about: "This project is dedicated to a unique medical perspective — from a proctologist's view..."
+      },
+      ka: {
+        welcome: "მოგესალმებით!",
+        about: "პროექტი ეხება მედიცინის უჩვეულო ხედვას — პროქტოლოგის თვალით..."
+      }
+    };
+    function setLang(lang) {
+      document.querySelector('#about h2').innerText = texts[lang].welcome;
+      document.querySelector('#about p').innerText = texts[lang].about;
     }
   </script>
-
 </body>
 </html>
