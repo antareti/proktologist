@@ -32,6 +32,10 @@
     nav a {
       color: #00cccc;
       text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #66ffff;
     }
     main {
       padding: 2rem;
@@ -62,11 +66,17 @@
       border: 1px solid #555;
       color: #fff;
       border-radius: 5px;
+      font-size: 1rem;
     }
     button {
       background: #00cccc;
       color: #000;
       cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #33ffff;
     }
     .lang-switcher {
       margin-top: 1rem;
@@ -84,9 +94,29 @@
       border-radius: 8px;
       border: 2px solid #00cccc;
       transition: transform 0.3s;
+      cursor: pointer;
     }
     .gallery img:hover {
       transform: scale(1.05);
+      border-color: #66ffff;
+    }
+    /* Кастомная кнопка для Telegram */
+    .telegram-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 14px 28px;
+      background: linear-gradient(45deg, #0088cc, #00cccc);
+      color: #000;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0, 204, 204, 0.6);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .telegram-link:hover {
+      background: linear-gradient(45deg, #00cccc, #66ffff);
+      box-shadow: 0 6px 14px rgba(102, 255, 255, 0.8);
     }
   </style>
 </head>
@@ -108,7 +138,7 @@
     <section id="video">
       <h2>🎥 Образовательное видео</h2>
       <video controls>
-        <source src="video.mp4" type="video/mp4">
+        <source src="video.mp4" type="video/mp4" />
         Ваш браузер не поддерживает видео.
       </video>
     </section>
@@ -116,24 +146,22 @@
     <section id="gallery">
       <h2>🖼️ Галерея</h2>
       <div class="gallery">
-        <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Изображение 1">
-        <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Изображение 2">
-        <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Изображение 3">
-        <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Изображение 4">
-        <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Изображение 5">
-        <img src="images/problembo-result-20250521163816.jpg" alt="Изображение 6">
-        <img src="images/unnamed (13).png" alt="Изображение 7">
+        <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Изображение 1" />
+        <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Изображение 2" />
+        <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Изображение 3" />
+        <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Изображение 4" />
+        <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Изображение 5" />
+        <img src="images/problembo-result-20250521163816.jpg" alt="Изображение 6" />
+        <img src="images/unnamed (13).png" alt="Изображение 7" />
       </div>
     </section>
 
     <section id="form" class="form-section">
       <h2>📬 Связаться с нами</h2>
-      <form>
-        <input type="text" placeholder="Ваше имя" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Сообщение"></textarea>
-        <button type="submit">Отправить</button>
-      </form>
+      <p>Напиши нам прямо в Telegram:</p>
+      <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="telegram-link">
+        💬 Перейти в Telegram чат
+      </a>
     </section>
 
     <div class="lang-switcher">
