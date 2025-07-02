@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Видеоматериалы — Глаза Проктолога</title>
+  <meta name="description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
+  <meta name="keywords" content="проктология, медицина, здоровье, образование, видео, плейлист, Glaza Proktologa" />
+  <meta name="author" content="Glaza Proktologa" />
+  
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  
+  <meta property="og:title" content="Видеоматериалы — Глаза Проктолога" />
+  <meta property="og:description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://твой-домен.ру/video.html" />
+  <meta property="og:image" content="https://твой-домен.ру/images/Gemini_Generated_Image_62xki062xki062xk.png" />
+  <meta property="og:site_name" content="Глаза Проктолога" />
+  <meta property="og:locale" content="ru_RU" />
+
+  <style>
+    :root {
+      --main-bg-color: #0a192f; /* Глубокий темно-синий */
+      --secondary-bg-color: #1a2c42; /* Немного светлее для секций */
+      --header-footer-bg: #0d1a2b; /* Еще темнее для контраста */
+      --primary-text-color: #e2e8f0; /* Светлый серо-голубой для основного текста */
+      --accent-color: #00bcd4; /* Яркий бирюзовый */
+      --accent-hover-color: #6ff9ff; /* Более светлый бирюзовый при наведении */
+      --button-text-color: #000;
+      --border-radius: 8px;
+      --shadow-light: rgba(0, 188, 212, 0.4);
+      --shadow-dark: rgba(0, 188, 212, 0.6);
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--main-bg-color);
+      color: var(--primary-text-color);
+      font-family: 'Roboto', Arial, sans-serif; /* Добавлен Roboto для современного вида */
+      animation: fadeIn 1.5s ease-out;
+      line-height: 1.6;
+      scroll-behavior: smooth; /* Плавная прокрутка к якорям */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Добавлен Google Fonts для Roboto */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+    header {
+      background-color: var(--header-footer-bg);
+      padding: 25px 20px;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: 700;
+      color: var(--accent-color);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: sticky; /* Липкий хедер */
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      background-color: var(--secondary-bg-color);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 15px 10px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1em;
+      padding: 8px 15px;
+      border-radius: var(--border-radius);
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    nav a:hover, nav a:focus { /* Добавлено :focus для доступности */
+      color: var(--accent-hover-color);
+      background-color: rgba(0, 188, 212, 0.1);
+      transform: translateY(-2px);
+    }
+
+    main {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section {
+      background-color: var(--secondary-bg-color);
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      color: var(--accent-hover-color);
+      font-size: 2em;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 10px;
+      display: inline-block; /* Для красивой нижней границы */
+    }
+
+    p {
+      font-size: 1.1em;
+      color: var(--primary-text-color);
+      max-width: 800px;
+      margin: 0.5rem auto;
+    }
+
+    /* Стили для видеоплеера и плейлиста */
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    #mainVideoPlayer {
+      width: 800px; /* Увеличена ширина основного плеера */
+      height: 450px; /* Соответствующая высота для 16:9 */
+      object-fit: cover;
+      border: 3px solid var(--accent-color);
+      border-radius: var(--border-radius);
+      max-width: 100%;
+      height: auto; /* Для адаптивности */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-playlist {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: var(--header-footer-bg);
+      border-radius: var(--border-radius);
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .playlist-item {
+      cursor: pointer;
+      border: 2px solid var(--secondary-bg-color);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      width: 180px; /* Ширина превью видео */
+      background-color: var(--main-bg-color);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .playlist-item:hover, .playlist-item.active {
+      transform: translateY(-5px);
+      border-color: var(--accent-hover-color);
+      box-shadow: 0 4px 15px var(--shadow-light);
+    }
+
+    .playlist-item video {
+      width: 100%;
+      height: 100px; /* Высота превью видео */
+      object-fit: cover;
+      display: block;
+    }
+
+    .playlist-item-title {
+      padding: 8px;
+      font-size: 0.9em;
+      color: var(--primary-text-color);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+    }
+
+    footer {
+      background-color: var(--header-footer-bg);
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      color: var(--primary-text-color);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .lang-switcher {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-switcher button {
+      background: var(--secondary-bg-color);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      padding: 10px 20px;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Расстояние между флагом и текстом */
+    }
+
+    .lang-switcher button:hover, .lang-switcher button:focus {
+      background: var(--accent-color);
+      color: var(--button-text-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px var(--shadow-light);
+    }
+
+    /* Адаптивность */
+    @media (max-width: 900px) {
+      #mainVideoPlayer {
+        width: 100%;
+        height: auto;
+      }
+      .video-playlist {
+        max-width: 100%;
+      }
+      .playlist-item {
+        width: 150px;
+      }
+      .playlist-item video {
+        height: 80px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        font-size: 2em;
+      }
+      nav {
+        gap: 1rem;
+      }
+      main {
+        padding: 1.5rem 1rem;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      section {
+        padding: 1.5rem;
+      }
+      .lang-switcher {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      nav a {
+        padding: 10px;
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>Глаза Проктолога</header>
+  <nav aria-label="Основная навигация">
+    <a href="index.html#about">О проекте</a>
+    <a href="video.html">Видеоматериалы</a>
+    <a href="index.html#gallery">Галерея изображений</a>
+    <a href="index.html#contact">Связаться с нами</a>
+  </nav>
+
+  <main>
+    <section id="videos">
+      <h2>🎥 Образовательные видеоматериалы</h2>
+      <p>Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы <strong>просто и наглядно</strong>. Выберите интересующий ролик из плейлиста ниже.</p>
+      
+      <div class="video-container">
+        <video id="mainVideoPlayer" controls autoplay muted playsinline aria-label="Основное образовательное видео">
+          <source src="Video_Generisanje_Proktolog_i_žena.mp4" type="video/mp4" />
+          Ваш браузер не поддерживает видео.
+        </video>
+        <div class="video-playlist">
+          <div class="playlist-item active" data-src="Video_Generisanje_Proktolog_i_žena.mp4" data-title="Проктолог и женщина: генерирование видео" tabindex="0" role="button">
+            <video muted src="Video_Generisanje_Proktolog_i_žena.mp4#t=0.5"></video>
+            <div class="playlist-item-title">Проктолог и женщина: генерирование видео</div>
+          </div>
+          <div class="playlist-item" data-src="Video_Gotovo_Proktolog_i_Žena.mp4" data-title="Проктолог и женщина: готовое видео" tabindex="0" role="button">
+            <video muted src="Video_Gotovo_Proktolog_i_Žena.mp4#t=0.5"></video>
+            <div class="playlist-item-title">Проктолог и женщина: готовое видео</div>
+          </div>
+          <div class="playlist-item" data-src="Video_je_gotovo_.mp4" data-title="Видео готово: Обзор" tabindex="0" role="button">
+            <video muted src="Video_je_gotovo_.mp4#t=0.5"></video>
+            <div class="playlist-item-title">Видео готово: Обзор</div>
+          </div>
+          <div class="playlist-item" data-src="Видео_готово_Популарно_видео.mp4" data-title="Видео готово: Популярное видео" tabindex="0" role="button">
+            <video muted src="Видео_готово_Популарно_видео.mp4#t=0.5"></video>
+            <div class="playlist-item-title">Видео готово: Популярное видео</div>
+          </div>
+          <div class="playlist-item" data-src="Видео_је_готово_.mp4" data-title="Видео готово: Дополнительный материал" tabindex="0" role="button">
+            <video muted src="Видео_је_готово_.mp4#t=0.5"></video>
+            <div class="playlist-item-title">Видео готово: Дополнительный материал</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lang-switcher" aria-label="Переключатель языка">
+      <button onclick="setLang('ru')" aria-label="Переключить на русский">🇷🇺 Русский</button>
+      <button onclick="setLang('en')" aria-label="Switch to English">🇬🇧 English</button>
+      <button onclick="setLang('ka')" aria-label="გადართვა ქართულზე">🇬🇪 ქართული</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">Наверх</a>
+  </footer>
+
+  <script>
+    const texts = {
+      ru: {
+        video_heading: "🎥 Образовательные видеоматериалы",
+        video_text: "Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы <strong>просто и наглядно</strong>. Выберите интересующий ролик из плейлиста ниже.",
+        footer_copyright: "&copy; 2025 Glaza Proktologa. Все права защищены. ",
+        footer_back_to_top: "Наверх",
+        nav_about: "О проекте",
+        nav_video: "Видеоматериалы",
+        nav_gallery: "Галерея изображений",
+        nav_contact: "Связаться с нами",
+        page_title: "Видеоматериалы — Глаза Проктолога",
+        meta_description: "Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов.",
+        video_titles: {
+            "Video_Generisanje_Proktolog_i_žena.mp4": "Проктолог и женщина: генерирование видео",
+            "Video_Gotovo_Proktolog_i_Žena.mp4": "Проктолог и женщина: готовое видео",
+            "Video_je_gotovo_.mp4": "Видео готово: Обзор",
+            "Видео_готово_Популарно_видео.mp4": "Видео готово: Популярное видео",
+            "Видео_је_готово_.mp4": "Видео готово: Дополнительный материал"
+        }
+      },
+      en: {
+        video_heading: "🎥 Educational Videos",
+        video_text: "Dive into the world of proctology with our specially prepared videos. We strive to explain complex topics <strong>simply and visually</strong>. Select an interesting video from the playlist below.",
+        footer_copyright: "&copy; 2025 Glaza Proktologa. All rights reserved. ",
+        footer_back_to_top: "Back to Top",
+        nav_about: "About Project",
+        nav_video: "Videos",
+        nav_gallery: "Image Gallery",
+        nav_contact: "Contact Us",
+        page_title: "Videos — The Proctologist's Eyes",
+        meta_description: "Educational proctology videos. Dive into the world of hidden aspects of health with our visual materials.",
+        video_titles: {
+            "Video_Generisanje_Proktolog_i_žena.mp4": "Proctologist and Woman: Video Generation",
+            "Video_Gotovo_Proktolog_i_Žena.mp4": "Proctologist and Woman: Finished Video",
+            "Video_je_gotovo_.mp4": "Video Ready: Overview",
+            "Видео_готово_Популарно_видео.mp4": "Video Ready: Popular Video",
+            "Видео_је_готово_.mp4": "Video Ready: Additional Material"
+        }
+      },
+      ka: {
+        video_heading: "🎥 საგანმანათლებლო ვიდეოები",
+        video_text: "ჩაუღრმავდით პროქტოლოგიის სამყაროს ჩვენი სპეციალურად მომზადებული ვიდეოების მეშვეობით. ჩვენ ვცდილობთ რთული თემები <strong>მარტივად და თვალსაჩინოდ</strong> ავხსნათ. აირჩიეთ საინტერესო ვიდეო ქვემოთ მოცემული დასაკრავი სიიდან.",
+        footer_copyright: "&copy; 2025 Glaza Proktologa. ყველა უფლება დაცულია. ",
+        footer_back_to_top: "ზევით",
+        nav_about: "პროექტის შესახებ",
+        nav_video: "ვიდეოები",
+        nav_gallery: "გალერეა",
+        nav_contact: "კონტაქტი",
+        page_title: "ვიდეოები — პროქტოლოგის თვალები",
+        meta_description: "პროქტოლოგიის საგანმანათლებლო ვიდეოები. ჩაუღრმავდით ჯანმრთელობის ფარული ასპექტების სამყაროს ჩვენი ვიზუალური მასალების მეშვეობით.",
+        video_titles: {
+            "Video_Generisanje_Proktolog_i_žena.mp4": "პროქტოლოგი და ქალი: ვიდეოს გენერირება",
+            "Video_Gotovo_Proktolog_i_Žena.mp4": "პროქტოლოგი და ქალი: დასრულებული ვიდეო",
+            "Video_je_gotovo_.mp4": "ვიდეო მზადაა: მიმოხილვა",
+            "Видео_готово_Популарно_видео.mp4": "ვიდეო მზადაა: პოპულარული ვიდეო",
+            "Видео_је_готово_.mp4": "ვიდეო მზადაა: დამატებითი მასალა"
+        }
+      }
+    };
+
+    const mainVideoPlayer = document.getElementById('mainVideoPlayer');
+    const playlistItems = document.querySelectorAll('.playlist-item');
+
+    playlistItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const newSrc = item.dataset.src;
+        const newTitle = item.dataset.title;
+
+        // Обновляем src основного видеоплеера
+        mainVideoPlayer.src = newSrc;
+        // Загружаем новое видео
+        mainVideoPlayer.load();
+        // Начинаем воспроизведение
+        mainVideoPlayer.play();
+        // Обновляем aria-label для доступности
+        mainVideoPlayer.setAttribute('aria-label', `Сейчас воспроизводится: ${newTitle}`);
+
+        // Убираем активный класс со всех элементов и добавляем к выбранному
+        playlistItems.forEach(el => el.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    function setLang(lang) {
+      document.querySelector('html').setAttribute('lang', lang);
+      document.title = texts[lang].page_title;
+      document.querySelector('meta[name="description"]').setAttribute('content', texts[lang].meta_description);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', texts[lang].meta_description);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', texts[lang].page_title);
+      document.querySelector('meta[property="og:locale"]').setAttribute('content', lang === 'ru' ? 'ru_RU' : (lang === 'en' ? 'en_US' : 'ka_GE'));
+
+      document.querySelector('#videos h2').innerHTML = texts[lang].video_heading;
+      document.querySelector('#videos p').innerHTML = texts[lang].video_text;
+
+      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`;
+
+      // Update navigation links
+      document.querySelector('nav a[href="index.html#about"]').innerText = texts[lang].nav_about;
+      document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video;
+      document.querySelector('nav a[href="index.html#gallery"]').innerText = texts[lang].nav_gallery;
+      document.querySelector('nav a[href="index.html#contact"]').innerText = texts[lang].nav_contact;
+
+      // Update video titles in playlist
+      document.querySelectorAll('.playlist-item').forEach(item => {
+        const videoSrc = item.dataset.src;
+        item.querySelector('.playlist-item-title').innerText = texts[lang].video_titles[videoSrc] || videoSrc;
+      });
+    }
+
+    // Установить язык по умолчанию при загрузке страницы
+    document.addEventListener('DOMContentLoaded', () => {
+      setLang('ru'); // Русский по умолчанию
+      // Дополнительно, чтобы первое видео было активным по умолчанию
+      const firstVideoItem = document.querySelector('.playlist-item.active');
+      if (firstVideoItem) {
+        mainVideoPlayer.src = firstVideoItem.dataset.src;
+        mainVideoPlayer.load();
+        mainVideoPlayer.setAttribute('aria-label', `Основное видео: ${firstVideoItem.dataset.title}`);
+      }
+    });
+  </script>
+</body>
+</html>
