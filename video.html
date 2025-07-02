@@ -318,11 +318,10 @@
   <script>
     // --- ВАЖНО: Обновляйте этот массив вручную при добавлении новых видео ---
     // Убедитесь, что пути к файлам здесь верны относительно video.html.
-    // Если видео находятся в папке 'video/' (например, video/my_video.mp4),
-    // то укажите 'video/my_video.mp4'. Если в корне, то просто 'my_video.mp4'.
+    // Я предполагаю, что все видео находятся в папке 'video/'.
     const videoList = [
       {
-        src: "Video_Generisanje_Proktolog_i_žena.mp4",
+        src: "video/Video_Generisanje_Proktolog_i_žena.mp4",
         title: {
           ru: "Проктолог и женщина: генерирование видео",
           en: "Proctologist and Woman: Video Generation",
@@ -330,7 +329,7 @@
         }
       },
       {
-        src: "Video_Gotovo_Proktolog_i_Žena.mp4",
+        src: "video/Video_Gotovo_Proktolog_i_Žena.mp4",
         title: {
           ru: "Проктолог и женщина: готовое видео",
           en: "Proctologist and Woman: Finished Video",
@@ -338,15 +337,15 @@
         }
       },
       {
-        src: "Video_je_gotovo_.mp4",
+        src: "video/Video_je_gotovo_(1).mp4",
         title: {
-          ru: "Видео готово: Обзор",
-          en: "Video Ready: Overview",
-          ka: "ვიდეო მზადაა: მიმოხილვა"
+          ru: "Видео готово (версия 1)",
+          en: "Video Ready (version 1)",
+          ka: "ვიდეო მზადაა (ვერსია 1)"
         }
       },
       {
-        src: "Видео_готово_Популарно_видео.mp4",
+        src: "video/Видео_готово_Популарно_видео.mp4",
         title: {
           ru: "Видео готово: Популярное видео",
           en: "Video Ready: Popular Video",
@@ -354,31 +353,30 @@
         }
       },
       {
-        src: "Видео_је_готово_.mp4", // Если это действительно два разных видео, дайте им уникальные имена файлов.
+        src: "video/Видео_готово_толстая_попа.mp4",
+        title: {
+          ru: "Видео готово: Толстая попа (демонстрация)",
+          en: "Video Ready: Fat Butt (demonstration)",
+          ka: "ვიდეო მზადაა: მსუქანი უკანალი (დემონსტრაცია)"
+        }
+      },
+      {
+        src: "video/Видео_је_готово_.mp4",
         title: {
           ru: "Видео готово: Дополнительный материал",
           en: "Video Ready: Additional Material",
           ka: "ვიდეო მზადაა: დამატებითი მასალა"
         }
       }
-      // ДОБАВЛЯЙТЕ НОВЫЕ ВИДЕОФАЙЛЫ СЮДА.
-      // Пример:
+      // Добавляйте новые объекты видео сюда, если появятся:
       // {
-      //   src: "video/новое_видео_из_папки.mp4",
+      //   src: "video/ваш_новый_видеофайл.mp4",
       //   title: {
       //     ru: "Название нового видео на русском",
       //     en: "New video title in English",
       //     ka: "ახალი ვიდეოს სათაური ქართულად"
       //   }
       // },
-      // {
-      //   src: "video/другое_новое_видео.mp4",
-      //   title: {
-      //     ru: "Другое новое видео",
-      //     en: "Another new video",
-      //     ka: "კიდევ ერთი ახალი ვიდეო"
-      //   }
-      // }
     ];
     // -----------------------------------------------------------------------
 
