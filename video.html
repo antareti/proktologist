@@ -317,6 +317,9 @@
 
   <script>
     // --- ВАЖНО: Обновляйте этот массив вручную при добавлении новых видео ---
+    // Убедитесь, что пути к файлам здесь верны относительно video.html.
+    // Если видео находятся в папке 'video/' (например, video/my_video.mp4),
+    // то укажите 'video/my_video.mp4'. Если в корне, то просто 'my_video.mp4'.
     const videoList = [
       {
         src: "Video_Generisanje_Proktolog_i_žena.mp4",
@@ -351,22 +354,31 @@
         }
       },
       {
-        src: "Видео_је_готово_.mp4", // Обратите внимание, что здесь дважды одно и то же имя файла. Если это разные видео, дайте им уникальные имена.
+        src: "Видео_је_готово_.mp4", // Если это действительно два разных видео, дайте им уникальные имена файлов.
         title: {
           ru: "Видео готово: Дополнительный материал",
           en: "Video Ready: Additional Material",
           ka: "ვიდეო მზადაა: დამატებითი მასალა"
         }
       }
-      // Добавляйте новые объекты видео сюда:
+      // ДОБАВЛЯЙТЕ НОВЫЕ ВИДЕОФАЙЛЫ СЮДА.
+      // Пример:
       // {
-      //   src: "ваш_новый_видеофайл.mp4",
+      //   src: "video/новое_видео_из_папки.mp4",
       //   title: {
       //     ru: "Название нового видео на русском",
       //     en: "New video title in English",
       //     ka: "ახალი ვიდეოს სათაური ქართულად"
       //   }
       // },
+      // {
+      //   src: "video/другое_новое_видео.mp4",
+      //   title: {
+      //     ru: "Другое новое видео",
+      //     en: "Another new video",
+      //     ka: "კიდევ ერთი ახალი ვიდეო"
+      //   }
+      // }
     ];
     // -----------------------------------------------------------------------
 
@@ -412,20 +424,25 @@
     const mainVideoPlayer = document.getElementById('mainVideoPlayer');
     const videoPlaylist = document.querySelector('.video-playlist');
 
-    // Функция для динамического заполнения плейлиста
+    /**
+     * Динамически заполняет плейлист видео на основе массива videoList
+     * и выбранного языка.
+     * @param {string} lang - Текущий выбранный язык ('ru', 'en', 'ka').
+     */
     function populateVideoPlaylist(lang) {
       videoPlaylist.innerHTML = ''; // Очищаем текущий плейлист перед заполнением
 
       videoList.forEach((video, index) => {
-        const title = video.title[lang] || video.src; // Получаем название на текущем языке или имя файла, если перевод не найден
+        // Получаем название видео на текущем языке или используем имя файла, если перевод не найден
+        const title = video.title[lang] || video.src; 
         const activeClass = index === 0 ? 'active' : ''; // Делаем первое видео активным по умолчанию
 
         const playlistItem = document.createElement('div');
         playlistItem.className = `playlist-item ${activeClass}`;
         playlistItem.setAttribute('data-src', video.src);
         playlistItem.setAttribute('data-title', title);
-        playlistItem.setAttribute('tabindex', '0');
-        playlistItem.setAttribute('role', 'button');
+        playlistItem.setAttribute('tabindex', '0'); // Для доступности с клавиатуры
+        playlistItem.setAttribute('role', 'button'); // Для семантики
 
         playlistItem.innerHTML = `
           <video muted src="${video.src}#t=0.5"></video>
@@ -437,15 +454,23 @@
       // Устанавливаем первое видео в основной плеер при каждом обновлении плейлиста
       if (videoList.length > 0) {
         mainVideoPlayer.src = videoList[0].src;
-        mainVideoPlayer.load();
+        mainVideoPlayer.load(); // Загружаем видео
+        // mainVideoPlayer.play(); // Можно раскомментировать, если хотите, чтобы видео сразу начинало играть
         mainVideoPlayer.setAttribute('aria-label', `Основное видео: ${videoList[0].title[lang]}`);
+      } else {
+        // Если видео нет, очистить плеер
+        mainVideoPlayer.src = '';
+        mainVideoPlayer.setAttribute('aria-label', 'Нет доступных видео');
       }
 
       // Заново привязываем слушатели событий к новым элементам плейлиста
       addPlaylistEventListeners();
     }
 
-    // Функция для добавления слушателей событий к элементам плейлиста
+    /**
+     * Добавляет слушателей событий 'click' к элементам плейлиста,
+     * чтобы переключать основное видео.
+     */
     function addPlaylistEventListeners() {
       const currentPlaylistItems = document.querySelectorAll('.playlist-item');
       currentPlaylistItems.forEach(item => {
@@ -464,6 +489,11 @@
       });
     }
 
+    /**
+     * Устанавливает язык сайта, обновляя текстовое содержимое и метаданные.
+     * Также вызывает populateVideoPlaylist для обновления плейлиста на новом языке.
+     * @param {string} lang - Языковой код ('ru', 'en', 'ka').
+     */
     function setLang(lang) {
       document.querySelector('html').setAttribute('lang', lang);
       document.title = texts[lang].page_title;
@@ -477,9 +507,9 @@
 
       document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`;
 
-      // Update navigation links
+      // Обновляем текст в навигации
       document.querySelector('nav a[href="index.html#about"]').innerText = texts[lang].nav_about;
-      document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video; // Убедитесь, что ссылка здесь на video.html
+      document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video;
       document.querySelector('nav a[href="index.html#gallery"]').innerText = texts[lang].nav_gallery;
       document.querySelector('nav a[href="index.html#contact"]').innerText = texts[lang].nav_contact;
 
