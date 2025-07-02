@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <title>Видеоматериалы — Глаза Проктолога</title>
   <meta name="description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
   <meta name="keywords" content="проктология, медицина, здоровье, образование, видео, плейлист, Glaza Proktologa" />
   <meta name="author" content="Glaza Proktologa" />
-  
+
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  
+
   <meta property="og:title" content="Видеоматериалы — Глаза Проктолога" />
   <meta property="og:description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
   <meta property="og:type" content="website" />
@@ -37,10 +37,10 @@
       margin: 0;
       background-color: var(--main-bg-color);
       color: var(--primary-text-color);
-      font-family: 'Roboto', Arial, sans-serif; /* Добавлен Roboto для современного вида */
+      font-family: 'Roboto', Arial, sans-serif;
       animation: fadeIn 1.5s ease-out;
       line-height: 1.6;
-      scroll-behavior: smooth; /* Плавная прокрутка к якорям */
+      scroll-behavior: smooth;
     }
 
     @keyframes fadeIn {
@@ -48,7 +48,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Добавлен Google Fonts для Roboto */
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
     header {
@@ -59,7 +58,7 @@
       font-weight: 700;
       color: var(--accent-color);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      position: sticky; /* Липкий хедер */
+      position: sticky;
       top: 0;
       z-index: 1000;
     }
@@ -84,7 +83,7 @@
       transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     }
 
-    nav a:hover, nav a:focus { /* Добавлено :focus для доступности */
+    nav a:hover, nav a:focus {
       color: var(--accent-hover-color);
       background-color: rgba(0, 188, 212, 0.1);
       transform: translateY(-2px);
@@ -116,7 +115,7 @@
       margin-bottom: 1.5rem;
       border-bottom: 2px solid var(--accent-color);
       padding-bottom: 10px;
-      display: inline-block; /* Для красивой нижней границы */
+      display: inline-block;
     }
 
     p {
@@ -126,7 +125,6 @@
       margin: 0.5rem auto;
     }
 
-    /* Стили для видеоплеера и плейлиста */
     .video-container {
       display: flex;
       flex-direction: column;
@@ -136,13 +134,13 @@
     }
 
     #mainVideoPlayer {
-      width: 800px; /* Увеличена ширина основного плеера */
-      height: 450px; /* Соответствующая высота для 16:9 */
+      width: 800px;
+      height: 450px;
       object-fit: cover;
       border: 3px solid var(--accent-color);
       border-radius: var(--border-radius);
       max-width: 100%;
-      height: auto; /* Для адаптивности */
+      height: auto;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
@@ -165,7 +163,7 @@
       border: 2px solid var(--secondary-bg-color);
       border-radius: var(--border-radius);
       overflow: hidden;
-      width: 180px; /* Ширина превью видео */
+      width: 180px;
       background-color: var(--main-bg-color);
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
@@ -178,7 +176,7 @@
 
     .playlist-item video {
       width: 100%;
-      height: 100px; /* Высота превью видео */
+      height: 100px;
       object-fit: cover;
       display: block;
     }
@@ -222,7 +220,7 @@
       transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
       display: flex;
       align-items: center;
-      gap: 8px; /* Расстояние между флагом и текстом */
+      gap: 8px;
     }
 
     .lang-switcher button:hover, .lang-switcher button:focus {
@@ -232,7 +230,6 @@
       box-shadow: 0 4px 10px var(--shadow-light);
     }
 
-    /* Адаптивность */
     @media (max-width: 900px) {
       #mainVideoPlayer {
         width: 100%;
@@ -286,7 +283,7 @@
   <header>Глаза Проктолога</header>
   <nav aria-label="Основная навигация">
     <a href="index.html#about">О проекте</a>
-    <a href="video.html">Видеоматериалы</a>
+    <a href="video.php">Видеоматериалы</a>
     <a href="index.html#gallery">Галерея изображений</a>
     <a href="index.html#contact">Связаться с нами</a>
   </nav>
@@ -295,33 +292,49 @@
     <section id="videos">
       <h2>🎥 Образовательные видеоматериалы</h2>
       <p>Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы <strong>просто и наглядно</strong>. Выберите интересующий ролик из плейлиста ниже.</p>
-      
+
       <div class="video-container">
         <video id="mainVideoPlayer" controls autoplay muted playsinline aria-label="Основное образовательное видео">
-          <source src="Video_Generisanje_Proktolog_i_žena.mp4" type="video/mp4" />
+          <source src="" type="video/mp4" /> 
           Ваш браузер не поддерживает видео.
         </video>
         <div class="video-playlist">
-          <div class="playlist-item active" data-src="Video_Generisanje_Proktolog_i_žena.mp4" data-title="Проктолог и женщина: генерирование видео" tabindex="0" role="button">
-            <video muted src="Video_Generisanje_Proktolog_i_žena.mp4#t=0.5"></video>
-            <div class="playlist-item-title">Проктолог и женщина: генерирование видео</div>
-          </div>
-          <div class="playlist-item" data-src="Video_Gotovo_Proktolog_i_Žena.mp4" data-title="Проктолог и женщина: готовое видео" tabindex="0" role="button">
-            <video muted src="Video_Gotovo_Proktolog_i_Žena.mp4#t=0.5"></video>
-            <div class="playlist-item-title">Проктолог и женщина: готовое видео</div>
-          </div>
-          <div class="playlist-item" data-src="Video_je_gotovo_.mp4" data-title="Видео готово: Обзор" tabindex="0" role="button">
-            <video muted src="Video_je_gotovo_.mp4#t=0.5"></video>
-            <div class="playlist-item-title">Видео готово: Обзор</div>
-          </div>
-          <div class="playlist-item" data-src="Видео_готово_Популарно_видео.mp4" data-title="Видео готово: Популярное видео" tabindex="0" role="button">
-            <video muted src="Видео_готово_Популарно_видео.mp4#t=0.5"></video>
-            <div class="playlist-item-title">Видео готово: Популярное видео</div>
-          </div>
-          <div class="playlist-item" data-src="Видео_је_готово_.mp4" data-title="Видео готово: Дополнительный материал" tabindex="0" role="button">
-            <video muted src="Видео_је_готово_.mp4#t=0.5"></video>
-            <div class="playlist-item-title">Видео готово: Дополнительный материал</div>
-          </div>
+          <?php
+          $video_dir = './videos/'; // Папка с видео, относительно video.php
+          $files = scandir($video_dir);
+          $video_files = [];
+          $video_titles = [
+              "Video_Generisanje_Proktolog_i_žena.mp4" => "Проктолог и женщина: генерирование видео",
+              "Video_Gotovo_Proktolog_i_Žena.mp4" => "Проктолог и женщина: готовое видео",
+              "Video_je_gotovo_.mp4" => "Видео готово: Обзор",
+              "Видео_готово_Популарно_видео.mp4" => "Видео готово: Популярное видео",
+              "Видео_је_готово_.mp4" => "Видео готово: Дополнительный материал"
+          ]; // Добавьте сюда другие названия видео
+
+          foreach ($files as $file) {
+              if (in_array(pathinfo($file, PATHINFO_EXTENSION), ['mp4', 'webm', 'ogg'])) {
+                  $video_files[] = $file;
+              }
+          }
+
+          // Сортировка видеофайлов (по желанию, например, по имени)
+          sort($video_files);
+
+          $first_video = "";
+          if (!empty($video_files)) {
+              $first_video = $video_dir . $video_files[0];
+          }
+
+          foreach ($video_files as $index => $video_file) {
+              $src = $video_dir . $video_file;
+              $title = $video_titles[$video_file] ?? str_replace(['_', '.mp4'], [' ', ''], $video_file); // Используем заданное название или генерируем из имени файла
+              $active_class = ($index === 0) ? 'active' : ''; // Делаем первое видео активным
+              echo "<div class=\"playlist-item $active_class\" data-src=\"$src\" data-title=\"$title\" tabindex=\"0\" role=\"button\">";
+              echo "<video muted src=\"{$src}#t=0.5\"></video>"; // #t=0.5 для превью
+              echo "<div class=\"playlist-item-title\">$title</div>";
+              echo "</div>";
+          }
+          ?>
         </div>
       </div>
     </section>
@@ -351,6 +364,7 @@
         page_title: "Видеоматериалы — Глаза Проктолога",
         meta_description: "Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов.",
         video_titles: {
+            // PHP будет заполнять эти названия, но оставим для JavaScript, если нужно переключать языки динамически
             "Video_Generisanje_Proktolog_i_žena.mp4": "Проктолог и женщина: генерирование видео",
             "Video_Gotovo_Proktolog_i_Žena.mp4": "Проктолог и женщина: готовое видео",
             "Video_je_gotovo_.mp4": "Видео готово: Обзор",
@@ -406,16 +420,11 @@
         const newSrc = item.dataset.src;
         const newTitle = item.dataset.title;
 
-        // Обновляем src основного видеоплеера
         mainVideoPlayer.src = newSrc;
-        // Загружаем новое видео
         mainVideoPlayer.load();
-        // Начинаем воспроизведение
         mainVideoPlayer.play();
-        // Обновляем aria-label для доступности
         mainVideoPlayer.setAttribute('aria-label', `Сейчас воспроизводится: ${newTitle}`);
 
-        // Убираем активный класс со всех элементов и добавляем к выбранному
         playlistItems.forEach(el => el.classList.remove('active'));
         item.classList.add('active');
       });
@@ -434,23 +443,22 @@
 
       document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`;
 
-      // Update navigation links
       document.querySelector('nav a[href="index.html#about"]').innerText = texts[lang].nav_about;
-      document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video;
+      document.querySelector('nav a[href="video.php"]').innerText = texts[lang].nav_video; // Обновили ссылку
       document.querySelector('nav a[href="index.html#gallery"]').innerText = texts[lang].nav_gallery;
       document.querySelector('nav a[href="index.html#contact"]').innerText = texts[lang].nav_contact;
 
-      // Update video titles in playlist
+      // Обновление названий видео в плейлисте (если PHP не используется для этого)
+      // Если вы используете PHP для генерации плейлиста, то эту часть JS можно убрать
+      // Но если хотите, чтобы названия менялись после загрузки страницы при переключении языка, оставьте её
       document.querySelectorAll('.playlist-item').forEach(item => {
-        const videoSrc = item.dataset.src;
-        item.querySelector('.playlist-item-title').innerText = texts[lang].video_titles[videoSrc] || videoSrc;
+        const videoSrcBase = item.dataset.src.split('/').pop(); // Получаем только имя файла
+        item.querySelector('.playlist-item-title').innerText = texts[lang].video_titles[videoSrcBase] || videoSrcBase;
       });
     }
 
-    // Установить язык по умолчанию при загрузке страницы
     document.addEventListener('DOMContentLoaded', () => {
-      setLang('ru'); // Русский по умолчанию
-      // Дополнительно, чтобы первое видео было активным по умолчанию
+      setLang('ru');
       const firstVideoItem = document.querySelector('.playlist-item.active');
       if (firstVideoItem) {
         mainVideoPlayer.src = firstVideoItem.dataset.src;
