@@ -43,18 +43,16 @@
         width: auto;
         height: auto;
         z-index: -1;
-        /* Если видео слишком светлое и текст плохо читается, можно добавить затемнение */
-        /* filter: brightness(0.7); */
     }
 
     body {
       margin: 0;
-      background-color: var(--main-bg-color); /* Этот цвет будет виден, пока видео грузится */
+      /* Цвет фона убран, чтобы было видно видео, которое находится на заднем плане */
       color: var(--primary-text-color);
-      font-family: 'Roboto', Arial, sans-serif; /* Добавлен Roboto для современного вида */
+      font-family: 'Roboto', Arial, sans-serif;
       animation: fadeIn 1.5s ease-out;
       line-height: 1.6;
-      scroll-behavior: smooth; /* Плавная прокрутка к якорям */
+      scroll-behavior: smooth;
     }
 
     @keyframes fadeIn {
@@ -66,20 +64,20 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
     header {
-      background-color: var(--header-footer-bg);
+      background-color: rgba(13, 26, 43, 0.85); /* Прозрачность 85% */
       padding: 25px 20px;
       text-align: center;
       font-size: 2.5em;
       font-weight: 700;
       color: var(--accent-color);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      position: sticky; /* Липкий хедер */
+      position: sticky;
       top: 0;
       z-index: 1000;
     }
 
     nav {
-      background-color: var(--secondary-bg-color);
+      background-color: rgba(26, 44, 66, 0.85); /* Прозрачность 85% */
       display: flex;
       justify-content: center;
       gap: 1.5rem;
@@ -98,7 +96,7 @@
       transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     }
 
-    nav a:hover, nav a:focus { /* Добавлено :focus для доступности */
+    nav a:hover, nav a:focus {
       color: var(--accent-hover-color);
       background-color: rgba(0, 188, 212, 0.1);
       transform: translateY(-2px);
@@ -112,7 +110,7 @@
     }
 
     section {
-      background-color: rgba(26, 44, 66, 0.9); /* Сделали фон секций полупрозрачным для эффекта */
+      background-color: rgba(26, 44, 66, 0.75); /* Прозрачность 75% */
       margin-bottom: 2.5rem;
       padding: 2rem;
       border-radius: var(--border-radius);
@@ -130,7 +128,7 @@
       margin-bottom: 1.5rem;
       border-bottom: 2px solid var(--accent-color);
       padding-bottom: 10px;
-      display: inline-block; /* Для красивой нижней границы */
+      display: inline-block;
     }
 
     p {
@@ -141,7 +139,7 @@
     }
 
     footer {
-      background-color: var(--header-footer-bg);
+      background-color: rgba(13, 26, 43, 0.85); /* Прозрачность 85% */
       text-align: center;
       padding: 15px;
       font-size: 0.9em;
@@ -173,7 +171,7 @@
       transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
       display: flex;
       align-items: center;
-      gap: 8px; /* Расстояние между флагом и текстом */
+      gap: 8px;
     }
 
     .lang-switcher button:hover, .lang-switcher button:focus {
@@ -184,21 +182,21 @@
     }
 
     .gallery {
-      display: grid; /* Использование Grid для галереи */
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Адаптивная сетка */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
-      justify-items: center; /* Центрирование элементов в сетке */
+      justify-items: center;
     }
 
     .gallery img {
-      width: 100%; /* Заполнение ячейки */
-      height: 200px; /* Фиксированная высота для единообразия */
-      object-fit: cover; /* Обрезка изображения для заполнения */
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
       border-radius: var(--border-radius);
       border: 3px solid var(--accent-color);
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      cursor: zoom-in; /* Курсор для увеличения */
+      cursor: zoom-in;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
@@ -209,20 +207,20 @@
     }
 
     .telegram-link {
-      display: inline-flex; /* Используем flex для выравнивания иконки и текста */
+      display: inline-flex;
       align-items: center;
-      gap: 12px; /* Расстояние между иконкой и текстом */
+      gap: 12px;
       margin-top: 1.5rem;
       padding: 16px 32px;
-      background: linear-gradient(45deg, #0088cc, #00bcd4); /* Более насыщенный градиент */
-      color: #fff; /* Белый текст для контраста */
+      background: linear-gradient(45deg, #0088cc, #00bcd4);
+      color: #fff;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.3rem;
       box-shadow: 0 6px 15px var(--shadow-light);
       transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      overflow: hidden; /* Для эффекта волны */
+      overflow: hidden;
       position: relative;
     }
 
@@ -232,7 +230,7 @@
       transform: translateY(-3px);
     }
 
-    .telegram-link::before { /* Эффект волны при наведении */
+    .telegram-link::before {
       content: '';
       position: absolute;
       top: 50%;
@@ -251,7 +249,7 @@
       height: 250%;
     }
 
-    .telegram-link span { /* Чтобы текст был поверх эффекта */
+    .telegram-link span {
       position: relative;
       z-index: 1;
     }
@@ -264,52 +262,21 @@
     }
 
     @media (max-width: 768px) {
-      header {
-        font-size: 2em;
-      }
-      nav {
-        gap: 1rem;
-      }
-      main {
-        padding: 1.5rem 1rem;
-      }
-      h2 {
-        font-size: 1.8em;
-      }
-      section {
-        padding: 1.5rem;
-      }
-      .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      }
-      .telegram-link {
-        font-size: 1.1rem;
-        padding: 12px 24px;
-      }
+      header { font-size: 2em; }
+      nav { gap: 1rem; }
+      main { padding: 1.5rem 1rem; }
+      h2 { font-size: 1.8em; }
+      section { padding: 1.5rem; }
+      .gallery { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+      .telegram-link { font-size: 1.1rem; padding: 12px 24px; }
     }
 
     @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      nav a {
-        padding: 10px;
-        font-size: 1em;
-      }
-      .gallery img {
-        width: 100%;
-        height: 180px; /* Немного уменьшена высота */
-      }
-      .telegram-link {
-        width: calc(100% - 2rem); /* Занимает почти всю ширину */
-        display: block; /* Сделать блочным для полной ширины */
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .lang-switcher {
-        flex-direction: column;
-      }
+      nav { flex-direction: column; gap: 0.8rem; }
+      nav a { padding: 10px; font-size: 1em; }
+      .gallery img { width: 100%; height: 180px; }
+      .telegram-link { width: calc(100% - 2rem); display: block; margin-left: auto; margin-right: auto; }
+      .lang-switcher { flex-direction: column; }
     }
   </style>
 </head>
