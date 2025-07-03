@@ -33,9 +33,23 @@
       --shadow-dark: rgba(0, 188, 212, 0.6);
     }
 
+    /* Стили для фонового видео */
+    #bg-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        /* Если видео слишком светлое и текст плохо читается, можно добавить затемнение */
+        /* filter: brightness(0.7); */
+    }
+
     body {
       margin: 0;
-      background-color: var(--main-bg-color);
+      background-color: var(--main-bg-color); /* Этот цвет будет виден, пока видео грузится */
       color: var(--primary-text-color);
       font-family: 'Roboto', Arial, sans-serif; /* Добавлен Roboto для современного вида */
       animation: fadeIn 1.5s ease-out;
@@ -98,7 +112,7 @@
     }
 
     section {
-      background-color: var(--secondary-bg-color);
+      background-color: rgba(26, 44, 66, 0.9); /* Сделали фон секций полупрозрачным для эффекта */
       margin-bottom: 2.5rem;
       padding: 2rem;
       border-radius: var(--border-radius);
@@ -300,6 +314,12 @@
   </style>
 </head>
 <body>
+
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="3.mp4" type="video/mp4">
+    Ваш браузер не поддерживает тег video.
+  </video>
+
   <header>Глаза Проктолога</header>
   <nav aria-label="Основная навигация">
     <a href="index.html#about">О проекте</a>
