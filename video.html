@@ -331,6 +331,22 @@
 
     const videoList = [
       {
+        src: "video/1.mp4", // Добавлено новое видео из папки video/
+        title: {
+          ru: "Новое видео 1",
+          en: "New Video 1",
+          ka: "ახალი ვიდეო 1"
+        }
+      },
+      {
+        src: "video/2.mp4", // Добавлено новое видео из папки video/
+        title: {
+          ru: "Новое видео 2",
+          en: "New Video 2",
+          ka: "ახალი ვიდეო 2"
+        }
+      },
+      {
         src: "Video_Generisanje_Proktolog_i_žena.mp4", // ПУТЬ БЕЗ 'video/'
         title: {
           ru: "Проктолог и женщина: генерирование видео",
@@ -367,7 +383,7 @@
         title: {
           ru: "Видео готово: Демонстрация (Попа)",
           en: "Video Ready: Demonstration (Butt)",
-          ka: "ვიდეო მზადაა: დემონსტრაცია (სხეული)" 
+          ka: "ვიდეო მზადაა: დემონსტრაცია (სხეული)"  
         }
       },
       {
@@ -433,7 +449,7 @@
 
       videoList.forEach((video, index) => {
         // Получаем название видео на текущем языке или используем имя файла, если перевод не найден
-        const title = video.title[lang] || video.src; 
+        const title = video.title[lang] || video.src;  
         const activeClass = index === 0 ? 'active' : ''; // Делаем первое видео активным по умолчанию
 
         const playlistItem = document.createElement('div');
