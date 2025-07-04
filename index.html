@@ -60,12 +60,12 @@
         height: auto;
         transform: translateX(-50%) translateY(-50%);
         z-index: 1;
-        filter: brightness(0.4); /* Затемняем видео для читаемости текста */
+        filter: brightness(0.4);
     }
 
     #welcome-content {
         text-align: center;
-        z-index: 2; /* Поверх видео */
+        z-index: 2;
         animation: fadeIn 2s ease-out;
     }
 
@@ -96,6 +96,31 @@
         transform: translateY(-3px);
         box-shadow: 0 8px 20px var(--shadow-dark);
     }
+    
+    /* НОВЫЙ СТИЛЬ ДЛЯ КНОПКИ ЗВУКА */
+    #volume-control {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 3;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: 1px solid white;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #volume-control:hover {
+        background-color: rgba(0, 188, 212, 0.5);
+        transform: scale(1.1);
+    }
 
     /* --- ОСНОВНЫЕ СТИЛИ --- */
     #bg-video {
@@ -117,7 +142,6 @@
       scroll-behavior: smooth;
     }
     
-    /* Скрытие основного контента до загрузки */
     body > *:not(#welcome-screen) {
         opacity: 0;
         transition: opacity 0.8s ease-in;
@@ -134,6 +158,8 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+    header, nav, main, footer { /* ...остальные стили остаются без изменений... */ }
+    /* ... скопируйте сюда остальные ваши CSS стили из предыдущего блока ... */
     header {
       background-color: rgba(13, 26, 43, 0.85);
       padding: 25px 20px;
@@ -342,12 +368,13 @@
       .telegram-link { width: calc(100% - 2rem); display: block; margin-left: auto; margin-right: auto; }
       .lang-switcher { flex-direction: column; }
     }
+
   </style>
 </head>
 <body>
 
   <div id="welcome-screen">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline id="greeting-video">
           <source src="5.mp4" type="video/mp4">
           Ваш браузер не поддерживает тег video.
       </video>
@@ -355,6 +382,7 @@
           <h1>Глаза Проктолога</h1>
           <button id="enter-button">Войти на сайт</button>
       </div>
+      <button id="volume-control">🔇</button>
   </div>
 
   <video autoplay muted loop playsinline id="bg-video">
@@ -409,6 +437,7 @@
   <footer>
     &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">Наверх</a>
   </footer>
+
 
   <script>
     const texts = {
@@ -467,8 +496,8 @@
         meta_description: "მედიცინის უჩვეულო ხედვა — პროქტოლოგის თვალით. საგანმანათლებლო ვიდეოები, საინტერესო გალერეა და პირდაპირი კავშირი Telegram-ის საშუალებით. შეიტყვეთ მეტი ჯანმრთელობის ფარული ასპექტების შესახებ!"
       }
     };
-
     function setLang(lang) {
+      // ... функция setLang остается без изменений ...
       document.querySelector('html').setAttribute('lang', lang);
       document.title = texts[lang].page_title;
       document.querySelector('meta[name="description"]').setAttribute('content', texts[lang].meta_description);
@@ -496,26 +525,32 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Установить язык по умолчанию
         setLang('ru');
 
-        // --- СКРИПТ ДЛЯ ПРИВЕТСТВЕННОГО ЭКРАНА ---
+        // --- СКРИПТЫ ДЛЯ ПРИВЕТСТВЕННОГО ЭКРАНА ---
         const enterButton = document.getElementById('enter-button');
         const welcomeScreen = document.getElementById('welcome-screen');
         const body = document.body;
+        const volumeButton = document.getElementById('volume-control');
+        const greetingVideo = document.getElementById('greeting-video');
 
+        // Логика для кнопки входа
         enterButton.addEventListener('click', () => {
-            // Скрываем приветственный экран
             welcomeScreen.style.opacity = '0';
             welcomeScreen.style.visibility = 'hidden';
-            
-            // Показываем основной контент
             body.classList.add('loaded');
+            setTimeout(() => { welcomeScreen.remove(); }, 1000);
+        });
 
-            // Полностью удаляем экран приветствия после завершения анимации
-            setTimeout(() => {
-                welcomeScreen.remove();
-            }, 1000); // Должно совпадать с transition в CSS
+        // НОВАЯ ЛОГИКА ДЛЯ КНОПКИ ЗВУКА
+        volumeButton.addEventListener('click', () => {
+            if (greetingVideo.muted) {
+                greetingVideo.muted = false;
+                volumeButton.textContent = '🔊';
+            } else {
+                greetingVideo.muted = true;
+                volumeButton.textContent = '🔇';
+            }
         });
     });
   </script>
