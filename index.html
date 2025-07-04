@@ -21,19 +21,83 @@
 
   <style>
     :root {
-      --main-bg-color: #0a192f; /* Глубокий темно-синий */
-      --secondary-bg-color: #1a2c42; /* Немного светлее для секций */
-      --header-footer-bg: #0d1a2b; /* Еще темнее для контраста */
-      --primary-text-color: #e2e8f0; /* Светлый серо-голубой для основного текста */
-      --accent-color: #00bcd4; /* Яркий бирюзовый */
-      --accent-hover-color: #6ff9ff; /* Более светлый бирюзовый при наведении */
+      --main-bg-color: #0a192f;
+      --secondary-bg-color: #1a2c42;
+      --header-footer-bg: #0d1a2b;
+      --primary-text-color: #e2e8f0;
+      --accent-color: #00bcd4;
+      --accent-hover-color: #6ff9ff;
       --button-text-color: #000;
       --border-radius: 8px;
       --shadow-light: rgba(0, 188, 212, 0.4);
       --shadow-dark: rgba(0, 188, 212, 0.6);
     }
 
-    /* Стили для фонового видео */
+    /* --- СТИЛИ ПРИВЕТСТВЕННОГО ЭКРАНА --- */
+    #welcome-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10000;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+        transition: opacity 1s ease-out, visibility 1s ease-out;
+    }
+
+    #welcome-screen video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 1;
+        filter: brightness(0.4); /* Затемняем видео для читаемости текста */
+    }
+
+    #welcome-content {
+        text-align: center;
+        z-index: 2; /* Поверх видео */
+        animation: fadeIn 2s ease-out;
+    }
+
+    #welcome-content h1 {
+        font-size: 3.5em;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        color: var(--accent-hover-color);
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 15px rgba(111, 249, 255, 0.7);
+    }
+
+    #enter-button {
+        padding: 16px 32px;
+        font-size: 1.3em;
+        font-weight: bold;
+        color: var(--button-text-color);
+        background-color: var(--accent-color);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px var(--shadow-light);
+    }
+
+    #enter-button:hover {
+        background-color: var(--accent-hover-color);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px var(--shadow-dark);
+    }
+
+    /* --- ОСНОВНЫЕ СТИЛИ --- */
     #bg-video {
         position: fixed;
         right: 0;
@@ -47,12 +111,20 @@
 
     body {
       margin: 0;
-      /* Цвет фона убран, чтобы было видно видео, которое находится на заднем плане */
       color: var(--primary-text-color);
       font-family: 'Roboto', Arial, sans-serif;
-      animation: fadeIn 1.5s ease-out;
       line-height: 1.6;
       scroll-behavior: smooth;
+    }
+    
+    /* Скрытие основного контента до загрузки */
+    body > *:not(#welcome-screen) {
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+
+    body.loaded > *:not(#welcome-screen) {
+        opacity: 1;
     }
 
     @keyframes fadeIn {
@@ -60,11 +132,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Добавлен Google Fonts для Roboto */
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
     header {
-      background-color: rgba(13, 26, 43, 0.85); /* Прозрачность 85% */
+      background-color: rgba(13, 26, 43, 0.85);
       padding: 25px 20px;
       text-align: center;
       font-size: 2.5em;
@@ -77,7 +148,7 @@
     }
 
     nav {
-      background-color: rgba(26, 44, 66, 0.85); /* Прозрачность 85% */
+      background-color: rgba(26, 44, 66, 0.85);
       display: flex;
       justify-content: center;
       gap: 1.5rem;
@@ -110,7 +181,7 @@
     }
 
     section {
-      background-color: rgba(26, 44, 66, 0.75); /* Прозрачность 75% */
+      background-color: rgba(26, 44, 66, 0.75);
       margin-bottom: 2.5rem;
       padding: 2rem;
       border-radius: var(--border-radius);
@@ -139,7 +210,7 @@
     }
 
     footer {
-      background-color: rgba(13, 26, 43, 0.85); /* Прозрачность 85% */
+      background-color: rgba(13, 26, 43, 0.85);
       text-align: center;
       padding: 15px;
       font-size: 0.9em;
@@ -147,9 +218,7 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .form-section {
-      margin-top: 3rem;
-    }
+    .form-section { margin-top: 3rem; }
 
     .lang-switcher {
       margin-top: 2rem;
@@ -254,13 +323,7 @@
       z-index: 1;
     }
 
-    /* Адаптивность */
-    @media (max-width: 900px) {
-      .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      }
-    }
-
+    @media (max-width: 900px) { .gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
     @media (max-width: 768px) {
       header { font-size: 2em; }
       nav { gap: 1rem; }
@@ -269,8 +332,9 @@
       section { padding: 1.5rem; }
       .gallery { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
       .telegram-link { font-size: 1.1rem; padding: 12px 24px; }
+      #welcome-content h1 { font-size: 2.5em; }
+      #enter-button { font-size: 1.1em; padding: 14px 28px; }
     }
-
     @media (max-width: 600px) {
       nav { flex-direction: column; gap: 0.8rem; }
       nav a { padding: 10px; font-size: 1em; }
@@ -281,6 +345,17 @@
   </style>
 </head>
 <body>
+
+  <div id="welcome-screen">
+      <video autoplay muted loop playsinline>
+          <source src="5.mp4" type="video/mp4">
+          Ваш браузер не поддерживает тег video.
+      </video>
+      <div id="welcome-content">
+          <h1>Глаза Проктолога</h1>
+          <button id="enter-button">Войти на сайт</button>
+      </div>
+  </div>
 
   <video autoplay muted loop playsinline id="bg-video">
     <source src="3.mp4" type="video/mp4">
@@ -408,22 +483,40 @@
       document.querySelector('#gallery p').innerHTML = texts[lang].gallery_text;
 
       document.querySelector('#contact h2').innerHTML = texts[lang].contact_heading;
-      document.querySelector('#contact p').innerHTML = texts[lang].contact_text;
+      document.querySelector('#contact > p:first-of-type').innerHTML = texts[lang].contact_text;
       document.querySelector('.telegram-link span').innerText = texts[lang].telegram_button;
       document.querySelector('.form-section p:last-of-type').innerHTML = texts[lang].telegram_note;
 
       document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`;
 
-      // Update navigation links
       document.querySelector('nav a[href="index.html#about"]').innerText = texts[lang].nav_about;
       document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video;
       document.querySelector('nav a[href="index.html#gallery"]').innerText = texts[lang].nav_gallery;
       document.querySelector('nav a[href="index.html#contact"]').innerText = texts[lang].nav_contact;
     }
 
-    // Установить язык по умолчанию при загрузке страницы
     document.addEventListener('DOMContentLoaded', () => {
-      setLang('ru'); // Русский по умолчанию
+        // Установить язык по умолчанию
+        setLang('ru');
+
+        // --- СКРИПТ ДЛЯ ПРИВЕТСТВЕННОГО ЭКРАНА ---
+        const enterButton = document.getElementById('enter-button');
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const body = document.body;
+
+        enterButton.addEventListener('click', () => {
+            // Скрываем приветственный экран
+            welcomeScreen.style.opacity = '0';
+            welcomeScreen.style.visibility = 'hidden';
+            
+            // Показываем основной контент
+            body.classList.add('loaded');
+
+            // Полностью удаляем экран приветствия после завершения анимации
+            setTimeout(() => {
+                welcomeScreen.remove();
+            }, 1000); // Должно совпадать с transition в CSS
+        });
     });
   </script>
 </body>
