@@ -412,6 +412,8 @@
 </head>
 <body>
 
+  <audio id="clickSound" src="click.mp3" preload="auto"></audio>
+
   <div id="welcome-screen">
       <video autoplay muted loop playsinline id="greeting-video">
           <source src="5.mp4" type="video/mp4">
@@ -524,7 +526,7 @@
         gallery_heading: "🖼️ ვიზუალური გალერეა",
         gallery_text: "დაათვალიერეთ ჩვენი სურათების კოლექცია, რომელიც ავსებს საგანმანათლებლო კონტენტს და გვთავაზობს უნიკალურ ხედვას კვლევის საგანზე. ყველა სურათი შერჩეულია <strong>ინფორმირებისა და განათლების</strong> მიზნით.",
         contact_heading: "📬 დაგვიკავშირდით",
-        contact_text: "გაქვთ შეკითხვები или предложения? მოგვწერეთ პირდაპირ <strong>Telegram-ში</strong> – ჩვენ ყოველთვის ღია ვართ კონსტრუქციული დიალოგისთვის и მზად ვართ დაგეხმაროთ.",
+        contact_text: "გაქვთ შეკითხვები или предложения? მოგვწერეთ პირდაპირ <strong>Telegram-ში</strong> – ჩვენ ყოველთვის ღია ვართ კონსტრუქციული диaloga для и მზად ვართ დაგეხმაროთ.",
         telegram_button: "💬 Telegram ჩატში გადასვლა",
         telegram_note: "<em>(ღილაკზე დაჭერით გადახვალთ Telegram აპლიკაციაში ან ვებ ვერსიაში)</em>",
         footer_copyright: "&copy; 2025 Glaza Proktologa. ყველა უფლება დაცულია. ",
@@ -537,6 +539,16 @@
         meta_description: "მედიცინის უჩვეულო ხედვა — პროქტოლოგის თვალით. საგანმანათლებლო ვიდეოები, საინტერესო გალერეა და პირდაპირი კავშირი Telegram-ის საშუალებით. შეიტყვეთ მეტი ჯანმრთელობის ფარული ასპექტების შესახებ!"
       }
     };
+
+    // Function to play click sound
+    function playClickSound() {
+      const clickSound = document.getElementById('clickSound');
+      if (clickSound) {
+        clickSound.currentTime = 0; // Rewind to the start
+        clickSound.play();
+      }
+    }
+
     function setLang(lang) {
       // ... функция setLang остается без изменений ...
       document.querySelector('html').setAttribute('lang', lang);
@@ -555,7 +567,6 @@
       document.querySelector('#contact h2').innerHTML = texts[lang].contact_heading;
       document.querySelector('#contact > p:first-of-type').innerHTML = texts[lang].contact_text;
       document.querySelector('.telegram-link span').innerText = texts[lang].telegram_button;
-      // Изменено: Цвет заметки под кнопкой Telegram
       document.querySelector('.form-section p:last-of-type').style.color = 'var(--neon-green)'; 
       document.querySelector('.form-section p:last-of-type').innerHTML = texts[lang].telegram_note;
 
@@ -579,6 +590,7 @@
 
         // Логика для кнопки входа
         enterButton.addEventListener('click', () => {
+            playClickSound(); // Play sound on button click
             welcomeScreen.style.opacity = '0';
             welcomeScreen.style.visibility = 'hidden';
             body.classList.add('loaded');
@@ -587,6 +599,7 @@
 
         // НОВАЯ ЛОГИКА ДЛЯ КНОПКИ ЗВУКА
         volumeButton.addEventListener('click', () => {
+            playClickSound(); // Play sound on volume button click
             if (greetingVideo.muted) {
                 greetingVideo.muted = false;
                 volumeButton.textContent = '🔊';
@@ -595,6 +608,19 @@
                 volumeButton.textContent = '🔇';
             }
         });
+
+        // Add click sound to all navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', playClickSound);
+        });
+
+        // Add click sound to language switcher buttons
+        document.querySelectorAll('.lang-switcher button').forEach(button => {
+            button.addEventListener('click', playClickSound);
+        });
+
+        // Add click sound to Telegram link
+        document.querySelector('.telegram-link').addEventListener('click', playClickSound);
     });
   </script>
 </body>
