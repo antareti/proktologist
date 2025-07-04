@@ -31,8 +31,9 @@
       --border-radius: 8px;
       --shadow-light: rgba(0, 188, 212, 0.4);
       --shadow-dark: rgba(0, 188, 212, 0.6);
-      --neon-purple: #ff00ff; /* Цвет для неонового текста */
-      --neon-glow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple), 0 0 40px var(--neon-purple); /* Эффект свечения */
+      /* Изменены цвета для соответствия изображению */
+      --neon-green: #39ff14; /* Цвет для неонового текста - ярко-зеленый */
+      --neon-glow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green), 0 0 40px var(--neon-green); /* Эффект свечения */
     }
 
     /* --- СТИЛИ ПРИВЕТСТВЕННОГО ЭКРАНА --- */
@@ -75,9 +76,9 @@
         font-size: 3.5em;
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
-        color: var(--accent-hover-color);
+        color: var(--neon-green); /* Цвет заголовка - неоновый зеленый */
         margin-bottom: 1.5rem;
-        text-shadow: 0 0 15px rgba(111, 249, 255, 0.7);
+        text-shadow: var(--neon-glow); /* Эффект свечения */
     }
 
     #enter-button {
@@ -85,18 +86,18 @@
         font-size: 1.3em;
         font-weight: bold;
         color: var(--button-text-color);
-        background-color: var(--accent-color);
+        background-color: var(--neon-green); /* Кнопка входа тоже неоновая */
         border: none;
         border-radius: var(--border-radius);
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px var(--shadow-light);
+        box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4); /* Тень кнопки входа */
     }
 
     #enter-button:hover {
-        background-color: var(--accent-hover-color);
+        background-color: #6eff6e; /* Чуть светлее неоновый зеленый при наведении */
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px var(--shadow-dark);
+        box-shadow: 0 8px 20px rgba(57, 255, 20, 0.6); /* Более сильная тень при наведении */
     }
     
     /* НОВЫЙ СТИЛЬ ДЛЯ КНОПКИ ЗВУКА */
@@ -106,8 +107,8 @@
         right: 20px;
         z-index: 3;
         background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: 1px solid white;
+        color: var(--neon-green); /* Кнопка звука неоновая */
+        border: 1px solid var(--neon-green); /* Рамка кнопки звука неоновая */
         border-radius: 50%;
         width: 45px;
         height: 45px;
@@ -120,7 +121,7 @@
     }
 
     #volume-control:hover {
-        background-color: rgba(0, 188, 212, 0.5);
+        background-color: rgba(57, 255, 20, 0.5); /* Фон при наведении */
         transform: scale(1.1);
     }
 
@@ -138,10 +139,11 @@
 
     body {
       margin: 0;
-      color: var(--primary-text-color);
+      color: var(--neon-green); /* Основной цвет текста - неоновый зеленый */
       font-family: 'Roboto', Arial, sans-serif;
       line-height: 1.6;
       scroll-behavior: smooth;
+      text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Легкое неоновое свечение для всего текста */
     }
     
     body > *:not(#welcome-screen) {
@@ -160,19 +162,18 @@
 
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-    header, nav, main, footer { /* ...остальные стили остаются без изменений... */ }
-    /* ... скопируйте сюда остальные ваши CSS стили из предыдущего блока ... */
     header {
       background-color: rgba(13, 26, 43, 0.85);
       padding: 25px 20px;
       text-align: center;
       font-size: 2.5em;
       font-weight: 700;
-      color: var(--accent-color);
+      color: var(--neon-green); /* Цвет заголовка - неоновый зеленый */
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       position: sticky;
       top: 0;
       z-index: 1000;
+      text-shadow: var(--neon-glow); /* Неоновое свечение для заголовка */
     }
 
     nav {
@@ -186,19 +187,21 @@
     }
 
     nav a {
-      color: var(--accent-color);
+      color: var(--neon-green); /* Цвет ссылок навигации - неоновый зеленый */
       text-decoration: none;
       font-weight: 500;
       font-size: 1.1em;
       padding: 8px 15px;
       border-radius: var(--border-radius);
       transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7); /* Свечение ссылок */
     }
 
     nav a:hover, nav a:focus {
-      color: var(--accent-hover-color);
-      background-color: rgba(0, 188, 212, 0.1);
+      color: #6eff6e; /* Более яркий зеленый при наведении */
+      background-color: rgba(57, 255, 20, 0.1); /* Фон при наведении */
       transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(57, 255, 20, 0.4); /* Тень при наведении */
     }
 
     main {
@@ -222,19 +225,21 @@
     }
 
     h2 {
-      color: var(--accent-hover-color);
+      color: var(--neon-green); /* Цвет заголовков секций - неоновый зеленый */
       font-size: 2em;
       margin-bottom: 1.5rem;
-      border-bottom: 2px solid var(--accent-color);
+      border-bottom: 2px solid var(--neon-green); /* Неоновая рамка */
       padding-bottom: 10px;
       display: inline-block;
+      text-shadow: var(--neon-glow); /* Неоновое свечение для заголовков секций */
     }
 
     p {
       font-size: 1.1em;
-      color: var(--primary-text-color);
+      color: var(--neon-green); /* Цвет параграфов - неоновый зеленый */
       max-width: 800px;
       margin: 0.5rem auto;
+      text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Легкое неоновое свечение для текста */
     }
 
     footer {
@@ -242,8 +247,9 @@
       text-align: center;
       padding: 15px;
       font-size: 0.9em;
-      color: var(--primary-text-color);
+      color: var(--neon-green); /* Цвет футера - неоновый зеленый */
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Легкое неоновое свечение для текста футера */
     }
 
     .form-section { margin-top: 3rem; }
@@ -258,8 +264,8 @@
 
     .lang-switcher button {
       background: var(--secondary-bg-color);
-      color: var(--accent-color);
-      border: 1px solid var(--accent-color);
+      color: var(--neon-green); /* Цвет кнопок переключателя языка - неоновый зеленый */
+      border: 1px solid var(--neon-green); /* Неоновая рамка кнопок переключателя языка */
       padding: 10px 20px;
       border-radius: var(--border-radius);
       cursor: pointer;
@@ -269,13 +275,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7); /* Свечение кнопок */
     }
 
     .lang-switcher button:hover, .lang-switcher button:focus {
-      background: var(--accent-color);
+      background: var(--neon-green); /* Фон при наведении */
       color: var(--button-text-color);
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px var(--shadow-light);
+      box-shadow: 0 4px 10px rgba(57, 255, 20, 0.4); /* Тень при наведении */
     }
 
     .gallery {
@@ -291,7 +298,7 @@
       height: 200px;
       object-fit: cover;
       border-radius: var(--border-radius);
-      border: 3px solid var(--accent-color);
+      border: 3px solid var(--neon-green); /* Неоновая рамка изображений */
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       cursor: zoom-in;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -299,8 +306,8 @@
 
     .gallery img:hover {
       transform: scale(1.03);
-      border-color: var(--accent-hover-color);
-      box-shadow: 0 8px 25px var(--shadow-dark);
+      border-color: #6eff6e; /* Более яркий зеленый при наведении */
+      box-shadow: 0 8px 25px rgba(57, 255, 20, 0.6); /* Более сильная тень при наведении */
     }
 
     .telegram-link {
@@ -309,21 +316,22 @@
       gap: 12px;
       margin-top: 1.5rem;
       padding: 16px 32px;
-      background: linear-gradient(45deg, #0088cc, #00bcd4);
+      background: linear-gradient(45deg, #0088cc, var(--neon-green)); /* Градиент с неоновым зеленым */
       color: #fff;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.3rem;
-      box-shadow: 0 6px 15px var(--shadow-light);
+      box-shadow: 0 6px 15px rgba(57, 255, 20, 0.4); /* Тень ссылки телеграм */
       transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
       overflow: hidden;
       position: relative;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Тень текста на кнопке телеграм */
     }
 
     .telegram-link:hover {
-      background: linear-gradient(45deg, #00bcd4, #6ff9ff);
-      box-shadow: 0 8px 20px var(--shadow-dark);
+      background: linear-gradient(45deg, var(--neon-green), #6eff6e); /* Градиент при наведении */
+      box-shadow: 0 8px 20px rgba(57, 255, 20, 0.6); /* Более сильная тень при наведении */
       transform: translateY(-3px);
     }
 
@@ -353,7 +361,7 @@
 
     /* Стили для неонового текста */
     .neon-text {
-      color: var(--neon-purple); /* Базовый цвет текста */
+      color: var(--neon-green); /* Базовый цвет текста */
       text-shadow: var(--neon-glow); /* Эффект свечения */
       font-size: 3em; /* Размер шрифта, можно настроить */
       font-weight: bold;
@@ -371,7 +379,7 @@
         opacity: 1;
       }
       50% {
-        text-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple); /* Более слабое свечение */
+        text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green); /* Более слабое свечение */
         opacity: 0.8;
       }
     }
@@ -548,7 +556,7 @@
       document.querySelector('.telegram-link span').innerText = texts[lang].telegram_button;
       document.querySelector('.form-section p:last-of-type').innerHTML = texts[lang].telegram_note;
 
-      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`;
+      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--neon-green); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`; /* Изменено на neon-green */
 
       document.querySelector('nav a[href="index.html#about"]').innerText = texts[lang].nav_about;
       document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video;
