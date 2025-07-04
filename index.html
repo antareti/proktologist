@@ -25,13 +25,12 @@
       --secondary-bg-color: #1a2c42;
       --header-footer-bg: #0d1a2b;
       --primary-text-color: #e2e8f0;
-      --accent-color: #00bcd4;
-      --accent-hover-color: #6ff9ff;
+      /* Удалены старые accent-color и accent-hover-color */
       --button-text-color: #000;
       --border-radius: 8px;
-      --shadow-light: rgba(0, 188, 212, 0.4);
-      --shadow-dark: rgba(0, 188, 212, 0.6);
-      /* Изменены цвета для соответствия изображению */
+      --shadow-light: rgba(0, 188, 212, 0.4); /* Можно заменить на неоновый цвет, если нужно */
+      --shadow-dark: rgba(0, 188, 212, 0.6); /* Можно заменить на неоновый цвет, если нужно */
+      
       --neon-green: #39ff14; /* Цвет для неонового текста - ярко-зеленый */
       --neon-glow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green), 0 0 40px var(--neon-green); /* Эффект свечения */
     }
@@ -316,8 +315,9 @@
       gap: 12px;
       margin-top: 1.5rem;
       padding: 16px 32px;
-      background: linear-gradient(45deg, #0088cc, var(--neon-green)); /* Градиент с неоновым зеленым */
-      color: #fff;
+      /* Изменено: Убран синий цвет, оставлен только неоновый зеленый */
+      background: var(--neon-green); 
+      color: #000; /* Цвет текста на кнопке Telegram изменен на черный для лучшей контрастности */
       border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
@@ -326,11 +326,11 @@
       transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
       overflow: hidden;
       position: relative;
-      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Тень текста на кнопке телеграм */
+      text-shadow: none; /* Убрана тень текста на кнопке Telegram, так как фон теперь яркий */
     }
 
     .telegram-link:hover {
-      background: linear-gradient(45deg, var(--neon-green), #6eff6e); /* Градиент при наведении */
+      background: #6eff6e; /* Чуть светлее неоновый зеленый при наведении */
       box-shadow: 0 8px 20px rgba(57, 255, 20, 0.6); /* Более сильная тень при наведении */
       transform: translateY(-3px);
     }
@@ -464,7 +464,7 @@
       <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="telegram-link">
         <span>💬 Перейти в Telegram чат</span>
       </a>
-      <p style="margin-top: 1.5rem; font-size: 0.9em; color: rgba(226, 232, 240, 0.7);"><em>(Нажимая на кнопку, вы будете перенаправлены в приложение или веб-версию Telegram)</em></p>
+      <p style="margin-top: 1.5rem; font-size: 0.9em; color: var(--neon-green);"><em>(Нажимая на кнопку, вы будете перенаправлены в приложение или веб-версию Telegram)</em></p>
     </section>
 
     <div class="lang-switcher" aria-label="Переключатель языка">
@@ -475,7 +475,7 @@
   </main>
 
   <footer>
-    &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">Наверх</a>
+    &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--neon-green); text-decoration: none; margin-left: 10px;">Наверх</a>
   </footer>
 
 
@@ -523,7 +523,7 @@
         gallery_heading: "🖼️ ვიზუალური გალერეა",
         gallery_text: "დაათვალიერეთ ჩვენი სურათების კოლექცია, რომელიც ავსებს საგანმანათლებლო კონტენტს და გვთავაზობს უნიკალურ ხედვას კვლევის საგანზე. ყველა სურათი შერჩეულია <strong>ინფორმირებისა და განათლების</strong> მიზნით.",
         contact_heading: "📬 დაგვიკავშირდით",
-        contact_text: "გაქვთ შეკითხვები ან წინადადებები? მოგვწერეთ პირდაპირ <strong>Telegram-ში</strong> – ჩვენ ყოველთვის ღია ვართ კონსტრუქციული დიალოგისთვის და მზად ვართ დაგეხმაროთ.",
+        contact_text: "გაქვთ შეკითხვები ან წინადადებები? მოგვწერეთ პირდაპირ <strong>Telegram-ში</strong> – ჩვენ ყოველთვის ღია ვართ კონსტრუქციული დიალოგისთვის и მზად ვართ დაგეხმაროთ.",
         telegram_button: "💬 Telegram ჩატში გადასვლა",
         telegram_note: "<em>(ღილაკზე დაჭერით გადახვალთ Telegram აპლიკაციაში ან ვებ ვერსიაში)</em>",
         footer_copyright: "&copy; 2025 Glaza Proktologa. ყველა უფლება დაცულია. ",
