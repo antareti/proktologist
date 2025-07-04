@@ -26,10 +26,11 @@
       --header-footer-bg: #0d1a2b;
       --primary-text-color: #e2e8f0;
       /* Удалены старые accent-color и accent-hover-color */
-      --button-text-color: #000;
+      --button-text-color: #000; /* Цвет текста на кнопках */
       --border-radius: 8px;
-      --shadow-light: rgba(0, 188, 212, 0.4); /* Можно заменить на неоновый цвет, если нужно */
-      --shadow-dark: rgba(0, 188, 212, 0.6); /* Можно заменить на неоновый цвет, если нужно */
+      /* Изменены shadow-light и shadow-dark на неоновый зеленый */
+      --shadow-light: rgba(57, 255, 20, 0.4); 
+      --shadow-dark: rgba(57, 255, 20, 0.6); 
       
       --neon-green: #39ff14; /* Цвет для неонового текста - ярко-зеленый */
       --neon-glow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green), 0 0 40px var(--neon-green); /* Эффект свечения */
@@ -90,13 +91,13 @@
         border-radius: var(--border-radius);
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4); /* Тень кнопки входа */
+        box-shadow: 0 4px 15px var(--shadow-light); /* Тень кнопки входа */
     }
 
     #enter-button:hover {
         background-color: #6eff6e; /* Чуть светлее неоновый зеленый при наведении */
         transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(57, 255, 20, 0.6); /* Более сильная тень при наведении */
+        box-shadow: 0 8px 20px var(--shadow-dark); /* Более сильная тень при наведении */
     }
     
     /* НОВЫЙ СТИЛЬ ДЛЯ КНОПКИ ЗВУКА */
@@ -200,7 +201,7 @@
       color: #6eff6e; /* Более яркий зеленый при наведении */
       background-color: rgba(57, 255, 20, 0.1); /* Фон при наведении */
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(57, 255, 20, 0.4); /* Тень при наведении */
+      box-shadow: 0 4px 10px var(--shadow-light); /* Тень при наведении */
     }
 
     main {
@@ -281,7 +282,7 @@
       background: var(--neon-green); /* Фон при наведении */
       color: var(--button-text-color);
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(57, 255, 20, 0.4); /* Тень при наведении */
+      box-shadow: 0 4px 10px var(--shadow-light); /* Тень при наведении */
     }
 
     .gallery {
@@ -306,7 +307,7 @@
     .gallery img:hover {
       transform: scale(1.03);
       border-color: #6eff6e; /* Более яркий зеленый при наведении */
-      box-shadow: 0 8px 25px rgba(57, 255, 20, 0.6); /* Более сильная тень при наведении */
+      box-shadow: 0 8px 25px var(--shadow-dark); /* Более сильная тень при наведении */
     }
 
     .telegram-link {
@@ -315,14 +316,14 @@
       gap: 12px;
       margin-top: 1.5rem;
       padding: 16px 32px;
-      /* Изменено: Убран синий цвет, оставлен только неоновый зеленый */
-      background: var(--neon-green); 
-      color: #000; /* Цвет текста на кнопке Telegram изменен на черный для лучшей контрастности */
+      /* background: linear-gradient(45deg, #0088cc, var(--neon-green));  Убрана синяя часть градиента */
+      background: var(--neon-green); /* Сплошной неоновый зеленый фон */
+      color: var(--button-text-color); /* Цвет текста на кнопке Telegram изменен на черный для лучшей контрастности */
       border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
       font-size: 1.3rem;
-      box-shadow: 0 6px 15px rgba(57, 255, 20, 0.4); /* Тень ссылки телеграм */
+      box-shadow: 0 6px 15px var(--shadow-light); /* Тень ссылки телеграм */
       transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
       overflow: hidden;
       position: relative;
@@ -331,7 +332,7 @@
 
     .telegram-link:hover {
       background: #6eff6e; /* Чуть светлее неоновый зеленый при наведении */
-      box-shadow: 0 8px 20px rgba(57, 255, 20, 0.6); /* Более сильная тень при наведении */
+      box-shadow: 0 8px 20px var(--shadow-dark); /* Более сильная тень при наведении */
       transform: translateY(-3px);
     }
 
@@ -523,7 +524,7 @@
         gallery_heading: "🖼️ ვიზუალური გალერეა",
         gallery_text: "დაათვალიერეთ ჩვენი სურათების კოლექცია, რომელიც ავსებს საგანმანათლებლო კონტენტს და გვთავაზობს უნიკალურ ხედვას კვლევის საგანზე. ყველა სურათი შერჩეულია <strong>ინფორმირებისა და განათლების</strong> მიზნით.",
         contact_heading: "📬 დაგვიკავშირდით",
-        contact_text: "გაქვთ შეკითხვები ან წინადადებები? მოგვწერეთ პირდაპირ <strong>Telegram-ში</strong> – ჩვენ ყოველთვის ღია ვართ კონსტრუქციული დიალოგისთვის и მზად ვართ დაგეხმაროთ.",
+        contact_text: "გაქვთ შეკითხვები или предложения? მოგვწერეთ პირდაპირ <strong>Telegram-ში</strong> – ჩვენ ყოველთვის ღია ვართ კონსტრუქციული დიალოგისთვის и მზად ვართ დაგეხმაროთ.",
         telegram_button: "💬 Telegram ჩატში გადასვლა",
         telegram_note: "<em>(ღილაკზე დაჭერით გადახვალთ Telegram აპლიკაციაში ან ვებ ვერსიაში)</em>",
         footer_copyright: "&copy; 2025 Glaza Proktologa. ყველა უფლება დაცულია. ",
@@ -554,9 +555,11 @@
       document.querySelector('#contact h2').innerHTML = texts[lang].contact_heading;
       document.querySelector('#contact > p:first-of-type').innerHTML = texts[lang].contact_text;
       document.querySelector('.telegram-link span').innerText = texts[lang].telegram_button;
+      // Изменено: Цвет заметки под кнопкой Telegram
+      document.querySelector('.form-section p:last-of-type').style.color = 'var(--neon-green)'; 
       document.querySelector('.form-section p:last-of-type').innerHTML = texts[lang].telegram_note;
 
-      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--neon-green); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`; /* Изменено на neon-green */
+      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--neon-green); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`; 
 
       document.querySelector('nav a[href="index.html#about"]').innerText = texts[lang].nav_about;
       document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video;
