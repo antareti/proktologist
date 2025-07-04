@@ -31,6 +31,8 @@
       --border-radius: 8px;
       --shadow-light: rgba(0, 188, 212, 0.4);
       --shadow-dark: rgba(0, 188, 212, 0.6);
+      --neon-purple: #ff00ff; /* Цвет для неонового текста */
+      --neon-glow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple), 0 0 40px var(--neon-purple); /* Эффект свечения */
     }
 
     /* --- СТИЛИ ПРИВЕТСТВЕННОГО ЭКРАНА --- */
@@ -349,6 +351,32 @@
       z-index: 1;
     }
 
+    /* Стили для неонового текста */
+    .neon-text {
+      color: var(--neon-purple); /* Базовый цвет текста */
+      text-shadow: var(--neon-glow); /* Эффект свечения */
+      font-size: 3em; /* Размер шрифта, можно настроить */
+      font-weight: bold;
+      text-align: center;
+      padding: 20px 0;
+      background-color: rgba(0, 0, 0, 0.7); /* Фон для контраста, можно убрать */
+      border-radius: 10px;
+      margin-top: 2rem;
+      animation: neon-flicker 1.5s infinite alternate; /* Анимация мерцания */
+    }
+
+    @keyframes neon-flicker {
+      0%, 100% {
+        text-shadow: var(--neon-glow);
+        opacity: 1;
+      }
+      50% {
+        text-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple); /* Более слабое свечение */
+        opacity: 0.8;
+      }
+    }
+
+
     @media (max-width: 900px) { .gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
     @media (max-width: 768px) {
       header { font-size: 2em; }
@@ -360,6 +388,7 @@
       .telegram-link { font-size: 1.1rem; padding: 12px 24px; }
       #welcome-content h1 { font-size: 2.5em; }
       #enter-button { font-size: 1.1em; padding: 14px 28px; }
+      .neon-text { font-size: 2em; } /* Адаптация размера шрифта для меньших экранов */
     }
     @media (max-width: 600px) {
       nav { flex-direction: column; gap: 0.8rem; }
@@ -367,6 +396,7 @@
       .gallery img { width: 100%; height: 180px; }
       .telegram-link { width: calc(100% - 2rem); display: block; margin-left: auto; margin-right: auto; }
       .lang-switcher { flex-direction: column; }
+      .neon-text { font-size: 1.5em; } /* Еще более мелкий шрифт для мобильных */
     }
 
   </style>
@@ -403,6 +433,8 @@
       <h2>👁️ Добро пожаловать!</h2>
       <p>Этот проект посвящён необычному взгляду на медицину — со стороны проктолога. Без шуток и со вкусом. Мы исследуем не то, что видно всем — а то, что <strong>скрыто от глаз</strong>. Наша цель — предоставить <strong>образовательный контент</strong>, который расширит ваше понимание о проктологии в доступной и профессиональной манере. Здесь вы найдете информацию, которая поможет развеять мифы и повысить осведомленность о важных аспектах здоровья.</p>
     </section>
+
+    <div class="neon-text">Ладно, так уж и быть .</div>
 
     <section id="gallery">
       <h2>🖼️ Визуальная галерея</h2>
