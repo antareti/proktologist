@@ -47,7 +47,6 @@
 
     body {
       margin: 0;
-      /* Цвет фона убран, чтобы было видно видео */
       color: var(--primary-text-color);
       font-family: 'Roboto', Arial, sans-serif;
       animation: fadeIn 1.5s ease-out;
@@ -63,7 +62,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
     header {
-      background-color: rgba(13, 26, 43, 0.85); /* Прозрачность 85% */
+      background-color: rgba(13, 26, 43, 0.85);
       padding: 25px 20px;
       text-align: center;
       font-size: 2.5em;
@@ -76,7 +75,7 @@
     }
 
     nav {
-      background-color: rgba(26, 44, 66, 0.85); /* Прозрачность 85% */
+      background-color: rgba(26, 44, 66, 0.85);
       display: flex;
       justify-content: center;
       gap: 1.5rem;
@@ -109,7 +108,7 @@
     }
 
     section {
-      background-color: rgba(26, 44, 66, 0.75); /* Прозрачность 75% */
+      background-color: rgba(26, 44, 66, 0.75);
       margin-bottom: 2.5rem;
       padding: 2rem;
       border-radius: var(--border-radius);
@@ -137,7 +136,6 @@
       margin: 0.5rem auto;
     }
 
-    /* Стили для видеоплеера и плейлиста */
     .video-container {
       display: flex;
       flex-direction: column;
@@ -164,7 +162,7 @@
       gap: 15px;
       margin-top: 20px;
       padding: 15px;
-      background-color: rgba(13, 26, 43, 0.75); /* Прозрачность 75% */
+      background-color: rgba(13, 26, 43, 0.75);
       border-radius: var(--border-radius);
       box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
       max-width: 800px;
@@ -173,11 +171,11 @@
 
     .playlist-item {
       cursor: pointer;
-      border: 2px solid rgba(26, 44, 66, 0.5); /* Полупрозрачная граница */
+      border: 2px solid rgba(26, 44, 66, 0.5);
       border-radius: var(--border-radius);
       overflow: hidden;
       width: 180px;
-      background-color: rgba(10, 25, 47, 0.8); /* Прозрачность 80% */
+      background-color: rgba(10, 25, 47, 0.8);
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -205,7 +203,7 @@
     }
 
     footer {
-      background-color: rgba(13, 26, 43, 0.85); /* Прозрачность 85% */
+      background-color: rgba(13, 26, 43, 0.85);
       text-align: center;
       padding: 15px;
       font-size: 0.9em;
@@ -222,7 +220,7 @@
     }
 
     .lang-switcher button {
-      background: rgba(26, 44, 66, 0.85); /* Прозрачность 85% */
+      background: rgba(26, 44, 66, 0.85);
       color: var(--accent-color);
       border: 1px solid var(--accent-color);
       padding: 10px 20px;
@@ -276,7 +274,7 @@
 </head>
 <body>
 
-  <video autoplay muted loop playsinline id="bg-video" aria-hidden="true">
+  <video autoplay muted loop playsinline id="bg-video">
     <source src="3.mp4" type="video/mp4">
     Ваш браузер не поддерживает тег video.
   </video>
@@ -299,8 +297,8 @@
           <source src="" type="video/mp4" /> 
           Ваш браузер не поддерживает видео.
         </video>
-        <div class="video-playlist" role="list" aria-label="Плейлист видео">
-          <!-- Плейлист видео будет заполнен здесь -->
+        <div class="video-playlist">
+          <!-- Плейлист динамически заполняется здесь -->
         </div>
       </div>
     </section>
@@ -317,7 +315,7 @@
   </footer>
 
   <script>
-    // Массив видео с добавленным 9.mp4 в конце
+    // --- ВАЖНО: Обновляйте этот массив вручную при добавлении новых видео ---
     const videoList = [
       {
         src: "video/1.mp4",
@@ -384,14 +382,15 @@
         }
       },
       {
-        src: "9.mp4",
+        src: "video/9.mp4",
         title: {
-          ru: "Видео 9",
-          en: "Video 9",
-          ka: "ვიდეო 9"
+          ru: "Видео 9: Дополнительное пустое видео",
+          en: "Video 9: Additional Empty Video",
+          ka: "ვიდეო 9: დამატებითი ცარიელი ვიდეო"
         }
       }
     ];
+    // -----------------------------------------------------------------------
 
     const texts = {
       ru: {
@@ -420,103 +419,89 @@
       },
       ka: {
         video_heading: '▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬<br>🎥 საგანმანათლებლო ვიდეოები<br>▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬',
-        video_text: "ჩაუღრმავდით პროქტოლოგიის სამყაროს ჩვენი სპეციალურად მომზადებული ვიდეოების მეშვეობით. ვცდილობთ ავხსნათ რთული თემები <strong>მარტივად და ვიზუალურად</strong>. აირჩიეთ საინტერესო ვიდეო ქვემოთ მოცემული სიიდან.",
+        video_text: "ჩაუღრმავდით პროქტოლოგიის სამყაროს ჩვენი სპეციალურად მომზადებული ვიდეოების მეშვეობით. ჩვენ ვცდილობთ რთული თემები <strong>მარტივად და თვალსაჩინოდ</strong> ავხსნათ. აირჩიეთ საინტერესო ვიდეო ქვემოთ მოცემული დასაკრავი სიიდან.",
         footer_copyright: "&copy; 2025 Glaza Proktologa. ყველა უფლება დაცულია. ",
-        footer_back_to_top: "ზევით",
+        footer_back_to_top: "ზემოთ",
         nav_about: "პროექტის შესახებ",
         nav_video: "ვიდეოები",
-        nav_gallery: "გალერეა",
-        nav_contact: "კონტაქტი",
+        nav_gallery: "სურათების გალერეა",
+        nav_contact: "დაგვიკავშირდით",
         page_title: "ვიდეოები — პროქტოლოგის თვალები",
-        meta_description: "პროკტოლოგიის საგანმანათლებლო ვიდეოები. ჩაუღრმავდით ჯანმრთელობის ფარული ასპექტების სამყაროს ჩვენი ვიზუალური მასალების მეშვეობით."
+        meta_description: "საგანმანათლებლო პროქტოლოგიის ვიდეოები. ჩააღრმავდით ჯანმრთელობის დამალულ ასპექტებში ჩვენი ვიზუალური მასალების მეშვეობით."
       }
     };
 
     const mainVideoPlayer = document.getElementById('mainVideoPlayer');
-    const videoPlaylist = document.querySelector('.video-playlist');
+    const playlistContainer = document.querySelector('.video-playlist');
+    let currentLang = 'ru';
 
-    function populateVideoPlaylist(lang) {
-      videoPlaylist.innerHTML = ''; 
-
+    // Функция для загрузки плейлиста
+    function loadPlaylist() {
+      playlistContainer.innerHTML = '';
       videoList.forEach((video, index) => {
-        const title = video.title[lang] || video.src;  
-        const activeClass = index === 0 ? 'active' : '';
-
         const playlistItem = document.createElement('div');
-        playlistItem.className = `playlist-item ${activeClass}`;
-        playlistItem.setAttribute('data-src', video.src);
-        playlistItem.setAttribute('data-title', title);
-        playlistItem.setAttribute('tabindex', '0');
-        playlistItem.setAttribute('role', 'button');
-
+        playlistItem.classList.add('playlist-item');
+        if(index === 0) playlistItem.classList.add('active');
+        
+        // Формируем title в нужном языке
+        const title = video.title[currentLang] || video.title.ru || "Видео";
+        
         playlistItem.innerHTML = `
-          <video muted src="${video.src}#t=0.5"></video>
+          <video muted preload="metadata" playsinline width="180" height="100" src="${video.src}"></video>
           <div class="playlist-item-title">${title}</div>
         `;
-        videoPlaylist.appendChild(playlistItem);
+        
+        playlistItem.addEventListener('click', () => {
+          setMainVideo(video.src);
+          updateActiveItem(index);
+        });
+
+        playlistContainer.appendChild(playlistItem);
       });
-
-      if (videoList.length > 0) {
-        mainVideoPlayer.src = videoList[0].src;
-        mainVideoPlayer.load();
-        mainVideoPlayer.setAttribute('aria-label', `Основное видео: ${videoList[0].title[lang]}`);
-      } else {
-        mainVideoPlayer.src = '';
-        mainVideoPlayer.setAttribute('aria-label', 'Нет доступных видео');
-      }
-
-      addPlaylistEventListeners();
+      // Автоматически загружаем первое видео
+      setMainVideo(videoList[0].src);
     }
 
-    function addPlaylistEventListeners() {
-      const currentPlaylistItems = document.querySelectorAll('.playlist-item');
-      currentPlaylistItems.forEach(item => {
-        item.addEventListener('click', () => {
-          const newSrc = item.dataset.src;
-          const newTitle = item.dataset.title;
+    // Устанавливаем видео в основной плеер
+    function setMainVideo(src) {
+      mainVideoPlayer.src = src;
+      mainVideoPlayer.play();
+    }
 
-          mainVideoPlayer.src = newSrc;
-          mainVideoPlayer.load();
-          mainVideoPlayer.play();
-          mainVideoPlayer.setAttribute('aria-label', `Сейчас воспроизводится: ${newTitle}`);
-
-          currentPlaylistItems.forEach(el => el.classList.remove('active'));
-          item.classList.add('active');
-        });
-
-        // Поддержка клавиатурной навигации
-        item.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            item.click();
-          }
-        });
+    // Обновляем активный элемент плейлиста
+    function updateActiveItem(activeIndex) {
+      const items = playlistContainer.querySelectorAll('.playlist-item');
+      items.forEach((item, idx) => {
+        item.classList.toggle('active', idx === activeIndex);
       });
     }
 
+    // Переключение языка
     function setLang(lang) {
-      document.querySelector('html').setAttribute('lang', lang);
+      if(!texts[lang]) return;
+      currentLang = lang;
+
+      // Обновляем текст на странице
+      document.querySelector('section#videos h2').innerHTML = texts[lang].video_heading;
+      document.querySelector('section#videos p').innerHTML = texts[lang].video_text;
+      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`;
       document.title = texts[lang].page_title;
       document.querySelector('meta[name="description"]').setAttribute('content', texts[lang].meta_description);
-      document.querySelector('meta[property="og:description"]').setAttribute('content', texts[lang].meta_description);
-      document.querySelector('meta[property="og:title"]').setAttribute('content', texts[lang].page_title);
-      document.querySelector('meta[property="og:locale"]').setAttribute('content', lang === 'ru' ? 'ru_RU' : (lang === 'en' ? 'en_US' : 'ka_GE'));
 
-      document.querySelector('#videos h2').innerHTML = texts[lang].video_heading; 
-      document.querySelector('#videos p').innerHTML = texts[lang].video_text;
+      // Обновляем меню
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks[0].textContent = texts[lang].nav_about;
+      navLinks[1].textContent = texts[lang].nav_video;
+      navLinks[2].textContent = texts[lang].nav_gallery;
+      navLinks[3].textContent = texts[lang].nav_contact;
 
-      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`;
-
-      document.querySelector('nav a[href="index.html#about"]').innerText = texts[lang].nav_about;
-      document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video;
-      document.querySelector('nav a[href="index.html#gallery"]').innerText = texts[lang].nav_gallery;
-      document.querySelector('nav a[href="index.html#contact"]').innerText = texts[lang].nav_contact;
-
-      populateVideoPlaylist(lang);
+      // Перезагружаем плейлист с новыми названиями
+      loadPlaylist();
     }
 
+    // Инициализация страницы
     document.addEventListener('DOMContentLoaded', () => {
-      setLang('ru');
+      setLang(currentLang);
     });
   </script>
 </body>
