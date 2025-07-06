@@ -300,7 +300,8 @@
           Ваш браузер не поддерживает видео.
         </video>
         <div class="video-playlist">
-          </div>
+          <!-- Плейлист видео здесь -->
+        </div>
       </div>
     </section>
 
@@ -316,7 +317,7 @@
   </footer>
 
   <script>
-    // --- ВАЖНО: Обновляйте этот массив вручную при добавлении новых видео ---
+    // --- Обновляйте этот массив вручную при добавлении новых видео ---
     const videoList = [
       {
         src: "video/1.mp4",
@@ -474,6 +475,14 @@
 
           currentPlaylistItems.forEach(el => el.classList.remove('active'));
           item.classList.add('active');
+        });
+
+        // Поддержка клавиатурной навигации
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            item.click();
+          }
         });
       });
     }
