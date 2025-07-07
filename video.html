@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" /> <!-- Кастомизация -->
   
   <title>Видеоматериалы — Глаза Проктолога</title>
   <meta name="description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
   <meta name="keywords" content="проктология, медицина, здоровье, образование, видео, плейлист, Glaza Proktologa" />
   <meta name="author" content="Glaza Proktologa" />
-  
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Видеоматериалы — Глаза Проктолога" />
   <meta property="og:description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
   <meta property="og:type" content="website" />
@@ -19,258 +20,8 @@
   <meta property="og:site_name" content="Глаза Проктолога" />
   <meta property="og:locale" content="ru_RU" />
 
-  <style>
-    :root {
-      --main-bg-color: #0a192f;
-      --secondary-bg-color: #1a2c42;
-      --header-footer-bg: #0d1a2b;
-      --primary-text-color: #e2e8f0;
-      --accent-color: #00bcd4;
-      --accent-hover-color: #6ff9ff;
-      --button-text-color: #000;
-      --border-radius: 8px;
-      --shadow-light: rgba(0, 188, 212, 0.4);
-      --shadow-dark: rgba(0, 188, 212, 0.6);
-    }
-    
-    /* Стили для фонового видео */
-    #bg-video {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: -1;
-    }
-
-    body {
-      margin: 0;
-      color: var(--primary-text-color);
-      font-family: 'Roboto', Arial, sans-serif;
-      animation: fadeIn 1.5s ease-out;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
-    header {
-      background-color: rgba(13, 26, 43, 0.85);
-      padding: 25px 20px;
-      text-align: center;
-      font-size: 2.5em;
-      font-weight: 700;
-      color: var(--accent-color);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav {
-      background-color: rgba(26, 44, 66, 0.85);
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 15px 10px;
-      flex-wrap: wrap;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    nav a {
-      color: var(--accent-color);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1em;
-      padding: 8px 15px;
-      border-radius: var(--border-radius);
-      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    }
-
-    nav a:hover, nav a:focus {
-      color: var(--accent-hover-color);
-      background-color: rgba(0, 188, 212, 0.1);
-      transform: translateY(-2px);
-    }
-
-    main {
-      padding: 2.5rem 2rem;
-      text-align: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    section {
-      background-color: rgba(26, 44, 66, 0.75);
-      margin-bottom: 2.5rem;
-      padding: 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease-in-out;
-    }
-
-    section:hover {
-      transform: translateY(-5px);
-    }
-
-    h2 {
-      color: var(--accent-hover-color);
-      font-size: 2em;
-      margin-bottom: 1.5rem;
-      border-bottom: 2px solid var(--accent-color);
-      padding-bottom: 10px;
-      display: inline-block;
-    }
-
-    p {
-      font-size: 1.1em;
-      color: var(--primary-text-color);
-      max-width: 800px;
-      margin: 0.5rem auto;
-    }
-
-    .video-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 25px;
-    }
-
-    #mainVideoPlayer {
-      width: 800px;
-      height: 450px;
-      object-fit: cover;
-      border: 3px solid var(--accent-color);
-      border-radius: var(--border-radius);
-      max-width: 100%;
-      height: auto;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .video-playlist {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: rgba(13, 26, 43, 0.75);
-      border-radius: var(--border-radius);
-      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
-      max-width: 800px;
-      width: 100%;
-    }
-
-    .playlist-item {
-      cursor: pointer;
-      border: 2px solid rgba(26, 44, 66, 0.5);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      width: 180px;
-      background-color: rgba(10, 25, 47, 0.8);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .playlist-item:hover, .playlist-item.active {
-      transform: translateY(-5px);
-      border-color: var(--accent-hover-color);
-      box-shadow: 0 4px 15px var(--shadow-light);
-    }
-
-    .playlist-item video {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .playlist-item-title {
-      padding: 8px;
-      font-size: 0.9em;
-      color: var(--primary-text-color);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: left;
-    }
-
-    footer {
-      background-color: rgba(13, 26, 43, 0.85);
-      text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
-      color: var(--primary-text-color);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .lang-switcher {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .lang-switcher button {
-      background: rgba(26, 44, 66, 0.85);
-      color: var(--accent-color);
-      border: 1px solid var(--accent-color);
-      padding: 10px 20px;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1em;
-      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .lang-switcher button:hover, .lang-switcher button:focus {
-      background: var(--accent-color);
-      color: var(--button-text-color);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px var(--shadow-light);
-    }
-
-    @media (max-width: 900px) {
-      #mainVideoPlayer {
-        width: 100%;
-        height: auto;
-      }
-      .video-playlist {
-        max-width: 100%;
-      }
-      .playlist-item {
-        width: 150px;
-      }
-      .playlist-item video {
-        height: 80px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header { font-size: 2em; }
-      nav { gap: 1rem; }
-      main { padding: 1.5rem 1rem; }
-      h2 { font-size: 1.8em; }
-      section { padding: 1.5rem; }
-      .lang-switcher { flex-direction: column; }
-    }
-
-    @media (max-width: 600px) {
-      nav { flex-direction: column; gap: 0.8rem; }
-      nav a { padding: 10px; font-size: 1em; }
-    }
-  </style>
+  <!-- Остальной CSS/JS как в твоём коде -->
+  <!-- ... -->
 </head>
 <body>
 
@@ -279,7 +30,8 @@
     Ваш браузер не поддерживает тег video.
   </video>
 
-  <header>Глаза Проктолога</header>
+  <header id="top">Глаза Проктолога</header>
+
   <nav aria-label="Основная навигация">
     <a href="index.html#about">О проекте</a>
     <a href="video.html">Видеоматериалы</a>
@@ -287,222 +39,81 @@
     <a href="index.html#contact">Связаться с нами</a>
   </nav>
 
-  <main>
+  <main lang="ru"> <!-- Кастомизация -->
     <section id="videos">
-      <h2>🎥 Образовательные видеоматериалы</h2>
+      <h2 aria-live="polite">🎥 Образовательные видеоматериалы</h2>
       <p>Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы <strong>просто и наглядно</strong>. Выберите интересующий ролик из плейлиста ниже.</p>
       
       <div class="video-container">
-        <video id="mainVideoPlayer" controls autoplay muted playsinline aria-label="Основное образовательное видео">
-          <source src="" type="video/mp4" /> 
-          Ваш браузер не поддерживает видео.
-        </video>
-        <div class="video-playlist">
-          <!-- Плейлист динамически заполняется здесь -->
+        <figure>
+          <video id="mainVideoPlayer" controls autoplay muted playsinline preload="auto" aria-label="Основное видео">
+            <source src="" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+          </video>
+          <figcaption style="display:none;" id="mainVideoTitle"></figcaption> <!-- Кастомизация -->
+        </figure>
+
+        <div class="video-playlist" role="list">
+          <!-- Динамически добавляются элементы плейлиста -->
         </div>
       </div>
     </section>
 
-    <div class="lang-switcher" aria-label="Переключатель языка">
-      <button onclick="setLang('ru')" aria-label="Переключить на русский">🇷🇺 Русский</button>
-      <button onclick="setLang('en')" aria-label="Switch to English">🇬🇧 English</button>
-      <button onclick="setLang('ka')" aria-label="გადართვა ქართულზე">🇬🇪 ქართული</button>
+    <div class="lang-switcher" aria-label="Смена языка">
+      <button type="button" onclick="setLang('ru')" aria-label="Переключить на русский">🇷🇺 Русский</button>
+      <button type="button" onclick="setLang('en')" aria-label="Switch to English">🇬🇧 English</button>
+      <button type="button" onclick="setLang('ka')" aria-label="გადართვა ქართულზე">🇬🇪 ქართული</button>
     </div>
   </main>
 
   <footer>
-    &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">Наверх</a>
+    &copy; 2025 Glaza Proktologa. Все права защищены.
+    <a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;" onclick="scrollToTop()">Наверх</a>
   </footer>
 
   <script>
-    // --- ВАЖНО: Обновляйте этот массив вручную при добавлении новых видео ---
-    const videoList = [
-      {
-        src: "video/1.mp4",
-        title: {
-          ru: "Новое видео 1",
-          en: "New Video 1",
-          ka: "ახალი ვიდეო 1"
-        }
-      },
-      {
-        src: "video/2.mp4",
-        title: {
-          ru: "Новое видео 2",
-          en: "New Video 2",
-          ka: "ახალი ვიდეო 2"
-        }
-      },
-      {
-        src: "Video_Generisanje_Proktolog_i_žena.mp4",
-        title: {
-          ru: "Проктолог и женщина: генерирование видео",
-          en: "Proctologist and Woman: Video Generation",
-          ka: "პროქტოლოგი და ქალი: ვიდეოს გენერირება"
-        }
-      },
-      {
-        src: "Video_Gotovo_Proktolog_i_Žena.mp4",
-        title: {
-          ru: "Проктолог и женщина: готовое видео",
-          en: "Proctologist and Woman: Finished Video",
-          ka: "პროქტოლოგი და ქალი: დასრულებული ვიდეო"
-        }
-      },
-      {
-        src: "Video_je_gotovo_(1).mp4",
-        title: {
-          ru: "Видео готово (версия 1): Обзор",
-          en: "Video Ready (version 1): Overview",
-          ka: "ვიდეო მზადაა (ვერსია 1): მიმოხილვა"
-        }
-      },
-      {
-        src: "Видео_готово_Популарно_видео.mp4",
-        title: {
-          ru: "Видео готово: Популярное видео",
-          en: "Video Ready: Popular Video",
-          ka: "ვიდეო მზადაა: პოპულარული ვიდეო"
-        }
-      },
-      {
-        src: "Видео_готово_толстая_попа.mp4",
-        title: {
-          ru: "Видео готово: Демонстрация (Попа)",
-          en: "Video Ready: Demonstration (Butt)",
-          ka: "ვიდეო მზადაა: დემონსტრაცია (სხეული)" 
-        }
-      },
-      {
-        src: "Видео_је_готово_.mp4",
-        title: {
-          ru: "Видео готово: Дополнительный материал",
-          en: "Video Ready: Additional Material",
-          ka: "ვიდეო მზადაა: დამატებითი მასალა"
-        }
-      },
-      {
-        src: "video/9.mp4",
-        title: {
-          ru: "Видео 9: Дополнительное пустое видео",
-          en: "Video 9: Additional Empty Video",
-          ka: "ვიდეო 9: დამატებითი ცარიელი ვიდეო"
-        }
-      }
-    ];
-    // -----------------------------------------------------------------------
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-    const texts = {
-      ru: {
-        video_heading: '▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬<br>🎥 Образовательные видеоматериалы<br>▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬',
-        video_text: "Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы <strong>просто и наглядно</strong>. Выберите интересующий ролик из плейлиста ниже.",
-        footer_copyright: "&copy; 2025 Glaza Proktologa. Все права защищены. ",
-        footer_back_to_top: "Наверх",
-        nav_about: "О проекте",
-        nav_video: "Видеоматериалы",
-        nav_gallery: "Галерея изображений",
-        nav_contact: "Связаться с нами",
-        page_title: "Видеоматериалы — Глаза Проктолога",
-        meta_description: "Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов."
-      },
-      en: {
-        video_heading: '▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬<br>🎥 Educational Videos<br>▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬',
-        video_text: "Dive into the world of proctology with our specially prepared videos. We strive to explain complex topics <strong>simply and visually</strong>. Select an interesting video from the playlist below.",
-        footer_copyright: "&copy; 2025 Glaza Proktologa. All rights reserved. ",
-        footer_back_to_top: "Back to Top",
-        nav_about: "About Project",
-        nav_video: "Videos",
-        nav_gallery: "Image Gallery",
-        nav_contact: "Contact Us",
-        page_title: "Videos — The Proctologist's Eyes",
-        meta_description: "Educational proctology videos. Dive into the world of hidden aspects of health with our visual materials."
-      },
-      ka: {
-        video_heading: '▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬<br>🎥 საგანმანათლებლო ვიდეოები<br>▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬',
-        video_text: "ჩაუღრმავდით პროქტოლოგიის სამყაროს ჩვენი სპეციალურად მომზადებული ვიდეოების მეშვეობით. ჩვენ ვცდილობთ რთული თემები <strong>მარტივად და თვალსაჩინოდ</strong> ავხსნათ. აირჩიეთ საინტერესო ვიდეო ქვემოთ მოცემული დასაკრავი სიიდან.",
-        footer_copyright: "&copy; 2025 Glaza Proktologa. ყველა უფლება დაცულია. ",
-        footer_back_to_top: "ზემოთ",
-        nav_about: "პროექტის შესახებ",
-        nav_video: "ვიდეოები",
-        nav_gallery: "სურათების გალერეა",
-        nav_contact: "დაგვიკავშირდით",
-        page_title: "ვიდეოები — პროქტოლოგის თვალები",
-        meta_description: "საგანმანათლებლო პროქტოლოგიის ვიდეოები. ჩააღრმავდით ჯანმრთელობის დამალულ ასპექტებში ჩვენი ვიზუალური მასალების მეშვეობით."
-      }
-    };
+    // Твой скрипт videoList + setLang и т.п.
+    // Небольшая доработка: подписать caption
+    function setMainVideo(src, title = '') {
+      const player = document.getElementById('mainVideoPlayer');
+      const caption = document.getElementById('mainVideoTitle');
+      player.src = src;
+      caption.innerText = title;
+      caption.style.display = 'block';
+      player.play();
+    }
 
-    const mainVideoPlayer = document.getElementById('mainVideoPlayer');
-    const playlistContainer = document.querySelector('.video-playlist');
-    let currentLang = 'ru';
-
-    // Функция для загрузки плейлиста
+    // В loadPlaylist добавь передачу title
     function loadPlaylist() {
       playlistContainer.innerHTML = '';
       videoList.forEach((video, index) => {
         const playlistItem = document.createElement('div');
         playlistItem.classList.add('playlist-item');
-        if(index === 0) playlistItem.classList.add('active');
-        
-        // Формируем title в нужном языке
+        if (index === 0) playlistItem.classList.add('active');
+
         const title = video.title[currentLang] || video.title.ru || "Видео";
-        
+
         playlistItem.innerHTML = `
-          <video muted preload="metadata" playsinline width="180" height="100" src="${video.src}"></video>
+          <video muted preload="metadata" playsinline src="${video.src}"></video>
           <div class="playlist-item-title">${title}</div>
         `;
-        
+
         playlistItem.addEventListener('click', () => {
-          setMainVideo(video.src);
+          setMainVideo(video.src, title); // Кастомизация
           updateActiveItem(index);
         });
 
         playlistContainer.appendChild(playlistItem);
       });
-      // Автоматически загружаем первое видео
-      setMainVideo(videoList[0].src);
+
+      setMainVideo(videoList[0].src, videoList[0].title[currentLang]); // Кастомизация
     }
 
-    // Устанавливаем видео в основной плеер
-    function setMainVideo(src) {
-      mainVideoPlayer.src = src;
-      mainVideoPlayer.play();
-    }
-
-    // Обновляем активный элемент плейлиста
-    function updateActiveItem(activeIndex) {
-      const items = playlistContainer.querySelectorAll('.playlist-item');
-      items.forEach((item, idx) => {
-        item.classList.toggle('active', idx === activeIndex);
-      });
-    }
-
-    // Переключение языка
-    function setLang(lang) {
-      if(!texts[lang]) return;
-      currentLang = lang;
-
-      // Обновляем текст на странице
-      document.querySelector('section#videos h2').innerHTML = texts[lang].video_heading;
-      document.querySelector('section#videos p').innerHTML = texts[lang].video_text;
-      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`;
-      document.title = texts[lang].page_title;
-      document.querySelector('meta[name="description"]').setAttribute('content', texts[lang].meta_description);
-
-      // Обновляем меню
-      const navLinks = document.querySelectorAll('nav a');
-      navLinks[0].textContent = texts[lang].nav_about;
-      navLinks[1].textContent = texts[lang].nav_video;
-      navLinks[2].textContent = texts[lang].nav_gallery;
-      navLinks[3].textContent = texts[lang].nav_contact;
-
-      // Перезагружаем плейлист с новыми названиями
-      loadPlaylist();
-    }
-
-    // Инициализация страницы
-    document.addEventListener('DOMContentLoaded', () => {
-      setLang(currentLang);
-    });
+    // Остальной код setLang, updateActiveItem, document.addEventListener — без изменений
   </script>
 </body>
 </html>
