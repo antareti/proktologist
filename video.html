@@ -1,153 +1,70 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
 
-  <title>Видеоматериалы — Глаза Проктолога</title>
-  <meta name="description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
-  <meta name="keywords" content="проктология, медицина, здоровье, образование, видео, плейлист, Glaza Proktologa" />
-  <meta name="author" content="Glaza Proktologa" />
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>Видеоматериалы — Глаза Проктолога</title>
+    <meta name="description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
+    <meta name="keywords" content="проктология, медицина, здоровье, образование, видео, плейлист, Glaza Proktologa" />
+    <meta name="author" content="Glaza Proktologa" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Видеоматериалы — Глаза Проктолога" />
-  <meta property="og:description" content="Образовательные видео по проктологии." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://твой-домен.ру/video.html" />
-  <meta property="og:image" content="https://твой-домен.ру/images/Gemini_Generated_Image_62xki062xki062xk.png" />
-  <meta property="og:site_name" content="Глаза Проктолога" />
-  <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="Видеоматериалы — Глаза Проктолога" />
+    <meta property="og:description" content="Образовательные видео по проктологии." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://твой-домен.ру/video.html" />
+    <meta property="og:image" content="https://твой-домен.ру/images/Gemini_Generated_Image_62xki062xki062xk.png" />
+    <meta property="og:site_name" content="Глаза Проктолога" />
+    <meta property="og:locale" content="ru_RU" />
 
-  <style>
-    body { margin: 0; font-family: sans-serif; background: #0a192f; color: #fff; }
-    #bg-video {
-      position: fixed; right: 0; bottom: 0;
-      min-width: 100%; min-height: 100%;
-      z-index: -1; object-fit: cover;
-    }
-    header { background: rgba(0,0,0,0.6); padding: 20px; text-align: center; font-size: 2rem; color: #00bcd4; }
-    nav { display: flex; justify-content: center; gap: 20px; background: rgba(0,0,0,0.4); padding: 10px; }
-    nav a { color: #6ff9ff; text-decoration: none; font-weight: bold; }
-    .video-container { max-width: 900px; margin: 20px auto; text-align: center; }
-    video { max-width: 100%; border: 3px solid #00bcd4; border-radius: 8px; }
-    .video-playlist { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
-    .playlist-item { width: 180px; cursor: pointer; background: #112233; border-radius: 6px; overflow: hidden; }
-    .playlist-item video { width: 100%; height: 100px; object-fit: cover; }
-    .playlist-item-title { padding: 5px 10px; font-size: 0.9rem; }
-    footer { text-align: center; padding: 15px; background: rgba(0,0,0,0.5); margin-top: 40px; }
-    .lang-switcher { margin: 20px auto; display: flex; justify-content: center; gap: 10px; }
-    button { padding: 10px 20px; background: #1a2c42; color: #00bcd4; border: 1px solid #00bcd4; border-radius: 6px; cursor: pointer; }
-    button:hover { background: #00bcd4; color: #000; }
-  </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="3.mp4" type="video/mp4">
-    Ваш браузер не поддерживает тег video.
-  </video>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="3.mp4" type="video/mp4">
+        Ваш браузер не поддерживает тег video.
+    </video>
 
-  <header id="top">Глаза Проктолога</header>
+    <header id="top">Глаза Проктолога</header>
 
-  <nav>
-    <a href="index.html#about">О проекте</a>
-    <a href="video.html">Видеоматериалы</a>
-    <a href="index.html#gallery">Галерея изображений</a>
-    <a href="index.html#contact">Связаться с нами</a>
-  </nav>
+    <nav>
+        <a href="index.html#about">О проекте</a>
+        <a href="video.html">Видеоматериалы</a>
+        <a href="index.html#gallery">Галерея изображений</a>
+        <a href="index.html#contact">Связаться с нами</a>
+    </nav>
 
-  <main>
-    <section id="videos">
-      <h2>🎥 Образовательные видеоматериалы</h2>
-      <p id="mainText">Погрузитесь в мир проктологии с помощью наших специально подготовленных видео.</p>
-      <div class="video-container">
-        <figure>
-          <video id="mainVideoPlayer" controls autoplay muted playsinline preload="auto">
-            <source src="" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-          </video>
-          <figcaption id="mainVideoTitle" style="margin-top: 10px;"></figcaption>
-        </figure>
-        <div class="video-playlist"></div>
-      </div>
-    </section>
+    <main>
+        <section id="videos">
+            <h2>🎥 Образовательные видеоматериалы</h2>
+            <p id="mainText">Погрузитесь в мир проктологии с помощью наших специально подготовленных видео.</p>
+            <div class="video-container">
+                <figure>
+                    <video id="mainVideoPlayer" controls autoplay muted playsinline preload="auto">
+                        <source src="" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <figcaption id="mainVideoTitle" style="margin-top: 10px;"></figcaption>
+                </figure>
+                <div class="video-playlist"></div>
+            </div>
+        </section>
 
-    <div class="lang-switcher">
-      <button onclick="setLang('ru')">🇷🇺 Русский</button>
-      <button onclick="setLang('en')">🇬🇧 English</button>
-      <button onclick="setLang('ka')">🇬🇪 ქართული</button>
-    </div>
-  </main>
+        <div class="lang-switcher">
+            <button onclick="setLang('ru')">🇷🇺 Русский</button>
+            <button onclick="setLang('en')">🇬🇧 English</button>
+            <button onclick="setLang('ka')">🇬🇪 ქართული</button>
+        </div>
+    </main>
 
-  <footer>
-    &copy; 2025 Glaza Proktologa. Все права защищены.
-    <a href="#top" style="color: #6ff9ff;">Наверх</a>
-  </footer>
+    <footer>
+        &copy; 2025 Glaza Proktologa. Все права защищены.
+        <a href="#top" style="color: #6ff9ff;">Наверх</a>
+    </footer>
 
-  <script>
-    const videoList = [
-      { src: "video/1.mp4", title: { ru: "Видео 1", en: "Video 1", ka: "ვიდეო 1" } },
-      { src: "video/2.mp4", title: { ru: "Видео 2", en: "Video 2", ka: "ვიდეო 2" } },
-      { src: "video/9.mp4", title: { ru: "Пустое видео", en: "Empty", ka: "ცარიელი" } }
-    ];
-
-    const texts = {
-      ru: { heading: "🎥 Образовательные видеоматериалы", text: "Погрузитесь в мир проктологии...", back: "Наверх" },
-      en: { heading: "🎥 Educational Videos", text: "Dive into the world of proctology...", back: "Back to Top" },
-      ka: { heading: "🎥 საგანმანათლებლო ვიდეოები", text: "ჩაუღრმავდით პროქტოლოგიას...", back: "ზემოთ" }
-    };
-
-    const playlistContainer = document.querySelector('.video-playlist');
-    const mainVideoPlayer = document.getElementById('mainVideoPlayer');
-    const mainVideoTitle = document.getElementById('mainVideoTitle');
-    let currentLang = 'ru';
-
-    function setMainVideo(src, title = '') {
-      mainVideoPlayer.src = src;
-      mainVideoTitle.innerText = title;
-      mainVideoPlayer.play();
-    }
-
-    function updateActiveItem(index) {
-      document.querySelectorAll('.playlist-item').forEach((item, i) => {
-        item.classList.toggle('active', i === index);
-      });
-    }
-
-    function loadPlaylist() {
-      playlistContainer.innerHTML = '';
-      videoList.forEach((video, index) => {
-        const title = video.title[currentLang] || video.title.ru;
-        const item = document.createElement('div');
-        item.className = 'playlist-item';
-        item.innerHTML = `
-          <video src="${video.src}" muted playsinline></video>
-          <div class="playlist-item-title">${title}</div>
-        `;
-        item.onclick = () => {
-          setMainVideo(video.src, title);
-          updateActiveItem(index);
-        };
-        playlistContainer.appendChild(item);
-      });
-      setMainVideo(videoList[0].src, videoList[0].title[currentLang]);
-      updateActiveItem(0);
-    }
-
-    function setLang(lang) {
-      if (!texts[lang]) return;
-      currentLang = lang;
-      document.querySelector('h2').innerText = texts[lang].heading;
-      document.getElementById('mainText').innerText = texts[lang].text;
-      document.querySelector('footer a').innerText = texts[lang].back;
-      loadPlaylist();
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadPlaylist();
-    });
-  </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
