@@ -174,9 +174,12 @@
             border: 2px solid rgba(26, 44, 66, 0.5);
             border-radius: var(--border-radius);
             overflow: hidden;
-            width: 180px;
+            width: 180px; /* Увеличил ширину для размещения описания */
             background-color: rgba(10, 25, 47, 0.8);
             transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column; /* Изменил на колонку для размещения описания под заголовком */
+            text-align: left; /* Выравнивание текста по левому краю */
         }
 
         .playlist-item:hover, .playlist-item.active {
@@ -196,10 +199,23 @@
             padding: 8px;
             font-size: 0.9em;
             color: var(--primary-text-color);
+            font-weight: bold; /* Сделал заголовок жирным */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            text-align: left;
+            line-height: 1.2; /* Улучшил межстрочный интервал */
+        }
+
+        .playlist-item-description {
+            padding: 0 8px 8px; /* Добавил отступы для описания */
+            font-size: 0.8em; /* Уменьшил размер шрифта для описания */
+            color: rgba(226, 232, 240, 0.7); /* Сделал цвет немного светлее */
+            max-height: 3.6em; /* Ограничил высоту для 3 строк текста (примерно) */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Добавил троеточие для длинных описаний */
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Ограничение описания 3 строками */
+            -webkit-box-orient: vertical;
         }
 
         footer {
@@ -250,7 +266,7 @@
                 max-width: 100%;
             }
             .playlist-item {
-                width: 150px;
+                width: 150px; /* Уменьшил ширину для меньших экранов */
             }
             .playlist-item video {
                 height: 80px;
@@ -320,89 +336,144 @@
             {
                 src: "video/1.mp4",
                 title: {
-                    ru: "Новое видео 1",
-                    en: "New Video 1",
-                    ka: "ახალი ვიდეო 1"
+                    ru: "Прием у проктолога: первичный осмотр",
+                    en: "Proctologist's Visit: Initial Examination",
+                    ka: "პროქტოლოგთან ვიზიტი: პირველადი შემოწმება"
+                },
+                description: {
+                    ru: "В этом видео показан подробный процесс первичного осмотра у проктолога, включая важные этапы и рекомендации.",
+                    en: "This video details the initial examination process with a proctologist, including important steps and recommendations.",
+                    ka: "ეს ვიდეო დეტალურად აღწერს პროქტოლოგთან პირველადი შემოწმების პროცესს, მათ შორის მნიშვნელოვან ნაბიჯებსა და რეკომენდაციებს."
                 }
             },
             {
                 src: "video/2.mp4",
                 title: {
-                    ru: "Новое видео 2",
-                    en: "New Video 2",
-                    ka: "ახალი ვიდეო 2"
+                    ru: "Диагностика геморроя: современные методы",
+                    en: "Hemorrhoid Diagnosis: Modern Methods",
+                    ka: "ჰემოროიდების დიაგნოსტიკა: თანამედროვე მეთოდები"
+                },
+                description: {
+                    ru: "Узнайте о передовых методах диагностики геморроя, которые помогают точно определить стадию заболевания и выбрать лечение.",
+                    en: "Learn about advanced methods for diagnosing hemorrhoids that help accurately determine the stage of the disease and choose treatment.",
+                    ka: "შეიტყვეთ ჰემოროიდების დიაგნოსტიკის თანამედროვე მეთოდების შესახებ, რომლებიც ხელს უწყობენ დაავადების სტადიის ზუსტად განსაზღვრას და მკურნალობის არჩევას."
                 }
             },
             {
                 src: "Video_Generisanje_Proktolog_i_žena.mp4", // Проверьте путь, если файл в корне, то не нужен "video/"
                 title: {
-                    ru: "Проктолог и женщина: генерирование видео",
-                    en: "Proctologist and Woman: Video Generation",
-                    ka: "პროქტოლოგი და ქალი: ვიდეოს გენერირება"
+                    ru: "Нина у проктолога: особенности осмотра",
+                    en: "Nina at the Proctologist: Examination Features",
+                    ka: "ნინა პროქტოლოგთან: გამოკვლევის თავისებურებები"
+                },
+                description: {
+                    ru: "Случай Нины: как проходит деликатный осмотр у проктолога, важные аспекты подготовки и процедуры.",
+                    en: "Nina's case: how a delicate proctological examination is performed, important aspects of preparation and procedures.",
+                    ka: "ნინას შემთხვევა: როგორ მიმდინარეობს პროქტოლოგის დელიკატური გამოკვლევა, მომზადებისა და პროცედურის მნიშვნელოვანი ასპექტები."
                 }
             },
             {
                 src: "Video_Gotovo_Proktolog_i_Žena.mp4", // Проверьте путь
                 title: {
-                    ru: "Проктолог и женщина: готовое видео",
-                    en: "Proctologist and Woman: Finished Video",
-                    ka: "პროქტოლოგი და ქალი: დასრულებული ვიდეო"
+                    ru: "Проктолог и женщина: комплексный подход",
+                    en: "Proctologist and Woman: Comprehensive Approach",
+                    ka: "პროქტოლოგი და ქალი: კომპლექსური მიდგომა"
+                },
+                description: {
+                    ru: "Взаимодействие врача и пациентки: пример полного обследования и консультации по проктологическим вопросам.",
+                    en: "Doctor-patient interaction: an example of a complete examination and consultation on proctological issues.",
+                    ka: "ექიმისა და პაციენტის ურთიერთქმედება: სრული გამოკვლევისა და კონსულტაციის მაგალითი პროქტოლოგიურ საკითხებზე."
                 }
             },
             {
                 src: "Video_je_gotovo_(1).mp4", // Проверьте путь
                 title: {
-                    ru: "Видео готово (версия 1): Обзор",
-                    en: "Video Ready (version 1): Overview",
-                    ka: "ვიდეო მზადაა (ვერსია 1): მიმოხილვა"
+                    ru: "Обзор заболеваний аноректальной области",
+                    en: "Overview of Anorectal Diseases",
+                    ka: "ანორექტალური რეგიონის დაავადებების მიმოხილვა"
+                },
+                description: {
+                    ru: "Краткий, но информативный обзор наиболее распространенных заболеваний аноректальной области: симптомы и первые шаги.",
+                    en: "A brief but informative overview of the most common anorectal diseases: symptoms and first steps.",
+                    ka: "მოკლე, მაგრამ ინფორმატიული მიმოხილვა ანორექტალური რეგიონის ყველაზე გავრცელებული დაავადებების შესახებ: სიმპტომები და პირველი ნაბიჯები."
                 }
             },
             {
                 src: "Видео_готово_Популарно_видео.mp4", // Проверьте путь
                 title: {
-                    ru: "Видео готово: Популярное видео",
-                    en: "Video Ready: Popular Video",
-                    ka: "ვიდეო მზადაა: პოპულარული ვიდეო"
+                    ru: "Популярное видео: ответы на вопросы",
+                    en: "Popular Video: Q&A",
+                    ka: "პოპულარული ვიდეო: კითხვა-პასუხი"
+                },
+                description: {
+                    ru: "Самые часто задаваемые вопросы проктологу и профессиональные ответы на них. Все, что вы хотели знать.",
+                    en: "The most frequently asked questions to a proctologist and professional answers to them. Everything you wanted to know.",
+                    ka: "ყველაზე ხშირად დასმული კითხვები პროქტოლოგთან და პროფესიული პასუხები მათზე. ყველაფერი, რაც გინდოდათ იცოდეთ."
                 }
             },
             {
                 src: "Видео_готово_толстая_попа.mp4", // Проверьте путь
                 title: {
-                    ru: "Видео готово: Демонстрация (Попа)",
-                    en: "Video Ready: Demonstration (Butt)",
-                    ka: "ვიდეო მზადაა: დემონსტრაცია (სხეული)"
+                    ru: "Визуальная демонстрация: анатомия и здоровье",
+                    en: "Visual Demonstration: Anatomy and Health",
+                    ka: "ვიზუალური დემონსტრაცია: ანატომია და ჯანმრთელობა"
+                },
+                description: {
+                    ru: "Наглядная демонстрация анатомических особенностей и их связи со здоровьем аноректальной зоны. Только образовательные цели.",
+                    en: "A visual demonstration of anatomical features and their connection to the health of the anorectal area. For educational purposes only.",
+                    ka: "ანატომიური თავისებურებების ვიზუალური დემონსტრაცია და მათი კავშირი ანორექტალური ზონის ჯანმრთელობასთან. მხოლოდ საგანმანათლებლო მიზნებისთვის."
                 }
             },
             {
                 src: "Видео_је_готово_.mp4", // Проверьте путь
                 title: {
-                    ru: "Видео готово: Дополнительный материал",
-                    en: "Video Ready: Additional Material",
-                    ka: "ვიდეო მზადაა: დამატებითი მასალა"
+                    ru: "Советы по профилактике проктологических проблем",
+                    en: "Tips for Preventing Proctological Problems",
+                    ka: "რჩევები პროქტოლოგიური პრობლემების პრევენციისთვის"
+                },
+                description: {
+                    ru: "Узнайте о простых, но эффективных способах предотвращения распространенных проктологических заболеваний и поддержания здоровья.",
+                    en: "Learn simple yet effective ways to prevent common proctological diseases and maintain health.",
+                    ka: "ისწავლეთ მარტივი, მაგრამ ეფექტური გზები გავრცელებული პროქტოლოგიური დაავადებების პრევენციისა და ჯანმრთელობის შესანარჩუნებლად."
                 }
             },
             {
                 src: "video/9.mp4",
                 title: {
-                    ru: "Видео 9: Дополнительное пустое видео",
-                    en: "Video 9: Additional Empty Video",
-                    ka: "ვიდეო 9: დამატებითი ცარიელი ვიდეო"
+                    ru: "Образ жизни и кишечник: что важно знать",
+                    en: "Lifestyle and Bowel Health: What to Know",
+                    ka: "ცხოვრების წესი და ნაწლავების ჯანმრთელობა: რა უნდა იცოდეთ"
+                },
+                description: {
+                    ru: "Как ежедневные привычки влияют на здоровье кишечника и что можно изменить для его улучшения.",
+                    en: "How daily habits affect bowel health and what you can change to improve it.",
+                    ka: "როგორ მოქმედებს ყოველდღიური ჩვევები ნაწლავების ჯანმრთელობაზე და რა შეგიძლიათ შეცვალოთ მის გასაუმჯობესებლად."
                 }
             },
             {
                 src: "video/10.mp4",
                 title: {
-                    ru: "Видео 10: Пример нового видео",
-                    en: "Video 10: New Video Example",
-                    ka: "ვიდეო 10: ახალი ვიდეოს მაგალითი"
+                    ru: "Подготовка к колоноскопии: пошаговая инструкция",
+                    en: "Colonoscopy Preparation: Step-by-Step Guide",
+                    ka: "კოლონოსკოპიისთვის მომზადება: ნაბიჯ-ნაბიჯ ინსტრუქცია"
+                },
+                description: {
+                    ru: "Детальное руководство по подготовке к колоноскопии, чтобы процедура прошла максимально комфортно и эффективно.",
+                    en: "Detailed guide to preparing for a colonoscopy to ensure the procedure is as comfortable and effective as possible.",
+                    ka: "დეტალური სახელმძღვანელო კოლონოსკოპიისთვის მოსამზადებლად, რათა პროცედურა მაქსიმალურად კომფორტული და ეფექტური იყოს."
                 }
             },
             {
                 src: "video/11.mp4",
                 title: {
-                    ru: "Видео 11: Еще одно видео",
-                    en: "Video 11: Another Video",
-                    ka: "ვიდეო 11: კიდევ ერთი ვიდეო"
+                    ru: "Мифы и факты о проктологических заболеваниях",
+                    en: "Myths and Facts about Proctological Diseases",
+                    ka: "მითები და ფაქტები პროქტოლოგიური დაავადებების შესახებ"
+                },
+                description: {
+                    ru: "Развенчиваем популярные мифы и предоставляем проверенные факты о заболеваниях прямой кишки и ануса.",
+                    en: "Debunking popular myths and providing verified facts about diseases of the rectum and anus.",
+                    ka: "ვამსხვრევთ პოპულარულ მითებს და გთავაზობთ დამოწმებულ ფაქტებს სწორი ნაწლავისა და ანუსის დაავადებების შესახებ."
                 }
             }
         ];
@@ -460,12 +531,14 @@
                 // Делаем первый элемент активным при загрузке
                 if(index === 0) playlistItem.classList.add('active');
 
-                // Формируем title на нужном языке, с fallback на русский
+                // Формируем title и description на нужном языке, с fallback на русский
                 const title = video.title[currentLang] || video.title.ru || "Видео";
+                const description = video.description[currentLang] || video.description.ru || "Описание отсутствует.";
 
                 playlistItem.innerHTML = `
                     <video muted preload="metadata" playsinline width="180" height="100" src="${video.src}"></video>
                     <div class="playlist-item-title">${title}</div>
+                    <div class="playlist-item-description">${description}</div>
                 `;
 
                 playlistItem.addEventListener('click', () => {
@@ -516,7 +589,7 @@
             navLinks[2].textContent = texts[lang].nav_gallery;
             navLinks[3].textContent = texts[lang].nav_contact;
 
-            // Перезагружаем плейлист с новыми названиями видео
+            // Перезагружаем плейлист с новыми названиями и описаниями видео
             loadPlaylist();
         }
 
