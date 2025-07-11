@@ -1,627 +1,632 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Глаза Проктолога — Необычный Взгляд на Медицину</title>
-  <meta name="description" content="Необычный взгляд на медицину — со стороны проктолога. Образовательные видео, увлекательная галерея и прямая связь через Telegram. Узнайте больше о скрытых аспектах здоровья!" />
-  <meta name="keywords" content="проктология, медицина, здоровье, образование, видео, галерея, консультация, Telegram, уникальный взгляд, Glaza Proktologa" />
-  <meta name="author" content="Glaza Proktologa" />
-  
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  
-  <meta property="og:title" content="Глаза Проктолога — Откройте Скрытое!" />
-  <meta property="og:description" content="Необычный взгляд на медицину — со стороны проктолога. Образовательные видео, галерея и связь через Telegram." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://твой-домен.ру" />
-  <meta property="og:image" content="https://твой-домен.ру/images/Gemini_Generated_Image_62xki062xki062xk.png" />
-  <meta property="og:site_name" content="Глаза Проктолога" />
-  <meta property="og:locale" content="ru_RU" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Глаза Проктолога — Необычный Взгляд на Медицину</title>
+  <meta name="description" content="Необычный взгляд на медицину — со стороны проктолога. Образовательные видео, увлекательная галерея и прямая связь через Telegram. Узнайте больше о скрытых аспектах здоровья!" />
+  <meta name="keywords" content="проктология, медицина, здоровье, образование, видео, галерея, консультация, Telegram, уникальный взгляд, Glaza Proktologa" />
+  <meta name="author" content="Glaza Proktologa" />
+  
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  
+  <meta property="og:title" content="Глаза Проктолога — Откройте Скрытое!" />
+  <meta property="og:description" content="Необычный взгляд на медицину — со стороны проктолога. Образовательные видео, галерея и связь через Telegram." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://твой-домен.ру" />
+  <meta property="og:image" content="https://твой-домен.ру/images/Gemini_Generated_Image_62xki062xki062xk.png" />
+  <meta property="og:site_name" content="Глаза Проктолога" />
+  <meta property="og:locale" content="ru_RU" />
 
-  <style>
-    :root {
-      --main-bg-color: #0a192f;
-      --secondary-bg-color: #1a2c42;
-      --header-footer-bg: #0d1a2b;
-      --primary-text-color: #e2e8f0;
-      /* Удалены старые accent-color и accent-hover-color */
-      --button-text-color: #000; /* Цвет текста на кнопках */
-      --border-radius: 8px;
-      /* Изменены shadow-light и shadow-dark на неоновый зеленый */
-      --shadow-light: rgba(57, 255, 20, 0.4); 
-      --shadow-dark: rgba(57, 255, 20, 0.6); 
-      
-      --neon-green: #39ff14; /* Цвет для неонового текста - ярко-зеленый */
-      --neon-glow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green), 0 0 40px var(--neon-green); /* Эффект свечения */
-    }
+  <style>
+    :root {
+      --main-bg-color: #0a192f;
+      --secondary-bg-color: #1a2c42;
+      --header-footer-bg: #0d1a2b;
+      --primary-text-color: #e2e8f0;
+      /* Удалены старые accent-color и accent-hover-color */
+      --button-text-color: #000; /* Цвет текста на кнопках */
+      --border-radius: 8px;
+      /* Изменены shadow-light и shadow-dark на неоновый зеленый */
+      --shadow-light: rgba(57, 255, 20, 0.4); 
+      --shadow-dark: rgba(57, 255, 20, 0.6); 
+      
+      --neon-green: #39ff14; /* Цвет для неонового текста - ярко-зеленый */
+      --neon-glow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green), 0 0 40px var(--neon-green); /* Эффект свечения */
+    }
 
-    /* --- СТИЛИ ПРИВЕТСТВЕННОГО ЭКРАНА --- */
-    #welcome-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 10000;
-        background-color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        color: #fff;
-        transition: opacity 1s ease-out, visibility 1s ease-out;
-    }
+    /* --- СТИЛИ ПРИВЕТСТВЕННОГО ЭКРАНА --- */
+    #welcome-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10000;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+        transition: opacity 1s ease-out, visibility 1s ease-out;
+    }
 
-    #welcome-screen video {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        transform: translateX(-50%) translateY(-50%);
-        z-index: 1;
-        filter: brightness(0.4);
-    }
+    #welcome-screen video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 1;
+        filter: brightness(0.4);
+    }
 
-    #welcome-content {
-        text-align: center;
-        z-index: 2;
-        animation: fadeIn 2s ease-out;
-    }
+    #welcome-content {
+        text-align: center;
+        z-index: 2;
+        animation: fadeIn 2s ease-out;
+    }
 
-    #welcome-content h1 {
-        font-size: 3.5em;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 700;
-        color: var(--neon-green); /* Цвет заголовка - неоновый зеленый */
-        margin-bottom: 1.5rem;
-        text-shadow: var(--neon-glow); /* Эффект свечения */
-    }
+    #welcome-content h1 {
+        font-size: 3.5em;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        color: var(--neon-green); /* Цвет заголовка - неоновый зеленый */
+        margin-bottom: 1.5rem;
+        text-shadow: var(--neon-glow); /* Эффект свечения */
+    }
 
-    #enter-button {
-        padding: 16px 32px;
-        font-size: 1.3em;
-        font-weight: bold;
-        color: var(--button-text-color);
-        background-color: var(--neon-green); /* Кнопка входа тоже неоновая */
-        border: none;
-        border-radius: var(--border-radius);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px var(--shadow-light); /* Тень кнопки входа */
-    }
+    #enter-button {
+        padding: 16px 32px;
+        font-size: 1.3em;
+        font-weight: bold;
+        color: var(--button-text-color);
+        background-color: var(--neon-green); /* Кнопка входа тоже неоновая */
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px var(--shadow-light); /* Тень кнопки входа */
+    }
 
-    #enter-button:hover {
-        background-color: #6eff6e; /* Чуть светлее неоновый зеленый при наведении */
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px var(--shadow-dark); /* Более сильная тень при наведении */
-    }
-    
-    /* НОВЫЙ СТИЛЬ ДЛЯ КНОПКИ ЗВУКА */
-    #volume-control {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        z-index: 3;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: var(--neon-green); /* Кнопка звука неоновая */
-        border: 1px solid var(--neon-green); /* Рамка кнопки звука неоновая */
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: background-color 0.3s, transform 0.3s;
-    }
+    #enter-button:hover {
+        background-color: #6eff6e; /* Чуть светлее неоновый зеленый при наведении */
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px var(--shadow-dark); /* Более сильная тень при наведении */
+    }
+    
+    /* НОВЫЙ СТИЛЬ ДЛЯ КНОПКИ ЗВУКА */
+    #volume-control {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        z-index: 3;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: var(--neon-green); /* Кнопка звука неоновая */
+        border: 1px solid var(--neon-green); /* Рамка кнопки звука неоновая */
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s, transform 0.3s;
+    }
 
-    #volume-control:hover {
-        background-color: rgba(57, 255, 20, 0.5); /* Фон при наведении */
-        transform: scale(1.1);
-    }
+    #volume-control:hover {
+        background-color: rgba(57, 255, 20, 0.5); /* Фон при наведении */
+        transform: scale(1.1);
+    }
 
-    /* --- ОСНОВНЫЕ СТИЛИ --- */
-    #bg-video {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: -1;
-    }
+    /* --- ОСНОВНЫЕ СТИЛИ --- */
+    #bg-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+    }
 
-    body {
-      margin: 0;
-      color: var(--neon-green); /* Основной цвет текста - неоновый зеленый */
-      font-family: 'Roboto', Arial, sans-serif;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Легкое неоновое свечение для всего текста */
-    }
-    
-    body > *:not(#welcome-screen) {
-        opacity: 0;
-        transition: opacity 0.8s ease-in;
-    }
+    body {
+      margin: 0;
+      color: var(--neon-green); /* Основной цвет текста - неоновый зеленый */
+      font-family: 'Roboto', Arial, sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Легкое неоновое свечение для всего текста */
+        /* Добавленные стили для фона из d.png */
+      background-image: url('d.png'); /* Путь к вашему изображению */
+      background-size: cover; /* Растягивает изображение, чтобы покрыть весь фон */
+      background-attachment: fixed; /* Фиксирует изображение, чтобы оно не прокручивалось */
+      background-position: center center; /* Выравнивает изображение по центру */
+    }
+    
+    body > *:not(#welcome-screen) {
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
 
-    body.loaded > *:not(#welcome-screen) {
-        opacity: 1;
-    }
+    body.loaded > *:not(#welcome-screen) {
+        opacity: 1;
+    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-    header {
-      background-color: rgba(13, 26, 43, 0.85);
-      padding: 25px 20px;
-      text-align: center;
-      font-size: 2.5em;
-      font-weight: 700;
-      color: var(--neon-green); /* Цвет заголовка - неоновый зеленый */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      text-shadow: var(--neon-glow); /* Неоновое свечение для заголовка */
-    }
+    header {
+      background-color: rgba(13, 26, 43, 0.85);
+      padding: 25px 20px;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: 700;
+      color: var(--neon-green); /* Цвет заголовка - неоновый зеленый */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      text-shadow: var(--neon-glow); /* Неоновое свечение для заголовка */
+    }
 
-    nav {
-      background-color: rgba(26, 44, 66, 0.85);
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 15px 10px;
-      flex-wrap: wrap;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+    nav {
+      background-color: rgba(26, 44, 66, 0.85);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 15px 10px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-    nav a {
-      color: var(--neon-green); /* Цвет ссылок навигации - неоновый зеленый */
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1em;
-      padding: 8px 15px;
-      border-radius: var(--border-radius);
-      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7); /* Свечение ссылок */
-    }
+    nav a {
+      color: var(--neon-green); /* Цвет ссылок навигации - неоновый зеленый */
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1em;
+      padding: 8px 15px;
+      border-radius: var(--border-radius);
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7); /* Свечение ссылок */
+    }
 
-    nav a:hover, nav a:focus {
-      color: #6eff6e; /* Более яркий зеленый при наведении */
-      background-color: rgba(57, 255, 20, 0.1); /* Фон при наведении */
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px var(--shadow-light); /* Тень при наведении */
-    }
+    nav a:hover, nav a:focus {
+      color: #6eff6e; /* Более яркий зеленый при наведении */
+      background-color: rgba(57, 255, 20, 0.1); /* Фон при наведении */
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px var(--shadow-light); /* Тень при наведении */
+    }
 
-    main {
-      padding: 2.5rem 2rem;
-      text-align: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    main {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-    section {
-      background-color: rgba(26, 44, 66, 0.75);
-      margin-bottom: 2.5rem;
-      padding: 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease-in-out;
-    }
+    section {
+      background-color: rgba(26, 44, 66, 0.75);
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+    }
 
-    section:hover {
-      transform: translateY(-5px);
-    }
+    section:hover {
+      transform: translateY(-5px);
+    }
 
-    h2 {
-      color: var(--neon-green); /* Цвет заголовков секций - неоновый зеленый */
-      font-size: 2em;
-      margin-bottom: 1.5rem;
-      border-bottom: 2px solid var(--neon-green); /* Неоновая рамка */
-      padding-bottom: 10px;
-      display: inline-block;
-      text-shadow: var(--neon-glow); /* Неоновое свечение для заголовков секций */
-    }
+    h2 {
+      color: var(--neon-green); /* Цвет заголовков секций - неоновый зеленый */
+      font-size: 2em;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--neon-green); /* Неоновая рамка */
+      padding-bottom: 10px;
+      display: inline-block;
+      text-shadow: var(--neon-glow); /* Неоновое свечение для заголовков секций */
+    }
 
-    p {
-      font-size: 1.1em;
-      color: var(--neon-green); /* Цвет параграфов - неоновый зеленый */
-      max-width: 800px;
-      margin: 0.5rem auto;
-      text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Легкое неоновое свечение для текста */
-    }
+    p {
+      font-size: 1.1em;
+      color: var(--neon-green); /* Цвет параграфов - неоновый зеленый */
+      max-width: 800px;
+      margin: 0.5rem auto;
+      text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Легкое неоновое свечение для текста */
+    }
 
-    footer {
-      background-color: rgba(13, 26, 43, 0.85);
-      text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
-      color: var(--neon-green); /* Цвет футера - неоновый зеленый */
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Легкое неоновое свечение для текста футера */
-    }
+    footer {
+      background-color: rgba(13, 26, 43, 0.85);
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      color: var(--neon-green); /* Цвет футера - неоновый зеленый */
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* Легкое неоновое свечение для текста футера */
+    }
 
-    .form-section { margin-top: 3rem; }
+    .form-section { margin-top: 3rem; }
 
-    .lang-switcher {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .lang-switcher {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-    .lang-switcher button {
-      background: var(--secondary-bg-color);
-      color: var(--neon-green); /* Цвет кнопок переключателя языка - неоновый зеленый */
-      border: 1px solid var(--neon-green); /* Неоновая рамка кнопок переключателя языка */
-      padding: 10px 20px;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1em;
-      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7); /* Свечение кнопок */
-    }
+    .lang-switcher button {
+      background: var(--secondary-bg-color);
+      color: var(--neon-green); /* Цвет кнопок переключателя языка - неоновый зеленый */
+      border: 1px solid var(--neon-green); /* Неоновая рамка кнопок переключателя языка */
+      padding: 10px 20px;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-shadow: 0 0 8px rgba(57, 255, 20, 0.7); /* Свечение кнопок */
+    }
 
-    .lang-switcher button:hover, .lang-switcher button:focus {
-      background: var(--neon-green); /* Фон при наведении */
-      color: var(--button-text-color);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px var(--shadow-light); /* Тень при наведении */
-    }
+    .lang-switcher button:hover, .lang-switcher button:focus {
+      background: var(--neon-green); /* Фон при наведении */
+      color: var(--button-text-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px var(--shadow-light); /* Тень при наведении */
+    }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-      justify-items: center;
-    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      justify-items: center;
+    }
 
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: var(--border-radius);
-      border: 3px solid var(--neon-green); /* Неоновая рамка изображений */
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      cursor: zoom-in;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      border: 3px solid var(--neon-green); /* Неоновая рамка изображений */
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: zoom-in;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
 
-    .gallery img:hover {
-      transform: scale(1.03);
-      border-color: #6eff6e; /* Более яркий зеленый при наведении */
-      box-shadow: 0 8px 25px var(--shadow-dark); /* Более сильная тень при наведении */
-    }
+    .gallery img:hover {
+      transform: scale(1.03);
+      border-color: #6eff6e; /* Более яркий зеленый при наведении */
+      box-shadow: 0 8px 25px var(--shadow-dark); /* Более сильная тень при наведении */
+    }
 
-    .telegram-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 1.5rem;
-      padding: 16px 32px;
-      /* background: linear-gradient(45deg, #0088cc, var(--neon-green));  Убрана синяя часть градиента */
-      background: var(--neon-green); /* Сплошной неоновый зеленый фон */
-      color: var(--button-text-color); /* Цвет текста на кнопке Telegram изменен на черный для лучшей контрастности */
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.3rem;
-      box-shadow: 0 6px 15px var(--shadow-light); /* Тень ссылки телеграм */
-      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      overflow: hidden;
-      position: relative;
-      text-shadow: none; /* Убрана тень текста на кнопке Telegram, так как фон теперь яркий */
-    }
+    .telegram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 1.5rem;
+      padding: 16px 32px;
+      /* background: linear-gradient(45deg, #0088cc, var(--neon-green));  Убрана синяя часть градиента */
+      background: var(--neon-green); /* Сплошной неоновый зеленый фон */
+      color: var(--button-text-color); /* Цвет текста на кнопке Telegram изменен на черный для лучшей контрастности */
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.3rem;
+      box-shadow: 0 6px 15px var(--shadow-light); /* Тень ссылки телеграм */
+      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      overflow: hidden;
+      position: relative;
+      text-shadow: none; /* Убрана тень текста на кнопке Telegram, так как фон теперь яркий */
+    }
 
-    .telegram-link:hover {
-      background: #6eff6e; /* Чуть светлее неоновый зеленый при наведении */
-      box-shadow: 0 8px 20px var(--shadow-dark); /* Более сильная тень при наведении */
-      transform: translateY(-3px);
-    }
+    .telegram-link:hover {
+      background: #6eff6e; /* Чуть светлее неоновый зеленый при наведении */
+      box-shadow: 0 8px 20px var(--shadow-dark); /* Более сильная тень при наведении */
+      transform: translateY(-3px);
+    }
 
-    .telegram-link::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.4s ease, height 0.4s ease;
-      z-index: 0;
-    }
+    .telegram-link::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+      z-index: 0;
+    }
 
-    .telegram-link:hover::before {
-      width: 250%;
-      height: 250%;
-    }
+    .telegram-link:hover::before {
+      width: 250%;
+      height: 250%;
+    }
 
-    .telegram-link span {
-      position: relative;
-      z-index: 1;
-    }
+    .telegram-link span {
+      position: relative;
+      z-index: 1;
+    }
 
-    /* Стили для неонового текста */
-    .neon-text {
-      color: var(--neon-green); /* Базовый цвет текста */
-      text-shadow: var(--neon-glow); /* Эффект свечения */
-      font-size: 3em; /* Размер шрифта, можно настроить */
-      font-weight: bold;
-      text-align: center;
-      padding: 20px 0;
-      background-color: rgba(0, 0, 0, 0.7); /* Фон для контраста, можно убрать */
-      border-radius: 10px;
-      margin-top: 2rem;
-      animation: neon-flicker 1.5s infinite alternate; /* Анимация мерцания */
-    }
+    /* Стили для неонового текста */
+    .neon-text {
+      color: var(--neon-green); /* Базовый цвет текста */
+      text-shadow: var(--neon-glow); /* Эффект свечения */
+      font-size: 3em; /* Размер шрифта, можно настроить */
+      font-weight: bold;
+      text-align: center;
+      padding: 20px 0;
+      background-color: rgba(0, 0, 0, 0.7); /* Фон для контраста, можно убрать */
+      border-radius: 10px;
+      margin-top: 2rem;
+      animation: neon-flicker 1.5s infinite alternate; /* Анимация мерцания */
+    }
 
-    @keyframes neon-flicker {
-      0%, 100% {
-        text-shadow: var(--neon-glow);
-        opacity: 1;
-      }
-      50% {
-        text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green); /* Более слабое свечение */
-        opacity: 0.8;
-      }
-    }
+    @keyframes neon-flicker {
+      0%, 100% {
+        text-shadow: var(--neon-glow);
+        opacity: 1;
+      }
+      50% {
+        text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green); /* Более слабое свечение */
+        opacity: 0.8;
+      }
+    }
 
 
-    @media (max-width: 900px) { .gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
-    @media (max-width: 768px) {
-      header { font-size: 2em; }
-      nav { gap: 1rem; }
-      main { padding: 1.5rem 1rem; }
-      h2 { font-size: 1.8em; }
-      section { padding: 1.5rem; }
-      .gallery { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-      .telegram-link { font-size: 1.1rem; padding: 12px 24px; }
-      #welcome-content h1 { font-size: 2.5em; }
-      #enter-button { font-size: 1.1em; padding: 14px 28px; }
-      .neon-text { font-size: 2em; } /* Адаптация размера шрифта для меньших экранов */
-    }
-    @media (max-width: 600px) {
-      nav { flex-direction: column; gap: 0.8rem; }
-      nav a { padding: 10px; font-size: 1em; }
-      .gallery img { width: 100%; height: 180px; }
-      .telegram-link { width: calc(100% - 2rem); display: block; margin-left: auto; margin-right: auto; }
-      .lang-switcher { flex-direction: column; }
-      .neon-text { font-size: 1.5em; } /* Еще более мелкий шрифт для мобильных */
-    }
+    @media (max-width: 900px) { .gallery { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
+    @media (max-width: 768px) {
+      header { font-size: 2em; }
+      nav { gap: 1rem; }
+      main { padding: 1.5rem 1rem; }
+      h2 { font-size: 1.8em; }
+      section { padding: 1.5rem; }
+      .gallery { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+      .telegram-link { font-size: 1.1rem; padding: 12px 24px; }
+      #welcome-content h1 { font-size: 2.5em; }
+      #enter-button { font-size: 1.1em; padding: 14px 28px; }
+      .neon-text { font-size: 2em; } /* Адаптация размера шрифта для меньших экранов */
+    }
+    @media (max-width: 600px) {
+      nav { flex-direction: column; gap: 0.8rem; }
+      nav a { padding: 10px; font-size: 1em; }
+      .gallery img { width: 100%; height: 180px; }
+      .telegram-link { width: calc(100% - 2rem); display: block; margin-left: auto; margin-right: auto; }
+      .lang-switcher { flex-direction: column; }
+      .neon-text { font-size: 1.5em; } /* Еще более мелкий шрифт для мобильных */
+    }
 
-  </style>
+  </style>
 </head>
 <body>
 
-  <audio id="clickSound" src="click.mp3" preload="auto"></audio>
+  <audio id="clickSound" src="click.mp3" preload="auto"></audio>
 
-  <div id="welcome-screen">
-      <video autoplay muted loop playsinline id="greeting-video">
-          <source src="5.mp4" type="video/mp4">
-          Ваш браузер не поддерживает тег video.
-      </video>
-      <div id="welcome-content">
-          <h1>Глаза Проктолога</h1>
-          <button id="enter-button">Войти на сайт</button>
-      </div>
-      <button id="volume-control">🔇</button>
-  </div>
+  <div id="welcome-screen">
+      <video autoplay muted loop playsinline id="greeting-video">
+          <source src="5.mp4" type="video/mp4">
+          Ваш браузер не поддерживает тег video.
+      </video>
+      <div id="welcome-content">
+          <h1>Глаза Проктолога</h1>
+          <button id="enter-button">Войти на сайт</button>
+      </div>
+      <button id="volume-control">🔇</button>
+  </div>
 
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="3.mp4" type="video/mp4">
-    Ваш браузер не поддерживает тег video.
-  </video>
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="3.mp4" type="video/mp4">
+    Ваш браузер не поддерживает тег video.
+  </video>
 
-  <header>Глаза Проктолога</header>
-  <nav aria-label="Основная навигация">
-    <a href="index.html#about">О проекте</a>
-    <a href="video.html">Видеоматериалы</a>
-    <a href="index.html#gallery">Галерея изображений</a>
-    <a href="index.html#contact">Связаться с нами</a>
-  </nav>
+  <header>Глаза Проктолога</header>
+  <nav aria-label="Основная навигация">
+    <a href="index.html#about">О проекте</a>
+    <a href="video.html">Видеоматериалы</a>
+    <a href="index.html#gallery">Галерея изображений</a>
+    <a href="index.html#contact">Связаться с нами</a>
+  </nav>
 
-  <main>
-    <section id="about">
-      <h2>👁️ Добро пожаловать!</h2>
-      <p>Этот проект посвящён необычному взгляду на медицину — со стороны проктолога. Без шуток и со вкусом. Мы исследуем не то, что видно всем — а то, что <strong>скрыто от глаз</strong>. Наша цель — предоставить <strong>образовательный контент</strong>, который расширит ваше понимание о проктологии в доступной и профессиональной манере. Здесь вы найдете информацию, которая поможет развеять мифы и повысить осведомленность о важных аспектах здоровья.</p>
-    </section>
+  <main>
+    <section id="about">
+      <h2>👁️ Добро пожаловать!</h2>
+      <p>Этот проект посвящён необычному взгляду на медицину — со стороны проктолога. Без шуток и со вкусом. Мы исследуем не то, что видно всем — а то, что <strong>скрыто от глаз</strong>. Наша цель — предоставить <strong>образовательный контент</strong>, который расширит ваше понимание о проктологии в доступной и профессиональной манере. Здесь вы найдете информацию, которая поможет развеять мифы и повысить осведомленность о важных аспектах здоровья.</p>
+    </section>
 
-    <div class="neon-text">Ладно, так уж и быть .</div>
+    <div class="neon-text">Ладно, так уж и быть .</div>
 
-    <section id="gallery">
-      <h2>🖼️ Визуальная галерея</h2>
-      <p>Изучите нашу коллекцию изображений, которая дополняет образовательный контент и предлагает уникальный взгляд на предмет исследования. Все изображения подобраны с целью <strong>информирования и просвещения</strong>.</p>
-      <div class="gallery">
-        <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Проктологическое изображение 1 - иллюстрация анатомии" tabindex="0" />
-        <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Проктологическое изображение 2 - обзор инструментов" tabindex="0" />
-        <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Проктологическое изображение 3 - схема пищеварительной системы" tabindex="0" />
-        <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Проктологическое изображение 4 - пример диагностики" tabindex="0" />
-        <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Проктологическое изображение 5 - иллюстрация заболевания" tabindex="0" />
-        <img src="images/problembo-result-20250521163816.jpg" alt="Проктологическое изображение 6 - медицинское оборудование" tabindex="0" />
-        <img src="images/unnamed (13).png" alt="Проктологическое изображение 7 - иллюстрация лечения" tabindex="0" />
-      </div>
-    </section>
+    <section id="gallery">
+      <h2>🖼️ Визуальная галерея</h2>
+      <p>Изучите нашу коллекцию изображений, которая дополняет образовательный контент и предлагает уникальный взгляд на предмет исследования. Все изображения подобраны с целью <strong>информирования и просвещения</strong>.</p>
+      <div class="gallery">
+        <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Проктологическое изображение 1 - иллюстрация анатомии" tabindex="0" />
+        <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Проктологическое изображение 2 - обзор инструментов" tabindex="0" />
+        <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Проктологическое изображение 3 - схема пищеварительной системы" tabindex="0" />
+        <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Проктологическое изображение 4 - пример диагностики" tabindex="0" />
+        <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Проктологическое изображение 5 - иллюстрация заболевания" tabindex="0" />
+        <img src="images/problembo-result-20250521163816.jpg" alt="Проктологическое изображение 6 - медицинское оборудование" tabindex="0" />
+        <img src="images/unnamed (13).png" alt="Проктологическое изображение 7 - иллюстрация лечения" tabindex="0" />
+      </div>
+    </section>
 
-    <section id="contact" class="form-section">
-      <h2>📬 Связаться с нами</h2>
-      <p>У вас есть вопросы или предложения? Напишите нам напрямую в <strong>Telegram</strong> – мы всегда открыты для конструктивного диалога и готовы помочь.</p>
-      <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="telegram-link">
-        <span>💬 Перейти в Telegram чат</span>
-      </a>
-      <p style="margin-top: 1.5rem; font-size: 0.9em; color: var(--neon-green);"><em>(Нажимая на кнопку, вы будете перенаправлены в приложение или веб-версию Telegram)</em></p>
-    </section>
+    <section id="contact" class="form-section">
+      <h2>📬 Связаться с нами</h2>
+      <p>У вас есть вопросы или предложения? Напишите нам напрямую в <strong>Telegram</strong> – мы всегда открыты для конструктивного диалога и готовы помочь.</p>
+      <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="telegram-link">
+        <span>💬 Перейти в Telegram чат</span>
+      </a>
+      <p style="margin-top: 1.5rem; font-size: 0.9em; color: var(--neon-green);"><em>(Нажимая на кнопку, вы будете перенаправлены в приложение или веб-версию Telegram)</em></p>
+    </section>
 
-    <div class="lang-switcher" aria-label="Переключатель языка">
-      <button onclick="setLang('ru')" aria-label="Переключить на русский">🇷🇺 Русский</button>
-      <button onclick="setLang('en')" aria-label="Switch to English">🇬🇧 English</button>
-      <button onclick="setLang('ka')" aria-label="გადართვა ქართულზე">🇬🇪 ქართული</button>
-    </div>
-  </main>
+    <div class="lang-switcher" aria-label="Переключатель языка">
+      <button onclick="setLang('ru')" aria-label="Переключить на русский">🇷🇺 Русский</button>
+      <button onclick="setLang('en')" aria-label="Switch to English">🇬🇧 English</button>
+      <button onclick="setLang('ka')" aria-label="გადართვა ქართულზე">🇬🇪 ქართული</button>
+    </div>
+  </main>
 
-  <footer>
-    &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--neon-green); text-decoration: none; margin-left: 10px;">Наверх</a>
-  </footer>
+  <footer>
+    &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--neon-green); text-decoration: none; margin-left: 10px;">Наверх</a>
+  </footer>
 
 
-  <script>
-    const texts = {
-      ru: {
-        about_heading: "👁️ Добро пожаловать!",
-        about_text: "Этот проект посвящён необычному взгляду на медицину — со стороны проктолога. Без шуток и со вкусом. Мы исследуем не то, что видно всем — а то, что <strong>скрыто от глаз</strong>. Наша цель — предоставить <strong>образовательный контент</strong>, который расширит ваше понимание о проктологии в доступной и профессиональной манере. Здесь вы найдете информацию, которая поможет развеять мифы и повысить осведомленность о важных аспектах здоровья.",
-        gallery_heading: "🖼️ Визуальная галерея",
-        gallery_text: "Изучите нашу коллекцию изображений, которая дополняет образовательный контент и предлагает уникальный взгляд на предмет исследования. Все изображения подобраны с целью <strong>информирования и просвещения</strong>.",
-        contact_heading: "📬 Связаться с нами",
-        contact_text: "У вас есть вопросы или предложения? Напишите нам напрямую в <strong>Telegram</strong> – мы всегда открыты для конструктивного диалога и готовы помочь.",
-        telegram_button: "💬 Перейти в Telegram чат",
-        telegram_note: "<em>(Нажимая на кнопку, вы будете перенаправлены в приложение или веб-версию Telegram)</em>",
-        footer_copyright: "&copy; 2025 Glaza Proktologa. Все права защищены. ",
-        footer_back_to_top: "Наверх",
-        nav_about: "О проекте",
-        nav_video: "Видеоматериалы",
-        nav_gallery: "Галерея изображений",
-        nav_contact: "Связаться с нами",
-        page_title: "Глаза Проктолога — Необычный Взгляд на Медицину",
-        meta_description: "Необычный взгляд на медицину — со стороны проктолога. Образовательные видео, увлекательная галерея и прямая связь через Telegram. Узнайте больше о скрытых аспектах здоровья!"
-      },
-      en: {
-        about_heading: "👁️ Welcome!",
-        about_text: "This project offers a unique perspective on medicine — from a proctologist's point of view. Without jokes and with taste. We explore not what everyone sees, but what is <strong>hidden from plain sight</strong>. Our goal is to provide <strong>educational content</strong> that will broaden your understanding of proctology in an accessible and professional manner. Here you will find information that will help dispel myths and raise awareness about important aspects of health.",
-        gallery_heading: "🖼️ Visual Gallery",
-        gallery_text: "Explore our collection of images that complements the educational content and offers a unique perspective on the subject. All images are selected for the purpose of <strong>informing and enlightening</strong>.",
-        contact_heading: "📬 Contact Us",
-        contact_text: "Do you have questions or suggestions? Write to us directly on <strong>Telegram</strong> – we are always open for constructive dialogue and ready to help.",
-        telegram_button: "💬 Go to Telegram Chat",
-        telegram_note: "<em>(By clicking the button, you will be redirected to the Telegram app or web version)</em>",
-        footer_copyright: "&copy; 2025 Glaza Proktologa. All rights reserved. ",
-        footer_back_to_top: "Back to Top",
-        nav_about: "About Project",
-        nav_video: "Videos",
-        nav_gallery: "Image Gallery",
-        nav_contact: "Contact Us",
-        page_title: "The Proctologist's Eyes — An Unusual Look at Medicine",
-        meta_description: "A unique perspective on medicine — from a proctologist's view. Educational videos, an engaging gallery, and direct contact via Telegram. Learn more about the hidden aspects of health!"
-      },
-      ka: {
-        about_heading: "👁️ მოგესალმებით!",
-        about_text: "ეს პროექტი ეძღვნება მედიცინის უჩვეულო ხედვას — პროქტოლოგის თვალით. ხუმრობის გარეშე და გემოვნებით. ჩვენ ვიკვლევთ არა იმას, რაც ყველასთვის ხილულია — არამედ იმას, რაც <strong>თვალისთვის მიუწვდომელია</strong>. ჩვენი მიზანია მოგაწოდოთ <strong>საგანმანათლებლო კონტენტი</strong>, რომელიც გააფართოებს თქვენს გაგებას პროქტოლოგიის შესახებ ხელმისაწვდომი და პროფესიონალური ფორმით. აქ ნახავთ ინფორმაციას, რომელიც დაგეხმარებათ გაფანტოთ მითები და გაზარდოთ ცნობიერება ჯანმრთელობის მნიშვნელოვანი ასპექტების შესახებ.",
-        gallery_heading: "🖼️ ვიზუალური გალერეა",
-        gallery_text: "დაათვალიერეთ ჩვენი სურათების კოლექცია, რომელიც ავსებს საგანმანათლებლო კონტენტს და გვთავაზობს უნიკალურ ხედვას კვლევის საგანზე. ყველა სურათი შერჩეულია <strong>ინფორმირებისა და განათლების</strong> მიზნით.",
-        contact_heading: "📬 დაგვიკავშირდით",
-        contact_text: "გაქვთ შეკითხვები или предложения? მოგვწერეთ პირდაპირ <strong>Telegram-ში</strong> – ჩვენ ყოველთვის ღია ვართ კონსტრუქციული диaloga для и მზად ვართ დაგეხმაროთ.",
-        telegram_button: "💬 Telegram ჩატში გადასვლა",
-        telegram_note: "<em>(ღილაკზე დაჭერით გადახვალთ Telegram აპლიკაციაში ან ვებ ვერსიაში)</em>",
-        footer_copyright: "&copy; 2025 Glaza Proktologa. ყველა უფლება დაცულია. ",
-        footer_back_to_top: "ზევით",
-        nav_about: "პროექტის შესახებ",
-        nav_video: "ვიდეოები",
-        nav_gallery: "გალერეა",
-        nav_contact: "კონტაქტი",
-        page_title: "პროქტოლოგის თვალები — მედიცინის უჩვეულო ხედვა",
-        meta_description: "მედიცინის უჩვეულო ხედვა — პროქტოლოგის თვალით. საგანმანათლებლო ვიდეოები, საინტერესო გალერეა და პირდაპირი კავშირი Telegram-ის საშუალებით. შეიტყვეთ მეტი ჯანმრთელობის ფარული ასპექტების შესახებ!"
-      }
-    };
+  <script>
+    const texts = {
+      ru: {
+        about_heading: "👁️ Добро пожаловать!",
+        about_text: "Этот проект посвящён необычному взгляду на медицину — со стороны проктолога. Без шуток и со вкусом. Мы исследуем не то, что видно всем — а то, что <strong>скрыто от глаз</strong>. Наша цель — предоставить <strong>образовательный контент</strong>, который расширит ваше понимание о проктологии в доступной и профессиональной манере. Здесь вы найдете информацию, которая поможет развеять мифы и повысить осведомленность о важных аспектах здоровья.",
+        gallery_heading: "🖼️ Визуальная галерея",
+        gallery_text: "Изучите нашу коллекцию изображений, которая дополняет образовательный контент и предлагает уникальный взгляд на предмет исследования. Все изображения подобраны с целью <strong>информирования и просвещения</strong>.",
+        contact_heading: "📬 Связаться с нами",
+        contact_text: "У вас есть вопросы или предложения? Напишите нам напрямую в <strong>Telegram</strong> – мы всегда открыты для конструктивного диалога и готовы помочь.",
+        telegram_button: "💬 Перейти в Telegram чат",
+        telegram_note: "<em>(Нажимая на кнопку, вы будете перенаправлены в приложение или веб-версию Telegram)</em>",
+        footer_copyright: "&copy; 2025 Glaza Proktologa. Все права защищены. ",
+        footer_back_to_top: "Наверх",
+        nav_about: "О проекте",
+        nav_video: "Видеоматериалы",
+        nav_gallery: "Галерея изображений",
+        nav_contact: "Связаться с нами",
+        page_title: "Глаза Проктолога — Необычный Взгляд на Медицину",
+        meta_description: "Необычный взгляд на медицину — со стороны проктолога. Образовательные видео, увлекательная галерея и прямая связь через Telegram. Узнайте больше о скрытых аспектах здоровья!"
+      },
+      en: {
+        about_heading: "👁️ Welcome!",
+        about_text: "This project offers a unique perspective on medicine — from a proctologist's point of view. Without jokes and with taste. We explore not what everyone sees, but what is <strong>hidden from plain sight</strong>. Our goal is to provide <strong>educational content</strong> that will broaden your understanding of proctology in an accessible and professional manner. Here you will find information that will help dispel myths and raise awareness about important aspects of health.",
+        gallery_heading: "🖼️ Visual Gallery",
+        gallery_text: "Explore our collection of images that complements the educational content and offers a unique perspective on the subject. All images are selected for the purpose of <strong>informing and enlightening</strong>.",
+        contact_heading: "📬 Contact Us",
+        contact_text: "Do you have questions or suggestions? Write to us directly on <strong>Telegram</strong> – we are always open for constructive dialogue and ready to help.",
+        telegram_button: "💬 Go to Telegram Chat",
+        telegram_note: "<em>(By clicking the button, you will be redirected to the Telegram app or web version)</em>",
+        footer_copyright: "&copy; 2025 Glaza Proktologa. All rights reserved. ",
+        footer_back_to_top: "Back to Top",
+        nav_about: "About Project",
+        nav_video: "Videos",
+        nav_gallery: "Image Gallery",
+        nav_contact: "Contact Us",
+        page_title: "The Proctologist's Eyes — An Unusual Look at Medicine",
+        meta_description: "A unique perspective on medicine — from a proctologist's view. Educational videos, an engaging gallery, and direct contact via Telegram. Learn more about the hidden aspects of health!"
+      },
+      ka: {
+        about_heading: "👁️ მოგესალმებით!",
+        about_text: "ეს პროექტი ეძღვნება მედიცინის უჩვეულო ხედვას — პროქტოლოგის თვალით. ხუმრობის გარეშე და გემოვნებით. ჩვენ ვიკვლევთ არა იმას, რაც ყველასთვის ხილულია — არამედ იმას, რაც <strong>თვალისთვის მიუწვდომელია</strong>. ჩვენი მიზანია მოგაწოდოთ <strong>საგანმანათლებლო კონტენტი</strong>, რომელიც გააფართოებს თქვენს გაგებას პროქტოლოგიის შესახებ ხელმისაწვდომი და პროფესიონალური ფორმით. აქ ნახავთ ინფორმაციას, რომელიც დაგეხმარებათ გაფანტოთ მითები და გაზარდოთ ცნობიერება ჯანმრთელობის მნიშვნელოვანი ასპექტების შესახებ.",
+        gallery_heading: "🖼️ ვიზუალური გალერეა",
+        gallery_text: "დაათვალიერეთ ჩვენი სურათების კოლექცია, რომელიც ავსებს საგანმანათლებლო კონტენტს და გვთავაზობს უნიკალურ ხედვას კვლევის საგანზე. ყველა სურათი შერჩეულია <strong>ინფორმირებისა და განათლების</strong> მიზნით.",
+        contact_heading: "📬 დაგვიკავშირდით",
+        contact_text: "გაქვთ შეკითხვები или предложения? მოგვწერეთ პირდაპირ <strong>Telegram-ში</strong> – ჩვენ ყოველთვის ღია ვართ კონსტრუქციული диaloga для и მზად ვართ დაგეხმაროთ.",
+        telegram_button: "💬 Telegram ჩატში გადასვლა",
+        telegram_note: "<em>(ღილაკზე დაჭერით გადახვალთ Telegram აპლიკაციაში ან ვებ ვერსიაში)</em>",
+        footer_copyright: "&copy; 2025 Glaza Proktologa. ყველა უფლება დაცულია. ",
+        footer_back_to_top: "ზევით",
+        nav_about: "პროექტის შესახებ",
+        nav_video: "ვიდეოები",
+        nav_gallery: "გალერეა",
+        nav_contact: "კონტაქტი",
+        page_title: "პროქტოლოგის თვალები — მედიცინის უჩვეულო ხედვა",
+        meta_description: "მედიცინის უჩვეულო ხედვა — პროქტოლოგის თვალით. საგანმანათლებლო ვიდეოები, საინტერესო გალერეა და პირდაპირი კავშირი Telegram-ის საშუალებით. შეიტყვეთ მეტი ჯანმრთელობის ფარული ასპექტების შესახებ!"
+      }
+    };
 
-    // Function to play click sound
-    function playClickSound() {
-      const clickSound = document.getElementById('clickSound');
-      if (clickSound) {
-        clickSound.currentTime = 0; // Rewind to the start
-        clickSound.play();
-      }
-    }
+    // Function to play click sound
+    function playClickSound() {
+      const clickSound = document.getElementById('clickSound');
+      if (clickSound) {
+        clickSound.currentTime = 0; // Rewind to the start
+        clickSound.play();
+      }
+    }
 
-    function setLang(lang) {
-      // ... функция setLang остается без изменений ...
-      document.querySelector('html').setAttribute('lang', lang);
-      document.title = texts[lang].page_title;
-      document.querySelector('meta[name="description"]').setAttribute('content', texts[lang].meta_description);
-      document.querySelector('meta[property="og:description"]').setAttribute('content', texts[lang].meta_description);
-      document.querySelector('meta[property="og:title"]').setAttribute('content', texts[lang].page_title);
-      document.querySelector('meta[property="og:locale"]').setAttribute('content', lang === 'ru' ? 'ru_RU' : (lang === 'en' ? 'en_US' : 'ka_GE'));
+    function setLang(lang) {
+      // ... функция setLang остается без изменений ...
+      document.querySelector('html').setAttribute('lang', lang);
+      document.title = texts[lang].page_title;
+      document.querySelector('meta[name="description"]').setAttribute('content', texts[lang].meta_description);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', texts[lang].meta_description);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', texts[lang].page_title);
+      document.querySelector('meta[property="og:locale"]').setAttribute('content', lang === 'ru' ? 'ru_RU' : (lang === 'en' ? 'en_US' : 'ka_GE'));
 
-      document.querySelector('#about h2').innerHTML = texts[lang].about_heading;
-      document.querySelector('#about p').innerHTML = texts[lang].about_text;
-      
-      document.querySelector('#gallery h2').innerHTML = texts[lang].gallery_heading;
-      document.querySelector('#gallery p').innerHTML = texts[lang].gallery_text;
+      document.querySelector('#about h2').innerHTML = texts[lang].about_heading;
+      document.querySelector('#about p').innerHTML = texts[lang].about_text;
+      
+      document.querySelector('#gallery h2').innerHTML = texts[lang].gallery_heading;
+      document.querySelector('#gallery p').innerHTML = texts[lang].gallery_text;
 
-      document.querySelector('#contact h2').innerHTML = texts[lang].contact_heading;
-      document.querySelector('#contact > p:first-of-type').innerHTML = texts[lang].contact_text;
-      document.querySelector('.telegram-link span').innerText = texts[lang].telegram_button;
-      document.querySelector('.form-section p:last-of-type').style.color = 'var(--neon-green)'; 
-      document.querySelector('.form-section p:last-of-type').innerHTML = texts[lang].telegram_note;
+      document.querySelector('#contact h2').innerHTML = texts[lang].contact_heading;
+      document.querySelector('#contact > p:first-of-type').innerHTML = texts[lang].contact_text;
+      document.querySelector('.telegram-link span').innerText = texts[lang].telegram_button;
+      document.querySelector('.form-section p:last-of-type').style.color = 'var(--neon-green)'; 
+      document.querySelector('.form-section p:last-of-type').innerHTML = texts[lang].telegram_note;
 
-      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--neon-green); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`; 
+      document.querySelector('footer').innerHTML = texts[lang].footer_copyright + `<a href="#top" style="color: var(--neon-green); text-decoration: none; margin-left: 10px;">${texts[lang].footer_back_to_top}</a>`; 
 
-      document.querySelector('nav a[href="index.html#about"]').innerText = texts[lang].nav_about;
-      document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video;
-      document.querySelector('nav a[href="index.html#gallery"]').innerText = texts[lang].nav_gallery;
-      document.querySelector('nav a[href="index.html#contact"]').innerText = texts[lang].nav_contact;
-    }
+      document.querySelector('nav a[href="index.html#about"]').innerText = texts[lang].nav_about;
+      document.querySelector('nav a[href="video.html"]').innerText = texts[lang].nav_video;
+      document.querySelector('nav a[href="index.html#gallery"]').innerText = texts[lang].nav_gallery;
+      document.querySelector('nav a[href="index.html#contact"]').innerText = texts[lang].nav_contact;
+    }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        setLang('ru');
+    document.addEventListener('DOMContentLoaded', () => {
+        setLang('ru');
 
-        // --- СКРИПТЫ ДЛЯ ПРИВЕТСТВЕННОГО ЭКРАНА ---
-        const enterButton = document.getElementById('enter-button');
-        const welcomeScreen = document.getElementById('welcome-screen');
-        const body = document.body;
-        const volumeButton = document.getElementById('volume-control');
-        const greetingVideo = document.getElementById('greeting-video');
+        // --- СКРИПТЫ ДЛЯ ПРИВЕТСТВЕННОГО ЭКРАНА ---
+        const enterButton = document.getElementById('enter-button');
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const body = document.body;
+        const volumeButton = document.getElementById('volume-control');
+        const greetingVideo = document.getElementById('greeting-video');
 
-        // Логика для кнопки входа
-        enterButton.addEventListener('click', () => {
-            playClickSound(); // Play sound on button click
-            welcomeScreen.style.opacity = '0';
-            welcomeScreen.style.visibility = 'hidden';
-            body.classList.add('loaded');
-            setTimeout(() => { welcomeScreen.remove(); }, 1000);
-        });
+        // Логика для кнопки входа
+        enterButton.addEventListener('click', () => {
+            playClickSound(); // Play sound on button click
+            welcomeScreen.style.opacity = '0';
+            welcomeScreen.style.visibility = 'hidden';
+            body.classList.add('loaded');
+            setTimeout(() => { welcomeScreen.remove(); }, 1000);
+        });
 
-        // НОВАЯ ЛОГИКА ДЛЯ КНОПКИ ЗВУКА
-        volumeButton.addEventListener('click', () => {
-            playClickSound(); // Play sound on volume button click
-            if (greetingVideo.muted) {
-                greetingVideo.muted = false;
-                volumeButton.textContent = '🔊';
-            } else {
-                greetingVideo.muted = true;
-                volumeButton.textContent = '🔇';
-            }
-        });
+        // НОВАЯ ЛОГИКА ДЛЯ КНОПКИ ЗВУКА
+        volumeButton.addEventListener('click', () => {
+            playClickSound(); // Play sound on volume button click
+            if (greetingVideo.muted) {
+                greetingVideo.muted = false;
+                volumeButton.textContent = '🔊';
+            } else {
+                greetingVideo.muted = true;
+                volumeButton.textContent = '🔇';
+            }
+        });
 
-        // Add click sound to all navigation links
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', playClickSound);
-        });
+        // Add click sound to all navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', playClickSound);
+        });
 
-        // Add click sound to language switcher buttons
-        document.querySelectorAll('.lang-switcher button').forEach(button => {
-            button.addEventListener('click', playClickSound);
-        });
+        // Add click sound to language switcher buttons
+        document.querySelectorAll('.lang-switcher button').forEach(button => {
+            button.addEventListener('click', playClickSound);
+        });
 
-        // Add click sound to Telegram link
-        document.querySelector('.telegram-link').addEventListener('click', playClickSound);
-    });
-  </script>
+        // Add click sound to Telegram link
+        document.querySelector('.telegram-link').addEventListener('click', playClickSound);
+    });
+  </script>
 </body>
 </html>
