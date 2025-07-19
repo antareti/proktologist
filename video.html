@@ -167,6 +167,8 @@
             box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
             max-width: 800px;
             width: 100%;
+            overflow-y: auto; /* Добавлено для прокрутки плейлиста */
+            max-height: 400px; /* Ограничение высоты плейлиста для прокрутки */
         }
 
         .playlist-item {
@@ -174,12 +176,12 @@
             border: 2px solid rgba(26, 44, 66, 0.5);
             border-radius: var(--border-radius);
             overflow: hidden;
-            width: 180px; /* Увеличил ширину для размещения описания */
+            width: 180px; 
             background-color: rgba(10, 25, 47, 0.8);
             transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             display: flex;
-            flex-direction: column; /* Изменил на колонку для размещения описания под заголовком */
-            text-align: left; /* Выравнивание текста по левому краю */
+            flex-direction: column; 
+            text-align: left; 
         }
 
         .playlist-item:hover, .playlist-item.active {
@@ -199,22 +201,22 @@
             padding: 8px;
             font-size: 0.9em;
             color: var(--primary-text-color);
-            font-weight: bold; /* Сделал заголовок жирным */
+            font-weight: bold; 
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            line-height: 1.2; /* Улучшил межстрочный интервал */
+            line-height: 1.2; 
         }
 
         .playlist-item-description {
-            padding: 0 8px 8px; /* Добавил отступы для описания */
-            font-size: 0.8em; /* Уменьшил размер шрифта для описания */
-            color: rgba(226, 232, 240, 0.7); /* Сделал цвет немного светлее */
-            max-height: 3.6em; /* Ограничил высоту для 3 строк текста (примерно) */
+            padding: 0 8px 8px; 
+            font-size: 0.8em; 
+            color: rgba(226, 232, 240, 0.7); 
+            max-height: 3.6em; 
             overflow: hidden;
-            text-overflow: ellipsis; /* Добавил троеточие для длинных описаний */
+            text-overflow: ellipsis; 
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* Ограничение описания 3 строками */
+            -webkit-line-clamp: 3; 
             -webkit-box-orient: vertical;
         }
 
@@ -266,7 +268,7 @@
                 max-width: 100%;
             }
             .playlist-item {
-                width: 150px; /* Уменьшил ширину для меньших экранов */
+                width: 150px; 
             }
             .playlist-item video {
                 height: 80px;
@@ -386,20 +388,7 @@
                 }
             },
             {
-                src: "video/p.mp4",
-                title: {
-                    ru: "Пример нового видео: важные аспекты",
-                    en: "New Video Example: Important Aspects",
-                    ka: "ახალი ვიდეოს მაგალითი: მნიშვნელოვანი ასპექტები"
-                },
-                description: {
-                    ru: "Это демонстрационное видео, показывающее, как легко добавить новый контент в плейлист.",
-                    en: "This is a demo video showing how easy it is to add new content to the playlist.",
-                    ka: "ეს არის სადემონსტრაციო ვიდეო, რომელიც გვიჩვენებს, რამდენად ადვილია ახალი კონტენტის დამატება დასაკრავ სიაში."
-                }
-            },
-            {
-                src: "Video_Generisanje_Proktolog_i_žena.mp4", // Проверьте путь, если файл в корне, то не нужен "video/"
+                src: "video/Video_Generisanje_Proktolog_i_žena.mp4",
                 title: {
                     ru: "Нина у проктолога: особенности осмотра",
                     en: "Nina at the Proctologist: Examination Features",
@@ -412,7 +401,7 @@
                 }
             },
             {
-                src: "Video_Gotovo_Proktolog_i_Žena.mp4", // Проверьте путь
+                src: "video/Video_Gotovo_Proktolog_i_Žena.mp4",
                 title: {
                     ru: "Проктолог и женщина: комплексный подход",
                     en: "Proctologist and Woman: Comprehensive Approach",
@@ -425,7 +414,7 @@
                 }
             },
             {
-                src: "Video_je_gotovo_(1).mp4", // Проверьте путь
+                src: "video/Video_je_gotovo_(1).mp4",
                 title: {
                     ru: "Обзор заболеваний аноректальной области",
                     en: "Overview of Anorectal Diseases",
@@ -438,7 +427,7 @@
                 }
             },
             {
-                src: "Видео_готово_Популарно_видео.mp4", // Проверьте путь
+                src: "video/Видео_готово_Популарно_видео.mp4",
                 title: {
                     ru: "Популярное видео: ответы на вопросы",
                     en: "Popular Video: Q&A",
@@ -451,7 +440,7 @@
                 }
             },
             {
-                src: "Видео_готово_толстая_попа.mp4", // Проверьте путь
+                src: "video/Видео_готово_толстая_попа.mp4",
                 title: {
                     ru: "Визуальная демонстрация: анатомия и здоровье",
                     en: "Visual Demonstration: Anatomy and Health",
@@ -464,7 +453,7 @@
                 }
             },
             {
-                src: "Видео_је_готово_.mp4", // Проверьте путь
+                src: "video/Видео_је_готово_.mp4",
                 title: {
                     ru: "Советы по профилактике проктологических проблем",
                     en: "Tips for Preventing Proctological Problems",
@@ -507,12 +496,182 @@
                 title: {
                     ru: "Мифы и факты о проктологических заболеваниях",
                     en: "Myths and Facts about Proctological Diseases",
-                    ka: "მითები და ფაქტები პროქტოლოგიური დაავადებების შესახებ"
+                    ka: "მითები და ფაქты პროქтологиური დაავადებების შესახებ"
                 },
                 description: {
                     ru: "Развенчиваем популярные мифы и предоставляем проверенные факты о заболеваниях прямой кишки и ануса.",
                     en: "Debunking popular myths and providing verified facts about diseases of the rectum and anus.",
-                    ka: "ვამსხვრევთ პოპულარულ მითებს და გთავაზობთ დამოწმებულ ფაქტებს სწორი ნაწლავისა და ანუსის დაავადებების შესახებ."
+                    ka: "ვამსხვრევთ პოპულარულ მითებს и გთავაზობთ დამოწმებულ ფაქტებს სწორი ნაწლავისა და ანუსის დაავადებების შესახებ."
+                }
+            },
+            // Новые видео из вашего скриншота
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (1).mp4",
+                title: {
+                    ru: "Видео об обследовании (1)",
+                    en: "Examination Video (1)",
+                    ka: "გამოკვლევის ვიდეო (1)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (10).mp4",
+                title: {
+                    ru: "Видео об обследовании (10)",
+                    en: "Examination Video (10)",
+                    ka: "გამოკვლევის ვიდეო (10)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (11).mp4",
+                title: {
+                    ru: "Видео об обследовании (11)",
+                    en: "Examination Video (11)",
+                    ka: "გამოკვლევის ვიდეო (11)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (12).mp4",
+                title: {
+                    ru: "Видео об обследовании (12)",
+                    en: "Examination Video (12)",
+                    ka: "გამოკვლევის ვიდეო (12)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (2).mp4",
+                title: {
+                    ru: "Видео об обследовании (2)",
+                    en: "Examination Video (2)",
+                    ka: "გამოკვლევის ვიდეო (2)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (3).mp4",
+                title: {
+                    ru: "Видео об обследовании (3)",
+                    en: "Examination Video (3)",
+                    ka: "გამოკვლევის ვიდეო (3)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (4).mp4",
+                title: {
+                    ru: "Видео об обследовании (4)",
+                    en: "Examination Video (4)",
+                    ka: "გამოკვლევის ვიდეო (4)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (5).mp4",
+                title: {
+                    ru: "Видео об обследовании (5)",
+                    en: "Examination Video (5)",
+                    ka: "გამოკვლევის ვიდეო (5)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (6).mp4",
+                title: {
+                    ru: "Видео об обследовании (6)",
+                    en: "Examination Video (6)",
+                    ka: "გამოკვლევის ვიდეო (6)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (7).mp4",
+                title: {
+                    ru: "Видео об обследовании (7)",
+                    en: "Examination Video (7)",
+                    ka: "გამოკვლევის ვიდეო (7)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (8).mp4",
+                title: {
+                    ru: "Видео об обследовании (8)",
+                    en: "Examination Video (8)",
+                    ka: "გამოკვლევის ვიდეო (8)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (9).mp4",
+                title: {
+                    ru: "Видео об обследовании (9)",
+                    en: "Examination Video (9)",
+                    ka: "გამოკვლევის ვიდეო (9)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman.mp4",
+                title: {
+                    ru: "Видео об обследовании",
+                    en: "Examination Video",
+                    ka: "გამოკვლევის ვიდეო"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
                 }
             }
         ];
@@ -567,9 +726,7 @@
             videoList.forEach((video, index) => {
                 const playlistItem = document.createElement('div');
                 playlistItem.classList.add('playlist-item');
-                // Делаем первый элемент активным при загрузке
-                if(index === 0) playlistItem.classList.add('active');
-
+                
                 // Формируем title и description на нужном языке, с fallback на русский
                 const title = video.title[currentLang] || video.title.ru || "Видео";
                 const description = video.description[currentLang] || video.description.ru || "Описание отсутствует.";
@@ -591,6 +748,10 @@
             if (videoList.length > 0) {
                 setMainVideo(videoList[0].src);
                 updateActiveItem(0); // Убеждаемся, что первый элемент активен
+            } else {
+                // Если видео нет, можно показать сообщение или скрыть плеер
+                mainVideoPlayer.src = ""; // Очищаем источник видео
+                mainVideoPlayer.style.display = 'none'; // Скрываем плеер
             }
         }
 
