@@ -12,6 +12,7 @@
       --accent-color: #00bcd4; /* Cyan/Turquoise for accents */
       --accent-hover: #0097a7; /* Darker cyan on hover */
       --box-shadow-color: rgba(0, 188, 212, 0.6); /* Cyan glow */
+      --modal-bg: rgba(0, 0, 0, 0.85); /* Darker overlay for modal */
     }
 
     body {
@@ -122,6 +123,87 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
+    /* --- Modal Styles --- */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: var(--modal-bg); /* Black w/ opacity */
+      backdrop-filter: blur(5px); /* Optional: blur background */
+      -webkit-backdrop-filter: blur(5px); /* Safari support */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex; /* Show when active */
+      opacity: 1;
+    }
+
+    .modal-content {
+      position: relative;
+      margin: auto;
+      padding: 0;
+      max-width: 90%; /* Max width of the image */
+      max-height: 90%; /* Max height of the image */
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-color); /* Enhanced shadow and glow */
+      animation: zoomIn 0.3s forwards;
+    }
+
+    .modal-content img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 80vh; /* Viewport height */
+      display: block;
+      border-radius: 12px; /* Match gallery item border-radius */
+    }
+
+    .close-button {
+      color: var(--text-color);
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: var(--accent-color);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-caption {
+      color: #ccc;
+      font-size: 1.2rem;
+      padding: 10px 0;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      margin-top: -5px; /* Adjust to overlap border slightly */
+    }
+
+    /* Animations */
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .gallery-item img {
@@ -134,6 +216,14 @@
       p {
         font-size: 1rem;
       }
+      .modal-content img {
+        max-height: 70vh;
+      }
+      .close-button {
+        font-size: 30px;
+        top: 10px;
+        right: 15px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -143,6 +233,12 @@
       .gallery-item img {
         width: 100%; /* Full width on very small screens */
         height: 160px;
+      }
+      .modal-content {
+        max-width: 95%;
+      }
+      .modal-content img {
+        max-height: 60vh;
       }
     }
   </style>
@@ -217,5 +313,51 @@
     <p><a href="index.html" class="button">↩️ Вернуться на Главную</a></p>
     <p>&copy; 2025 Ваша Галерея. Все права защищены.</p>
   </footer>
+
+  <div id="imageModal" class="modal">
+    <span class="close-button">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="">
+      <div id="caption" class="modal-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      const captionText = document.getElementById('caption');
+      const closeButton = document.querySelector('.close-button');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          modal.classList.add('active'); // Активируем модальное окно
+          modalImage.src = img.src;
+          captionText.innerHTML = item.dataset.alt || img.alt; // Используем data-alt или alt текст
+        });
+      });
+
+      // Закрытие модального окна по клику на кнопку
+      closeButton.addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+
+      // Закрытие модального окна по клику вне изображения
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) { // Если клик был прямо по фону модального окна
+          modal.classList.remove('active');
+        }
+      });
+
+      // Закрытие модального окна по нажатию клавиши Esc
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('active')) {
+          modal.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
