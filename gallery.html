@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Галерея — Глаза Проктолога</title>
+  <style>
+    body {
+      background: url("8.jfif") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header, footer {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px lime;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 1rem;
+      background: lime;
+      padding: 12px 24px;
+      color: black;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    a.button:hover {
+      background: #6eff6e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🖼️ Галерея</h1>
+    <p>Здесь собраны странные и прекрасные изображения с пограничным смыслом.</p>
+  </header>
+
+  <main class="gallery">
+    <img src="image1.jpg" alt="Изображение 1">
+    <img src="image2.jpg" alt="Изображение 2">
+    <img src="image3.jpg" alt="Изображение 3">
+    <img src="image4.jpg" alt="Изображение 4">
+    <!-- Добавляй свои изображения -->
+  </main>
+
+  <footer>
+    <p><a href="index.html" class="button">🔙 Вернуться на главную</a></p>
+  </footer>
+</body>
+</html>
