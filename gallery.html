@@ -24,12 +24,18 @@
       gap: 1rem;
       padding: 2rem;
     }
+    .gallery a { /* Added style for the anchor around the image */
+        display: block; /* Make the link fill the image area */
+        border-radius: 10px; /* Apply border-radius to the link as well */
+        overflow: hidden; /* Hide overflowing parts if image scales */
+    }
     .gallery img {
       width: 280px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 0 15px lime;
       transition: transform 0.3s ease;
+      display: block; /* Ensure image behaves as a block element */
     }
     .gallery img:hover {
       transform: scale(1.05);
@@ -47,6 +53,48 @@
     a.button:hover {
       background: #6eff6e;
     }
+
+    /* Simple Lightbox CSS (example) */
+    .lightbox {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      display: block;
+      margin: auto;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .lightbox-close:hover,
+    .lightbox-close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    @keyframes zoom {
+      from {transform:scale(0)}
+      to {transform:scale(1)}
+    }
   </style>
 </head>
 <body>
@@ -56,31 +104,50 @@
   </header>
 
   <main class="gallery">
-    <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Gemini_Generated_Image_62xki062xki062xk.png">
-    <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Gemini_Generated_Image_69s8ru69s8ru69s8.png">
-    <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Gemini_Generated_Image_aa90gaa90gaa90ga.png">
-    <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Gemini_Generated_Image_i5glwxi5glwxi5gl.png">
-    <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Gemini_Generated_Image_npxsvonpxsvonpxs.png">
-    <img src="images/problembo-result-20250521163816.jpg" alt="problembo-result-20250521163816.jpg">
-    <img src="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (1) (2).png">
-    <img src="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (2) (2).png">
-    <img src="images/unnamed (13).png" alt="unnamed (13).png">
-    <img src="images/unnamed (14).png" alt="unnamed (14).png">
-    <img src="images/загружено (1).png" alt="загружено (1).png">
-    <img src="images/загружено (2).png" alt="загружено (2).png">
-    <img src="images/загружено - 2025-07-03T025415.003.png" alt="загружено - 2025-07-03T025415.003.png">
-    <img src="images/загружено - 2025-07-25T015108.377.png" alt="загружено - 2025-07-25T015108.377.png">
-    <img src="images/загружено - 2025-07-25T015230.005.png" alt="загружено - 2025-07-25T015230.005.png">
-    <img src="images/загружено - 2025-07-25T021635.562.png" alt="загружено - 2025-07-25T021635.562.png">
-    <img src="images/загружено - 2025-07-25T223651.520.png" alt="загружено - 2025-07-25T223651.520.png">
-    <img src="images/загружено - 2025-07-25T233313.351.png" alt="загружено - 2025-07-25T233313.351.png">
-    <img src="images/загружено - 2025-07-26T010922.599.png" alt="загружено - 2025-07-26T010922.599.png">
-    <img src="images/загружено.png" alt="загружено.png">
-
+    <a href="images/Gemini_Generated_Image_62xki062xki062xk.png" target="_blank">
+        <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Gemini_Generated_Image_62xki062xki062xk.png">
+    </a>
+    <a href="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" target="_blank">
+        <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Gemini_Generated_Image_69s8ru69s8ru69s8.png">
+    </a>
+    <a href="images/загружено.png" target="_blank">
+        <img src="images/загружено.png" alt="загружено.png">
+    </a>
   </main>
 
   <footer>
     <p><a href="index.html" class="button">🔙 Назад</a></p>
   </footer>
+
+  <div id="myLightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="img01">
+  </div>
+
+  <script>
+    // Simple JavaScript for basic lightbox functionality
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('myLightbox');
+    const lightboxImg = document.getElementById('img01');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    galleryImages.forEach(img => {
+      img.onclick = function() {
+        lightbox.style.display = "flex";
+        lightboxImg.src = this.src;
+      }
+    });
+
+    closeBtn.onclick = function() {
+      lightbox.style.display = "none";
+    }
+
+    // Close when clicking outside the image
+    lightbox.onclick = function(event) {
+        if (event.target === lightbox) {
+            lightbox.style.display = "none";
+        }
+    }
+  </script>
 </body>
 </html>
