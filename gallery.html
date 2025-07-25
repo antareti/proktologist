@@ -3,566 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Улучшенная Галерея</title>
+  <title>Галерея</title>
   <style>
-    :root {
-      --bg-color: #1a1a2e; /* Dark background */
-      --header-footer-bg: rgba(27, 27, 46, 0.95); /* Slightly lighter dark for sections */
-      --text-color: #e0e0e0; /* Light grey for text */
-      --accent-color: #00bcd4; /* Cyan/Turquoise for accents */
-      --accent-hover: #0097a7; /* Darker cyan on hover */
-      --box-shadow-color: rgba(0, 188, 212, 0.6); /* Cyan glow */
-      --modal-bg: rgba(0, 0, 0, 0.9); /* Darker overlay for modal */
-    }
-
     body {
-      background: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Segoe UI', Arial, sans-serif; /* Slightly more modern font */
+      background: #000;
+      color: white;
+      font-family: sans-serif;
       margin: 0;
       padding: 0;
       text-align: center;
-      line-height: 1.6;
-      overflow-x: hidden; /* Prevent horizontal scroll */
     }
-
     header, footer {
-      background: var(--header-footer-bg);
-      padding: 2rem 1.5rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Stronger shadow */
-      position: relative;
-      z-index: 10;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1.5rem;
     }
-
-    h1 {
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
-      font-size: 2.8rem; /* Slightly larger title */
-      text-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
-    }
-
-    p {
-      font-size: 1.15rem; /* Slightly larger paragraph text */
-      color: var(--text-color);
-    }
-
     .gallery {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 2rem; /* Increased gap for better spacing */
-      padding: 3rem 1rem;
-      max-width: 1300px; /* Wider gallery container */
-      margin: 0 auto;
+      gap: 1rem;
+      padding: 2rem;
     }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 15px; /* More rounded corners */
-      box-shadow: 0 0 25px var(--box-shadow-color); /* Enhanced glow */
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      cursor: pointer;
-      flex-basis: 300px; /* Default item width */
-      flex-shrink: 0;
-      flex-grow: 1;
-      max-width: 350px; /* Max width for individual items */
+    .gallery img {
+      width: 280px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px lime;
+      transition: transform 0.3s ease;
     }
-
-    .gallery-item:hover {
-      transform: translateY(-10px) scale(1.03); /* More pronounced lift and enlarge */
-      box-shadow: 0 10px 40px var(--box-shadow-color); /* Stronger glow on hover */
+    .gallery img:hover {
+      transform: scale(1.05);
     }
-
-    .gallery-item img {
-      width: 100%; /* Make image fill its container */
-      height: 220px; /* Slightly taller fixed height */
-      object-fit: cover;
-      display: block;
-      border-radius: 15px;
-      transition: transform 0.4s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.1); /* Stronger zoom on image itself */
-    }
-
-    .gallery-item::after {
-      content: attr(data-alt);
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.8); /* Darker overlay */
-      color: white;
-      padding: 1rem; /* More padding */
-      font-size: 1rem; /* Slightly larger font */
-      opacity: 0;
-      transform: translateY(100%);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      text-shadow: 0 0 5px rgba(0,0,0,0.5);
-    }
-
-    .gallery-item:hover::after {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     a.button {
       display: inline-block;
-      margin-top: 1.8rem; /* More margin */
-      background: var(--accent-color);
-      padding: 16px 35px; /* Even larger padding */
-      color: var(--bg-color);
+      margin-top: 1rem;
+      background: lime;
+      padding: 12px 24px;
+      color: black;
       text-decoration: none;
-      border-radius: 35px; /* More rounded button */
+      border-radius: 8px;
       font-weight: bold;
-      font-size: 1.2rem; /* Larger font */
-      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
-
     a.button:hover {
-      background: var(--accent-hover);
-      transform: translateY(-5px); /* More lift */
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    }
-
-    /* --- Modal Styles --- */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: var(--modal-bg);
-      backdrop-filter: blur(8px); /* Stronger blur */
-      -webkit-backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden; /* Hide completely when not active */
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .modal.active {
-      display: flex;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      position: relative;
-      padding: 0;
-      max-width: 95%; /* Even wider modal content */
-      max-height: 95%;
-      border-radius: 18px; /* More rounded */
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 40px var(--accent-color); /* Stronger shadows and glow */
-      transform: scale(0.9); /* Start slightly smaller for zoomIn effect */
-      opacity: 0;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .modal.active .modal-content {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    .modal-content img {
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 85vh; /* Larger max height for image */
-      display: block;
-      border-radius: 15px; /* Match modal content border-radius */
-    }
-
-    .close-button {
-      color: #fff; /* White color for close button */
-      position: absolute;
-      top: 15px;
-      right: 25px;
-      font-size: 45px; /* Larger close button */
-      font-weight: bold;
-      transition: 0.3s;
-      cursor: pointer;
-      text-shadow: 0 0 15px rgba(0, 0, 0, 0.8); /* More prominent shadow */
-      z-index: 1001;
-    }
-
-    .close-button:hover,
-    .close-button:focus {
-      color: var(--accent-color);
-      transform: scale(1.1);
-    }
-
-    .modal-caption {
-      color: #eee;
-      font-size: 1.3rem; /* Larger caption font */
-      padding: 12px 25px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6); /* Slightly darker caption background */
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      width: 100%;
-      box-sizing: border-box;
-      margin-top: -5px; /* Adjust to perfectly align with image */
-    }
-
-    .navigation-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      font-size: 2.5rem;
-      cursor: pointer;
-      user-select: none;
-      border-radius: 50%; /* Circular buttons */
-      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-      z-index: 1002; /* Above modal content */
-      width: 60px; /* Fixed width for consistent circle */
-      height: 60px; /* Fixed height */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1; /* Adjust line height for perfect centering */
-    }
-
-    .navigation-button:hover {
-      background: var(--accent-color);
-      color: var(--bg-color);
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    .prev-button {
-      left: 20px;
-    }
-
-    .next-button {
-      right: 20px;
-    }
-
-    .dots-container {
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      z-index: 1003;
-    }
-
-    .dot {
-      height: 12px;
-      width: 12px;
-      margin: 0 6px;
-      background-color: rgba(255, 255, 255, 0.4);
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .dot.active, .dot:hover {
-      background-color: var(--accent-color);
-      transform: scale(1.2);
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 992px) {
-      .gallery-item {
-        flex-basis: calc(50% - 1rem); /* 2 items per row on tablets */
-        max-width: calc(50% - 1rem);
-      }
-      h1 {
-        font-size: 2.4rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .gallery-item {
-        flex-basis: 90%; /* Single item per row on smaller tablets */
-        max-width: 400px; /* Still limit max width */
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-      .modal-content img {
-        max-height: 75vh;
-      }
-      .close-button {
-        font-size: 35px;
-        top: 10px;
-        right: 15px;
-      }
-      .navigation-button {
-        padding: 10px 15px;
-        font-size: 2rem;
-        width: 50px;
-        height: 50px;
-      }
-      .modal-caption {
-        font-size: 1rem;
-        padding: 10px 15px;
-      }
-      .dot {
-        height: 10px;
-        width: 10px;
-        margin: 0 4px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery {
-        padding: 1.5rem 0.5rem;
-      }
-      .gallery-item {
-        flex-basis: 100%;
-      }
-      .modal-content {
-        max-width: 98%;
-      }
-      .modal-content img {
-        max-height: 65vh;
-      }
-      .navigation-button {
-        font-size: 1.8rem;
-        width: 45px;
-        height: 45px;
-        padding: 0; /* Remove padding if not needed for centering */
-      }
-      .prev-button { left: 10px; }
-      .next-button { right: 10px; }
+      background: #6eff6e;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>✨ Ваша Потрясающая Галерея Изображений ✨</h1>
-    <p>Просто красивая коллекция ваших визуальных шедевров.</p>
+    <h1>🖼️ Галерея</h1>
+    <p>Автоматически собранная из папки <code>images/</code></p>
   </header>
 
   <main class="gallery">
-    <div class="gallery-item" data-alt="Изображение 1">
-      <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Gemini_Generated_Image_62xki062xki062xk.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 2">
-      <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Gemini_Generated_Image_69s8ru69s8ru69s8.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 3">
-      <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Gemini_Generated_Image_aa90gaa90gaa90ga.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 4">
-      <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Gemini_Generated_Image_i5glwxi5glwxi5gl.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 5">
-      <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Gemini_Generated_Image_npxsvonpxsvonpxs.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 6">
-      <img src="images/problembo-result-20250521163816.jpg" alt="problembo-result-20250521163816.jpg">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 7">
-      <img src="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (1) (2).png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 8">
-      <img src="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (2) (2).png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 9">
-      <img src="images/unnamed (13).png" alt="unnamed (13).png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 10">
-      <img src="images/unnamed (14).png" alt="unnamed (14).png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 11">
-      <img src="images/загружено (1).png" alt="загружено (1).png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 12">
-      <img src="images/загружено (2).png" alt="загружено (2).png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 13">
-      <img src="images/загружено - 2025-07-03T025415.003.png" alt="загружено - 2025-07-03T025415.003.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 14">
-      <img src="images/загружено - 2025-07-25T015108.377.png" alt="загружено - 2025-07-25T015108.377.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 15">
-      <img src="images/загружено - 2025-07-25T015230.005.png" alt="загружено - 2025-07-25T015230.005.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 16">
-      <img src="images/загружено - 2025-07-25T021635.562.png" alt="загружено - 2025-07-25T021635.562.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 17">
-      <img src="images/загружено - 2025-07-25T223651.520.png" alt="загружено - 2025-07-25T223651.520.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 18">
-      <img src="images/загружено - 2025-07-25T233313.351.png" alt="загружено - 2025-07-25T233313.351.png">
-    </div>
-    <div class="gallery-item" data-alt="Изображение 19">
-      <img src="images/загружено.png" alt="загружено.png">
-    </div>
+    <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Gemini_Generated_Image_62xki062xki062xk.png">
+    <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Gemini_Generated_Image_69s8ru69s8ru69s8.png">
+    <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Gemini_Generated_Image_aa90gaa90gaa90ga.png">
+    <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Gemini_Generated_Image_i5glwxi5glwxi5gl.png">
+    <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Gemini_Generated_Image_npxsvonpxsvonpxs.png">
+    <img src="images/problembo-result-20250521163816.jpg" alt="problembo-result-20250521163816.jpg">
+    <img src="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (1) (2).png">
+    <img src="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (2) (2).png">
+    <img src="images/unnamed (13).png" alt="unnamed (13).png">
+    <img src="images/unnamed (14).png" alt="unnamed (14).png">
+    <img src="images/загружено (1).png" alt="загружено (1).png">
+    <img src="images/загружено (2).png" alt="загружено (2).png">
+    <img src="images/загружено - 2025-07-03T025415.003.png" alt="загружено - 2025-07-03T025415.003.png">
+    <img src="images/загружено - 2025-07-25T015108.377.png" alt="загружено - 2025-07-25T015108.377.png">
+    <img src="images/загружено - 2025-07-25T015230.005.png" alt="загружено - 2025-07-25T015230.005.png">
+    <img src="images/загружено - 2025-07-25T021635.562.png" alt="загружено - 2025-07-25T021635.562.png">
+    <img src="images/загружено - 2025-07-25T223651.520.png" alt="загружено - 2025-07-25T223651.520.png">
+    <img src="images/загружено - 2025-07-25T233313.351.png" alt="загружено - 2025-07-25T233313.351.png">
+    <img src="images/загружено - 2025-07-26T010922.599.png" alt="загружено - 2025-07-26T010922.599.png">
+    <img src="images/загружено.png" alt="загружено.png">
+
   </main>
 
   <footer>
-    <p><a href="index.html" class="button">↩️ Вернуться на Главную</a></p>
-    <p>&copy; 2025 Ваша Галерея. Все права защищены.</p>
+    <p><a href="index.html" class="button">🔙 Назад</a></p>
   </footer>
-
-  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
-    <span class="close-button" role="button" aria-label="Закрыть" tabindex="0">&times;</span>
-    <button class="navigation-button prev-button" aria-label="Предыдущее изображение">&#10094;</button>
-    <button class="navigation-button next-button" aria-label="Следующее изображение">&#10095;</button>
-    <div class="modal-content">
-      <img id="modalImage" src="" alt="">
-      <div id="caption" class="modal-caption"></div>
-    </div>
-    <div class="dots-container"></div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const modal = document.getElementById('imageModal');
-      const modalImage = document.getElementById('modalImage');
-      const captionText = document.getElementById('caption');
-      const closeButton = document.querySelector('.close-button');
-      const gallery = document.querySelector('.gallery');
-      const galleryItems = Array.from(document.querySelectorAll('.gallery-item')); // Преобразуем в массив для индексации
-      const prevButton = document.querySelector('.prev-button');
-      const nextButton = document.querySelector('.next-button');
-      const dotsContainer = document.querySelector('.dots-container');
-
-      let currentImageIndex = 0;
-
-      // Функция для обновления модального окна
-      const updateModalContent = (index) => {
-        if (index < 0) {
-          index = galleryItems.length - 1; // Перейти к последнему изображению
-        } else if (index >= galleryItems.length) {
-          index = 0; // Перейти к первому изображению
-        }
-        currentImageIndex = index;
-
-        const currentItem = galleryItems[currentImageIndex];
-        const img = currentItem.querySelector('img');
-        modalImage.src = img.src;
-        captionText.innerHTML = currentItem.dataset.alt || img.alt;
-        updateDots();
-      };
-
-      // Открытие модального окна
-      const openModal = (index) => {
-        updateModalContent(index);
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        modal.focus(); // Установить фокус на модальное окно
-        document.body.style.overflow = 'hidden'; // Запретить прокрутку страницы
-      };
-
-      // Закрытие модального окна
-      const closeModal = () => {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = ''; // Разрешить прокрутку страницы
-        // Возвращаем фокус на тело документа или на элемент, с которого было открыто модальное окно
-        document.body.focus();
-      };
-
-      // Создание индикаторов-точек
-      const createDots = () => {
-        dotsContainer.innerHTML = ''; // Очищаем существующие точки
-        galleryItems.forEach((_, index) => {
-          const dot = document.createElement('span');
-          dot.classList.add('dot');
-          dot.setAttribute('aria-label', `Изображение ${index + 1}`);
-          dot.setAttribute('tabindex', '0'); // Сделать точки доступными для клавиатуры
-          dot.addEventListener('click', () => openModal(index));
-          dot.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              openModal(index);
-            }
-          });
-          dotsContainer.appendChild(dot);
-        });
-      };
-
-      // Обновление активной точки
-      const updateDots = () => {
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, index) => {
-          if (index === currentImageIndex) {
-            dot.classList.add('active');
-          } else {
-            dot.classList.remove('active');
-          }
-        });
-      };
-
-      // Инициализация точек при загрузке страницы
-      if (galleryItems.length > 0) {
-        createDots();
-      }
-
-      // Обработчик кликов по элементам галереи
-      gallery.addEventListener('click', (event) => {
-        const galleryItem = event.target.closest('.gallery-item');
-        if (galleryItem) {
-          const index = galleryItems.indexOf(galleryItem);
-          openModal(index);
-        }
-      });
-
-      // Обработчик клика на кнопку закрытия
-      closeButton.addEventListener('click', closeModal);
-      // Обработчик нажатия Enter/Space на кнопку закрытия для доступности
-      closeButton.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          closeModal();
-        }
-      });
-
-      // Обработчик клика вне изображения (на фон модального окна)
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-          closeModal();
-        }
-      });
-
-      // Обработчик нажатия клавиш Esc, Left, Right
-      document.addEventListener('keydown', (event) => {
-        if (modal.classList.contains('active')) {
-          if (event.key === 'Escape') {
-            closeModal();
-          } else if (event.key === 'ArrowLeft') {
-            updateModalContent(currentImageIndex - 1);
-          } else if (event.key === 'ArrowRight') {
-            updateModalContent(currentImageIndex + 1);
-          }
-        }
-      });
-
-      // Обработчики для кнопок навигации (предыдущее/следующее)
-      prevButton.addEventListener('click', () => {
-        updateModalContent(currentImageIndex - 1);
-      });
-      nextButton.addEventListener('click', () => {
-        updateModalContent(currentImageIndex + 1);
-      });
-    });
-  </script>
 </body>
 </html>
