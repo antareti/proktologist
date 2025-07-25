@@ -25,37 +25,31 @@
     }
 
     header {
-      /* Удаляем padding, чтобы изображение занимало больше места */
-      padding: 0;
-      /* Устанавливаем минимальную высоту для шапки, чтобы было видно изображение */
-      min-height: 250px; /* Вы можете изменить это значение по вашему усмотрению */
+      padding: 2rem; /* Вернул оригинальный padding */
       
       background: url("ChatGPT Image 25 июл. 2025 г., 21_41_03.png") no-repeat center center;
-      background-size: contain; /* Изменено с 'cover' на 'contain' */
-      /* 'contain' гарантирует, что изображение полностью поместится в контейнере, сохраняя пропорции.
-         Возможно появление пустых областей по краям, если пропорции изображения и контейнера не совпадают.
-         Если вы хотите, чтобы изображение заполняло всю ширину, используйте '100% auto;'. */
-      
+      background-size: 1600px auto; /* Ширина 1600px, высота автоматически по пропорциям */
+      background-position: center center; /* Центрируем изображение */
+
       color: white; 
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
 
-      /* Добавляем flexbox для центрирования содержимого внутри шапки */
+      /* Эти свойства помогут центрировать текст внутри шапки */
       display: flex;
-      flex-direction: column; /* Элементы будут располагаться вертикально */
-      justify-content: center; /* Центрирование по вертикали */
-      align-items: center; /* Центрирование по горизонтали */
-      text-align: center; /* Убеждаемся, что текст тоже по центру */
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      text-align: center; 
     }
 
     /* Добавляем стили для заголовков внутри header, чтобы они не были слишком большими */
     header h1 {
-      font-size: 3rem; /* Можно оставить как есть или уменьшить, если текст слишком большой */
-      margin-bottom: 0.5rem; /* Немного отступа снизу */
+      font-size: 3rem; 
+      margin-bottom: 0.5rem; 
     }
     header p {
-        margin-top: 0; /* Убираем лишний отступ сверху */
+        margin-top: 0; 
     }
-
 
     .cta-button {
       background: var(--neon-green);
