@@ -32,22 +32,13 @@
             overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
             opacity: 0; /* Начальная прозрачность для эффекта появления */
             transition: opacity 1s ease-out; /* Плавное появление body */
-            
-            /* Фоновое изображение для всей страницы */
-            background-image: url("2025-07-26T220740.567.png"); /* Ваше новое изображение */
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: cover;
-            filter: hue-rotate(270deg) brightness(0.7); /* Сиреневый оттенок и небольшое затемнение */
-            z-index: -2; /* Помещаем под body::before */
         }
 
         body.loaded {
             opacity: 1; /* Полная прозрачность после загрузки DOM */
         }
 
-        /* Дополнительный слой для затемнения/градиента поверх изображения */
+        /* Фоновый градиент для всей страницы, имитирующий сиреневое свечение */
         body::before {
             content: "";
             position: fixed;
@@ -56,7 +47,8 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(to bottom right, #1a002a, #0a0014); /* Более темный сиреневый градиент */
-            opacity: 0.7; /* Более насыщенный фон */
+            background-size: cover;
+            opacity: 1; /* Полностью непрозрачный фон */
             z-index: -1; /* Помещаем фон под контент */
         }
 
@@ -88,9 +80,6 @@
                          0 0 20px var(--neon-purple),
                          0 0 40px var(--neon-purple),
                          0 0 80px var(--shadow-dark);
-            /* Убрал старый background-image для текста, так как он не сиреневый */
-            /* background: url("ChatGPT Image 25 июл. 2025 г., 21_41_03.png") no-repeat center center; */
-            /* background-size: contain; */
             -webkit-background-clip: text; /* Обрезаем фон по контуру текста */
             background-clip: text;
 
