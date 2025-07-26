@@ -1,35 +1,483 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Глаза проктолога</title>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Глаза Проктолога | Главная</title>
+    <link rel="stylesheet" href="styles.css" />
     <style>
-      body {
-        background-color: #111;
-        color: #eee;
-        font-family: 'Courier New', monospace;
-        text-align: center;
-        padding: 40px;
-      }
-      a.button {
-        display: inline-block;
-        margin-top: 30px;
-        padding: 12px 24px;
-        background: #f55;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 6px;
-      }
-      a.button:hover {
-        background: #d33;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>👁 Глаза проктолога</h1>
-    <p>Это сайт, который видит всё. Особенно то, что другие стараются не замечать.</p>
+        /* Переменные CSS для удобства изменения цветов */
+        :root {
+            --neon-green: #39ff14; /* Яркий неоновый зеленый */
+            --neon-green-hover: #6eff6e; /* Светлее при наведении */
+            --button-text-color: #000000; /* Черный текст для кнопок */
+            --bg-dark: #0a0a0a; /* Очень темный фон */
+            --text-light: #e0e0e0; /* Светлый текст */
+            --border-radius-main: 15px; /* Основной радиус скругления */
+            --shadow-light: rgba(0, 255, 0, 0.4); /* Светлая тень для неонового эффекта */
+            --shadow-dark: rgba(0, 255, 0, 0.7); /* Темная тень для неонового эффекта */
+        }
 
-    <a class="button" href="proktobot.html">🤖 Проконсультироваться у Бота Проктолога</a>
-  </body>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif; /* Более современный шрифт */
+            background: var(--bg-dark); /* Темный фон */
+            color: var(--text-light); /* Светлый текст */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            line-height: 1.6;
+            display: flex; /* Для флексбокс-структуры */
+            flex-direction: column; /* Элементы идут сверху вниз */
+            min-height: 100vh; /* Минимальная высота на весь экран */
+            overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+            opacity: 0; /* Начальная прозрачность для эффекта появления */
+            transition: opacity 1s ease-out; /* Плавное появление body */
+        }
+
+        body.loaded {
+            opacity: 1; /* Полная прозрачность после загрузки DOM */
+        }
+
+        /* Фоновое изображение для всей страницы */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("8.jfif") no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.3; /* Более приглушенный фон, чтобы контент был читаемым */
+            z-index: -1; /* Помещаем фон под контент */
+        }
+
+        header {
+            padding: 2rem 1rem;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)); /* Плавный темный градиент */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Более выразительная тень */
+            position: relative;
+            z-index: 1; /* Убеждаемся, что шапка над фоном */
+            min-height: 250px; /* Минимальная высота для заголовка */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Стили для заголовка, который будет содержать фоновое изображение */
+        header h1 {
+            font-size: 4.5rem; /* Очень большой шрифт для акцента */
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            font-weight: bold;
+            color: transparent; /* Делаем текст прозрачным, чтобы видеть фон */
+            -webkit-text-stroke: 2px var(--neon-green); /* Неоновый контур текста */
+            text-stroke: 2px var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green), /* Неоновое свечение */
+                         0 0 20px var(--neon-green),
+                         0 0 40px var(--neon-green),
+                         0 0 80px var(--shadow-dark);
+            background: url("ChatGPT Image 25 июл. 2025 г., 21_41_03.png") no-repeat center center; /* Фоновое изображение для текста */
+            background-size: contain; /* Изображение будет внутри текста */
+            -webkit-background-clip: text; /* Обрезаем фон по контуру текста */
+            background-clip: text;
+
+            animation: neonPulse 1.5s infinite alternate; /* Анимация неонового пульса */
+            display: inline-block; /* Необходимо для background-clip: text */
+            white-space: nowrap; /* Чтобы текст не переносился */
+            max-width: 90%; /* Ограничение ширины для адаптивности */
+        }
+
+        @keyframes neonPulse {
+            from {
+                text-shadow: 0 0 10px var(--neon-green),
+                             0 0 20px var(--neon-green),
+                             0 0 30px var(--neon-green),
+                             0 0 40px var(--shadow-dark);
+                filter: brightness(1);
+            }
+            to {
+                text-shadow: 0 0 15px var(--neon-green),
+                             0 0 25px var(--neon-green),
+                             0 0 50px var(--neon-green),
+                             0 0 100px var(--shadow-dark);
+                filter: brightness(1.2);
+            }
+        }
+
+        header p {
+            margin-top: 1rem;
+            font-size: 1.3rem; /* Чуть крупнее подзаголовок */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            color: var(--text-light); /* Убеждаемся, что цвет текста виден */
+        }
+
+        main {
+            flex-grow: 1; /* Занимает все доступное пространство между шапкой и футером */
+            padding: 2rem 0; /* Отступ сверху и снизу для содержимого */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem; /* Отступ между секциями */
+        }
+
+        section {
+            padding: 2.5rem 1.5rem; /* Больше отступов внутри секций */
+            background: rgba(15, 15, 25, 0.85); /* Более плотный, но полупрозрачный фон для секций */
+            margin: 0 1rem; /* Убираем верхний/нижний margin, оставляем боковые */
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2), 0 0 40px rgba(0, 255, 0, 0.1); /* Мягкое неоновое свечение вокруг секций */
+            max-width: 900px; /* Ограничиваем ширину секций */
+            width: 100%; /* Занимает всю доступную ширину */
+            box-sizing: border-box; /* Учитываем padding в ширине */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px); /* Небольшой подъем при наведении */
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.4), 0 0 60px rgba(0, 255, 0, 0.2);
+        }
+
+        section h2 {
+            color: var(--neon-green);
+            font-size: 2.5rem; /* Крупнее заголовки секций */
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px var(--neon-green);
+        }
+
+        section p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px; /* Ограничиваем ширину текста для читаемости */
+            margin: 0.8rem auto;
+        }
+
+        #cta-buttons div {
+            display: flex;
+            flex-wrap: wrap; /* Перенос на новую строку */
+            justify-content: center;
+            gap: 1.2rem; /* Увеличенный отступ между кнопками */
+            margin-top: 2rem; /* Больше отступ сверху */
+        }
+
+        .cta-button {
+            background: var(--neon-green);
+            color: var(--button-text-color);
+            padding: 16px 32px; /* Увеличенные отступы */
+            font-size: 1.3rem; /* Крупнее шрифт кнопки */
+            font-weight: bold;
+            border-radius: 50px; /* Сильно скругленные кнопки (pill shape) */
+            text-decoration: none;
+            box-shadow: 0 8px 20px var(--shadow-light); /* Усиленная тень */
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
+            position: relative;
+            overflow: hidden; /* Для эффекта света */
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent); /* Эффект "света" */
+            transition: all 0.5s;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 100%; /* Пробег света при наведении */
+        }
+
+        .cta-button:hover {
+            background: var(--neon-green-hover);
+            transform: translateY(-5px); /* Больше подъем */
+            box-shadow: 0 12px 30px var(--shadow-dark); /* Ещё сильнее тень */
+            color: var(--bg-dark); /* Убедимся, что цвет текста остается читаемым */
+        }
+
+        footer {
+            padding: 1.5rem; /* Больше отступа */
+            background: rgba(0, 0, 0, 0.7); /* Темнее фон футера */
+            margin-top: auto; /* Прикрепит футер к низу страницы */
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5); /* Тень снизу */
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7); /* Чуть более приглушенный текст */
+        }
+
+        /* --- Стили для видео --- */
+        #video-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; /* Отступ между заголовком, описанием и видео */
+        }
+
+        #video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius-main); /* Скругленные углы видео */
+            box-shadow: 0 0 25px var(--neon-green), 0 0 50px var(--shadow-dark); /* Неоновая тень вокруг видео */
+            transition: box-shadow 0.3s ease;
+        }
+
+        #video-container:hover {
+            box-shadow: 0 0 35px var(--neon-green-hover), 0 0 70px var(--shadow-dark);
+        }
+
+        #video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Видео будет покрывать весь контейнер */
+            border-radius: var(--border-radius-main); /* Унаследуем скругление от контейнера */
+        }
+
+        /* --- Стили для рекламного блока Freecash --- */
+        #freecash-promo {
+            padding: 2.5rem 1.5rem;
+            background: rgba(25, 10, 25, 0.9); /* Более темный фон для выделения */
+            margin: 0 1rem;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 30px rgba(255, 200, 0, 0.5), 0 0 60px rgba(255, 200, 0, 0.3); /* Желто-оранжевая неоновая тень */
+            max-width: 900px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer; /* Показываем, что блок кликабелен */
+        }
+
+        #freecash-promo:hover {
+            transform: scale(1.02) translateY(-7px); /* Легкое увеличение и подъем */
+            box-shadow: 0 0 45px rgba(255, 200, 0, 0.7), 0 0 90px rgba(255, 200, 0, 0.5); /* Усиленное свечение */
+        }
+
+        #freecash-promo h2 {
+            color: #FFD700; /* Золотисто-желтый цвет для заголовка */
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
+            animation: neonShine 2s infinite alternate; /* Анимация свечения */
+        }
+
+        @keyframes neonShine {
+            from {
+                text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
+            }
+            to {
+                text-shadow: 0 0 15px #FFD700, 0 0 30px rgba(255, 200, 0, 1), 0 0 40px rgba(255, 200, 0, 0.5);
+            }
+        }
+
+        #freecash-promo p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin: 1rem auto 1.5rem;
+            max-width: 750px;
+        }
+
+        #freecash-promo .cta-button {
+            /* Переопределяем некоторые стили для кнопки Freecash, если нужно */
+            background: #FFD700; /* Золотой цвет кнопки */
+            color: var(--bg-dark); /* Темный текст на кнопке */
+            box-shadow: 0 8px 25px rgba(255, 200, 0, 0.6);
+            padding: 18px 36px; /* Чуть больше кнопка */
+            font-size: 1.4rem;
+        }
+
+        #freecash-promo .cta-button:hover {
+            background: #ffe65e; /* Более светлый золотой при наведении */
+            box-shadow: 0 12px 35px rgba(255, 200, 0, 0.9);
+        }
+
+        /* Медиа-запросы для адаптивности */
+        @media (max-width: 1200px) {
+            header h1 {
+                font-size: 3.8rem;
+            }
+            #freecash-promo h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            section h2 {
+                font-size: 2rem;
+            }
+            .cta-button {
+                font-size: 1.2rem;
+                padding: 14px 28px;
+            }
+            #freecash-promo h2 {
+                font-size: 2.2rem;
+            }
+            #freecash-promo p {
+                font-size: 1.1rem;
+            }
+            #freecash-promo .cta-button {
+                font-size: 1.3rem;
+                padding: 16px 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 1rem;
+            }
+            header h1 {
+                font-size: 2.5rem;
+                -webkit-text-stroke: 1.5px var(--neon-green);
+                text-stroke: 1.5px var(--neon-green);
+            }
+            header p {
+                font-size: 1.1rem;
+            }
+            main {
+                padding: 1.5rem 0;
+                gap: 1.5rem;
+            }
+            section {
+                padding: 2rem 1rem;
+                margin: 0 0.8rem;
+            }
+            section h2 {
+                font-size: 1.8rem;
+            }
+            section p {
+                font-size: 1rem;
+            }
+            #cta-buttons div {
+                gap: 0.8rem;
+            }
+            .cta-button {
+                font-size: 1.1rem;
+                padding: 12px 24px;
+            }
+            #freecash-promo h2 {
+                font-size: 1.8rem;
+            }
+            #freecash-promo p {
+                font-size: 1rem;
+            }
+            #freecash-promo .cta-button {
+                font-size: 1.2rem;
+                padding: 14px 28px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 2rem;
+                word-wrap: break-word;
+                white-space: normal;
+            }
+            header p {
+                font-size: 0.9rem;
+            }
+            section {
+                margin: 0 0.5rem;
+                padding: 1.5rem 0.8rem;
+            }
+            section h2 {
+                font-size: 1.5rem;
+            }
+            .cta-button {
+                width: calc(100% - 2rem);
+                margin: 0.5rem 1rem;
+                box-sizing: border-box;
+            }
+            #cta-buttons div {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            #freecash-promo h2 {
+                font-size: 1.5rem;
+            }
+            #freecash-promo p {
+                font-size: 0.95rem;
+            }
+            #freecash-promo .cta-button {
+                font-size: 1.1rem;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>☢Глаза Проктолога☢</h1>
+        <p>Странный, но запоминающийся проект.</p>
+    </header>
+
+    <main>
+        <section id="intro">
+            <h2>Кратко о проекте</h2>
+            <p>Мы исследуем границы человеческого восприятия с лёгким налётом абсурда. Приготовьтесь к неожиданным открытиям!</p>
+        </section>
+
+        <section id="video-section">
+            <h2>🎥 Наши Видеоматериалы</h2>
+            <p>Погрузитесь в атмосферу проекта с помощью нашего последнего видео.</p>
+            <div id="video-container">
+                <video controls muted playsinline poster="preview.jpg">
+                    <source src="0726.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео HTML5.
+                </video>
+            </div>
+        </section>
+
+        <a href="https://freecash.com/r/109739007749326754105" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block; width: 100%; max-width: 900px; margin: 0 auto;">
+            <section id="freecash-promo">
+                <h2>💰 Заработай Реальные Деньги Онлайн!</h2>
+                <p>Ищете способ получить немного дополнительного дохода, не отрываясь от своих увлечений? Freecash предлагает простые задания и опросы, за которые вы получаете реальные деньги. **Присоединяйтесь к сообществу, которое уже заработало миллионы!**</p>
+                <span class="cta-button">🚀 Начать Зарабатывать Сейчас!</span>
+            </section>
+        </a>
+        <section id="cta-buttons">
+            <h2>🚀 Присоединяйтесь прямо сейчас</h2>
+            <p>Выберите действие, которое вас интересует:</p>
+            <div>
+                <a href="video.html" class="cta-button">📺 Смотреть видео</a>
+                <a href="gallery.html" class="cta-button">🖼️ Перейти в галерею</a>
+                <a href="proktobot.html" class="cta-button">🤖 Бот Проктолог</a>
+                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="cta-button">💬 Задать вопрос</a>
+                <a href="index.html#contact" class="cta-button">📬 Связаться</a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Контакты</h2>
+            <p>Если у вас возникли вопросы или предложения, мы всегда на связи! Пишите нам в Telegram.</p>
+            <p>
+                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="cta-button">Наш Telegram-канал</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Глаза Проктолога. Все права защищены, как минимум, здравым смыслом.</p>
+    </footer>
+
+    <script>
+        // Добавляем класс 'loaded' к body после загрузки DOM
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("loaded");
+        });
+    </script>
+    <audio id="background-music" src="5.mp3" loop autoplay></audio>
+</body>
 </html>
