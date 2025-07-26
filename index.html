@@ -20,7 +20,7 @@
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif; /* Более современный шрифт */
-            background: var(--bg-dark); /* Темный фон */
+            background-color: var(--bg-dark); /* Темный основной фон на случай, если изображение не загрузится */
             color: var(--text-light); /* Светлый текст */
             margin: 0;
             padding: 0;
@@ -38,7 +38,7 @@
             opacity: 1; /* Полная прозрачность после загрузки DOM */
         }
 
-        /* Фоновый градиент для всей страницы, имитирующий сиреневое свечение */
+        /* Фоновое изображение для всей страницы с сиреневым оттенком */
         body::before {
             content: "";
             position: fixed;
@@ -46,9 +46,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom right, #1a002a, #0a0014); /* Более темный сиреневый градиент */
+            background-image: url("2025-07-26T220740.567.png"); /* Ваше изображение */
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
             background-size: cover;
-            opacity: 1; /* Полностью непрозрачный фон */
+            filter: hue-rotate(270deg) brightness(0.7); /* Сиреневый оттенок и небольшое затемнение */
+            opacity: 0.7; /* Небольшая прозрачность, чтобы основной фон просвечивал, если надо */
             z-index: -1; /* Помещаем фон под контент */
         }
 
