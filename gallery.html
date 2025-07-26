@@ -5,51 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Галерея</title>
     <style>
+        /* Переменные CSS для удобства изменения цветов */
+        :root {
+            --neon-purple: #8A2BE2; /* Яркий неоновый фиолетовый (Blue Violet) */
+            --neon-purple-hover: #AB6BEF; /* Светлее сиреневый при наведении */
+            --button-text-color: #ffffff; /* Белый текст для кнопок */
+            --bg-dark: #0f001a; /* Очень темный фон с фиолетовым оттенком */
+            --text-light: #e0e0e0; /* Светлый текст */
+            --border-radius-main: 15px; /* Основной радиус скругления */
+            --shadow-light: rgba(138, 43, 226, 0.4); /* Светлая сиреневая тень */
+            --shadow-dark: rgba(138, 43, 226, 0.7); /* Темная сиреневая тень */
+            --header-footer-bg: rgba(20, 0, 40, 0.85); /* Фон для шапки и футера */
+        }
+
         body {
-            background: #000;
-            color: white;
-            font-family: sans-serif;
+            background: var(--bg-dark); /* Темный фон */
+            color: var(--text-light); /* Светлый текст */
+            font-family: 'Segoe UI', Arial, sans-serif; /* Более современный шрифт */
             margin: 0;
             padding: 0;
             text-align: center;
             overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+            min-height: 100vh; /* Минимальная высота на весь экран */
+            display: flex;
+            flex-direction: column;
         }
+
+        /* Фоновый градиент для всей страницы */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #1a002a, #0a0014); /* Более темный сиреневый градиент */
+            background-size: cover;
+            opacity: 0.7;
+            z-index: -1; /* Помещаем фон под контент */
+        }
+
         header, footer {
-            background: rgba(0, 0, 0, 0.7);
+            background: var(--header-footer-bg);
             padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для объема */
+            position: relative;
+            z-index: 10; /* Убеждаемся, что шапка/футер поверх фона */
         }
+        
+        header h1 {
+            color: var(--neon-purple);
+            font-size: 2.8rem; /* Чуть крупнее заголовок */
+            text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--shadow-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem; /* Увеличенный отступ между изображениями */
             padding: 2rem;
+            flex-grow: 1; /* Галерея займет доступное пространство */
         }
+
         .gallery img {
             width: 280px;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 15px lime;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 15px var(--neon-purple); /* Сиреневая тень */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer; /* Показываем, что элемент кликабелен */
+            border: 2px solid var(--neon-purple); /* Сиреневая рамка */
         }
+
         .gallery img:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 25px lime; /* Более сильное свечение при наведении */
+            box-shadow: 0 0 25px var(--neon-purple-hover), 0 0 40px var(--shadow-dark); /* Более сильное сиреневое свечение при наведении */
         }
+
         a.button {
             display: inline-block;
             margin-top: 1rem;
-            background: lime;
-            padding: 12px 24px;
-            color: black;
+            background: var(--neon-purple); /* Сиреневая кнопка */
+            padding: 14px 28px; /* Увеличенные отступы */
+            color: var(--button-text-color); /* Белый текст кнопки */
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 50px; /* Более скругленные кнопки */
             font-weight: bold;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow-light); /* Тень кнопки */
         }
+
         a.button:hover {
-            background: #6eff6e;
+            background: var(--neon-purple-hover); /* Светлее сиреневый при наведении */
+            transform: translateY(-3px); /* Небольшой подъем */
+            box-shadow: 0 8px 20px var(--shadow-dark); /* Усиленная тень */
         }
 
         /* --- Стили для Лайтбокса --- */
@@ -60,7 +117,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85); /* Полупрозрачный черный фон */
+            background: rgba(0, 0, 0, 0.9); /* Более плотный полупрозрачный черный фон */
             z-index: 1000; /* Поверх всего остального контента */
             align-items: center; /* Центрируем изображение по вертикали */
             justify-content: center; /* Центрируем изображение по горизонтали */
@@ -71,9 +128,9 @@
         .lightbox img {
             max-width: 90%; /* Максимальная ширина изображения в лайтбоксе */
             max-height: 90vh; /* Максимальная высота изображения в лайтбоксе */
-            border: 5px solid lime; /* Рамка вокруг изображения */
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); /* Яркое неоновое свечение */
+            border: 5px solid var(--neon-purple); /* Сиреневая рамка вокруг изображения */
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 30px var(--neon-purple-hover), 0 0 60px var(--shadow-dark); /* Яркое неоновое сиреневое свечение */
             display: block; /* Убираем лишние пробелы под img */
             animation: fadeInScale 0.3s ease-out; /* Анимация появления */
         }
@@ -94,16 +151,49 @@
             position: absolute;
             top: 20px;
             right: 30px;
-            color: lime;
+            color: var(--neon-purple); /* Сиреневый цвет */
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
-            text-shadow: 0 0 10px lime;
+            text-shadow: 0 0 10px var(--neon-purple);
             transition: text-shadow 0.3s ease;
         }
 
         .lightbox .close-button:hover {
-            text-shadow: 0 0 20px lime, 0 0 30px lime;
+            text-shadow: 0 0 20px var(--neon-purple-hover), 0 0 30px var(--shadow-dark);
+        }
+
+        /* Медиа-запросы для адаптивности */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            .gallery {
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+            .gallery img {
+                width: 250px;
+            }
+            a.button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .lightbox .close-button {
+                font-size: 30px;
+                top: 15px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .gallery img {
+                width: 100%; /* На маленьких экранах изображения занимают всю ширину */
+                max-width: 280px; /* Но не больше исходной ширины */
+            }
         }
     </style>
 </head>
