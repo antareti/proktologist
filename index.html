@@ -8,14 +8,14 @@
     <style>
         /* Переменные CSS для удобства изменения цветов */
         :root {
-            --neon-green: #39ff14; /* Яркий неоновый зеленый */
-            --neon-green-hover: #6eff6e; /* Светлее при наведении */
-            --button-text-color: #000000; /* Черный текст для кнопок */
-            --bg-dark: #0a0a0a; /* Очень темный фон */
+            --neon-purple: #8A2BE2; /* Яркий неоновый фиолетовый (Blue Violet) */
+            --neon-purple-hover: #AB6BEF; /* Светлее сиреневый при наведении */
+            --button-text-color: #ffffff; /* Белый текст для кнопок, чтобы лучше контрастировал с сиреневым */
+            --bg-dark: #0f001a; /* Очень темный фон с фиолетовым оттенком */
             --text-light: #e0e0e0; /* Светлый текст */
             --border-radius-main: 15px; /* Основной радиус скругления */
-            --shadow-light: rgba(0, 255, 0, 0.4); /* Светлая тень для неонового эффекта */
-            --shadow-dark: rgba(0, 255, 0, 0.7); /* Темная тень для неонового эффекта */
+            --shadow-light: rgba(138, 43, 226, 0.4); /* Светлая сиреневая тень для неонового эффекта */
+            --shadow-dark: rgba(138, 43, 226, 0.7); /* Темная сиреневая тень для неонового эффекта */
         }
 
         body {
@@ -46,9 +46,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("8.jfif") no-repeat center center fixed;
+            /* Если есть фоновое изображение, которое хорошо сочетается с сиреневым, используйте его */
+            /* background: url("8.jfif") no-repeat center center fixed; */
+            background: linear-gradient(to bottom right, #1a002a, #0a0014); /* Более темный сиреневый градиент */
             background-size: cover;
-            opacity: 0.3; /* Более приглушенный фон, чтобы контент был читаемым */
+            opacity: 0.7; /* Более насыщенный фон */
             z-index: -1; /* Помещаем фон под контент */
         }
 
@@ -74,14 +76,15 @@
             line-height: 1;
             font-weight: bold;
             color: transparent; /* Делаем текст прозрачным, чтобы видеть фон */
-            -webkit-text-stroke: 2px var(--neon-green); /* Неоновый контур текста */
-            text-stroke: 2px var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green), /* Неоновое свечение */
-                         0 0 20px var(--neon-green),
-                         0 0 40px var(--neon-green),
+            -webkit-text-stroke: 2px var(--neon-purple); /* Неоновый контур текста */
+            text-stroke: 2px var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple), /* Неоновое свечение */
+                         0 0 20px var(--neon-purple),
+                         0 0 40px var(--neon-purple),
                          0 0 80px var(--shadow-dark);
-            background: url("ChatGPT Image 25 июл. 2025 г., 21_41_03.png") no-repeat center center; /* Фоновое изображение для текста */
-            background-size: contain; /* Изображение будет внутри текста */
+            /* Если изображение фона текста не сиреневое, лучше его убрать или заменить */
+            /* background: url("ChatGPT Image 25 июл. 2025 г., 21_41_03.png") no-repeat center center; */
+            /* background-size: contain; */
             -webkit-background-clip: text; /* Обрезаем фон по контуру текста */
             background-clip: text;
 
@@ -93,16 +96,16 @@
 
         @keyframes neonPulse {
             from {
-                text-shadow: 0 0 10px var(--neon-green),
-                             0 0 20px var(--neon-green),
-                             0 0 30px var(--neon-green),
+                text-shadow: 0 0 10px var(--neon-purple),
+                             0 0 20px var(--neon-purple),
+                             0 0 30px var(--neon-purple),
                              0 0 40px var(--shadow-dark);
                 filter: brightness(1);
             }
             to {
-                text-shadow: 0 0 15px var(--neon-green),
-                             0 0 25px var(--neon-green),
-                             0 0 50px var(--neon-green),
+                text-shadow: 0 0 15px var(--neon-purple),
+                             0 0 25px var(--neon-purple),
+                             0 0 50px var(--neon-purple),
                              0 0 100px var(--shadow-dark);
                 filter: brightness(1.2);
             }
@@ -126,10 +129,10 @@
 
         section {
             padding: 2.5rem 1.5rem; /* Больше отступов внутри секций */
-            background: rgba(15, 15, 25, 0.85); /* Более плотный, но полупрозрачный фон для секций */
+            background: rgba(20, 0, 40, 0.85); /* Более плотный, но полупрозрачный фон для секций с фиолетовым оттенком */
             margin: 0 1rem; /* Убираем верхний/нижний margin, оставляем боковые */
             border-radius: var(--border-radius-main);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2), 0 0 40px rgba(0, 255, 0, 0.1); /* Мягкое неоновое свечение вокруг секций */
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2), 0 0 40px rgba(138, 43, 226, 0.1); /* Мягкое неоновое сиреневое свечение вокруг секций */
             max-width: 900px; /* Ограничиваем ширину секций */
             width: 100%; /* Занимает всю доступную ширину */
             box-sizing: border-box; /* Учитываем padding в ширине */
@@ -138,14 +141,14 @@
 
         section:hover {
             transform: translateY(-5px); /* Небольшой подъем при наведении */
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.4), 0 0 60px rgba(0, 255, 0, 0.2);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 0 60px rgba(138, 43, 226, 0.2);
         }
 
         section h2 {
-            color: var(--neon-green);
+            color: var(--neon-purple);
             font-size: 2.5rem; /* Крупнее заголовки секций */
             margin-bottom: 1rem;
-            text-shadow: 0 0 8px var(--neon-green);
+            text-shadow: 0 0 8px var(--neon-purple);
         }
 
         section p {
@@ -164,7 +167,7 @@
         }
 
         .cta-button {
-            background: var(--neon-green);
+            background: var(--neon-purple);
             color: var(--button-text-color);
             padding: 16px 32px; /* Увеличенные отступы */
             font-size: 1.3rem; /* Крупнее шрифт кнопки */
@@ -195,10 +198,10 @@
         }
 
         .cta-button:hover {
-            background: var(--neon-green-hover);
+            background: var(--neon-purple-hover);
             transform: translateY(-5px); /* Больше подъем */
             box-shadow: 0 12px 30px var(--shadow-dark); /* Ещё сильнее тень */
-            color: var(--bg-dark); /* Убедимся, что цвет текста остается читаемым */
+            color: var(--button-text-color); /* Убедимся, что цвет текста остается читаемым */
         }
 
         footer {
@@ -225,12 +228,12 @@
             height: 0;
             overflow: hidden;
             border-radius: var(--border-radius-main); /* Скругленные углы видео */
-            box-shadow: 0 0 25px var(--neon-green), 0 0 50px var(--shadow-dark); /* Неоновая тень вокруг видео */
+            box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark); /* Неоновая тень вокруг видео */
             transition: box-shadow 0.3s ease;
         }
 
         #video-container:hover {
-            box-shadow: 0 0 35px var(--neon-green-hover), 0 0 70px var(--shadow-dark);
+            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
         }
 
         #video-container video {
@@ -246,7 +249,7 @@
         /* --- Стили для рекламного блока Freecash --- */
         #freecash-promo {
             padding: 2.5rem 1.5rem;
-            background: rgba(25, 10, 25, 0.9); /* Более темный фон для выделения */
+            background: rgba(30, 0, 45, 0.9); /* Более темный фон для выделения с сиреневым оттенком */
             margin: 0 1rem;
             border-radius: var(--border-radius-main);
             box-shadow: 0 0 30px rgba(255, 200, 0, 0.5), 0 0 60px rgba(255, 200, 0, 0.3); /* Желто-оранжевая неоновая тень */
@@ -339,8 +342,8 @@
             }
             header h1 {
                 font-size: 2.5rem;
-                -webkit-text-stroke: 1.5px var(--neon-green);
-                text-stroke: 1.5px var(--neon-green);
+                -webkit-text-stroke: 1.5px var(--neon-purple);
+                text-stroke: 1.5px var(--neon-purple);
             }
             header p {
                 font-size: 1.1rem;
