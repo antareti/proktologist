@@ -243,10 +243,70 @@
             border-radius: var(--border-radius-main); /* Унаследуем скругление от контейнера */
         }
 
+        /* --- Стили для рекламного блока Freecash --- */
+        #freecash-promo {
+            padding: 2.5rem 1.5rem;
+            background: rgba(25, 10, 25, 0.9); /* Более темный фон для выделения */
+            margin: 0 1rem;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 30px rgba(255, 200, 0, 0.5), 0 0 60px rgba(255, 200, 0, 0.3); /* Желто-оранжевая неоновая тень */
+            max-width: 900px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer; /* Показываем, что блок кликабелен */
+        }
+
+        #freecash-promo:hover {
+            transform: scale(1.02) translateY(-7px); /* Легкое увеличение и подъем */
+            box-shadow: 0 0 45px rgba(255, 200, 0, 0.7), 0 0 90px rgba(255, 200, 0, 0.5); /* Усиленное свечение */
+        }
+
+        #freecash-promo h2 {
+            color: #FFD700; /* Золотисто-желтый цвет для заголовка */
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
+            animation: neonShine 2s infinite alternate; /* Анимация свечения */
+        }
+
+        @keyframes neonShine {
+            from {
+                text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
+            }
+            to {
+                text-shadow: 0 0 15px #FFD700, 0 0 30px rgba(255, 200, 0, 1), 0 0 40px rgba(255, 200, 0, 0.5);
+            }
+        }
+
+        #freecash-promo p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin: 1rem auto 1.5rem;
+            max-width: 750px;
+        }
+
+        #freecash-promo .cta-button {
+            /* Переопределяем некоторые стили для кнопки Freecash, если нужно */
+            background: #FFD700; /* Золотой цвет кнопки */
+            color: var(--bg-dark); /* Темный текст на кнопке */
+            box-shadow: 0 8px 25px rgba(255, 200, 0, 0.6);
+            padding: 18px 36px; /* Чуть больше кнопка */
+            font-size: 1.4rem;
+        }
+
+        #freecash-promo .cta-button:hover {
+            background: #ffe65e; /* Более светлый золотой при наведении */
+            box-shadow: 0 12px 35px rgba(255, 200, 0, 0.9);
+        }
+
         /* Медиа-запросы для адаптивности */
         @media (max-width: 1200px) {
             header h1 {
                 font-size: 3.8rem;
+            }
+            #freecash-promo h2 {
+                font-size: 2.5rem;
             }
         }
 
@@ -260,6 +320,16 @@
             .cta-button {
                 font-size: 1.2rem;
                 padding: 14px 28px;
+            }
+            #freecash-promo h2 {
+                font-size: 2.2rem;
+            }
+            #freecash-promo p {
+                font-size: 1.1rem;
+            }
+            #freecash-promo .cta-button {
+                font-size: 1.3rem;
+                padding: 16px 32px;
             }
         }
 
@@ -296,6 +366,16 @@
                 font-size: 1.1rem;
                 padding: 12px 24px;
             }
+            #freecash-promo h2 {
+                font-size: 1.8rem;
+            }
+            #freecash-promo p {
+                font-size: 1rem;
+            }
+            #freecash-promo .cta-button {
+                font-size: 1.2rem;
+                padding: 14px 28px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -324,6 +404,16 @@
                 align-items: center;
                 gap: 0.5rem;
             }
+            #freecash-promo h2 {
+                font-size: 1.5rem;
+            }
+            #freecash-promo p {
+                font-size: 0.95rem;
+            }
+            #freecash-promo .cta-button {
+                font-size: 1.1rem;
+                padding: 12px 24px;
+            }
         }
     </style>
 </head>
@@ -350,6 +440,13 @@
             </div>
         </section>
 
+        <a href="https://freecash.com/r/109739007749326754105" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block; width: 100%; max-width: 900px; margin: 0 auto;">
+            <section id="freecash-promo">
+                <h2>💰 Заработай Реальные Деньги Онлайн!</h2>
+                <p>Ищете способ получить немного дополнительного дохода, не отрываясь от своих увлечений? Freecash предлагает простые задания и опросы, за которые вы получаете реальные деньги. **Присоединяйтесь к сообществу, которое уже заработало миллионы!**</p>
+                <span class="cta-button">🚀 Начать Зарабатывать Сейчас!</span>
+            </section>
+        </a>
         <section id="cta-buttons">
             <h2>🚀 Присоединяйтесь прямо сейчас</h2>
             <p>Выберите действие, которое вас интересует:</p>
