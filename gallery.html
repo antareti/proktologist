@@ -24,10 +24,9 @@
             gap: 1rem;
             padding: 2rem;
         }
-        /* Стили для ссылки, чтобы она не портила внешний вид картинки */
-        .gallery a {
-            display: inline-block; /* Или block, если нужно, чтобы ссылка занимала всю ширину */
-            line-height: 0; /* Убираем лишнее пространство под картинкой */
+        .gallery a { /* Убедимся, что ссылка не влияет на макет */
+            display: inline-block;
+            line-height: 0;
         }
         .gallery img {
             width: 280px;
