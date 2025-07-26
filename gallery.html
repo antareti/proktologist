@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
         }
         header, footer {
             background: rgba(0, 0, 0, 0.7);
@@ -24,19 +25,17 @@
             gap: 1rem;
             padding: 2rem;
         }
-        .gallery a { /* Убедимся, что ссылка не влияет на макет */
-            display: inline-block;
-            line-height: 0;
-        }
         .gallery img {
             width: 280px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 0 15px lime;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* Показываем, что элемент кликабелен */
         }
         .gallery img:hover {
             transform: scale(1.05);
+            box-shadow: 0 0 25px lime; /* Более сильное свечение при наведении */
         }
         a.button {
             display: inline-block;
@@ -47,44 +46,147 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: bold;
+            transition: background 0.3s ease;
         }
         a.button:hover {
             background: #6eff6e;
+        }
+
+        /* --- Стили для Лайтбокса --- */
+        .lightbox {
+            display: none; /* Скрываем по умолчанию */
+            position: fixed; /* Фиксируем поверх всего */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85); /* Полупрозрачный черный фон */
+            z-index: 1000; /* Поверх всего остального контента */
+            align-items: center; /* Центрируем изображение по вертикали */
+            justify-content: center; /* Центрируем изображение по горизонтали */
+            cursor: pointer; /* Курсор-указатель для закрытия */
+            overflow: auto; /* Позволяет скроллить, если изображение очень большое */
+        }
+
+        .lightbox img {
+            max-width: 90%; /* Максимальная ширина изображения в лайтбоксе */
+            max-height: 90vh; /* Максимальная высота изображения в лайтбоксе */
+            border: 5px solid lime; /* Рамка вокруг изображения */
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); /* Яркое неоновое свечение */
+            display: block; /* Убираем лишние пробелы под img */
+            animation: fadeInScale 0.3s ease-out; /* Анимация появления */
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Кнопка закрытия (X) */
+        .lightbox .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: lime;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            text-shadow: 0 0 10px lime;
+            transition: text-shadow 0.3s ease;
+        }
+
+        .lightbox .close-button:hover {
+            text-shadow: 0 0 20px lime, 0 0 30px lime;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>🖼️ Галерея</h1>
-        <p>Автоматически собранная из папки <code>images/</code></p>
+        <p>Нажмите на изображение, чтобы увеличить его.</p>
     </header>
 
     <main class="gallery">
-        <a href="images/Gemini_Generated_Image_62xki062xki062xk.png"><img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Gemini_Generated_Image_62xki062xki062xk.png"></a>
-        <a href="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png"><img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Gemini_Generated_Image_69s8ru69s8ru69s8.png"></a>
-        <a href="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png"><img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Gemini_Generated_Image_aa90gaa90gaa90ga.png"></a>
-        <a href="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png"><img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Gemini_Generated_Image_i5glwxi5glwxi5gl.png"></a>
-        <a href="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png"><img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Gemini_Generated_Image_npxsvonpxsvonpxs.png"></a>
-        <a href="images/problembo-result-20250521163816.jpg"><img src="images/problembo-result-20250521163816.jpg" alt="problembo-result-20250521163816.jpg"></a>
-        <a href="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png"><img src="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (1) (2).png"></a>
-        <a href="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png"><img src="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (2) (2).png"></a>
-        <a href="images/unnamed (13).png"><img src="images/unnamed (13).png" alt="unnamed (13).png"></a>
-        <a href="images/unnamed (14).png"><img src="images/unnamed (14).png" alt="unnamed (14).png"></a>
-        <a href="images/загружено (1).png"><img src="images/загружено (1).png" alt="загружено (1).png"></a>
-        <a href="images/загружено (2).png"><img src="images/загружено (2).png" alt="загружено (2).png"></a>
-        <a href="images/загружено - 2025-07-03T025415.003.png"><img src="images/загружено - 2025-07-03T025415.003.png" alt="загружено - 2025-07-03T025415.003.png"></a>
-        <a href="images/загружено - 2025-07-25T015108.377.png"><img src="images/загружено - 2025-07-25T015108.377.png" alt="загружено - 2025-07-25T015108.377.png"></a>
-        <a href="images/загружено - 2025-07-25T015230.005.png"><img src="images/загружено - 2025-07-25T015230.005.png" alt="загружено - 2025-07-25T015230.005.png"></a>
-        <a href="images/загружено - 2025-07-25T021635.562.png"><img src="images/загружено - 2025-07-25T021635.562.png" alt="загружено - 2025-07-25T021635.562.png"></a>
-        <a href="images/загружено - 2025-07-25T223651.520.png"><img src="images/загружено - 2025-07-25T223651.520.png" alt="загружено - 2025-07-25T223651.520.png"></a>
-        <a href="images/загружено - 2025-07-25T233313.351.png"><img src="images/загружено - 2025-07-25T233313.351.png" alt="загружено - 2025-07-25T233313.351.png"></a>
-        <a href="images/загружено - 2025-07-26T010922.599.png"><img src="images/загружено - 2025-07-26T010922.599.png" alt="загружено - 2025-07-26T010922.599.png"></a>
-        <a href="images/загружено - 2025-07-26T150736.003.png"><img src="images/загружено - 2025-07-26T150736.003.png" alt="загружено - 2025-07-26T150736.003.png"></a>
-        <a href="images/загружено.png"><img src="images/загружено.png" alt="загружено.png"></a>
+        <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Gemini_Generated_Image_62xki062xki062xk.png">
+        <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Gemini_Generated_Image_69s8ru69s8ru69s8.png">
+        <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Gemini_Generated_Image_aa90gaa90gaa90ga.png">
+        <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Gemini_Generated_Image_i5glwxi5glwxi5gl.png">
+        <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Gemini_Generated_Image_npxsvonpxsvonpxs.png">
+        <img src="images/problembo-result-20250521163816.jpg" alt="problembo-result-20250521163816.jpg">
+        <img src="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (1) (2).png">
+        <img src="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (2) (2).png">
+        <img src="images/unnamed (13).png" alt="unnamed (13).png">
+        <img src="images/unnamed (14).png" alt="unnamed (14).png">
+        <img src="images/загружено (1).png" alt="загружено (1).png">
+        <img src="images/загружено (2).png" alt="загружено (2).png">
+        <img src="images/загружено - 2025-07-03T025415.003.png" alt="загружено - 2025-07-03T025415.003.png">
+        <img src="images/загружено - 2025-07-25T015108.377.png" alt="загружено - 2025-07-25T015108.377.png">
+        <img src="images/загружено - 2025-07-25T015230.005.png" alt="загружено - 2025-07-25T015230.005.png">
+        <img src="images/загружено - 2025-07-25T021635.562.png" alt="загружено - 2025-07-25T021635.562.png">
+        <img src="images/загружено - 2025-07-25T223651.520.png" alt="загружено - 2025-07-25T223651.520.png">
+        <img src="images/загружено - 2025-07-25T233313.351.png" alt="загружено - 2025-07-25T233313.351.png">
+        <img src="images/загружено - 2025-07-26T010922.599.png" alt="загружено - 2025-07-26T010922.599.png">
+        <img src="images/загружено - 2025-07-26T150736.003.png" alt="загружено - 2025-07-26T150736.003.png">
+        <img src="images/загружено.png" alt="загружено.png">
     </main>
 
     <footer>
         <p><a href="index.html" class="button">🔙 Назад</a></p>
     </footer>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-button" id="closeButton">&times;</span>
+        <img src="" alt="Увеличенное изображение" id="lightboxImage">
+    </div>
+
+    <script>
+        // Получаем все изображения в галерее
+        const galleryImages = document.querySelectorAll('.gallery img');
+        // Получаем элементы лайтбокса
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const closeButton = document.getElementById('closeButton');
+
+        // Добавляем обработчик клика для каждого изображения
+        galleryImages.forEach(image => {
+            image.addEventListener('click', () => {
+                // Устанавливаем src увеличенного изображения на src кликнутого изображения
+                lightboxImage.src = image.src;
+                // Показываем лайтбокс
+                lightbox.style.display = 'flex'; // Используем flex для центрирования
+                document.body.style.overflow = 'hidden'; // Запрещаем скролл страницы под лайтбоксом
+            });
+        });
+
+        // Добавляем обработчик клика для кнопки закрытия
+        closeButton.addEventListener('click', () => {
+            lightbox.style.display = 'none'; // Скрываем лайтбокс
+            document.body.style.overflow = 'auto'; // Разрешаем скролл страницы
+        });
+
+        // Добавляем обработчик клика по самому лайтбоксу (чтобы закрывать при клике вне картинки)
+        lightbox.addEventListener('click', (event) => {
+            // Если клик был не по изображению внутри лайтбокса и не по кнопке закрытия
+            if (event.target === lightbox || event.target === closeButton) {
+                lightbox.style.display = 'none'; // Скрываем лайтбокс
+                document.body.style.overflow = 'auto'; // Разрешаем скролл страницы
+            }
+        });
+
+        // Добавляем обработчик нажатия клавиши Esc для закрытия
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && lightbox.style.display === 'flex') {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
 </body>
 </html>
