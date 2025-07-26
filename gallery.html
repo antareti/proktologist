@@ -1,87 +1,91 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Галерея</title>
-  <style>
-    body {
-      background: #000;
-      color: white;
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header, footer {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 1.5rem;
-    }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      padding: 2rem;
-    }
-    .gallery img {
-      width: 280px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 15px lime;
-      transition: transform 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 1rem;
-      background: lime;
-      padding: 12px 24px;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-    a.button:hover {
-      background: #6eff6e;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+    <style>
+        body {
+            background: #000;
+            color: white;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header, footer {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1.5rem;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem;
+        }
+        /* Стили для ссылки, чтобы она не портила внешний вид картинки */
+        .gallery a {
+            display: inline-block; /* Или block, если нужно, чтобы ссылка занимала всю ширину */
+            line-height: 0; /* Убираем лишнее пространство под картинкой */
+        }
+        .gallery img {
+            width: 280px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px lime;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        a.button {
+            display: inline-block;
+            margin-top: 1rem;
+            background: lime;
+            padding: 12px 24px;
+            color: black;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        a.button:hover {
+            background: #6eff6e;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>🖼️ Галерея</h1>
-    <p>Автоматически собранная из папки <code>images/</code></p>
-  </header>
+    <header>
+        <h1>🖼️ Галерея</h1>
+        <p>Автоматически собранная из папки <code>images/</code></p>
+    </header>
 
-  <main class="gallery">
-    <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Gemini_Generated_Image_62xki062xki062xk.png">
-    <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Gemini_Generated_Image_69s8ru69s8ru69s8.png">
-    <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Gemini_Generated_Image_aa90gaa90gaa90ga.png">
-    <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Gemini_Generated_Image_i5glwxi5glwxi5gl.png">
-    <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Gemini_Generated_Image_npxsvonpxsvonpxs.png">
-    <img src="images/problembo-result-20250521163816.jpg" alt="problembo-result-20250521163816.jpg">
-    <img src="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (1) (2).png">
-    <img src="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (2) (2).png">
-    <img src="images/unnamed (13).png" alt="unnamed (13).png">
-    <img src="images/unnamed (14).png" alt="unnamed (14).png">
-    <img src="images/загружено (1).png" alt="загружено (1).png">
-    <img src="images/загружено (2).png" alt="загружено (2).png">
-    <img src="images/загружено - 2025-07-03T025415.003.png" alt="загружено - 2025-07-03T025415.003.png">
-    <img src="images/загружено - 2025-07-25T015108.377.png" alt="загружено - 2025-07-25T015108.377.png">
-    <img src="images/загружено - 2025-07-25T015230.005.png" alt="загружено - 2025-07-25T015230.005.png">
-    <img src="images/загружено - 2025-07-25T021635.562.png" alt="загружено - 2025-07-25T021635.562.png">
-    <img src="images/загружено - 2025-07-25T223651.520.png" alt="загружено - 2025-07-25T223651.520.png">
-    <img src="images/загружено - 2025-07-25T233313.351.png" alt="загружено - 2025-07-25T233313.351.png">
-    <img src="images/загружено - 2025-07-26T010922.599.png" alt="загружено - 2025-07-26T010922.599.png">
-    <img src="images/загружено - 2025-07-26T150736.003.png" alt="загружено - 2025-07-26T150736.003.png">
-    <img src="images/загружено.png" alt="загружено.png">
+    <main class="gallery">
+        <a href="images/Gemini_Generated_Image_62xki062xki062xk.png"><img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Gemini_Generated_Image_62xki062xki062xk.png"></a>
+        <a href="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png"><img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Gemini_Generated_Image_69s8ru69s8ru69s8.png"></a>
+        <a href="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png"><img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Gemini_Generated_Image_aa90gaa90gaa90ga.png"></a>
+        <a href="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png"><img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Gemini_Generated_Image_i5glwxi5glwxi5gl.png"></a>
+        <a href="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png"><img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Gemini_Generated_Image_npxsvonpxsvonpxs.png"></a>
+        <a href="images/problembo-result-20250521163816.jpg"><img src="images/problembo-result-20250521163816.jpg" alt="problembo-result-20250521163816.jpg"></a>
+        <a href="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png"><img src="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (1) (2).png"></a>
+        <a href="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png"><img src="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (2) (2).png"></a>
+        <a href="images/unnamed (13).png"><img src="images/unnamed (13).png" alt="unnamed (13).png"></a>
+        <a href="images/unnamed (14).png"><img src="images/unnamed (14).png" alt="unnamed (14).png"></a>
+        <a href="images/загружено (1).png"><img src="images/загружено (1).png" alt="загружено (1).png"></a>
+        <a href="images/загружено (2).png"><img src="images/загружено (2).png" alt="загружено (2).png"></a>
+        <a href="images/загружено - 2025-07-03T025415.003.png"><img src="images/загружено - 2025-07-03T025415.003.png" alt="загружено - 2025-07-03T025415.003.png"></a>
+        <a href="images/загружено - 2025-07-25T015108.377.png"><img src="images/загружено - 2025-07-25T015108.377.png" alt="загружено - 2025-07-25T015108.377.png"></a>
+        <a href="images/загружено - 2025-07-25T015230.005.png"><img src="images/загружено - 2025-07-25T015230.005.png" alt="загружено - 2025-07-25T015230.005.png"></a>
+        <a href="images/загружено - 2025-07-25T021635.562.png"><img src="images/загружено - 2025-07-25T021635.562.png" alt="загружено - 2025-07-25T021635.562.png"></a>
+        <a href="images/загружено - 2025-07-25T223651.520.png"><img src="images/загружено - 2025-07-25T223651.520.png" alt="загружено - 2025-07-25T223651.520.png"></a>
+        <a href="images/загружено - 2025-07-25T233313.351.png"><img src="images/загружено - 2025-07-25T233313.351.png" alt="загружено - 2025-07-25T233313.351.png"></a>
+        <a href="images/загружено - 2025-07-26T010922.599.png"><img src="images/загружено - 2025-07-26T010922.599.png" alt="загружено - 2025-07-26T010922.599.png"></a>
+        <a href="images/загружено - 2025-07-26T150736.003.png"><img src="images/загружено - 2025-07-26T150736.003.png" alt="загружено - 2025-07-26T150736.003.png"></a>
+        <a href="images/загружено.png"><img src="images/загружено.png" alt="загружено.png"></a>
+    </main>
 
-  </main>
-
-  <footer>
-    <p><a href="index.html" class="button">🔙 Назад</a></p>
-  </footer>
+    <footer>
+        <p><a href="index.html" class="button">🔙 Назад</a></p>
+    </footer>
 </body>
 </html>
