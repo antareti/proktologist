@@ -24,22 +24,15 @@
       gap: 1rem;
       padding: 2rem;
     }
-    .gallery a { /* Оборачиваем изображение в ссылку для лайтбокса */
-      display: block; /* Чтобы ссылка занимала всю область изображения */
-      border-radius: 10px;
-      overflow: hidden; /* Скрываем части, если изображение масштабируется */
-    }
     .gallery img {
       width: 280px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 0 15px lime;
-      transition: transform 0.3s ease; /* Эффект перехода при наведении */
-      display: block; /* Чтобы изображение вело себя как блочный элемент */
-      cursor: pointer; /* Курсор-указатель, чтобы показать, что на изображение можно нажать */
+      transition: transform 0.3s ease;
     }
     .gallery img:hover {
-      transform: scale(1.05); /* Увеличение при наведении */
+      transform: scale(1.05);
     }
     a.button {
       display: inline-block;
@@ -50,53 +43,9 @@
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
-      transition: background 0.3s ease; /* Переход для кнопки */
     }
     a.button:hover {
       background: #6eff6e;
-    }
-
-    /* Стили для лайтбокса */
-    .lightbox {
-      display: none; /* Скрыт по умолчанию */
-      position: fixed; /* Остается на месте при прокрутке */
-      z-index: 1000; /* Поверх всех остальных элементов */
-      left: 0;
-      top: 0;
-      width: 100%; /* На всю ширину */
-      height: 100%; /* На всю высоту */
-      background-color: rgba(0,0,0,0.9); /* Черный фон с прозрачностью */
-      justify-content: center; /* Центрируем содержимое по горизонтали */
-      align-items: center; /* Центрируем содержимое по вертикали */
-      overflow: auto; /* Позволяет прокручивать, если изображение слишком большое */
-    }
-    .lightbox-content {
-      max-width: 90%; /* Максимальная ширина изображения в лайтбоксе */
-      max-height: 90%; /* Максимальная высота изображения в лайтбоксе */
-      display: block;
-      margin: auto;
-      animation-name: zoom; /* Анимация появления */
-      animation-duration: 0.6s;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-      cursor: pointer; /* Курсор-указатель для кнопки закрытия */
-    }
-    .lightbox-close:hover,
-    .lightbox-close:focus {
-      color: #bbb;
-      text-decoration: none;
-    }
-    /* Анимация увеличения при открытии лайтбокса */
-    @keyframes zoom {
-      from {transform:scale(0)}
-      to {transform:scale(1)}
     }
   </style>
 </head>
@@ -107,112 +56,32 @@
   </header>
 
   <main class="gallery">
-    <a href="images/Gemini_Generated_Image_62xki062xki062xk.png" data-fullsize="images/Gemini_Generated_Image_62xki062xki062xk.png">
-        <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Изображение 1">
-    </a>
-    <a href="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" data-fullsize="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png">
-        <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Изображение 2">
-    </a>
-    <a href="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" data-fullsize="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png">
-        <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Изображение 3">
-    </a>
-    <a href="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" data-fullsize="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png">
-        <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Изображение 4">
-    </a>
-    <a href="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" data-fullsize="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png">
-        <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Изображение 5">
-    </a>
-    <a href="images/problembo-result-20250521163816.jpg" data-fullsize="images/problembo-result-20250521163816.jpg">
-        <img src="images/problembo-result-20250521163816.jpg" alt="Изображение 6">
-    </a>
-    <a href="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" data-fullsize="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png">
-        <img src="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" alt="Изображение 7">
-    </a>
-    <a href="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" data-fullsize="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png">
-        <img src="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" alt="Изображение 8">
-    </a>
-    <a href="images/unnamed (13).png" data-fullsize="images/unnamed (13).png">
-        <img src="images/unnamed (13).png" alt="Изображение 9">
-    </a>
-    <a href="images/unnamed (14).png" data-fullsize="images/unnamed (14).png">
-        <img src="images/unnamed (14).png" alt="Изображение 10">
-    </a>
-    <a href="images/загружено (1).png" data-fullsize="images/загружено (1).png">
-        <img src="images/загружено (1).png" alt="Изображение 11">
-    </a>
-    <a href="images/загружено (2).png" data-fullsize="images/загружено (2).png">
-        <img src="images/загружено (2).png" alt="Изображение 12">
-    </a>
-    <a href="images/загружено - 2025-07-03T025415.003.png" data-fullsize="images/загружено - 2025-07-03T025415.003.png">
-        <img src="images/загружено - 2025-07-03T025415.003.png" alt="Изображение 13">
-    </a>
-    <a href="images/загружено - 2025-07-25T015108.377.png" data-fullsize="images/загружено - 2025-07-25T015108.377.png">
-        <img src="images/загружено - 2025-07-25T015108.377.png" alt="Изображение 14">
-    </a>
-    <a href="images/загружено - 2025-07-25T015230.005.png" data-fullsize="images/загружено - 2025-07-25T015230.005.png">
-        <img src="images/загружено - 2025-07-25T015230.005.png" alt="Изображение 15">
-    </a>
-    <a href="images/загружено - 2025-07-25T021635.562.png" data-fullsize="images/загружено - 2025-07-25T021635.562.png">
-        <img src="images/загружено - 2025-07-25T021635.562.png" alt="Изображение 16">
-    </a>
-    <a href="images/загружено - 2025-07-25T223651.520.png" data-fullsize="images/загружено - 2025-07-25T223651.520.png">
-        <img src="images/загружено - 2025-07-25T223651.520.png" alt="Изображение 17">
-    </a>
-    <a href="images/загружено - 2025-07-25T233313.351.png" data-fullsize="images/загружено - 2025-07-25T233313.351.png">
-        <img src="images/загружено - 2025-07-25T233313.351.png" alt="Изображение 18">
-    </a>
-    <a href="images/загружено - 2025-07-26T010922.599.png" data-fullsize="images/загружено - 2025-07-26T010922.599.png">
-        <img src="images/загружено - 2025-07-26T010922.599.png" alt="Изображение 19">
-    </a>
-    <a href="images/загружено.png" data-fullsize="images/загружено.png">
-        <img src="images/загружено.png" alt="Изображение 20">
-    </a>
+    <img src="images/Gemini_Generated_Image_62xki062xki062xk.png" alt="Gemini_Generated_Image_62xki062xki062xk.png">
+    <img src="images/Gemini_Generated_Image_69s8ru69s8ru69s8.png" alt="Gemini_Generated_Image_69s8ru69s8ru69s8.png">
+    <img src="images/Gemini_Generated_Image_aa90gaa90gaa90ga.png" alt="Gemini_Generated_Image_aa90gaa90gaa90ga.png">
+    <img src="images/Gemini_Generated_Image_i5glwxi5glwxi5gl.png" alt="Gemini_Generated_Image_i5glwxi5glwxi5gl.png">
+    <img src="images/Gemini_Generated_Image_npxsvonpxsvonpxs.png" alt="Gemini_Generated_Image_npxsvonpxsvonpxs.png">
+    <img src="images/problembo-result-20250521163816.jpg" alt="problembo-result-20250521163816.jpg">
+    <img src="images/proctologist_examines_young_and_fat_armenian_woman (1) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (1) (2).png">
+    <img src="images/proctologist_examines_young_and_fat_armenian_woman (2) (2).png" alt="proctologist_examines_young_and_fat_armenian_woman (2) (2).png">
+    <img src="images/unnamed (13).png" alt="unnamed (13).png">
+    <img src="images/unnamed (14).png" alt="unnamed (14).png">
+    <img src="images/загружено (1).png" alt="загружено (1).png">
+    <img src="images/загружено (2).png" alt="загружено (2).png">
+    <img src="images/загружено - 2025-07-03T025415.003.png" alt="загружено - 2025-07-03T025415.003.png">
+    <img src="images/загружено - 2025-07-25T015108.377.png" alt="загружено - 2025-07-25T015108.377.png">
+    <img src="images/загружено - 2025-07-25T015230.005.png" alt="загружено - 2025-07-25T015230.005.png">
+    <img src="images/загружено - 2025-07-25T021635.562.png" alt="загружено - 2025-07-25T021635.562.png">
+    <img src="images/загружено - 2025-07-25T223651.520.png" alt="загружено - 2025-07-25T223651.520.png">
+    <img src="images/загружено - 2025-07-25T233313.351.png" alt="загружено - 2025-07-25T233313.351.png">
+    <img src="images/загружено - 2025-07-26T010922.599.png" alt="загружено - 2025-07-26T010922.599.png">
+    <img src="images/загружено - 2025-07-26T150736.003.png" alt="загружено - 2025-07-26T150736.003.png">
+    <img src="images/загружено.png" alt="загружено.png">
+
   </main>
 
   <footer>
     <p><a href="index.html" class="button">🔙 Назад</a></p>
   </footer>
-
-  <div id="myLightbox" class="lightbox">
-    <span class="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
-  </div>
-
-  <script>
-    // Получаем все изображения в галерее
-    const galleryLinks = document.querySelectorAll('.gallery a');
-    // Получаем элементы лайтбокса
-    const lightbox = document.getElementById('myLightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.querySelector('.lightbox-close');
-
-    // Добавляем обработчик клика для каждой ссылки в галерее
-    galleryLinks.forEach(link => {
-      link.addEventListener('click', function(event) {
-        event.preventDefault(); // Предотвращаем стандартное действие ссылки (переход на другую страницу)
-        lightbox.style.display = "flex"; // Показываем лайтбокс
-        lightboxImg.src = this.getAttribute('data-fullsize'); // Устанавливаем src изображения в лайтбоксе
-      });
-    });
-
-    // Закрываем лайтбокс при клике на крестик
-    closeBtn.addEventListener('click', function() {
-      lightbox.style.display = "none";
-    });
-
-    // Закрываем лайтбокс при клике вне изображения
-    lightbox.addEventListener('click', function(event) {
-      if (event.target === lightbox) { // Если клик был по самому лайтбоксу, а не по изображению
-        lightbox.style.display = "none";
-      }
-    });
-
-    // Опционально: Закрытие лайтбокса по клавише ESC
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape' && lightbox.style.display === 'flex') {
-        lightbox.style.display = 'none';
-      }
-    });
-  </script>
 </body>
 </html>
