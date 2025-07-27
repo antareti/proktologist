@@ -231,14 +231,6 @@
             opacity: 0.9;
         }
 
-        .playlist-item video {
-            width: 100%;
-            height: 110px;
-            object-fit: cover;
-            display: block;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
         /* Добавлен стиль для заглушки видео (постер) */
         .playlist-item .video-thumbnail {
             width: 100%;
@@ -452,11 +444,10 @@
 
             <div class="video-container">
                 <video id="mainVideoPlayer" controls autoplay muted playsinline aria-label="Основное образовательное видео" poster="images/video_placeholder.png">
-                    <source src="" type="video/mp4" />
                     Ваш браузер не поддерживает видео.
                 </video>
                 <div class="video-playlist" role="listbox" aria-label="Список образовательных видео">
-                </div>
+                    </div>
             </div>
         </section>
 
@@ -474,8 +465,7 @@
     <script>
         // --- ВАЖНО: Обновляйте этот массив вручную при добавлении новых видео ---
         // Убедитесь, что пути к видеофайлам верны (например, "video/1.mp4")
-        // Добавлено поле 'thumbnail' для превью изображений, чтобы не загружать видео целиком в плейлист.
-        // Если 'thumbnail' не указан, будет использоваться общий заглушка 'images/video_placeholder_small.png'
+        // Добавлено поле 'thumbnail' для превью изображений.
         const videoList = [
             {
                 src: "video/a.mp4",
@@ -719,7 +709,7 @@
                 src: "video/proctologist_examines_young_and_fat_armenian_woman (2).mp4",
                 thumbnail: "images/thumbnails/proctologist_examines_young_and_fat_armenian_woman_2.jpg",
                 title: {
-                    ru: "Обследование пациентки (2)",
+                    ru: "Обследование пациентки (2)", // Заменил (1) на (2)
                     en: "Patient Examination (2)",
                     ka: "პაციენტის გამოკვლევა (2)"
                 },
@@ -729,164 +719,130 @@
                     ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
                 }
             }
-            // ... остальные видео
         ];
 
         const mainVideoPlayer = document.getElementById('mainVideoPlayer');
         const videoPlaylist = document.querySelector('.video-playlist');
-        const defaultThumbnail = 'images/video_placeholder_small.png'; // Заглушка, если нет превью
+        let currentLang = 'ru'; // Язык по умолчанию
 
-        let currentLang = 'ru'; // Начальный язык
+        // Функция для загрузки и воспроизведения видео в основном плеере
+        function playVideo(index) {
+            const video = videoList[index];
+            if (video) {
+                mainVideoPlayer.src = video.src;
+                mainVideoPlayer.poster = video.thumbnail || 'images/video_placeholder.png'; // Установим постер
+                mainVideoPlayer.load();
+                mainVideoPlayer.play();
 
-        const translations = {
-            ru: {
-                title: "Видеоматериалы — Глаза Проктолога",
-                header: "Глаза Проктолога",
-                navAbout: "О проекте",
-                navVideos: "Видеоматериалы",
-                navGallery: "Галерея изображений",
-                navContact: "Связаться с нами",
-                sectionTitle: "🎥 Образовательные видеоматериалы",
-                sectionText: "Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы **просто и наглядно**. Выберите интересующий ролик из плейлиста ниже.",
-                footerText: "&copy; 2025 Glaza Proktologa. Все права защищены. <a href=\"#top\" style=\"color: var(--accent-color); text-decoration: none; margin-left: 10px;\">Наверх</a>",
-                browserNotSupported: "Ваш браузер не поддерживает видео."
-            },
-            en: {
-                title: "Video Materials — Proctologist's Eyes",
-                header: "Proctologist's Eyes",
-                navAbout: "About Project",
-                navVideos: "Video Materials",
-                navGallery: "Image Gallery",
-                navContact: "Contact Us",
-                sectionTitle: "🎥 Educational Video Materials",
-                sectionText: "Dive into the world of proctology with our specially prepared videos. We aim to explain complex topics **simply and visually**. Choose a video from the playlist below.",
-                footerText: "&copy; 2025 Proctologist's Eyes. All rights reserved. <a href=\"#top\" style=\"color: var(--accent-color); text-decoration: none; margin-left: 10px;\">Back to Top</a>",
-                browserNotSupported: "Your browser does not support video."
-            },
-            ka: {
-                title: "ვიდეო მასალები — პროქტოლოგის თვალები",
-                header: "პროქტოლოგის თვალები",
-                navAbout: "პროექტის შესახებ",
-                navVideos: "ვიდეო მასალები",
-                navGallery: "გალერეა",
-                navContact: "დაგვიკავშირდით",
-                sectionTitle: "🎥 საგანმანათლებლო ვიდეო მასალები",
-                sectionText: "ჩაეფლეთ პროქტოლოგიის სამყაროში ჩვენი სპეციალურად მომზადებული ვიდეოების მეშვეობით. ჩვენ ვცდილობთ, რთული თემები **მარტივად და თვალსაჩინოდ** ავხსნათ. აირჩიეთ სასურველი ვიდეო ქვემოთ მოცემული დასაკრავი სიიდან.",
-                footerText: "&copy; 2025 პროქტოლოგის თვალები. ყველა უფლება დაცულია. <a href=\"#top\" style=\"color: var(--accent-color); text-decoration: none; margin-left: 10px;\">ზემოთ</a>",
-                browserNotSupported: "თქვენი ბრაუზერი არ უჭერს მხარს ვიდეოს."
+                // Удаляем класс 'active' со всех элементов и добавляем к текущему
+                document.querySelectorAll('.playlist-item').forEach((item, idx) => {
+                    if (idx === index) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
             }
-        };
-
-        function updateContent() {
-            document.title = translations[currentLang].title;
-            document.querySelector('header').textContent = translations[currentLang].header;
-            document.querySelector('nav a[href="index.html#about"]').textContent = translations[currentLang].navAbout;
-            document.querySelector('nav a[href="video.html"]').textContent = translations[currentLang].navVideos;
-            document.querySelector('nav a[href="index.html#gallery"]').textContent = translations[currentLang].navGallery;
-            document.querySelector('nav a[href="index.html#contact"]').textContent = translations[currentLang].navContact;
-            document.querySelector('#videos h2').textContent = translations[currentLang].sectionTitle;
-            document.querySelector('#videos p').innerHTML = translations[currentLang].sectionText;
-            document.querySelector('footer').innerHTML = translations[currentLang].footerText;
-            mainVideoPlayer.querySelector('source').nextSibling.textContent = translations[currentLang].browserNotSupported;
-
-            document.querySelectorAll('.playlist-item').forEach(item => {
-                const index = item.dataset.index;
-                item.querySelector('.playlist-item-title').textContent = videoList[index].title[currentLang];
-                item.querySelector('.playlist-item-description').textContent = videoList[index].description[currentLang];
-            });
-
-            // Обновляем атрибуты aria-label для кнопок переключения языка
-            document.querySelector(".lang-switcher button:nth-child(1)").setAttribute("aria-label", "Переключить на русский");
-            document.querySelector(".lang-switcher button:nth-child(2)").setAttribute("aria-label", "Switch to English");
-            document.querySelector(".lang-switcher button:nth-child(3)").setAttribute("aria-label", "გადართვა ქართულზე");
         }
 
+        // Функция для переключения языка контента
         function setLang(lang) {
             currentLang = lang;
-            localStorage.setItem('glazaProktologaLang', lang); // Сохраняем выбор языка
-            updateContent();
-            // Обновляем активную кнопку языка
-            document.querySelectorAll('.lang-switcher button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`.lang-switcher button[onclick="setLang('${lang}')"]`).classList.add('active');
-        }
+            // Сохраняем выбранный язык в localStorage
+            localStorage.setItem('currentLang', lang);
 
-        function loadVideo(index) {
-            const video = videoList[index];
-            mainVideoPlayer.src = video.src;
-            mainVideoPlayer.poster = video.thumbnail || defaultThumbnail; // Устанавливаем постер
-            mainVideoPlayer.load();
-            mainVideoPlayer.play();
-
-            // Удаляем класс 'active' со всех элементов плейлиста
-            document.querySelectorAll('.playlist-item').forEach(item => {
-                item.classList.remove('active');
+            // Обновляем кнопки переключения языка
+            document.querySelectorAll('.lang-switcher button').forEach(button => {
+                if (button.onclick.toString().includes(`setLang('${lang}')`)) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
             });
 
-            // Добавляем класс 'active' к выбранному элементу
-            document.querySelector(`.playlist-item[data-index="${index}"]`).classList.add('active');
-            mainVideoPlayer.setAttribute('aria-label', video.title[currentLang]);
+            // Обновляем заголовки и описания видео в плейлисте
+            document.querySelectorAll('.playlist-item').forEach((item, index) => {
+                const videoData = videoList[index];
+                if (videoData) {
+                    item.querySelector('.playlist-item-title').textContent = videoData.title[currentLang];
+                    item.querySelector('.playlist-item-description').textContent = videoData.description[currentLang];
+                }
+            });
+
+            // Обновляем текст на странице, если есть другие элементы с атрибутами data-lang-key
+            // (Пока у вас только видео, но это для будущего расширения)
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                // Здесь нужно добавить объект с переводами для других элементов, если они появятся
+                // Пример: element.textContent = translations[key][currentLang];
+            });
+
+            // Обновляем текст для p тега под H2
+            const paragraphElement = document.querySelector('section#videos p');
+            if (paragraphElement) {
+                const videoSectionParagraphs = {
+                    ru: "Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы **просто и наглядно**. Выберите интересующий ролик из плейлиста ниже.",
+                    en: "Immerse yourself in the world of proctology with our specially prepared videos. We strive to explain complex topics **simply and clearly**. Choose a video of interest from the playlist below.",
+                    ka: "ჩაეფლეთ პროქტოლოგიის სამყაროში ჩვენი სპეციალურად მომზადებული ვიდეოების საშუალებით. ჩვენ ვცდილობთ რთული თემები **მარტივად და თვალსაჩინოდ** ავხსნათ. აირჩიეთ საინტერესო ვიდეო ქვემოთ მოცემული დასაკრავი სიიდან."
+                };
+                paragraphElement.innerHTML = videoSectionParagraphs[currentLang];
+            }
         }
 
-        function populatePlaylist() {
+        // Функция для инициализации плейлиста при загрузке страницы
+        function initializePlaylist() {
+            videoPlaylist.innerHTML = ''; // Очищаем плейлист перед заполнением
             videoList.forEach((video, index) => {
                 const item = document.createElement('div');
                 item.classList.add('playlist-item');
-                item.setAttribute('data-index', index);
                 item.setAttribute('role', 'option');
-                item.setAttribute('aria-selected', 'false');
-                item.setAttribute('tabindex', '0'); // Делаем элементы фокусируемыми
+                item.setAttribute('tabindex', '0'); // Для доступности с клавиатуры
 
-                // Используем изображение (thumbnail) вместо видео для превью
-                const thumbnailElement = document.createElement('img');
-                thumbnailElement.classList.add('video-thumbnail');
-                thumbnailElement.src = video.thumbnail || defaultThumbnail;
-                thumbnailElement.alt = video.title[currentLang] + " thumbnail"; // Добавляем alt текст
+                // Использование <img> для миниатюры
+                const img = document.createElement('img');
+                img.classList.add('video-thumbnail');
+                img.src = video.thumbnail || 'images/video_placeholder.png'; // Заглушка, если нет превью
+                img.alt = video.title.ru + " Thumbnail"; // Alt текст для доступности
 
-                const titleElement = document.createElement('div');
-                titleElement.classList.add('playlist-item-title');
-                titleElement.textContent = video.title[currentLang];
+                const title = document.createElement('div');
+                title.classList.add('playlist-item-title');
+                title.textContent = video.title[currentLang];
 
-                const descriptionElement = document.createElement('div');
-                descriptionElement.classList.add('playlist-item-description');
-                descriptionElement.textContent = video.description[currentLang];
+                const description = document.createElement('div');
+                description.classList.add('playlist-item-description');
+                description.textContent = video.description[currentLang];
 
-                item.appendChild(thumbnailElement);
-                item.appendChild(titleElement);
-                item.appendChild(descriptionElement);
+                item.appendChild(img);
+                item.appendChild(title);
+                item.appendChild(description);
 
                 item.addEventListener('click', () => {
-                    loadVideo(index);
-                    // Обновляем aria-selected
-                    document.querySelectorAll('.playlist-item').forEach(el => el.setAttribute('aria-selected', 'false'));
-                    item.setAttribute('aria-selected', 'true');
+                    playVideo(index);
                 });
 
-                item.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault(); // Предотвращаем прокрутку страницы при нажатии пробела
-                        loadVideo(index);
-                        // Обновляем aria-selected
-                        document.querySelectorAll('.playlist-item').forEach(el => el.setAttribute('aria-selected', 'false'));
-                        item.setAttribute('aria-selected', 'true');
+                // Добавляем обработчик для Enter, если элемент в фокусе
+                item.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') { // Пробел также активирует
+                        event.preventDefault(); // Предотвращаем прокрутку страницы по пробелу
+                        playVideo(index);
                     }
                 });
 
                 videoPlaylist.appendChild(item);
             });
-        }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Восстанавливаем язык из локального хранилища или устанавливаем русский по умолчанию
-            const savedLang = localStorage.getItem('glazaProktologaLang');
+            // Загружаем сохраненный язык или устанавливаем русский по умолчанию
+            const savedLang = localStorage.getItem('currentLang');
             setLang(savedLang || 'ru');
 
-            populatePlaylist();
+            // Загружаем первое видео в основной плеер при первой загрузке страницы
             if (videoList.length > 0) {
-                loadVideo(0); // Загружаем первое видео при загрузке страницы
+                playVideo(0);
             }
-        });
+        }
+
+        // Вызываем инициализацию плейлиста при полной загрузке DOM
+        document.addEventListener('DOMContentLoaded', initializePlaylist);
     </script>
 </body>
 </html>
