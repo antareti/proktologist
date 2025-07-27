@@ -23,18 +23,18 @@
 
     <style>
         :root {
-            --main-bg-color: #0d001a; /* Очень темный фон с сиреневым оттенком */
-            --secondary-bg-color: #1a0033; /* Чуть светлее сиреневый фон */
-            --header-footer-bg: #150029; /* Фон для шапки и футера */
-            --primary-text-color: #e2d7ed; /* Светлый текст с легким сиреневым оттенком */
-            --neon-purple: #8A2BE2; /* Яркий неоновый фиолетовый (Blue Violet) */
-            --neon-purple-hover: #BE77FF; /* Светлее сиреневый при наведении */
-            --button-text-color: #ffffff; /* Белый текст для кнопок */
-            --border-radius: 12px; /* Более скругленные углы */
-            --shadow-light: rgba(138, 43, 226, 0.4);
-            --shadow-dark: rgba(138, 43, 226, 0.7);
-            --playlist-bg-dark: rgba(20, 0, 35, 0.85); /* Темный фон для плейлиста */
-            --section-bg-opacity: 0.9; /* Увеличена непрозрачность для лучшей читаемости */
+            --main-bg-color: #0a192f;
+            --secondary-bg-color: #1a2c42;
+            --header-footer-bg: #0d1a2b;
+            --primary-text-color: #e2e8f0;
+            --accent-color: #00bcd4; /* Ярко-голубой */
+            --accent-hover-color: #6ff9ff; /* Светло-голубой при наведении */
+            --button-text-color: #000;
+            --border-radius: 8px;
+            --shadow-light: rgba(0, 188, 212, 0.4);
+            --shadow-dark: rgba(0, 188, 212, 0.6);
+            --playlist-bg-dark: #0a192f; /* Изменено на основной фон */
+            --section-bg-opacity: 1; /* Увеличена непрозрачность до полной */
         }
 
         /* Общие стили для body */
@@ -45,7 +45,7 @@
             animation: fadeIn 1.5s ease-out;
             line-height: 1.6;
             scroll-behavior: smooth;
-            background-color: var(--main-bg-color);
+            background-color: var(--main-bg-color); /* Используем основной цвет фона */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -57,112 +57,59 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Стили для фонового видео */
-        #bg-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -2;
-            background-size: cover;
-            filter: brightness(50%) blur(3px); /* Затемнение и более сильное размытие */
-        }
-
-        /* Дополнительный слой затемнения над видео */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный */
-            z-index: -1;
-        }
-
         /* Header стили */
         header {
             background-color: var(--header-footer-bg);
             padding: 25px 20px;
             text-align: center;
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.8em; /* Чуть крупнее заголовок */
+            font-size: 2.5em;
             font-weight: 700;
-            color: var(--neon-purple); /* Сиреневый цвет заголовка */
-            text-shadow: 0 0 15px var(--neon-purple), 0 0 30px var(--shadow-dark); /* Неоновое свечение */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            color: var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             position: sticky;
             top: 0;
             z-index: 1000;
-            letter-spacing: 1px;
         }
 
         /* Navigation стили */
         nav {
-            background-color: rgba(35, 0, 50, var(--section-bg-opacity)); /* Темно-сиреневый с прозрачностью */
+            background-color: var(--secondary-bg-color); /* Изменено для лучшей контрастности */
             display: flex;
             justify-content: center;
-            gap: 1.8rem; /* Увеличенный отступ */
-            padding: 18px 10px;
+            gap: 1.5rem;
+            padding: 15px 10px;
             flex-wrap: wrap;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         nav a {
             color: var(--primary-text-color);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.15em;
-            padding: 12px 22px;
-            border-radius: 50px; /* Сильнее скругленные кнопки */
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden; /* Для эффекта свечения при наведении */
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: 0.5s;
-        }
-
-        nav a:hover::before {
-            left: 100%;
+            font-size: 1.1em;
+            padding: 10px 18px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            border: 1px solid transparent;
         }
 
         nav a:hover, nav a:focus {
-            color: var(--neon-purple-hover);
-            background-color: rgba(138, 43, 226, 0.1); /* Легкий сиреневый фон при наведении */
-            transform: translateY(-5px); /* Более выраженный подъем */
-            box-shadow: 0 8px 25px var(--shadow-dark); /* Усиленная тень */
-            border-color: var(--neon-purple); /* Сиреневая рамка */
+            color: var(--accent-hover-color);
+            background-color: rgba(0, 188, 212, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow-light);
+            border-color: var(--accent-color);
             outline: none;
-        }
-
-        nav a[aria-current="page"] {
-            background-color: var(--neon-purple);
-            color: var(--button-text-color);
-            border-color: var(--neon-purple-hover);
-            box-shadow: 0 5px 15px var(--shadow-dark);
-            transform: translateY(-2px);
-            cursor: default;
         }
 
         /* Main content area */
         main {
             flex-grow: 1;
-            padding: 3rem 2.5rem; /* Увеличенные отступы */
+            padding: 2.5rem 2rem;
             text-align: center;
-            max-width: 1300px; /* Чуть шире основной контент */
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -170,39 +117,39 @@
 
         /* Section styles */
         section {
-            background-color: rgba(35, 0, 50, var(--section-bg-opacity)); /* Темно-сиреневый с прозрачностью */
-            margin-bottom: 3rem;
-            padding: 3rem; /* Увеличенные отступы */
+            background-color: var(--secondary-bg-color); /* Используем secondary-bg-color */
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Более выраженная тень */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-            border: 1px solid rgba(138, 43, 226, 0.2); /* Легкая сиреневая рамка */
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         section:hover {
-            transform: translateY(-10px); /* Более выраженный подъем */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
         /* Headings */
         h2 {
             font-family: 'Montserrat', sans-serif;
-            color: var(--neon-purple-hover); /* Светлее сиреневый */
-            font-size: 2.5em; /* Чуть крупнее */
-            margin-bottom: 2rem;
-            border-bottom: 4px solid var(--neon-purple); /* Более толстая сиреневая линия */
-            padding-bottom: 15px;
+            color: var(--accent-hover-color);
+            font-size: 2.2em;
+            margin-bottom: 1.8rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 12px;
             display: inline-block;
-            letter-spacing: 1px;
-            text-shadow: 0 0 12px var(--shadow-light); /* Легкое сиреневое свечение */
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
         }
 
         p {
-            font-size: 1.2em; /* Чуть крупнее текст */
+            font-size: 1.15em;
             color: var(--primary-text-color);
-            max-width: 900px; /* Чуть шире абзацы */
-            margin: 1rem auto;
-            line-height: 1.8;
+            max-width: 800px;
+            margin: 0.8rem auto;
+            line-height: 1.7;
         }
 
         /* Video player and playlist container */
@@ -210,19 +157,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px; /* Увеличенный отступ */
-            margin-top: 40px;
+            gap: 30px;
+            margin-top: 30px;
         }
 
         #mainVideoPlayer {
-            width: 950px; /* Увеличена ширина */
-            height: 530px; /* Увеличена высота */
+            width: 900px;
+            height: 500px;
             object-fit: cover;
-            border: 5px solid var(--neon-purple); /* Сиреневая рамка */
+            border: 4px solid var(--accent-color);
             border-radius: var(--border-radius);
             max-width: 100%;
             height: auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 40px var(--shadow-dark); /* Более выраженная тень и свечение */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             background-color: #000;
         }
 
@@ -230,39 +177,38 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px; /* Увеличенный отступ между элементами */
-            margin-top: 30px;
-            padding: 25px;
-            background-color: var(--playlist-bg-dark);
+            gap: 18px;
+            margin-top: 25px;
+            padding: 20px;
+            background-color: var(--playlist-bg-dark); /* Используем playlist-bg-dark */
             border-radius: var(--border-radius);
-            box-shadow: inset 0 5px 20px rgba(0, 0, 0, 0.5); /* Внутренняя тень */
-            max-width: 950px; /* Соответствует ширине плеера */
+            box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.4);
+            max-width: 900px;
             width: 100%;
             overflow-y: auto;
-            max-height: 500px; /* Увеличена высота плейлиста */
-            border: 1px solid rgba(138, 43, 226, 0.4); /* Сиреневая рамка */
+            max-height: 450px;
+            border: 1px solid rgba(0, 188, 212, 0.3);
         }
 
         .playlist-item {
             cursor: pointer;
-            border: 3px solid rgba(35, 0, 50, 0.7); /* Темно-сиреневая рамка */
+            border: 2px solid rgba(26, 44, 66, 0.7);
             border-radius: var(--border-radius);
             overflow: hidden;
-            width: 220px; /* Увеличена ширина элемента плейлиста */
-            background-color: rgba(25, 0, 40, 0.95); /* Темнее сиреневый фон */
+            width: 200px;
+            background-color: var(--secondary-bg-color); /* Изменено для соответствия общему фону */
             transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
             display: flex;
             flex-direction: column;
             text-align: left;
             position: relative;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .playlist-item:hover, .playlist-item.active {
-            transform: translateY(-10px); /* Более выраженный подъем */
-            border-color: var(--neon-purple-hover); /* Светлее сиреневый при наведении */
-            box-shadow: 0 10px 30px var(--shadow-dark), 0 0 20px var(--neon-purple); /* Усиленная тень и свечение */
-            background-color: rgba(45, 0, 70, 0.98); /* Более насыщенный сиреневый */
+            transform: translateY(-7px);
+            border-color: var(--accent-hover-color);
+            box-shadow: 0 6px 20px var(--shadow-dark);
+            background-color: rgba(15, 35, 60, 0.95);
         }
 
         .playlist-item.active::after {
@@ -271,37 +217,48 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 4em; /* Крупнее иконка */
-            color: var(--neon-purple);
-            text-shadow: 0 0 20px var(--neon-purple), 0 0 30px var(--shadow-dark);
+            font-size: 3em;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px var(--shadow-light);
             pointer-events: none;
-            opacity: 1;
+            opacity: 0.9;
         }
 
         .playlist-item video {
             width: 100%;
-            height: 120px; /* Увеличена высота превью видео */
+            height: 110px;
             object-fit: cover;
             display: block;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Добавлен стиль для заглушки видео (постер) */
+        .playlist-item .video-thumbnail {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: #333; /* Заглушка, если нет изображения */
+        }
+
+
         .playlist-item-title {
-            padding: 12px;
-            font-size: 1.1em; /* Чуть крупнее */
+            padding: 10px;
+            font-size: 1em;
             color: var(--primary-text-color);
             font-weight: bold;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .playlist-item-description {
-            padding: 0 12px 12px;
-            font-size: 0.95em; /* Чуть крупнее */
-            color: rgba(226, 215, 237, 0.85); /* Светлее текст */
-            max-height: 4.2em; /* 3 строки текста */
+            padding: 0 10px 10px;
+            font-size: 0.85em;
+            color: rgba(226, 232, 240, 0.75);
+            max-height: 3.8em;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
@@ -311,49 +268,49 @@
 
         /* Language switcher */
         .lang-switcher {
-            margin-top: 4rem;
+            margin-top: 3rem;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
-            padding: 2rem;
-            background-color: rgba(25, 0, 40, var(--section-bg-opacity)); /* Темно-сиреневый с прозрачностью */
+            padding: 1.5rem;
+            background-color: var(--secondary-bg-color); /* Изменено для соответствия секциям */
             border-radius: var(--border-radius);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(138, 43, 226, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .lang-switcher button {
-            background: rgba(35, 0, 50, 0.95); /* Темно-сиреневый фон кнопки */
-            color: var(--neon-purple);
-            border: 2px solid var(--neon-purple);
-            padding: 14px 30px;
-            border-radius: 50px;
+            background: var(--main-bg-color); /* Изменено на основной цвет фона */
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.05em;
             transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 12px;
-            letter-spacing: 0.8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            gap: 10px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .lang-switcher button:hover, .lang-switcher button:focus {
-            background: var(--neon-purple);
+            background: var(--accent-color);
             color: var(--button-text-color);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px var(--shadow-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px var(--shadow-dark);
             outline: none;
         }
 
         .lang-switcher button.active {
-            background: var(--neon-purple);
+            background: var(--accent-color);
             color: var(--button-text-color);
-            box-shadow: 0 6px 15px var(--shadow-dark);
-            transform: translateY(-2px);
-            border-color: var(--neon-purple-hover);
+            box-shadow: 0 4px 12px var(--shadow-dark);
+            transform: translateY(-1px);
+            border-color: var(--accent-hover-color);
             cursor: default;
         }
 
@@ -361,24 +318,23 @@
         footer {
             background-color: var(--header-footer-bg);
             text-align: center;
-            padding: 25px;
-            font-size: 1em;
+            padding: 20px;
+            font-size: 0.95em;
             color: var(--primary-text-color);
-            border-top: 1px solid rgba(138, 43, 226, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
             margin-top: auto;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
-            letter-spacing: 0.5px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
         }
 
         footer a {
-            color: var(--neon-purple);
+            color: var(--accent-color);
             text-decoration: none;
             margin-left: 10px;
             transition: color 0.3s ease;
         }
 
         footer a:hover {
-            color: var(--neon-purple-hover);
+            color: var(--accent-hover-color);
             text-decoration: underline;
         }
 
@@ -393,92 +349,86 @@
                 max-height: 400px;
             }
             .playlist-item {
-                width: 190px; /* Меньше для планшетов */
+                width: 180px;
             }
-            .playlist-item video {
+            .playlist-item video, .playlist-item .video-thumbnail {
                 height: 100px;
             }
         }
 
         @media (max-width: 768px) {
-            header { font-size: 2.2em; padding: 20px 15px; }
-            nav { gap: 1rem; padding: 15px 10px; }
-            nav a { padding: 10px 18px; font-size: 1.05em; }
-            main { padding: 2rem 1.5rem; }
-            section { padding: 2rem 1.5rem; margin-bottom: 2.5rem; }
-            h2 { font-size: 2em; margin-bottom: 1.5rem; }
-            p { font-size: 1.1em; }
+            header { font-size: 2em; padding: 20px 15px; }
+            nav { gap: 1rem; padding: 12px 10px; }
+            nav a { padding: 8px 12px; font-size: 1em; }
+            main { padding: 2rem 1rem; }
+            section { padding: 2rem 1.5rem; margin-bottom: 2rem; }
+            h2 { font-size: 1.9em; margin-bottom: 1.2rem; }
+            p { font-size: 1.05em; }
             #mainVideoPlayer {
-                height: 350px;
+                height: 300px;
             }
             .video-playlist {
                 max-height: 350px;
             }
             .playlist-item {
-                width: 170px;
+                width: 160px;
             }
-            .playlist-item video {
+            .playlist-item video, .playlist-item .video-thumbnail {
                 height: 90px;
             }
             .lang-switcher {
                 flex-direction: column;
-                gap: 1rem;
-                padding: 1.5rem;
+                gap: 0.8rem;
+                padding: 1rem;
             }
             .lang-switcher button {
-                width: 85%;
+                width: 80%;
                 margin: 0 auto;
                 justify-content: center;
-                font-size: 1em;
             }
         }
 
         @media (max-width: 576px) {
-            header { font-size: 1.9em; padding: 15px 10px; }
-            nav { flex-direction: column; gap: 0.8rem; padding: 10px; }
-            nav a { padding: 10px; font-size: 1em; }
-            main { padding: 1.5rem 1rem; }
-            section { padding: 1.8rem 1.2rem; margin-bottom: 2rem; }
-            h2 { font-size: 1.7em; }
+            header { font-size: 1.8em; padding: 15px 10px; }
+            nav { flex-direction: column; gap: 0.6rem; padding: 10px; }
+            nav a { padding: 10px; font-size: 0.95em; }
+            main { padding: 1.5rem 0.8rem; }
+            section { padding: 1.5rem 1rem; margin-bottom: 1.5rem; }
+            h2 { font-size: 1.6em; }
             p { font-size: 1em; }
             #mainVideoPlayer {
-                height: 250px;
+                height: 220px;
             }
             .video-playlist {
                 max-height: 300px;
-                padding: 15px;
+                padding: 10px;
             }
             .playlist-item {
-                width: 150px;
+                width: 140px;
+                height: auto;
             }
-            .playlist-item video {
-                height: 80px;
+            .playlist-item video, .playlist-item .video-thumbnail {
+                height: 70px;
             }
             .playlist-item-title {
-                font-size: 0.9em;
-                padding: 8px;
+                font-size: 0.85em;
+                padding: 6px;
             }
             .playlist-item-description {
-                font-size: 0.8em;
-                padding: 0 8px 8px;
-                max-height: 3.6em;
+                font-size: 0.75em;
+                padding: 0 6px 6px;
+                max-height: 3.4em;
             }
             .lang-switcher button {
-                font-size: 0.95em;
-                padding: 12px 20px;
+                font-size: 0.9em;
+                padding: 10px 15px;
                 width: 90%;
             }
-            footer { font-size: 0.9em; padding: 15px; }
+            footer { font-size: 0.85em; padding: 12px; }
         }
     </style>
 </head>
 <body>
-
-    <video autoplay muted loop playsinline id="bg-video" aria-hidden="true" disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback">
-        <source src="3.mp4" type="video/mp4">
-        Ваш браузер не поддерживает тег video.
-    </video>
-    <div class="overlay" aria-hidden="true"></div>
 
     <header>Глаза Проктолога</header>
     <nav aria-label="Основная навигация">
@@ -511,15 +461,18 @@
     </main>
 
     <footer>
-        &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--neon-purple); text-decoration: none; margin-left: 10px;">Наверх</a>
+        &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">Наверх</a>
     </footer>
 
     <script>
         // --- ВАЖНО: Обновляйте этот массив вручную при добавлении новых видео ---
         // Убедитесь, что пути к видеофайлам верны (например, "video/1.mp4")
+        // Добавлено поле 'thumbnail' для превью изображений, чтобы не загружать видео целиком в плейлист.
+        // Если 'thumbnail' не указан, будет использоваться общий заглушка 'images/video_placeholder_small.png'
         const videoList = [
             {
                 src: "video/a.mp4",
+                thumbnail: "images/thumbnails/a.jpg", // Пример: путь к постеру видео
                 title: {
                     ru: "Прием у проктолога: первый визит",
                     en: "Proctologist's Visit: First Appointment",
@@ -533,6 +486,7 @@
             },
             {
                 src: "video/n.mp4",
+                thumbnail: "images/thumbnails/n.jpg",
                 title: {
                     ru: "Новые методы лечения: безболезненно и эффективно",
                     en: "New Treatment Methods: Painless and Effective",
@@ -546,6 +500,7 @@
             },
             {
                 src: "video/1.mp4",
+                thumbnail: "images/thumbnails/1.jpg",
                 title: {
                     ru: "Прием у проктолога: первичный осмотр",
                     en: "Proctologist's Visit: Initial Examination",
@@ -559,6 +514,7 @@
             },
             {
                 src: "video/2.mp4",
+                thumbnail: "images/thumbnails/2.jpg",
                 title: {
                     ru: "Диагностика геморроя: современные методы",
                     en: "Hemorrhoid Diagnosis: Modern Methods",
@@ -572,6 +528,7 @@
             },
             {
                 src: "video/Video_Generisanje_Proktolog_i_žena.mp4",
+                thumbnail: "images/thumbnails/video_generisanje_proktolog_i_zena.jpg",
                 title: {
                     ru: "Нина у проктолога: особенности осмотра",
                     en: "Nina at the Proctologist: Examination Features",
@@ -585,6 +542,7 @@
             },
             {
                 src: "video/Video_Gotovo_Proktolog_i_Žena.mp4",
+                thumbnail: "images/thumbnails/video_gotovo_proktolog_i_zena.jpg",
                 title: {
                     ru: "Проктолог и женщина: комплексный подход",
                     en: "Proctologist and Woman: Comprehensive Approach",
@@ -598,6 +556,7 @@
             },
             {
                 src: "video/Video_je_gotovo_(1).mp4",
+                thumbnail: "images/thumbnails/video_je_gotovo_1.jpg",
                 title: {
                     ru: "Обзор заболеваний аноректальной области",
                     en: "Overview of Anorectal Diseases",
@@ -611,6 +570,7 @@
             },
             {
                 src: "video/Видео_готово_Популарно_видео.mp4",
+                thumbnail: "images/thumbnails/video_gotovo_popularno_video.jpg",
                 title: {
                     ru: "Популярное видео: ответы на вопросы",
                     en: "Popular Video: Q&A",
@@ -624,6 +584,7 @@
             },
             {
                 src: "video/Видео_готово_толстая_попа.mp4",
+                thumbnail: "images/thumbnails/video_gotovo_tolstaya_popa.jpg",
                 title: {
                     ru: "Визуальная демонстрация: анатомия и здоровье",
                     en: "Visual Demonstration: Anatomy and Health",
@@ -637,6 +598,7 @@
             },
             {
                 src: "video/Видео_је_готово_.mp4",
+                thumbnail: "images/thumbnails/video_je_gotovo.jpg",
                 title: {
                     ru: "Советы по профилактике проктологических проблем",
                     en: "Tips for Preventing Proctological Problems",
@@ -650,6 +612,7 @@
             },
             {
                 src: "video/9.mp4",
+                thumbnail: "images/thumbnails/9.jpg",
                 title: {
                     ru: "Образ жизни и кишечник: что важно знать",
                     en: "Lifestyle and Bowel Health: What to Know",
@@ -663,6 +626,7 @@
             },
             {
                 src: "video/10.mp4",
+                thumbnail: "images/thumbnails/10.jpg",
                 title: {
                     ru: "Подготовка к колоноскопии: пошаговая инструкция",
                     en: "Colonoscopy Preparation: Step-by-Step Guide",
@@ -676,10 +640,11 @@
             },
             {
                 src: "video/11.mp4",
+                thumbnail: "images/thumbnails/11.jpg",
                 title: {
                     ru: "Мифы и факты о проктологических заболеваниях",
                     en: "Myths and Facts about Proctological Diseases",
-                    ka: "მითები და ფაქты პროქტოლოგიური დაავადებების შესახებ"
+                    ka: "მითები და ფაქты პროქტოლოგისური დაავადებების შესახებ"
                 },
                 description: {
                     ru: "Развенчиваем популярные мифы и предоставляем проверенные факты о заболеваниях прямой кишки и ануса.",
@@ -689,252 +654,222 @@
             },
             {
                 src: "video/proctologist_examines_young_and_fat_armenian_woman (1).mp4",
+                thumbnail: "images/thumbnails/proctologist_examines_young_and_fat_armenian_woman_1.jpg",
                 title: {
-                    ru: "Видео об обследовании (1)",
-                    en: "Examination Video (1)",
-                    ka: "გამოკვლევის ვიდეო (1)"
+                    ru: "Обследование пациентки (1)",
+                    en: "Patient Examination (1)",
+                    ka: "პაციენტის გამოკვლევა (1)"
                 },
                 description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
-                    en: "Description of the patient examination video. For educational purposes.",
-                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                    ru: "Один из примеров деликатного обследования пациентки в практике проктолога. Только образовательные цели.",
+                    en: "One example of a delicate patient examination in proctological practice. For educational purposes only.",
+                    ka: "პაციენტის დელიკატური გამოკვლევის ერთი მაგალითი პროქტოლოგიურ პრაქტიკაში. მხოლოდ საგანმანათლებლო მიზნებისთვის."
                 }
             },
             {
                 src: "video/proctologist_examines_young_and_fat_armenian_woman (10).mp4",
+                thumbnail: "images/thumbnails/proctologist_examines_young_and_fat_armenian_woman_10.jpg",
                 title: {
-                    ru: "Видео об обследовании (10)",
-                    en: "Examination Video (10)",
-                    ka: "გამოკვლევის ვიდეო (10)"
+                    ru: "Обследование пациентки (10)",
+                    en: "Patient Examination (10)",
+                    ka: "პაციენტის გამოკვლევა (10)"
                 },
                 description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    ru: "Описание видео об обследовании пациентки. Для образовательных целей.",
                     en: "Description of the patient examination video. For educational purposes.",
                     ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
                 }
             },
             {
                 src: "video/proctologist_examines_young_and_fat_armenian_woman (11).mp4",
+                thumbnail: "images/thumbnails/proctologist_examines_young_and_fat_armenian_woman_11.jpg",
                 title: {
-                    ru: "Видео об обследовании (11)",
-                    en: "Examination Video (11)",
-                    ka: "გამოკვლევის ვიდეო (11)"
+                    ru: "Обследование пациентки (11)",
+                    en: "Patient Examination (11)",
+                    ka: "პაციენტის გამოკვლევა (11)"
                 },
                 description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    ru: "Описание видео об обследовании пациентки. Для образовательных целей.",
                     en: "Description of the patient examination video. For educational purposes.",
                     ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
                 }
             },
             {
                 src: "video/proctologist_examines_young_and_fat_armenian_woman (12).mp4",
+                thumbnail: "images/thumbnails/proctologist_examines_young_and_fat_armenian_woman_12.jpg",
                 title: {
-                    ru: "Видео об обследовании (12)",
-                    en: "Examination Video (12)",
-                    ka: "გამოკვლევის ვიდეო (12)"
+                    ru: "Обследование пациентки (12)",
+                    en: "Patient Examination (12)",
+                    ka: "პაციენტის გამოკვლევა (12)"
                 },
                 description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    ru: "Описание видео об обследовании пациентки. Для образовательных целей.",
                     en: "Description of the patient examination video. For educational purposes.",
                     ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
                 }
             },
             {
                 src: "video/proctologist_examines_young_and_fat_armenian_woman (2).mp4",
+                thumbnail: "images/thumbnails/proctologist_examines_young_and_fat_armenian_woman_2.jpg",
                 title: {
-                    ru: "Видео об обследовании (2)",
-                    en: "Examination Video (2)",
-                    ka: "გამოკვლევის ვიდეო (2)"
+                    ru: "Обследование пациентки (2)",
+                    en: "Patient Examination (2)",
+                    ka: "პაციენტის გამოკვლევა (2)"
                 },
                 description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    ru: "Описание видео об обследовании пациентки. Для образовательных целей.",
                     en: "Description of the patient examination video. For educational purposes.",
                     ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
                 }
             },
             {
                 src: "video/proctologist_examines_young_and_fat_armenian_woman (3).mp4",
+                thumbnail: "images/thumbnails/proctologist_examines_young_and_fat_armenian_woman_3.jpg",
                 title: {
-                    ru: "Видео об обследовании (3)",
-                    en: "Examination Video (3)",
-                    ka: "გამოკვლევის ვიდეო (3)"
+                    ru: "Обследование пациентки (3)",
+                    en: "Patient Examination (3)",
+                    ka: "პაციენტის გამოკვლევა (3)"
                 },
                 description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    ru: "Описание видео об обследовании пациентки. Для образовательных целей.",
                     en: "Description of the patient examination video. For educational purposes.",
                     ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
                 }
             }
         ];
 
-        let currentLang = localStorage.getItem('siteLang') || 'ru';
+        let currentLang = 'ru'; // Текущий язык, по умолчанию русский
         const mainVideoPlayer = document.getElementById('mainVideoPlayer');
         const videoPlaylist = document.querySelector('.video-playlist');
+        const langButtons = document.querySelectorAll('.lang-switcher button');
+        const defaultThumbnail = 'images/video_placeholder_small.png'; // Заглушка, если нет превью
 
-        function loadPlaylist() {
-            videoPlaylist.innerHTML = ''; // Очищаем текущий плейлист
-            videoList.forEach((video, index) => {
-                const item = document.createElement('div');
-                item.classList.add('playlist-item');
-                item.setAttribute('role', 'option');
-                item.setAttribute('aria-selected', 'false');
-                item.dataset.index = index;
+        function createPlaylistItem(video, index) {
+            const div = document.createElement('div');
+            div.classList.add('playlist-item');
+            div.setAttribute('role', 'option');
+            div.setAttribute('aria-selected', 'false'); // По умолчанию не выбрано
+            div.setAttribute('tabindex', '0'); // Делаем элемент фокусируемым
 
-                // Создаем временный элемент video для получения первого кадра как постера
-                const tempVideo = document.createElement('video');
-                tempVideo.src = video.src;
-                tempVideo.muted = true;
-                tempVideo.preload = "metadata"; // Загружаем только метаданные, чтобы получить продолжительность и кадр
+            const thumbnailSrc = video.thumbnail || defaultThumbnail;
+            const img = document.createElement('img');
+            img.classList.add('video-thumbnail');
+            img.src = thumbnailSrc;
+            img.alt = video.title[currentLang]; // alt-текст для доступности
+            img.onerror = function() {
+                this.src = defaultThumbnail; // Если постер не найден, используем заглушку
+            };
 
-                tempVideo.onloadeddata = () => {
-                    if (tempVideo.readyState >= 2) { // Проверяем, что метаданные загружены
-                        const canvas = document.createElement('canvas');
-                        canvas.width = tempVideo.videoWidth;
-                        canvas.height = tempVideo.videoHeight;
-                        const ctx = canvas.getContext('2d');
-                        ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
-                        const posterUrl = canvas.toDataURL('image/jpeg');
-                        item.innerHTML = `
-                            <video src="${video.src}#t=0.001" muted preload="metadata" poster="${posterUrl}"></video>
-                            <div class="playlist-item-title">${video.title[currentLang]}</div>
-                            <div class="playlist-item-description">${video.description[currentLang]}</div>
-                        `;
-                    }
-                };
-                tempVideo.onerror = () => {
-                    // Fallback if video can't be loaded for thumbnail
-                    item.innerHTML = `
-                        <img src="images/video_placeholder.png" alt="Видео недоступно" style="width:100%; height:120px; object-fit:cover;">
-                        <div class="playlist-item-title">${video.title[currentLang]}</div>
-                        <div class="playlist-item-description">${video.description[currentLang]}</div>
-                    `;
-                };
-                // Если video.onloadeddata не срабатывает (например, видео очень короткое или ошибка),
-                // гарантируем, что содержимое будет добавлено, чтобы не остался пустой элемент
-                setTimeout(() => {
-                    if (!item.innerHTML) {
-                         item.innerHTML = `
-                            <img src="images/video_placeholder.png" alt="Видео недоступно" style="width:100%; height:120px; object-fit:cover;">
-                            <div class="playlist-item-title">${video.title[currentLang]}</div>
-                            <div class="playlist-item-description">${video.description[currentLang]}</div>
-                        `;
-                    }
-                }, 1000); // Даем 1 секунду на загрузку метаданных
+            const title = document.createElement('div');
+            title.classList.add('playlist-item-title');
+            title.textContent = video.title[currentLang];
 
-                item.addEventListener('click', () => playVideo(index));
-                videoPlaylist.appendChild(item);
+            const description = document.createElement('div');
+            description.classList.add('playlist-item-description');
+            description.textContent = video.description[currentLang];
+
+            div.appendChild(img);
+            div.appendChild(title);
+            div.appendChild(description);
+
+            div.addEventListener('click', () => playVideo(index));
+            div.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault(); // Предотвращаем прокрутку страницы по пробелу
+                    playVideo(index);
+                }
             });
-            playVideo(0); // Автоматически воспроизводим первое видео при загрузке
-            updateActiveLangButton();
+
+            return div;
+        }
+
+        function renderPlaylist() {
+            videoPlaylist.innerHTML = '';
+            videoList.forEach((video, index) => {
+                videoPlaylist.appendChild(createPlaylistItem(video, index));
+            });
         }
 
         function playVideo(index) {
             const selectedVideo = videoList[index];
-            if (selectedVideo) {
-                mainVideoPlayer.src = selectedVideo.src;
-                mainVideoPlayer.load();
-                mainVideoPlayer.play();
+            mainVideoPlayer.src = selectedVideo.src;
+            mainVideoPlayer.setAttribute('poster', selectedVideo.thumbnail || 'images/video_placeholder.png'); // Устанавливаем постер для основного плеера
+            mainVideoPlayer.load(); // Перезагружаем видеоисточник
+            mainVideoPlayer.play();
 
-                document.querySelectorAll('.playlist-item').forEach((item, idx) => {
-                    if (idx === index) {
-                        item.classList.add('active');
-                        item.setAttribute('aria-selected', 'true');
-                        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    } else {
-                        item.classList.remove('active');
-                        item.setAttribute('aria-selected', 'false');
-                    }
-                });
-            }
-        }
-
-        // Language switching functionality
-        const translations = {
-            ru: {
-                header: "Глаза Проктолога",
-                about: "О проекте",
-                videos: "Видеоматериалы",
-                gallery: "Галерея изображений",
-                contact: "Связаться с нами",
-                sectionTitle: "🎥 Образовательные видеоматериалы",
-                sectionText: "Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы **просто и наглядно**. Выберите интересующий ролик из плейлиста ниже.",
-                footer: "&copy; 2025 Glaza Proktologa. Все права защищены.",
-                toTop: "Наверх",
-                videoError: "Ваш браузер не поддерживает видео.",
-                videoPlaceholder: "Видео недоступно"
-            },
-            en: {
-                header: "Proctologist's Eyes",
-                about: "About Project",
-                videos: "Video Materials",
-                gallery: "Image Gallery",
-                contact: "Contact Us",
-                sectionTitle: "🎥 Educational Video Materials",
-                sectionText: "Immerse yourself in the world of proctology with our specially prepared videos. We strive to explain complex topics **simply and clearly**. Select the video you are interested in from the playlist below.",
-                footer: "&copy; 2025 Proctologist's Eyes. All rights reserved.",
-                toTop: "Back to top",
-                videoError: "Your browser does not support the video tag.",
-                videoPlaceholder: "Video unavailable"
-            },
-            ka: {
-                header: "პროქტოლოგის თვალები",
-                about: "პროექტის შესახებ",
-                videos: "ვიდეო მასალები",
-                gallery: "გალერეა",
-                contact: "დაგვიკავშირდით",
-                sectionTitle: "🎥 საგანმანათლებლო ვიდეო მასალები",
-                sectionText: "ჩაეფლეთ პროქტოლოგიის სამყაროში ჩვენი სპეციალურად მომზადებული ვიდეოებით. ჩვენ ვცდილობთ ავხსნათ რთული თემები **მარტივად და თვალსაჩინოდ**. აირჩიეთ სასურველი ვიდეო ქვემოთ მოცემული დასაკრავი სიიდან.",
-                footer: "&copy; 2025 პროქტოლოგის თვალები. ყველა უფლება დაცულია.",
-                toTop: "ასვლა",
-                videoError: "თქვენი ბრაუზერი არ უჭერს მხარს ვიდეო ტეგს.",
-                videoPlaceholder: "ვიდეო მიუწვდომელია"
-            }
-        };
-
-        function updateContent() {
-            const currentTranslation = translations[currentLang];
-            document.querySelector('header').textContent = currentTranslation.header;
-            document.querySelector('nav a[href="index.html#about"]').textContent = currentTranslation.about;
-            document.querySelector('nav a[href="video.html"]').textContent = currentTranslation.videos;
-            document.querySelector('nav a[href="index.html#gallery"]').textContent = currentTranslation.gallery;
-            document.querySelector('nav a[href="index.html#contact"]').textContent = currentTranslation.contact;
-            document.querySelector('#videos h2').textContent = currentTranslation.sectionTitle;
-            document.querySelector('#videos p').innerHTML = currentTranslation.sectionText; // Use innerHTML for bold tag
-            document.querySelector('footer').innerHTML = currentTranslation.footer + ` <a href="#top" style="color: var(--neon-purple); text-decoration: none; margin-left: 10px;">${currentTranslation.toTop}</a>`;
-            mainVideoPlayer.querySelector('source').nextSibling.textContent = currentTranslation.videoError;
-
-            // Update playlist titles and descriptions
-            document.querySelectorAll('.playlist-item').forEach((item, index) => {
-                const video = videoList[index];
-                if (video) {
-                    item.querySelector('.playlist-item-title').textContent = video.title[currentLang];
-                    item.querySelector('.playlist-item-description').textContent = video.description[currentLang];
-                }
+            // Удаляем класс 'active' у всех элементов и добавляем к текущему
+            document.querySelectorAll('.playlist-item').forEach(item => {
+                item.classList.remove('active');
+                item.setAttribute('aria-selected', 'false');
             });
-            updateActiveLangButton();
+            videoPlaylist.children[index].classList.add('active');
+            videoPlaylist.children[index].setAttribute('aria-selected', 'true');
+
+            // Прокрутка к текущему видео в плейлисте (если нужно)
+            videoPlaylist.children[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function setLang(lang) {
             currentLang = lang;
-            localStorage.setItem('siteLang', lang);
-            loadPlaylist(); // Перезагружаем плейлист для применения нового языка
-            updateContent();
-        }
+            // Обновляем мета-теги
+            document.querySelector('html').setAttribute('lang', lang);
+            document.querySelector('meta[property="og:locale"]').setAttribute('content', lang + '_' + lang.toUpperCase());
 
-        function updateActiveLangButton() {
-            document.querySelectorAll('.lang-switcher button').forEach(button => {
-                if (button.onclick.toString().includes(`setLang('${currentLang}')`)) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
+            // Обновляем тексты заголовков и описаний
+            document.title = getLocalizedText("Видеоматериалы — Глаза Проктолога", "Video Materials — Proctologist's Eyes", "ვიდეო მასალები — პროქტოლოგის თვალები");
+            document.querySelector('meta[name="description"]').setAttribute('content', getLocalizedText("Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов.", "Educational videos on proctology. Dive into the world of hidden health aspects with our visual materials.", "საგანმანათლებლო ვიდეოები პროქტოლოგიაზე. ჩაეფლეთ ჯანმრთელობის ფარული ასპექტების სამყაროში ჩვენი თვალსაჩინო მასალებით."));
+            document.querySelector('meta[property="og:description"]').setAttribute('content', getLocalizedText("Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов.", "Educational videos on proctology. Dive into the world of hidden health aspects with our visual materials.", "საგანმანათლებლო ვიდეოები პროქტოლოგიაზე. ჩაეფლეთ ჯანმრთელობის ფარული ასპექტების სამყაროში ჩვენი თვალსაჩინო მასალებით."));
+            document.querySelector('meta[property="og:title"]').setAttribute('content', getLocalizedText("Видеоматериалы — Глаза Проктолога", "Video Materials — Proctologist's Eyes", "ვიდეო მასალები — პროქტოლოგის თვალები"));
+
+
+            document.querySelector('header').textContent = getLocalizedText("Глаза Проктолога", "Proctologist's Eyes", "პროქტოლოგის თვალები");
+            document.querySelector('nav a[href="index.html#about"]').textContent = getLocalizedText("О проекте", "About", "პროექტის შესახებ");
+            document.querySelector('nav a[href="video.html"]').textContent = getLocalizedText("Видеоматериалы", "Videos", "ვიდეო მასალები");
+            document.querySelector('nav a[href="index.html#gallery"]').textContent = getLocalizedText("Галерея изображений", "Image Gallery", "გალერეა");
+            document.querySelector('nav a[href="index.html#contact"]').textContent = getLocalizedText("Связаться с нами", "Contact Us", "კონტაქტი");
+
+            document.querySelector('#videos h2').textContent = getLocalizedText("🎥 Образовательные видеоматериалы", "🎥 Educational Videos", "🎥 საგანმანათლებლო ვიდეოები");
+            document.querySelector('#videos p').textContent = getLocalizedText("Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы **просто и наглядно**. Выберите интересующий ролик из плейлиста ниже.", "Dive into the world of proctology with our specially prepared videos. We strive to explain complex topics **simply and clearly**. Select the video you are interested in from the playlist below.", "ჩაეფლეთ პროქტოლოგიის სამყაროში ჩვენი სპეციალურად მომზადებული ვიდეოების საშუალებით. ჩვენ ვცდილობთ ავხსნათ რთული თემები **მარტივად და თვალსაჩინოდ**. აირჩიეთ სასურველი ვიდეო ქვემოთ მოცემული დასაკრავი სიიდან.");
+
+            document.querySelector('.lang-switcher button:nth-child(1)').textContent = "🇷🇺 " + getLocalizedText("Русский", "Russian", "რუსული");
+            document.querySelector('.lang-switcher button:nth-child(2)').textContent = "🇬🇧 " + getLocalizedText("English", "English", "ინგლისური");
+            document.querySelector('.lang-switcher button:nth-child(3)').textContent = "🇬🇪 " + getLocalizedText("ქართული", "Georgian", "ქართული");
+
+            // Обновляем активную кнопку языка
+            langButtons.forEach(button => button.classList.remove('active'));
+            document.querySelector(`.lang-switcher button[onclick="setLang('${lang}')"]`).classList.add('active');
+
+            renderPlaylist(); // Перерисовываем плейлист с новыми языками
+            // Если видео уже выбрано, обновляем его заголовок и описание (если плеер их отображает)
+            const activeItem = document.querySelector('.playlist-item.active');
+            if (activeItem) {
+                const activeIndex = Array.from(videoPlaylist.children).indexOf(activeItem);
+                if (activeIndex !== -1) {
+                    activeItem.querySelector('.playlist-item-title').textContent = videoList[activeIndex].title[currentLang];
+                    activeItem.querySelector('.playlist-item-description').textContent = videoList[activeIndex].description[currentLang];
                 }
-            });
+            }
         }
 
+        function getLocalizedText(ruText, enText, kaText) {
+            if (currentLang === 'en') {
+                return enText;
+            } else if (currentLang === 'ka') {
+                return kaText;
+            }
+            return ruText;
+        }
+
+        // Инициализация
         document.addEventListener('DOMContentLoaded', () => {
-            loadPlaylist();
-            updateContent(); // Вызываем для применения текстов
-            updateActiveLangButton();
+            // Устанавливаем язык по умолчанию из браузера или 'ru'
+            const browserLang = navigator.language.split('-')[0];
+            const initialLang = ['ru', 'en', 'ka'].includes(browserLang) ? browserLang : 'ru';
+            setLang(initialLang);
+
+            if (videoList.length > 0) {
+                playVideo(0); // Запускаем первое видео при загрузке страницы
+            }
         });
     </script>
 </body>
