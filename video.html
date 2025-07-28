@@ -1,886 +1,1006 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Видеоматериалы — Глаза Проктолога</title>
-    <meta name="description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
-    <meta name="keywords" content="проктология, медицина, здоровье, образование, видео, плейлист, Glaza Proktologa" />
-    <meta name="author" content="Glaza Proktologa" />
+    <title>Видеоматериалы — Глаза Проктолога</title>
+    <meta name="description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
+    <meta name="keywords" content="проктология, медицина, здоровье, образование, видео, плейлист, Glaza Proktologa" />
+    <meta name="author" content="Glaza Proktologa" />
 
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-    <meta property="og:title" content="Видеоматериалы — Глаза Проктолога" />
-    <meta property="og:description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://твой-домен.ру/video.html" />
-    <meta property="og:image" content="https://твой-домен.ру/images/Gemini_Generated_Image_62xki062xki062xk.png" />
-    <meta property="og:site_name" content="Глаза Проктолога" />
-    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="Видеоматериалы — Глаза Проктолога" />
+    <meta property="og:description" content="Образовательные видео по проктологии. Погрузитесь в мир скрытых аспектов здоровья с помощью наших наглядных материалов." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://твой-домен.ру/video.html" />
+    <meta property="og:image" content="https://твой-домен.ру/images/Gemini_Generated_Image_62xki062xki062xk.png" />
+    <meta property="og:site_name" content="Глаза Проктолога" />
+    <meta property="og:locale" content="ru_RU" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --main-bg-color: #0a192f;
-            --secondary-bg-color: #1a2c42;
-            --header-footer-bg: #0d1a2b;
-            --primary-text-color: #e2e8f0;
-            --accent-color: #00bcd4; /* Ярко-голубой */
-            --accent-hover-color: #6ff9ff; /* Светло-голубой при наведении */
-            --button-text-color: #000;
-            --border-radius: 8px;
-            --shadow-light: rgba(0, 188, 212, 0.4);
-            --shadow-dark: rgba(0, 188, 212, 0.6);
-            --playlist-bg-dark: rgba(10, 25, 47, 0.8);
-            --section-bg-opacity: 0.85; /* Увеличена непрозрачность для лучшей читаемости */
-        }
+    <style>
+        :root {
+            --main-bg-color: #0a192f;
+            --secondary-bg-color: #1a2c42;
+            --header-footer-bg: #0d1a2b;
+            --primary-text-color: #e2e8f0;
+            --accent-color: #00bcd4; /* Ярко-голубой */
+            --accent-hover-color: #6ff9ff; /* Светло-голубой при наведении */
+            --button-text-color: #000;
+            --border-radius: 8px;
+            --shadow-light: rgba(0, 188, 212, 0.4);
+            --shadow-dark: rgba(0, 188, 212, 0.6);
+            --playlist-bg-dark: rgba(10, 25, 47, 0.8);
+            --section-bg-opacity: 0.85; /* Увеличена непрозрачность для лучшей читаемости */
+        }
 
-        /* Общие стили для body */
-        body {
-            margin: 0;
-            color: var(--primary-text-color);
-            font-family: 'Roboto', Arial, sans-serif;
-            animation: fadeIn 1.5s ease-out;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-            /* Изменения для фонового изображения */
-            background-image: url('0.png'); /* Устанавливаем фоновое изображение */
-            background-size: cover; /* Растягиваем изображение на весь фон */
-            background-position: center center; /* Центрируем изображение */
-            background-attachment: fixed; /* Фиксируем изображение при прокрутке */
-            background-color: var(--main-bg-color); /* Фоновый цвет на случай, если изображение не загрузится */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        /* Общие стили для body */
+        body {
+            margin: 0;
+            color: var(--primary-text-color);
+            font-family: 'Roboto', Arial, sans-serif;
+            animation: fadeIn 1.5s ease-out;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            /* Изменения для фонового изображения */
+            background-image: url('0.png'); /* Устанавливаем фоновое изображение */
+            background-size: cover; /* Растягиваем изображение на весь фон */
+            background-position: center center; /* Центрируем изображение */
+            background-attachment: fixed; /* Фиксируем изображение при прокрутке */
+            background-color: var(--main-bg-color); /* Фоновый цвет на случай, если изображение не загрузится */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-        /* Анимация появления */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        /* Стили для фонового видео - Удалены, так как теперь используется изображение */
-        /* #bg-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -2;
-            background-size: cover;
-            filter: brightness(60%) blur(2px);
-        } */
+        /* Стили для фонового видео - Удалены, так как теперь используется изображение */
+        /* #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            background-size: cover;
+            filter: brightness(60%) blur(2px);
+        } */
 
-        /* Дополнительный слой затемнения над видео/изображением */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный черный */
-            z-index: -1; /* Между фоном и контентом */
-        }
+        /* Дополнительный слой затемнения над видео/изображением */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный черный */
+            z-index: -1; /* Между фоном и контентом */
+        }
 
-        /* Header стили */
-        header {
-            background-color: var(--header-footer-bg);
-            padding: 25px 20px;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5em;
-            font-weight: 700;
-            color: var(--accent-color);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+        /* Header стили */
+        header {
+            background-color: var(--header-footer-bg);
+            padding: 25px 20px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-        /* Navigation стили */
-        nav {
-            background-color: rgba(26, 44, 66, var(--section-bg-opacity));
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            padding: 15px 10px;
-            flex-wrap: wrap;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
+        /* Navigation стили */
+        nav {
+            background-color: rgba(26, 44, 66, var(--section-bg-opacity));
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 15px 10px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
 
-        nav a {
-            color: var(--primary-text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
-            padding: 10px 18px;
-            border-radius: var(--border-radius);
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            border: 1px solid transparent;
-        }
+        nav a {
+            color: var(--primary-text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            padding: 10px 18px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            border: 1px solid transparent;
+        }
 
-        nav a:hover, nav a:focus {
-            color: var(--accent-hover-color);
-            background-color: rgba(0, 188, 212, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px var(--shadow-light);
-            border-color: var(--accent-color);
-            outline: none; /* Убираем стандартный outline для улучшения эстетики, но сохраняем доступность с box-shadow */
-        }
+        nav a:hover, nav a:focus {
+            color: var(--accent-hover-color);
+            background-color: rgba(0, 188, 212, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow-light);
+            border-color: var(--accent-color);
+            outline: none; /* Убираем стандартный outline для улучшения эстетики, но сохраняем доступность с box-shadow */
+        }
 
-        /* Main content area */
-        main {
-            flex-grow: 1; /* Позволяет main занимать все доступное пространство */
-            padding: 2.5rem 2rem;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1; /* Гарантируем, что main находится над фоном */
-        }
+        /* Main content area */
+        main {
+            flex-grow: 1; /* Позволяет main занимать все доступное пространство */
+            padding: 2.5rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1; /* Гарантируем, что main находится над фоном */
+        }
 
-        /* Section styles */
-        section {
-            background-color: rgba(26, 44, 66, var(--section-bg-opacity));
-            margin-bottom: 2.5rem;
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        /* Section styles */
+        section {
+            background-color: rgba(26, 44, 66, var(--section-bg-opacity));
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-        section:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
+        section:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
 
-        /* Headings */
-        h2 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--accent-hover-color);
-            font-size: 2.2em;
-            margin-bottom: 1.8rem;
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 12px;
-            display: inline-block;
-            letter-spacing: 0.5px;
-            text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
-        }
+        /* Headings */
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent-hover-color);
+            font-size: 2.2em;
+            margin-bottom: 1.8rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 12px;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+        }
 
-        p {
-            font-size: 1.15em;
-            color: var(--primary-text-color);
-            max-width: 800px;
-            margin: 0.8rem auto;
-            line-height: 1.7;
-        }
+        p {
+            font-size: 1.15em;
+            color: var(--primary-text-color);
+            max-width: 800px;
+            margin: 0.8rem auto;
+            line-height: 1.7;
+        }
 
-        /* Video player and playlist container */
-        .video-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
+        /* Video player and playlist container */
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
 
-        #mainVideoPlayer {
-            width: 900px; /* Увеличена ширина */
-            height: 500px; /* Увеличена высота */
-            object-fit: cover;
-            border: 4px solid var(--accent-color);
-            border-radius: var(--border-radius);
-            max-width: 100%;
-            height: auto; /* Для адаптивности */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            background-color: #000; /* Черный фон для видеоплеера */
-        }
+        #mainVideoPlayer {
+            width: 900px; /* Увеличена ширина */
+            height: 500px; /* Увеличена высота */
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            max-width: 100%;
+            height: auto; /* Для адаптивности */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            background-color: #000; /* Черный фон для видеоплеера */
+        }
 
-        .video-playlist {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 18px;
-            margin-top: 25px;
-            padding: 20px;
-            background-color: var(--playlist-bg-dark);
-            border-radius: var(--border-radius);
-            box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.4);
-            max-width: 900px; /* Соответствует ширине плеера */
-            width: 100%;
-            overflow-y: auto;
-            max-height: 450px; /* Увеличена высота плейлиста */
-            border: 1px solid rgba(0, 188, 212, 0.3);
-        }
+        .video-playlist {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 25px;
+            padding: 20px;
+            background-color: var(--playlist-bg-dark);
+            border-radius: var(--border-radius);
+            box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.4);
+            max-width: 900px; /* Соответствует ширине плеера */
+            width: 100%;
+            overflow-y: auto;
+            max-height: 450px; /* Увеличена высота плейлиста */
+            border: 1px solid rgba(0, 188, 212, 0.3);
+        }
 
-        .playlist-item {
-            cursor: pointer;
-            border: 2px solid rgba(26, 44, 66, 0.7);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            width: 200px; /* Увеличена ширина элемента плейлиста */
-            background-color: rgba(10, 25, 47, 0.9);
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            position: relative; /* Для индикатора активного видео */
-        }
+        .playlist-item {
+            cursor: pointer;
+            border: 2px solid rgba(26, 44, 66, 0.7);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            width: 200px; /* Увеличена ширина элемента плейлиста */
+            background-color: rgba(10, 25, 47, 0.9);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            position: relative; /* Для индикатора активного видео */
+        }
 
-        .playlist-item:hover, .playlist-item.active {
-            transform: translateY(-7px);
-            border-color: var(--accent-hover-color);
-            box-shadow: 0 6px 20px var(--shadow-dark);
-            background-color: rgba(15, 35, 60, 0.95);
-        }
+        .playlist-item:hover, .playlist-item.active {
+            transform: translateY(-7px);
+            border-color: var(--accent-hover-color);
+            box-shadow: 0 6px 20px var(--shadow-dark);
+            background-color: rgba(15, 35, 60, 0.95);
+        }
 
-        .playlist-item.active::after {
-            content: '▶'; /* Иконка проигрывания */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3em;
-            color: var(--accent-color);
-            text-shadow: 0 0 15px var(--shadow-light);
-            pointer-events: none; /* Чтобы не мешать кликам */
-            opacity: 0.9;
-        }
+        .playlist-item.active::after {
+            content: '▶'; /* Иконка проигрывания */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px var(--shadow-light);
+            pointer-events: none; /* Чтобы не мешать кликам */
+            opacity: 0.9;
+        }
 
 
-        .playlist-item video {
-            width: 100%;
-            height: 110px; /* Увеличена высота превью видео */
-            object-fit: cover;
-            display: block;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        .playlist-item video {
+            width: 100%;
+            height: 110px; /* Увеличена высота превью видео */
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-        .playlist-item-title {
-            padding: 10px;
-            font-size: 1em;
-            color: var(--primary-text-color);
-            font-weight: bold;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.3;
-        }
+        .playlist-item-title {
+            padding: 10px;
+            font-size: 1em;
+            color: var(--primary-text-color);
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+        }
 
-        .playlist-item-description {
-            padding: 0 10px 10px;
-            font-size: 0.85em;
-            color: rgba(226, 232, 240, 0.75);
-            max-height: 3.8em; /* 3 строки текста */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
+        .playlist-item-description {
+            padding: 0 10px 10px;
+            font-size: 0.85em;
+            color: rgba(226, 232, 240, 0.75);
+            max-height: 3.8em; /* 3 строки текста */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
 
-        /* Language switcher */
-        .lang-switcher {
-            margin-top: 3rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            padding: 1.5rem;
-            background-color: rgba(13, 26, 43, var(--section-bg-opacity));
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        /* Language switcher */
+        .lang-switcher {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            padding: 1.5rem;
+            background-color: rgba(13, 26, 43, var(--section-bg-opacity));
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-        .lang-switcher button {
-            background: rgba(26, 44, 66, 0.95);
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-            padding: 12px 25px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1.05em;
-            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
+        .lang-switcher button {
+            background: rgba(26, 44, 66, 0.95);
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.05em;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
 
-        .lang-switcher button:hover, .lang-switcher button:focus {
-            background: var(--accent-color);
-            color: var(--button-text-color);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px var(--shadow-dark);
-            outline: none;
-        }
+        .lang-switcher button:hover, .lang-switcher button:focus {
+            background: var(--accent-color);
+            color: var(--button-text-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px var(--shadow-dark);
+            outline: none;
+        }
 
-        .lang-switcher button.active {
-            background: var(--accent-color);
-            color: var(--button-text-color);
-            box-shadow: 0 4px 12px var(--shadow-dark);
-            transform: translateY(-1px);
-            border-color: var(--accent-hover-color);
-            cursor: default;
-        }
+        .lang-switcher button.active {
+            background: var(--accent-color);
+            color: var(--button-text-color);
+            box-shadow: 0 4px 12px var(--shadow-dark);
+            transform: translateY(-1px);
+            border-color: var(--accent-hover-color);
+            cursor: default;
+        }
 
-        /* Footer styles */
-        footer {
-            background-color: var(--header-footer-bg);
-            text-align: center;
-            padding: 20px;
-            font-size: 0.95em;
-            color: var(--primary-text-color);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            margin-top: auto; /* Прижимает футер к низу */
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
-        }
+        /* Footer styles */
+        footer {
+            background-color: var(--header-footer-bg);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.95em;
+            color: var(--primary-text-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            margin-top: auto; /* Прижимает футер к низу */
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+        }
 
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin-left: 10px;
-            transition: color 0.3s ease;
-        }
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
 
-        footer a:hover {
-            color: var(--accent-hover-color);
-            text-decoration: underline;
-        }
+        footer a:hover {
+            color: var(--accent-hover-color);
+            text-decoration: underline;
+        }
 
-        /* Media queries for responsiveness */
-        @media (max-width: 992px) {
-            #mainVideoPlayer {
-                width: 100%;
-                height: 450px;
-            }
-            .video-playlist {
-                max-width: 100%;
-                max-height: 400px;
-            }
-            .playlist-item {
-                width: 180px;
-            }
-            .playlist-item video {
-                height: 100px;
-            }
-        }
+        /* Media queries for responsiveness */
+        @media (max-width: 992px) {
+            #mainVideoPlayer {
+                width: 100%;
+                height: 450px;
+            }
+            .video-playlist {
+                max-width: 100%;
+                max-height: 400px;
+            }
+            .playlist-item {
+                width: 180px;
+            }
+            .playlist-item video {
+                height: 100px;
+            }
+        }
 
-        @media (max-width: 768px) {
-            header { font-size: 2em; padding: 20px 15px; }
-            nav { gap: 1rem; padding: 12px 10px; }
-            nav a { padding: 8px 12px; font-size: 1em; }
-            main { padding: 2rem 1rem; }
-            section { padding: 2rem 1.5rem; margin-bottom: 2rem; }
-            h2 { font-size: 1.9em; margin-bottom: 1.2rem; }
-            p { font-size: 1.05em; }
-            #mainVideoPlayer {
-                height: 300px;
-            }
-            .video-playlist {
-                max-height: 350px;
-            }
-            .playlist-item {
-                width: 160px;
-            }
-            .playlist-item video {
-                height: 90px;
-            }
-            .lang-switcher {
-                flex-direction: column;
-                gap: 0.8rem;
-                padding: 1rem;
-            }
-            .lang-switcher button {
-                width: 80%;
-                margin: 0 auto;
-                justify-content: center;
-            }
-        }
+        @media (max-width: 768px) {
+            header { font-size: 2em; padding: 20px 15px; }
+            nav { gap: 1rem; padding: 12px 10px; }
+            nav a { padding: 8px 12px; font-size: 1em; }
+            main { padding: 2rem 1rem; }
+            section { padding: 2rem 1.5rem; margin-bottom: 2rem; }
+            h2 { font-size: 1.9em; margin-bottom: 1.2rem; }
+            p { font-size: 1.05em; }
+            #mainVideoPlayer {
+                height: 300px;
+            }
+            .video-playlist {
+                max-height: 350px;
+            }
+            .playlist-item {
+                width: 160px;
+            }
+            .playlist-item video {
+                height: 90px;
+            }
+            .lang-switcher {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem;
+            }
+            .lang-switcher button {
+                width: 80%;
+                margin: 0 auto;
+                justify-content: center;
+            }
+        }
 
-        @media (max-width: 576px) {
-            header { font-size: 1.8em; padding: 15px 10px; }
-            nav { flex-direction: column; gap: 0.6rem; padding: 10px; }
-            nav a { padding: 10px; font-size: 0.95em; }
-            main { padding: 1.5rem 0.8rem; }
-            section { padding: 1.5rem 1rem; margin-bottom: 1.5rem; }
-            h2 { font-size: 1.6em; }
-            p { font-size: 1em; }
-            #mainVideoPlayer {
-                height: 220px;
-            }
-            .video-playlist {
-                max-height: 300px;
-                padding: 10px;
-            }
-            .playlist-item {
-                width: 140px;
-                height: auto; /* Позволяет содержимому определять высоту */
-            }
-            .playlist-item video {
-                height: 70px;
-            }
-            .playlist-item-title {
-                font-size: 0.85em;
-                padding: 6px;
-            }
-            .playlist-item-description {
-                font-size: 0.75em;
-                padding: 0 6px 6px;
-                max-height: 3.4em; /* 3 строки текста */
-            }
-            .lang-switcher button {
-                font-size: 0.9em;
-                padding: 10px 15px;
-                width: 90%;
-            }
-            footer { font-size: 0.85em; padding: 12px; }
-        }
-    </style>
+        @media (max-width: 576px) {
+            header { font-size: 1.8em; padding: 15px 10px; }
+            nav { flex-direction: column; gap: 0.6rem; padding: 10px; }
+            nav a { padding: 10px; font-size: 0.95em; }
+            main { padding: 1.5rem 0.8rem; }
+            section { padding: 1.5rem 1rem; margin-bottom: 1.5rem; }
+            h2 { font-size: 1.6em; }
+            p { font-size: 1em; }
+            #mainVideoPlayer {
+                height: 220px;
+            }
+            .video-playlist {
+                max-height: 300px;
+                padding: 10px;
+            }
+            .playlist-item {
+                width: 140px;
+                height: auto; /* Позволяет содержимому определять высоту */
+            }
+            .playlist-item video {
+                height: 70px;
+            }
+            .playlist-item-title {
+                font-size: 0.85em;
+                padding: 6px;
+            }
+            .playlist-item-description {
+                font-size: 0.75em;
+                padding: 0 6px 6px;
+                max-height: 3.4em; /* 3 строки текста */
+            }
+            .lang-switcher button {
+                font-size: 0.9em;
+                padding: 10px 15px;
+                width: 90%;
+            }
+            footer { font-size: 0.85em; padding: 12px; }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="overlay" aria-hidden="true"></div>
+    <div class="overlay" aria-hidden="true"></div>
 
-    <header>Глаза Проктолога</header>
-    <nav aria-label="Основная навигация">
-        <a href="index.html#about">О проекте</a>
-        <a href="video.html" aria-current="page">Видеоматериалы</a>
-        <a href="index.html#gallery">Галерея изображений</a>
-        <a href="index.html#contact">Связаться с нами</a>
-    </nav>
+    <header>Глаза Проктолога</header>
+    <nav aria-label="Основная навигация">
+        <a href="index.html#about">О проекте</a>
+        <a href="video.html" aria-current="page">Видеоматериалы</a>
+        <a href="index.html#gallery">Галерея изображений</a>
+        <a href="index.html#contact">Связаться с нами</a>
+    </nav>
 
-    <main>
-        <section id="videos">
-            <h2>🎥 Образовательные видеоматериалы</h2>
-            <p>Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы **просто и наглядно**. Выберите интересующий ролик из плейлиста ниже.</p>
+    <main>
+        <section id="videos">
+            <h2>🎥 Образовательные видеоматериалы</h2>
+            <p>Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы **просто и наглядно**. Выберите интересующий ролик из плейлиста ниже.</p>
 
-            <div class="video-container">
-                <video id="mainVideoPlayer" controls autoplay muted playsinline aria-label="Основное образовательное видео" poster="images/video_placeholder.png">
-                    <source src="" type="video/mp4" />
-                    Ваш браузер не поддерживает видео.
-                </video>
-                <div class="video-playlist" role="listbox" aria-label="Список образовательных видео">
-                    </div>
-            </div>
-        </section>
+            <div class="video-container">
+                <video id="mainVideoPlayer" controls autoplay muted playsinline aria-label="Основное образовательное видео" poster="images/video_placeholder.png">
+                    <source src="" type="video/mp4" />
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <div class="video-playlist" role="listbox" aria-label="Список образовательных видео">
+                    </div>
+            </div>
+        </section>
 
-        <div class="lang-switcher" aria-label="Переключатель языка">
-            <button onclick="setLang('ru')" aria-label="Переключить на русский">🇷🇺 Русский</button>
-            <button onclick="setLang('en')" aria-label="Switch to English">🇬🇧 English</button>
-            <button onclick="setLang('ka')" aria-label="გადართვა ქართულზე">🇬🇪 ქართული</button>
-        </div>
-    </main>
+        <div class="lang-switcher" aria-label="Переключатель языка">
+            <button onclick="setLang('ru')" aria-label="Переключить на русский">🇷🇺 Русский</button>
+            <button onclick="setLang('en')" aria-label="Switch to English">🇬🇧 English</button>
+            <button onclick="setLang('ka')" aria-label="გადართვა ქართულზე">🇬🇪 ქართული</button>
+        </div>
+    </main>
 
-    <footer>
-        &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">Наверх</a>
-    </footer>
+    <footer>
+        &copy; 2025 Glaza Proktologa. Все права защищены. <a href="#top" style="color: var(--accent-color); text-decoration: none; margin-left: 10px;">Наверх</a>
+    </footer>
 
-    <script>
-        // --- ВАЖНО: Обновляйте этот массив вручную при добавлении новых видео ---
-        // Убедитесь, что пути к видеофайлам верны (например, "video/1.mp4")
-        const videoList = [
-            {
-                src: "video/a.mp4",
-                title: {
-                    ru: "Прием у проктолога: первый визит",
-                    en: "Proctologist's Visit: First Appointment",
-                    ka: "პროქტოლოგთან ვიზიტი: პირველი შეხვედრა"
-                },
-                description: {
-                    ru: "Подробное руководство для тех, кто впервые посещает проктолога. Узнайте, чего ожидать и как подготовиться.",
-                    en: "A detailed guide for first-time proctologist visitors. Learn what to expect and how to prepare.",
-                    ka: "დეტალური სახელმძღვანელო პროქტოლოგთან პირველი ვიზიტისთვის. გაიგეთ, რას უნდა ელოდოთ და როგორ მოემზადოთ."
-                }
-            },
-            {
-                src: "video/n.mp4",
-                title: {
-                    ru: "Новые методы лечения: безболезненно и эффективно",
-                    en: "New Treatment Methods: Painless and Effective",
-                    ka: "მკურნალობის ახალი მეთოდები: უმტკივნეულო და ეფექტური"
-                },
-                description: {
-                    ru: "Обзор последних достижений в области проктологии, делающих лечение более комфортным и результативным.",
-                    en: "An overview of the latest advancements in proctology, making treatments more comfortable and effective.",
-                    ka: "პროქტოლოგიის სფეროში უახლესი მიღწევების მიმოხილვა, რაც მკურნალობას უფრო კომფორტულს და შედეგიანს ხდის."
-                }
-            },
-            {
-                src: "video/1.mp4",
-                title: {
-                    ru: "Прием у проктолога: первичный осмотр",
-                    en: "Proctologist's Visit: Initial Examination",
-                    ka: "პროქტოლოგთან ვიზიტი: პირველადი შემოწმება"
-                },
-                description: {
-                    ru: "В этом видео показан подробный процесс первичного осмотра у проктолога, включая важные этапы и рекомендации.",
-                    en: "This video details the initial examination process with a proctologist, including important steps and recommendations.",
-                    ka: "ეს ვიდეო დეტალურად აღწერს პროქტოლოგთან პირველადი შემოწმების პროცესს, მათ შორის მნიშვნელოვან ნაბიჯებსა და რეკომენდაციებს."
-                }
-            },
-            {
-                src: "video/2.mp4",
-                title: {
-                    ru: "Диагностика геморроя: современные методы",
-                    en: "Hemorrhoid Diagnosis: Modern Methods",
-                    ka: "ჰემოროიდების დიაგნოსტიკა: თანამედროვე მეთოდები"
-                },
-                description: {
-                    ru: "Узнайте о передовых методах диагностики геморроя, которые помогают точно определить стадию заболевания и выбрать лечение.",
-                    en: "Learn about advanced methods for diagnosing hemorrhoids that help accurately determine the stage of the disease and choose treatment.",
-                    ka: "შეიტყვეთ ჰემოროიდების დიაგნოსტიკის თანამედროვე მეთოდების შესახებ, რომლებიც ხელს უწყობენ დაავადების სტადიის ზუსტად განსაზღვრას და მკურნალობის არჩევას."
-                }
-            },
-            {
-                src: "video/Video_Generisanje_Proktolog_i_žena.mp4",
-                title: {
-                    ru: "Нина у проктолога: особенности осмотра",
-                    en: "Nina at the Proctologist: Examination Features",
-                    ka: "ნინა პროქტოლოგთან: გამოკვლევის თავისებურებები"
-                },
-                description: {
-                    ru: "Случай Нины: как проходит деликатный осмотр у проктолога, важные аспекты подготовки и процедуры.",
-                    en: "Nina's case: how a delicate proctological examination is performed, important aspects of preparation and procedures.",
-                    ka: "ნინას შემთხვევა: როგორ მიმდინარეობს პროქტოლოგის დელიკატური გამოკვლევა, მომზადებისა და პროცედურის მნიშვნელოვანი ასპექტები."
-                }
-            },
-            {
-                src: "video/Video_Gotovo_Proktolog_i_Žena.mp4",
-                title: {
-                    ru: "Проктолог и женщина: комплексный подход",
-                    en: "Proctologist and Woman: Comprehensive Approach",
-                    ka: "პროქტოლოგი და ქალი: კომპლექსური მიდგომა"
-                },
-                description: {
-                    ru: "Взаимодействие врача и пациентки: пример полного обследования и консультации по проктологическим вопросам.",
-                    en: "Doctor-patient interaction: an example of a complete examination and consultation on proctological issues.",
-                    ka: "ექიმისა და პაციენტის ურთიერთქმედება: სრული გამოკვლევისა და კონსულტაციის მაგალითი პროქტოლოგიურ საკითხებზე."
-                }
-            },
-            {
-                src: "video/Video_je_gotovo_(1).mp4",
-                title: {
-                    ru: "Обзор заболеваний аноректальной области",
-                    en: "Overview of Anorectal Diseases",
-                    ka: "ანორექტალური რეგიონის დაავადებების მიმოხილვა"
-                },
-                description: {
-                    ru: "Краткий, но информативный обзор наиболее распространенных заболеваний аноректальной области: симптомы и первые шаги.",
-                    en: "A brief but informative overview of the most common anorectal diseases: symptoms and first steps.",
-                    ka: "მოკლე, მაგრამ ინფორმატიული მიმოხილვა ანორექტალური რეგიონის ყველაზე გავრცელებული დაავადებების შესახებ: სიმპტომები და პირველი ნაბიჯები."
-                }
-            },
-            {
-                src: "video/Видео_готово_Популарно_видео.mp4",
-                title: {
-                    ru: "Популярное видео: ответы на вопросы",
-                    en: "Popular Video: Q&A",
-                    ka: "პოპულარული ვიდეო: კითხვა-პასუხი"
-                },
-                description: {
-                    ru: "Самые часто задаваемые вопросы проктологу и профессиональные ответы на них. Все, что вы хотели знать.",
-                    en: "The most frequently asked questions to a proctologist and professional answers to them. Everything you wanted to know.",
-                    ka: "ყველაზე ხშირად დასმული კითხვები პროქტოლოგთან და პროფესიული პასუხები მათზე. ყველაფერი, რაც გინდოდათ იცოდეთ."
-                }
-            },
-            {
-                src: "video/Видео_готово_толстая_попа.mp4",
-                title: {
-                    ru: "Визуальная демонстрация: анатомия и здоровье",
-                    en: "Visual Demonstration: Anatomy and Health",
-                    ka: "ვიზუალური დემონსტრაცია: ანატომია და ჯანმრთელობა"
-                },
-                description: {
-                    ru: "Наглядная демонстрация анатомических особенностей и их связи со здоровьем аноректальной зоны. Только образовательные цели.",
-                    en: "A visual demonstration of anatomical features and their connection to the health of the anorectal area. For educational purposes only.",
-                    ka: "ანატომიური თავისებურებების ვიზუალური დემონსტრაცია და მათი კავშირი ანორექტალური ზონის ჯანმრთელობასთან. მხოლოდ საგანმანათლებლო მიზნებისთვის."
-                }
-            },
-            {
-                src: "video/Видео_је_готово_.mp4",
-                title: {
-                    ru: "Советы по профилактике проктологических проблем",
-                    en: "Tips for Preventing Proctological Problems",
-                    ka: "რჩევები პროქტოლოგიური პრობლემების პრევენციისთვის"
-                },
-                description: {
-                    ru: "Узнайте о простых, но эффективных способах предотвращения распространенных проктологических заболеваний и поддержания здоровья.",
-                    en: "Learn simple yet effective ways to prevent common proctological diseases and maintain health.",
-                    ka: "ისწავლეთ მარტივი, მაგრამ ეფექტური გზები გავრცელებული პროქტოლოგიური დაავადებების პრევენციისა და ჯანმრთელობის შესანარჩუნებლად."
-                }
-            },
-            {
-                src: "video/9.mp4",
-                title: {
-                    ru: "Образ жизни и кишечник: что важно знать",
-                    en: "Lifestyle and Bowel Health: What to Know",
-                    ka: "ცხოვრების წესი და ნაწლავების ჯანმრთელობა: რა უნდა იცოდეთ"
-                },
-                description: {
-                    ru: "Как ежедневные привычки влияют на здоровье кишечника и что можно изменить для его улучшения.",
-                    en: "How daily habits affect bowel health and what you can change to improve it.",
-                    ka: "როგორ მოქმედებს ყოველდღიური ჩვევები ნაწლავების ჯანმრთელობაზე და რა შეგიძლიათ შეცვალოთ მის გასაუმჯობესებლად."
-                }
-            },
-            {
-                src: "video/10.mp4",
-                title: {
-                    ru: "Подготовка к колоноскопии: пошаговая инструкция",
-                    en: "Colonoscopy Preparation: Step-by-Step Guide",
-                    ka: "კოლონოსკოპიისთვის მომზადება: ნაბიჯ-ნაბიჯ ინსტრუქცია"
-                },
-                description: {
-                    ru: "Детальное руководство по подготовке к колоноскопии, чтобы процедура прошла максимально комфортно и эффективно.",
-                    en: "Detailed guide to preparing for a colonoscopy to ensure the procedure is as comfortable and effective as possible.",
-                    ka: "დეტალური სახელმძღვანელო კოლონოსკოპიისთვის მოსამზადებლად, რათა პროცედურა მაქსიმალურად კომფორტული და ეფექტური იყოს."
-                }
-            },
-            {
-                src: "video/11.mp4",
-                title: {
-                    ru: "Мифы и факты о проктологических заболеваниях",
-                    en: "Myths and Facts about Proctological Diseases",
-                    ka: "მითები და ფაქты პროქტოლოგის დაავადებების შესახებ"
-                },
-                description: {
-                    ru: "Развенчиваем популярные мифы и предоставляем проверенные факты о заболеваниях прямой кишки и ануса.",
-                    en: "Debunking popular myths and providing verified facts about diseases of the rectum and anus.",
-                    ka: "ვამსხვრევთ პოპულარულ მითებს и გთავაზობთ დამოწმებულ ფაქტებს სწორი ნაწლავისა და ანუსის დაავადებების შესახებ."
-                }
-            },
-            {
-                src: "video/proctologist_examines_young_and_fat_armenian_woman (1).mp4",
-                title: {
-                    ru: "Видео об обследовании (1)",
-                    en: "Examination Video (1)",
-                    ka: "გამოკვლევის ვიდეო (1)"
-                },
-                description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
-                    en: "Description of the patient examination video. For educational purposes.",
-                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
-                }
-            },
-            {
-                src: "video/proctologist_examines_young_and_fat_armenian_woman (10).mp4",
-                title: {
-                    ru: "Видео об обследовании (10)",
-                    en: "Examination Video (10)",
-                    ka: "გამოკვლევის ვიდეო (10)"
-                },
-                description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
-                    en: "Description of the patient examination video. For educational purposes.",
-                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
-                }
-            },
-            {
-                src: "video/proctologist_examines_young_and_fat_armenian_woman (11).mp4",
-                title: {
-                    ru: "Видео об обследовании (11)",
-                    en: "Examination Video (11)",
-                    ka: "გამოკვლევის ვიდეო (11)"
-                },
-                description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
-                    en: "Description of the patient examination video. For educational purposes.",
-                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
-                }
-            },
-            {
-                src: "video/proctologist_examines_young_and_fat_armenian_woman (12).mp4",
-                title: {
-                    ru: "Видео об обследовании (12)",
-                    en: "Examination Video (12)",
-                    ka: "გამოკვლევის ვიდეო (12)"
-                },
-                description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
-                    en: "Description of the patient examination video. For educational purposes.",
-                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
-                }
-            },
-            {
-                src: "video/proctologist_examines_young_and_fat_armenian_woman (2).mp4",
-                title: {
-                    ru: "Видео об обследовании (2)",
-                    en: "Examination Video (2)",
-                    ka: "გამოკვლევის ვიდეო (2)"
-                },
-                description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
-                    en: "Description of the patient examination video. For educational purposes.",
-                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
-                }
-            },
-            {
-                src: "video/proctologist_examines_young_and_fat_armenian_woman (3).mp4",
-                title: {
-                    ru: "Видео об обследовании (3)",
-                    en: "Examination Video (3)",
-                    ka: "გამოკვლევის ვიდეო (3)"
-                },
-                description: {
-                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
-                    en: "Description of the patient examination video. For educational purposes.",
-                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
-                }
-            },
-            {
-                src: "video/video on.mp4",
-                title: {
-                    ru: "Видео: Включение",
-                    en: "Video: Power On",
-                    ka: "ვიდეო: ჩართვა"
-                },
-                description: {
-                    ru: "Описание видео 'Включение'.",
-                    en: "Description of 'Power On' video.",
-                    ka: "ვიდეო 'ჩართვა'-ს აღწერა."
-                }
-            }
-        ];
+    <script>
+        // --- ВАЖНО: Обновляйте этот массив вручную при добавлении новых видео ---
+        // Убедитесь, что пути к видеофайлам верны (например, "video/1.mp4")
+        const videoList = [
+            {
+                src: "video/on.mp4",
+                title: {
+                    ru: "Прием у проктолога: важность осмотра",
+                    en: "Proctologist's Visit: Importance of Examination",
+                    ka: "პროქტოლოგთან ვიზიტი: გამოკვლევის მნიშვნელობა"
+                },
+                description: {
+                    ru: "Видео демонстрирует важность регулярных осмотров у проктолога для ранней диагностики и профилактики заболеваний.",
+                    en: "This video demonstrates the importance of regular proctological examinations for early diagnosis and disease prevention.",
+                    ka: "ეს ვიდეო აჩვენებს პროქტოლოგთან რეგულარული გამოკვლევების მნიშვნელობას დაავადებების ადრეული დიაგნოსტიკისა და პრევენციისთვის."
+                }
+            },
+            {
+                src: "video/a.mp4",
+                title: {
+                    ru: "Прием у проктолога: первый визит",
+                    en: "Proctologist's Visit: First Appointment",
+                    ka: "პროქტოლოგთან ვიზიტი: პირველი შეხვედრა"
+                },
+                description: {
+                    ru: "Подробное руководство для тех, кто впервые посещает проктолога. Узнайте, чего ожидать и как подготовиться.",
+                    en: "A detailed guide for first-time proctologist visitors. Learn what to expect and how to prepare.",
+                    ka: "დეტალური სახელმძღვანელო პროქტოლოგთან პირველი ვიზიტისთვის. გაიგეთ, რას უნდა ელოდოთ და როგორ მოემზადოთ."
+                }
+            },
+            {
+                src: "video/n.mp4",
+                title: {
+                    ru: "Новые методы лечения: безболезненно и эффективно",
+                    en: "New Treatment Methods: Painless and Effective",
+                    ka: "მკურნალობის ახალი მეთოდები: უმტკივნეულო და ეფექტური"
+                },
+                description: {
+                    ru: "Обзор последних достижений в области проктологии, делающих лечение более комфортным и результативным.",
+                    en: "An overview of the latest advancements in proctology, making treatments more comfortable and effective.",
+                    ka: "პროქტოლოგიის სფეროში უახლესი მიღწევების მიმოხილვა, რაც მკურნალობას უფრო კომფორტულს და შედეგიანს ხდის."
+                }
+            },
+            {
+                src: "video/1.mp4",
+                title: {
+                    ru: "Прием у проктолога: первичный осмотр",
+                    en: "Proctologist's Visit: Initial Examination",
+                    ka: "პროქტოლოგთან ვიზიტი: პირველადი შემოწმება"
+                },
+                description: {
+                    ru: "В этом видео показан подробный процесс первичного осмотра у проктолога, включая важные этапы и рекомендации.",
+                    en: "This video details the initial examination process with a proctologist, including important steps and recommendations.",
+                    ka: "ეს ვიდეო დეტალურად აღწერს პროქტოლოგთან პირველადი შემოწმების პროცესს, მათ შორის მნიშვნელოვან ნაბიჯებსა და რეკომენდაციებს."
+                }
+            },
+            {
+                src: "video/2.mp4",
+                title: {
+                    ru: "Диагностика геморроя: современные методы",
+                    en: "Hemorrhoid Diagnosis: Modern Methods",
+                    ka: "ჰემოროიდების დიაგნოსტიკა: თანამედროვე მეთოდები"
+                },
+                description: {
+                    ru: "Узнайте о передовых методах диагностики геморроя, которые помогают точно определить стадию заболевания и выбрать лечение.",
+                    en: "Learn about advanced methods for diagnosing hemorrhoids that help accurately determine the stage of the disease and choose treatment.",
+                    ka: "შეიტყვეთ ჰემოროიდების დიაგნოსტიკის თანამედროვე მეთოდების შესახებ, რომლებიც ხელს უწყობენ დაავადების სტადიის ზუსტად განსაზღვრას და მკურნალობის არჩევას."
+                }
+            },
+            {
+                src: "video/Video_Generisanje_Proktolog_i_žena.mp4",
+                title: {
+                    ru: "Нина у проктолога: особенности осмотра",
+                    en: "Nina at the Proctologist: Examination Features",
+                    ka: "ნინა პროქტოლოგთან: გამოკვლევის თავისებურებები"
+                },
+                description: {
+                    ru: "Случай Нины: как проходит деликатный осмотр у проктолога, важные аспекты подготовки и процедуры.",
+                    en: "Nina's case: how a delicate proctological examination is performed, important aspects of preparation and procedures.",
+                    ka: "ნინას შემთხვევა: როგორ მიმდინარეობს პროქტოლოგის დელიკატური გამოკვლევა, მომზადებისა და პროცედურის მნიშვნელოვანი ასპექტები."
+                }
+            },
+            {
+                src: "video/Video_Gotovo_Proktolog_i_Žena.mp4",
+                title: {
+                    ru: "Проктолог и женщина: комплексный подход",
+                    en: "Proctologist and Woman: Comprehensive Approach",
+                    ka: "პროქტოლოგი და ქალი: კომპლექსური მიდგომა"
+                },
+                description: {
+                    ru: "Взаимодействие врача и пациентки: пример полного обследования и консультации по проктологическим вопросам.",
+                    en: "Doctor-patient interaction: an example of a complete examination and consultation on proctological issues.",
+                    ka: "ექიმისა და პაციენტის ურთიერთქმედება: სრული გამოკვლევისა და კონსულტაციის მაგალითი პროქტოლოგიურ საკითხებზე."
+                }
+            },
+            {
+                src: "video/Video_je_gotovo_(1).mp4",
+                title: {
+                    ru: "Обзор заболеваний аноректальной области",
+                    en: "Overview of Anorectal Diseases",
+                    ka: "ანორექტალური რეგიონის დაავადებების მიმოხილვა"
+                },
+                description: {
+                    ru: "Краткий, но информативный обзор наиболее распространенных заболеваний аноректальной области: симптомы и первые шаги.",
+                    en: "A brief but informative overview of the most common anorectal diseases: symptoms and first steps.",
+                    ka: "მოკლე, მაგრამ ინფორმატიული მიმოხილვა ანორექტალური რეგიონის ყველაზე გავრცელებული დაავადებების შესახებ: სიმპტომები და პირველი ნაბიჯები."
+                }
+            },
+            {
+                src: "video/Видео_готово_Популарно_видео.mp4",
+                title: {
+                    ru: "Популярное видео: ответы на вопросы",
+                    en: "Popular Video: Q&A",
+                    ka: "პოპულარული ვიდეო: კითხვა-პასუხი"
+                },
+                description: {
+                    ru: "Самые часто задаваемые вопросы проктологу и профессиональные ответы на них. Все, что вы хотели знать.",
+                    en: "The most frequently asked questions to a proctologist and professional answers to them. Everything you wanted to know.",
+                    ka: "ყველაზე ხშირად დასმული კითხვები პროქტოლოგთან და პროფესიული პასუხები მათზე. ყველაფერი, რაც გინდოდათ იცოდეთ."
+                }
+            },
+            {
+                src: "video/Видео_готово_толстая_попа.mp4",
+                title: {
+                    ru: "Визуальная демонстрация: анатомия и здоровье",
+                    en: "Visual Demonstration: Anatomy and Health",
+                    ka: "ვიზუალური დემონსტრაცია: ანატომია და ჯანმრთელობა"
+                },
+                description: {
+                    ru: "Наглядная демонстрация анатомических особенностей и их связи со здоровьем аноректальной зоны. Только образовательные цели.",
+                    en: "A visual demonstration of anatomical features and their connection to the health of the anorectal area. For educational purposes only.",
+                    ka: "ანატომიური თავისებურებების ვიზუალური დემონსტრაცია და მათი კავშირი ანორექტალური ზონის ჯანმრთელობასთან. მხოლოდ საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/Видео_је_готово_.mp4",
+                title: {
+                    ru: "Советы по профилактике проктологических проблем",
+                    en: "Tips for Preventing Proctological Problems",
+                    ka: "რჩევები პროქტოლოგიური პრობლემების პრევენციისთვის"
+                },
+                description: {
+                    ru: "Узнайте о простых, но эффективных способах предотвращения распространенных проктологических заболеваний и поддержания здоровья.",
+                    en: "Learn simple yet effective ways to prevent common proctological diseases and maintain health.",
+                    ka: "ისწავლეთ მარტივი, მაგრამ ეფექტური გზები გავრცელებული პროქტოლოგიური დაავადებების პრევენციისა და ჯანმრთელობის შესანარჩუნებლად."
+                }
+            },
+            {
+                src: "video/9.mp4",
+                title: {
+                    ru: "Образ жизни и кишечник: что важно знать",
+                    en: "Lifestyle and Bowel Health: What to Know",
+                    ka: "ცხოვრების წესი და ნაწლავების ჯანმრთელობა: რა უნდა იცოდეთ"
+                },
+                description: {
+                    ru: "Как ежедневные привычки влияют на здоровье кишечника и что можно изменить для его улучшения.",
+                    en: "How daily habits affect bowel health and what you can change to improve it.",
+                    ka: "როგორ მოქმედებს ყოველდღიური ჩვევები ნაწლავების ჯანმრთელობაზე და რა შეგიძლიათ შეცვალოთ მის გასაუმჯობესებლად."
+                }
+            },
+            {
+                src: "video/10.mp4",
+                title: {
+                    ru: "Подготовка к колоноскопии: пошаговая инструкция",
+                    en: "Colonoscopy Preparation: Step-by-Step Guide",
+                    ka: "კოლონოსკოპიისთვის მომზადება: ნაბიჯ-ნაბიჯ ინსტრუქცია"
+                },
+                description: {
+                    ru: "Детальное руководство по подготовке к колоноскопии, чтобы процедура прошла максимально комфортно и эффективно.",
+                    en: "Detailed guide to preparing for a colonoscopy to ensure the procedure is as comfortable and effective as possible.",
+                    ka: "დეტალური სახელმძღვანელო კოლონოსკოპიისთვის მოსამზადებლად, რათა პროცედურა მაქსიმალურად კომფორტული და ეფექტური იყოს."
+                }
+            },
+            {
+                src: "video/11.mp4",
+                title: {
+                    ru: "Мифы и факты о проктологических заболеваниях",
+                    en: "Myths and Facts about Proctological Diseases",
+                    ka: "მითები და ფაქты პროქტოლოგის დაავადებების შესახებ"
+                },
+                description: {
+                    ru: "Развенчиваем популярные мифы и предоставляем проверенные факты о заболеваниях прямой кишки и ануса.",
+                    en: "Debunking popular myths and providing verified facts about diseases of the rectum and anus.",
+                    ka: "ვამსხვრევთ პოპულარულ მითებს и გთავაზობთ დამოწმებულ ფაქტებს სწორი ნაწლავისა და ანუსის დაავადებების შესახებ."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (1).mp4",
+                title: {
+                    ru: "Видео об обследовании (1)",
+                    en: "Examination Video (1)",
+                    ka: "გამოკვლევის ვიდეო (1)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (10).mp4",
+                title: {
+                    ru: "Видео об обследовании (10)",
+                    en: "Examination Video (10)",
+                    ka: "გამოკვლევის ვიდეო (10)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (11).mp4",
+                title: {
+                    ru: "Видео об обследовании (11)",
+                    en: "Examination Video (11)",
+                    ka: "გამოკვლევის ვიდეო (11)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (12).mp4",
+                title: {
+                    ru: "Видео об обследовании (12)",
+                    en: "Examination Video (12)",
+                    ka: "გამოკვლევის ვიდეო (12)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (2).mp4",
+                title: {
+                    ru: "Видео об обследовании (2)",
+                    en: "Examination Video (2)",
+                    ka: "გამოკვლევის ვიდეო (2)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (3).mp4",
+                title: {
+                    ru: "Видео об обследовании (3)",
+                    en: "Examination Video (3)",
+                    ka: "გამოკვლევის ვიდეო (3)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (4).mp4",
+                title: {
+                    ru: "Видео об обследовании (4)",
+                    en: "Examination Video (4)",
+                    ka: "გამოკვლევის ვიდეო (4)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (5).mp4",
+                title: {
+                    ru: "Видео об обследовании (5)",
+                    en: "Examination Video (5)",
+                    ka: "გამოკვლევის ვიდეო (5)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (6).mp4",
+                title: {
+                    ru: "Видео об обследовании (6)",
+                    en: "Examination Video (6)",
+                    ka: "გამოკვლევის ვიდეო (6)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (7).mp4",
+                title: {
+                    ru: "Видео об обследовании (7)",
+                    en: "Examination Video (7)",
+                    ka: "გამოკვლევის ვიდეო (7)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (8).mp4",
+                title: {
+                    ru: "Видео об обследовании (8)",
+                    en: "Examination Video (8)",
+                    ka: "გამოკვლევის ვიდეო (8)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            },
+            {
+                src: "video/proctologist_examines_young_and_fat_armenian_woman (9).mp4",
+                title: {
+                    ru: "Видео об обследовании (9)",
+                    en: "Examination Video (9)",
+                    ka: "გამოკვლევის ვიდეო (9)"
+                },
+                description: {
+                    ru: "Описание видео об обследовании пациента. Для образовательных целей.",
+                    en: "Description of the patient examination video. For educational purposes.",
+                    ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
+                }
+            }
+        ];
 
-        let currentLang = 'ru'; // Язык по умолчанию
-        let currentVideoIndex = 0; // Индекс текущего видео
+        const mainVideoPlayer = document.getElementById('mainVideoPlayer');
+        const videoPlaylist = document.querySelector('.video-playlist');
+        let currentLang = 'ru'; // Default language
 
-        const mainVideoPlayer = document.getElementById('mainVideoPlayer');
-        const videoPlaylist = document.querySelector('.video-playlist');
+        // Function to set language and update content
+        function setLang(lang) {
+            currentLang = lang;
+            renderPlaylist();
+            updateMainVideoContent();
+            updateStaticContent();
+            highlightActiveLanguageButton(lang);
+            // Optionally save language preference to localStorage
+            localStorage.setItem('preferredLang', lang);
+        }
 
-        // Функция для обновления текста на странице
-        function updateContent() {
-            document.querySelector('h2').textContent = translations.h2[currentLang];
-            document.querySelector('main p').textContent = translations.mainP[currentLang];
-            document.querySelector('nav a[href="index.html#about"]').textContent = translations.navAbout[currentLang];
-            document.querySelector('nav a[href="video.html"]').textContent = translations.navVideo[currentLang];
-            document.querySelector('nav a[href="index.html#gallery"]').textContent = translations.navGallery[currentLang];
-            document.querySelector('nav a[href="index.html#contact"]').textContent = translations.navContact[currentLang];
-            document.querySelector('footer a').textContent = translations.footerTop[currentLang];
+        // Function to highlight the active language button
+        function highlightActiveLanguageButton(activeLang) {
+            document.querySelectorAll('.lang-switcher button').forEach(button => {
+                if (button.onclick.toString().includes(`setLang('${activeLang}')`)) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
 
-            // Обновляем кнопки переключения языка
-            document.querySelectorAll('.lang-switcher button').forEach(button => {
-                button.classList.remove('active');
-            });
-            document.querySelector(`.lang-switcher button[onclick="setLang('${currentLang}')"]`).classList.add('active');
+        // Function to update static text content
+        function updateStaticContent() {
+            const headerTitle = document.querySelector('header');
+            const navAbout = document.querySelector('nav a[href="index.html#about"]');
+            const navVideo = document.querySelector('nav a[href="video.html"]');
+            const navGallery = document.querySelector('nav a[href="index.html#gallery"]');
+            const navContact = document.querySelector('nav a[href="index.html#contact"]');
+            const sectionTitle = document.querySelector('#videos h2');
+            const sectionParagraph = document.querySelector('#videos p');
+            const footerText = document.querySelector('footer');
 
-            renderPlaylist();
-            loadVideo(currentVideoIndex); // Перезагружаем текущее видео для обновления заголовка/описания
-        }
+            const translations = {
+                ru: {
+                    header: "Глаза Проктолога",
+                    navAbout: "О проекте",
+                    navVideo: "Видеоматериалы",
+                    navGallery: "Галерея изображений",
+                    navContact: "Связаться с нами",
+                    sectionTitle: "🎥 Образовательные видеоматериалы",
+                    sectionParagraph: "Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы **просто и наглядно**. Выберите интересующий ролик из плейлиста ниже.",
+                    footer: "&copy; 2025 Glaza Proktologa. Все права защищены. <a href=\"#top\" style=\"color: var(--accent-color); text-decoration: none; margin-left: 10px;\">Наверх</a>",
+                    playerFallback: "Ваш браузер не поддерживает видео."
+                },
+                en: {
+                    header: "Proctologist's Eyes",
+                    navAbout: "About Project",
+                    navVideo: "Video Materials",
+                    navGallery: "Image Gallery",
+                    navContact: "Contact Us",
+                    sectionTitle: "🎥 Educational Video Materials",
+                    sectionParagraph: "Dive into the world of proctology with our specially prepared videos. We aim to explain complex topics **simply and visually**. Choose an interesting video from the playlist below.",
+                    footer: "&copy; 2025 Proctologist's Eyes. All rights reserved. <a href=\"#top\" style=\"color: var(--accent-color); text-decoration: none; margin-left: 10px;\">Back to Top</a>",
+                    playerFallback: "Your browser does not support video."
+                },
+                ka: {
+                    header: "პროქტოლოგის თვალები",
+                    navAbout: "პროექტის შესახებ",
+                    navVideo: "ვიდეო მასალები",
+                    navGallery: "გალერეა",
+                    navContact: "კონტაქტი",
+                    sectionTitle: "🎥 საგანმანათლებლო ვიდეო მასალები",
+                    sectionParagraph: "ჩაეფლეთ პროქტოლოგიის სამყაროში ჩვენი სპეციალურად მომზადებული ვიდეოების საშუალებით. ჩვენ ვცდილობთ რთული თემები აგიხსნათ **მარტივად და თვალსაჩინოდ**. აირჩიეთ საინტერესო ვიდეო ქვემოთ მოცემული დასაკრავი სიიდან.",
+                    footer: "&copy; 2025 Proctologist's Eyes. ყველა უფლება დაცულია. <a href=\"#top\" style=\"color: var(--accent-color); text-decoration: none; margin-left: 10px;\">ზევით</a>",
+                    playerFallback: "თქვენი ბრაუზერი არ უჭერს მხარს ვიდეოს."
+                }
+            };
 
-        // Объект для хранения переводов
-        const translations = {
-            h2: {
-                ru: "🎥 Образовательные видеоматериалы",
-                en: "🎥 Educational Videos",
-                ka: "🎥 საგანმანათლებლო ვიდეოები"
-            },
-            mainP: {
-                ru: "Погрузитесь в мир проктологии с помощью наших специально подготовленных видео. Мы стремимся объяснить сложные темы **просто и наглядно**. Выберите интересующий ролик из плейлиста ниже.",
-                en: "Dive into the world of proctology with our specially prepared videos. We aim to explain complex topics **simply and clearly**. Choose a video from the playlist below.",
-                ka: "ჩაეფლეთ პროქტოლოგიის სამყაროში ჩვენი სპეციალურად მომზადებული ვიდეოების დახმარებით. ჩვენ ვცდილობთ ავხსნათ რთული თემები **მარტივად და თვალსაჩინოდ**. აირჩიეთ საინტერესო ვიდეო ქვემოთ მოცემული დასაკრავი სიიდან."
-            },
-            navAbout: {
-                ru: "О проекте",
-                en: "About",
-                ka: "პროექტის შესახებ"
-            },
-            navVideo: {
-                ru: "Видеоматериалы",
-                en: "Videos",
-                ka: "ვიდეო მასალები"
-            },
-            navGallery: {
-                ru: "Галерея изображений",
-                en: "Image Gallery",
-                ka: "გამოსახულების გალერეა"
-            },
-            navContact: {
-                ru: "Связаться с нами",
-                en: "Contact Us",
-                ka: "დაგვიკავშირდით"
-            },
-            footerTop: {
-                ru: "Наверх",
-                en: "Back to Top",
-                ka: "ზევით"
-            }
-        };
+            headerTitle.textContent = translations[currentLang].header;
+            navAbout.textContent = translations[currentLang].navAbout;
+            navVideo.textContent = translations[currentLang].navVideo;
+            navGallery.textContent = translations[currentLang].navGallery;
+            navContact.textContent = translations[currentLang].navContact;
+            sectionTitle.textContent = translations[currentLang].sectionTitle;
+            sectionParagraph.innerHTML = translations[currentLang].sectionParagraph; // Use innerHTML for bold tag
+            footerText.innerHTML = translations[currentLang].footer; // Use innerHTML for the anchor tag
+            mainVideoPlayer.querySelector('source').nextSibling.nodeValue = translations[currentLang].playerFallback;
+        }
 
-        // Функция для установки языка
-        function setLang(lang) {
-            currentLang = lang;
-            updateContent();
-        }
+        // Function to render the video playlist
+        function renderPlaylist() {
+            videoPlaylist.innerHTML = ''; // Clear existing playlist
+            videoList.forEach((video, index) => {
+                const playlistItem = document.createElement('div');
+                playlistItem.classList.add('playlist-item');
+                playlistItem.setAttribute('role', 'option');
+                playlistItem.setAttribute('aria-selected', 'false');
+                playlistItem.setAttribute('tabindex', '0'); // Make it focusable
 
-        // Функция для загрузки видео в основной плеер
-        function loadVideo(index) {
-            if (index >= 0 && index < videoList.length) {
-                currentVideoIndex = index;
-                mainVideoPlayer.src = videoList[index].src;
-                mainVideoPlayer.load();
-                mainVideoPlayer.play();
-                highlightCurrentVideo();
-            }
-        }
+                // Add data attributes for video information
+                playlistItem.dataset.src = video.src;
+                playlistItem.dataset.index = index;
 
-        // Функция для подсветки текущего видео в плейлисте
-        function highlightCurrentVideo() {
-            document.querySelectorAll('.playlist-item').forEach((item, idx) => {
-                if (idx === currentVideoIndex) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        }
+                playlistItem.innerHTML = `
+                    <video src="${video.src}#t=0.5" muted preload="metadata" aria-hidden="true"></video>
+                    <div class="playlist-item-title">${video.title[currentLang] || video.title.ru}</div>
+                    <div class="playlist-item-description">${video.description[currentLang] || video.description.ru}</div>
+                `;
 
-        // Функция для рендеринга плейлиста
-        function renderPlaylist() {
-            videoPlaylist.innerHTML = ''; // Очищаем плейлист перед рендерингом
-            videoList.forEach((video, index) => {
-                const playlistItem = document.createElement('div');
-                playlistItem.classList.add('playlist-item');
-                playlistItem.setAttribute('role', 'option');
-                playlistItem.setAttribute('aria-selected', index === currentVideoIndex);
-                playlistItem.tabIndex = 0; // Делаем элемент фокусируемым
+                playlistItem.addEventListener('click', () => {
+                    playVideo(index);
+                });
 
-                playlistItem.innerHTML = `
-                    <video src="${video.src}#t=0.1" preload="metadata" muted></video>
-                    <div class="playlist-item-title">${video.title[currentLang]}</div>
-                    <div class="playlist-item-description">${video.description[currentLang]}</div>
-                `;
+                playlistItem.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault(); // Prevent scrolling for spacebar
+                        playVideo(index);
+                    }
+                });
 
-                playlistItem.addEventListener('click', () => loadVideo(index));
-                playlistItem.addEventListener('keydown', (event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                        loadVideo(index);
-                    }
-                });
-                videoPlaylist.appendChild(playlistItem);
-            });
-            highlightCurrentVideo();
-        }
+                videoPlaylist.appendChild(playlistItem);
+            });
+        }
 
-        // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', () => {
-            // Устанавливаем русский язык по умолчанию для кнопок
-            document.querySelector('.lang-switcher button[onclick="setLang(\'ru\')"]').classList.add('active');
-            updateContent(); // Обновляем весь контент на основе текущего языка
-            if (videoList.length > 0) {
-                loadVideo(0); // Загружаем первое видео при старте
-            }
-        });
-    </script>
+        // Function to play a video from the playlist
+        function playVideo(index) {
+            const video = videoList[index];
+            mainVideoPlayer.src = video.src;
+            mainVideoPlayer.load(); // Load the new video
+            mainVideoPlayer.play().catch(error => console.error("Error playing video:", error)); // Autoplay and catch potential errors
+
+            // Remove 'active' class from all playlist items
+            document.querySelectorAll('.playlist-item').forEach(item => {
+                item.classList.remove('active');
+                item.setAttribute('aria-selected', 'false');
+            });
+
+            // Add 'active' class to the clicked playlist item
+            const activeItem = videoPlaylist.querySelector(`[data-index="${index}"]`);
+            if (activeItem) {
+                activeItem.classList.add('active');
+                activeItem.setAttribute('aria-selected', 'true');
+            }
+        }
+
+        // Function to update the main video player with the first video's content
+        function updateMainVideoContent() {
+            if (videoList.length > 0) {
+                const firstVideo = videoList[0];
+                mainVideoPlayer.src = firstVideo.src;
+                mainVideoPlayer.load();
+                // No autoplay on initial load for better UX, user can click to play
+                // mainVideoPlayer.play().catch(error => console.error("Error playing initial video:", error));
+
+                // Set the first item as active
+                document.querySelectorAll('.playlist-item').forEach((item, index) => {
+                    if (index === 0) {
+                        item.classList.add('active');
+                        item.setAttribute('aria-selected', 'true');
+                    } else {
+                        item.classList.remove('active');
+                        item.setAttribute('aria-selected', 'false');
+                    }
+                });
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Restore preferred language from localStorage, or default to 'ru'
+            const savedLang = localStorage.getItem('preferredLang');
+            setLang(savedLang || 'ru');
+
+            renderPlaylist();
+            updateMainVideoContent();
+        });
+    </script>
 </body>
 </html>
