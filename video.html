@@ -55,7 +55,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Стиль для фонового видео */
         #bg-video {
             position: fixed;
             right: 0;
@@ -722,6 +721,33 @@
                     en: "Description of the patient examination video. For educational purposes.",
                     ka: "პაციენტის გამოკვლევის ვიდეოს აღწერა. საგანმანათლებლო მიზნებისთვის."
                 }
+            },
+            // Добавленные видеофайлы
+            {
+                src: "video/t.mp4",
+                title: {
+                    ru: "Новое видео (t.mp4)",
+                    en: "New video (t.mp4)",
+                    ka: "ახალი ვიდეო (t.mp4)"
+                },
+                description: {
+                    ru: "Описание этого видео будет добавлено позже.",
+                    en: "The description for this video will be added later.",
+                    ka: "ამ ვიდეოს აღწერა მოგვიანებით დაემატება."
+                }
+            },
+            {
+                src: "video/s.mp4",
+                title: {
+                    ru: "Новое видео (s.mp4)",
+                    en: "New video (s.mp4)",
+                    ka: "ახალი ვიდეო (s.mp4)"
+                },
+                description: {
+                    ru: "Описание этого видео будет добавлено позже.",
+                    en: "The description for this video will be added later.",
+                    ka: "ამ ვიდეოს აღწერა მოგვიანებით დაემატება."
+                }
             }
         ];
         
@@ -787,7 +813,7 @@
                 mainVideoPlayer.src = videoData.src;
                 mainVideoPlayer.load();
                 mainVideoPlayer.play();
-                mainVideoPlayer.muted = false; // Отключаем звук при запуске плейлиста
+                mainVideoPlayer.muted = false;
                 setActiveVideo(index);
             }
         }
@@ -802,7 +828,6 @@
             }
         }
 
-        // Запуск при загрузке страницы
         window.addEventListener('DOMContentLoaded', () => {
             setLang('ru');
             renderPlaylist();
