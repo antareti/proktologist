@@ -1,593 +1,604 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>☢Глаза Проктолога☢ | Главная</title>
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-        /* Переменные CSS для удобства изменения цветов */
-        :root {
-            --neon-purple: #8A2BE2;
-            --neon-purple-hover: #AB6BEF;
-            --button-text-color: #ffffff;
-            --bg-dark: #0f001a;
-            --text-light: #e0e0e0;
-            --border-radius-main: 15px;
-            --shadow-light: rgba(138, 43, 226, 0.4);
-            --shadow-dark: rgba(138, 43, 226, 0.7);
-        }
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-light);
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
-            opacity: 0;
-            transition: opacity 1s ease-out;
-        }
-
-        body.loaded {
-            opacity: 1;
-        }
-
-        #background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -2;
-            background-size: cover;
-            object-fit: cover;
-            opacity: 0.8;
-            filter: grayscale(0%);
-            box-shadow: 0 0 100px rgba(255, 255, 0, 0.5), 0 0 200px rgba(255, 255, 0, 0.3);
-        }
-
-        header {
-            padding: 2rem 1rem;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 1;
-            min-height: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 4.5rem;
-            margin: 0;
-            padding: 0;
-            line-height: 1;
-            font-weight: bold;
-            color: transparent;
-            -webkit-text-stroke: 2px var(--neon-purple);
-            text-stroke: 2px var(--neon-purple);
-            text-shadow: 0 0 10px var(--neon-purple),
-                0 0 20px var(--neon-purple),
-                0 0 40px var(--neon-purple),
-                0 0 80px var(--shadow-dark);
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: neonPulse 1.5s infinite alternate;
-            display: inline-block;
-            white-space: nowrap;
-            max-width: 90%;
-        }
-
-        @keyframes neonPulse {
-            from {
-                text-shadow: 0 0 10px var(--neon-purple),
-                    0 0 20px var(--neon-purple),
-                    0 0 30px var(--neon-purple),
-                    0 0 40px var(--shadow-dark);
-                filter: brightness(1);
-            }
-
-            to {
-                text-shadow: 0 0 15px var(--neon-purple),
-                    0 0 25px var(--neon-purple),
-                    0 0 50px var(--neon-purple),
-                    0 0 100px var(--shadow-dark);
-                filter: brightness(1.2);
-            }
-        }
-
-        header p {
-            margin-top: 1rem;
-            font-size: 1.3rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-            color: var(--text-light);
-        }
-
-        main {
-            flex-grow: 1;
-            padding: 2rem 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        section {
-            padding: 2.5rem 1.5rem;
-            background: rgba(20, 0, 40, 0.85);
-            margin: 0 1rem;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2), 0 0 40px rgba(138, 43, 226, 0.1);
-            max-width: 900px;
-            width: 100%;
-            box-sizing: border-box;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 0 60px rgba(138, 43, 226, 0.2);
-        }
-
-        section h2 {
-            color: var(--neon-purple);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 8px var(--neon-purple);
-        }
-
-        section p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0.8rem auto;
-        }
-
-        #cta-buttons div {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
-
-        .cta-button {
-            background: var(--neon-purple);
-            color: var(--button-text-color);
-            padding: 16px 32px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 8px 20px var(--shadow-light);
-            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: all 0.5s;
-            z-index: -1;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            background: var(--neon-purple-hover);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px var(--shadow-dark);
-            color: var(--button-text-color);
-        }
-
-        footer {
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.7);
-            margin-top: auto;
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        #video-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        #video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark);
-            transition: box-shadow 0.3s ease;
-        }
-
-        #video-container:hover {
-            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
-        }
-
-        #video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: var(--border-radius-main);
-        }
-
-        #freecash-promo {
-            padding: 2.5rem 1.5rem;
-            background: rgba(30, 0, 45, 0.9);
-            margin: 0 1rem;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 0 30px rgba(255, 200, 0, 0.5), 0 0 60px rgba(255, 200, 0, 0.3);
-            max-width: 900px;
-            width: 100%;
-            box-sizing: border-box;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            cursor: pointer;
-        }
-
-        #freecash-promo:hover {
-            transform: scale(1.02) translateY(-7px);
-            box-shadow: 0 0 45px rgba(255, 200, 0, 0.7), 0 0 90px rgba(255, 200, 0, 0.5);
-        }
-
-        #freecash-promo h2 {
-            color: #FFD700;
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
-            animation: neonShine 2s infinite alternate;
-        }
-
-        @keyframes neonShine {
-            from {
-                text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
-            }
-
-            to {
-                text-shadow: 0 0 15px #FFD700, 0 0 30px rgba(255, 200, 0, 1), 0 0 40px rgba(255, 200, 0, 0.5);
-            }
-        }
-
-        #freecash-promo p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin: 1rem auto 1.5rem;
-            max-width: 750px;
-        }
-
-        #freecash-promo .cta-button {
-            background: #FFD700;
-            color: var(--bg-dark);
-            box-shadow: 0 8px 25px rgba(255, 200, 0, 0.6);
-            padding: 18px 36px;
-            font-size: 1.4rem;
-        }
-
-        #freecash-promo .cta-button:hover {
-            background: #ffe65e;
-            box-shadow: 0 12px 35px rgba(255, 200, 0, 0.9);
-        }
-
-        #globe-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
-        }
-
-        #globe-container {
-            width: 100%;
-            max-width: 800px;
-            height: 500px;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark);
-            background: rgba(0, 0, 0, 0.4);
-            transition: box-shadow 0.3s ease;
-            overflow: hidden;
-        }
-
-        #globe-container:hover {
-            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
-        }
-
-        @media (max-width: 1200px) {
-            header h1 {
-                font-size: 3.8rem;
-            }
-
-            #freecash-promo h2 {
-                font-size: 2.5rem;
-            }
-
-            #globe-container {
-                height: 400px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            header h1 {
-                font-size: 3rem;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
-
-            .cta-button {
-                font-size: 1.2rem;
-                padding: 14px 28px;
-            }
-
-            #freecash-promo h2 {
-                font-size: 2.2rem;
-            }
-
-            #freecash-promo p {
-                font-size: 1.1rem;
-            }
-
-            #freecash-promo .cta-button {
-                font-size: 1.3rem;
-                padding: 16px 32px;
-            }
-
-            #globe-container {
-                height: 350px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 1.5rem 1rem;
-            }
-
-            header h1 {
-                font-size: 2.5rem;
-                -webkit-text-stroke: 1.5px var(--neon-purple);
-                text-stroke: 1.5px var(--neon-purple);
-            }
-
-            header p {
-                font-size: 1.1rem;
-            }
-
-            main {
-                padding: 1.5rem 0;
-                gap: 1.5rem;
-            }
-
-            section {
-                padding: 2rem 1rem;
-                margin: 0 0.8rem;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-            }
-
-            section p {
-                font-size: 1rem;
-            }
-
-            #cta-buttons div {
-                gap: 0.8rem;
-            }
-
-            .cta-button {
-                font-size: 1.1rem;
-                padding: 12px 24px;
-            }
-
-            #freecash-promo h2 {
-                font-size: 1.8rem;
-            }
-
-            #freecash-promo p {
-                font-size: 0.95rem;
-            }
-
-            #freecash-promo .cta-button {
-                font-size: 1.1rem;
-                padding: 12px 24px;
-            }
-
-            #globe-container {
-                height: 300px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            header h1 {
-                font-size: 2rem;
-                word-wrap: break-word;
-                white-space: normal;
-            }
-
-            header p {
-                font-size: 0.9rem;
-            }
-
-            section {
-                margin: 0 0.5rem;
-                padding: 1.5rem 0.8rem;
-            }
-
-            section h2 {
-                font-size: 1.5rem;
-            }
-
-            .cta-button {
-                width: calc(100% - 2rem);
-                margin: 0.5rem 1rem;
-                box-sizing: border-box;
-            }
-
-            #cta-buttons div {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            #freecash-promo h2 {
-                font-size: 1.5rem;
-            }
-
-            #freecash-promo p {
-                font-size: 0.95rem;
-            }
-
-            #freecash-promo .cta-button {
-                font-size: 1.1rem;
-                padding: 12px 24px;
-            }
-
-            #globe-container {
-                height: 250px;
-            }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>☢Глаза Проктолога☢ | Главная</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Переменные CSS для удобства изменения цветов */
+        :root {
+            --neon-purple: #8A2BE2;
+            --neon-purple-hover: #AB6BEF;
+            --button-text-color: #ffffff;
+            --bg-dark: #0f001a;
+            --text-light: #e0e0e0;
+            --border-radius-main: 15px;
+            --shadow-light: rgba(138, 43, 226, 0.4);
+            --shadow-dark: rgba(138, 43, 226, 0.7);
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            background-size: cover;
+            object-fit: cover;
+            opacity: 0.8;
+            filter: grayscale(0%);
+            box-shadow: 0 0 100px rgba(255, 255, 0, 0.5), 0 0 200px rgba(255, 255, 0, 0.3);
+        }
+
+        header {
+            padding: 2rem 1rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 4.5rem;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            font-weight: bold;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--neon-purple);
+            text-stroke: 2px var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple),
+                0 0 20px var(--neon-purple),
+                0 0 40px var(--neon-purple),
+                0 0 80px var(--shadow-dark);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: neonPulse 1.5s infinite alternate;
+            display: inline-block;
+            white-space: nowrap;
+            max-width: 90%;
+        }
+
+        @keyframes neonPulse {
+            from {
+                text-shadow: 0 0 10px var(--neon-purple),
+                    0 0 20px var(--neon-purple),
+                    0 0 30px var(--neon-purple),
+                    0 0 40px var(--shadow-dark);
+                filter: brightness(1);
+            }
+
+            to {
+                text-shadow: 0 0 15px var(--neon-purple),
+                    0 0 25px var(--neon-purple),
+                    0 0 50px var(--neon-purple),
+                    0 0 100px var(--shadow-dark);
+                filter: brightness(1.2);
+            }
+        }
+
+        header p {
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            color: var(--text-light);
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        section {
+            padding: 2.5rem 1.5rem;
+            background: rgba(20, 0, 40, 0.85);
+            margin: 0 1rem;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2), 0 0 40px rgba(138, 43, 226, 0.1);
+            max-width: 900px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 0 60px rgba(138, 43, 226, 0.2);
+        }
+
+        section h2 {
+            color: var(--neon-purple);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px var(--neon-purple);
+        }
+
+        section p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0.8rem auto;
+        }
+
+        #cta-buttons div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            background: var(--neon-purple);
+            color: var(--button-text-color);
+            padding: 16px 32px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px var(--shadow-light);
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background: var(--neon-purple-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px var(--shadow-dark);
+            color: var(--button-text-color);
+        }
+
+        footer {
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            margin-top: auto;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #video-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        #video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark);
+            transition: box-shadow 0.3s ease;
+        }
+
+        #video-container:hover {
+            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
+        }
+
+        #video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--border-radius-main);
+        }
+
+        #freecash-promo {
+            padding: 2.5rem 1.5rem;
+            background: rgba(30, 0, 45, 0.9);
+            margin: 0 1rem;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 30px rgba(255, 200, 0, 0.5), 0 0 60px rgba(255, 200, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        #freecash-promo:hover {
+            transform: scale(1.02) translateY(-7px);
+            box-shadow: 0 0 45px rgba(255, 200, 0, 0.7), 0 0 90px rgba(255, 200, 0, 0.5);
+        }
+
+        #freecash-promo h2 {
+            color: #FFD700;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
+            animation: neonShine 2s infinite alternate;
+        }
+
+        @keyframes neonShine {
+            from {
+                text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
+            }
+
+            to {
+                text-shadow: 0 0 15px #FFD700, 0 0 30px rgba(255, 200, 0, 1), 0 0 40px rgba(255, 200, 0, 0.5);
+            }
+        }
+
+        #freecash-promo p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin: 1rem auto 1.5rem;
+            max-width: 750px;
+        }
+
+        #freecash-promo .cta-button {
+            background: #FFD700;
+            color: var(--bg-dark);
+            box-shadow: 0 8px 25px rgba(255, 200, 0, 0.6);
+            padding: 18px 36px;
+            font-size: 1.4rem;
+        }
+
+        #freecash-promo .cta-button:hover {
+            background: #ffe65e;
+            box-shadow: 0 12px 35px rgba(255, 200, 0, 0.9);
+        }
+
+        #globe-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
+
+        #globe-container {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark);
+            background: rgba(0, 0, 0, 0.4);
+            transition: box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        #globe-container:hover {
+            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
+        }
+
+        @media (max-width: 1200px) {
+            header h1 {
+                font-size: 3.8rem;
+            }
+
+            #freecash-promo h2 {
+                font-size: 2.5rem;
+            }
+
+            #globe-container {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 3rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-button {
+                font-size: 1.2rem;
+                padding: 14px 28px;
+            }
+
+            #freecash-promo h2 {
+                font-size: 2.2rem;
+            }
+
+            #freecash-promo p {
+                font-size: 1.1rem;
+            }
+
+            #freecash-promo .cta-button {
+                font-size: 1.3rem;
+                padding: 16px 32px;
+            }
+
+            #globe-container {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem 1rem;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+                -webkit-text-stroke: 1.5px var(--neon-purple);
+                text-stroke: 1.5px var(--neon-purple);
+            }
+
+            header p {
+                font-size: 1.1rem;
+            }
+
+            main {
+                padding: 1.5rem 0;
+                gap: 1.5rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+                margin: 0 0.8rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            section p {
+                font-size: 1rem;
+            }
+
+            #cta-buttons div {
+                gap: 0.8rem;
+            }
+
+            .cta-button {
+                font-size: 1.1rem;
+                padding: 12px 24px;
+            }
+
+            #freecash-promo h2 {
+                font-size: 1.8rem;
+            }
+
+            #freecash-promo p {
+                font-size: 0.95rem;
+            }
+
+            #freecash-promo .cta-button {
+                font-size: 1.1rem;
+                padding: 12px 24px;
+            }
+
+            #globe-container {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 2rem;
+                word-wrap: break-word;
+                white-space: normal;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            section {
+                margin: 0 0.5rem;
+                padding: 1.5rem 0.8rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                width: calc(100% - 2rem);
+                margin: 0.5rem 1rem;
+                box-sizing: border-box;
+            }
+
+            #cta-buttons div {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            #freecash-promo h2 {
+                font-size: 1.5rem;
+            }
+
+            #freecash-promo p {
+                font-size: 0.95rem;
+            }
+
+            #freecash-promo .cta-button {
+                font-size: 1.1rem;
+                padding: 12px 24px;
+            }
+
+            #globe-container {
+                height: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <video autoplay loop muted playsinline id="background-video">
-        <source src="100.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео HTML5.
-    </video>
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="100.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео HTML5.
+    </video>
 
-    <header>
-        <h1>☢Глаза Проктолога☢</h1>
-        <p>Странный, но запоминающийся проект.</p>
-    </header>
+    <header>
+        <h1>☢Глаза Проктолога☢</h1>
+        <p>Странный, но запоминающийся проект.</p>
+    </header>
 
-    <main>
-        <section id="intro">
-            <h2>Кратко о проекте</h2>
-            <p>Мы исследуем границы человеческого восприятия с лёгким налётом абсурда. Приготовьтесь к неожиданным открытиям!</p>
-        </section>
+    <main>
+        <section id="intro">
+            <h2>Кратко о проекте</h2>
+            <p>Мы исследуем границы человеческого восприятия с лёгким налётом абсурда. Приготовьтесь к неожиданным открытиям!</p>
+        </section>
 
-        <section id="globe-section">
-            <h2>🌍 Посетители со всего мира</h2>
-            <p>Наблюдайте, откуда заходят на наш сайт в режиме реального времени!</p>
-            <div id="globe-container"></div>
-        </section>
+        <section id="globe-section">
+            <h2>🌍 Посетители со всего мира</h2>
+            <p>Наблюдайте, откуда заходят на наш сайт в режиме реального времени!</p>
+            <div id="globe-container"></div>
+        </section>
 
-        <section id="video-section">
-            <h2>🎥 Наши Видеоматериалы</h2>
-            <p>Погрузитесь в атмосферу проекта с помощью нашего последнего видео.</p>
-            <div id="video-container">
-                <video controls muted playsinline poster="preview.jpg">
-                    <source src="0726.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео HTML5.
-                </video>
-            </div>
-        </section>
+        <section id="video-section">
+            <h2>🎥 Наши Видеоматериалы</h2>
+            <p>Погрузитесь в атмосферу проекта с помощью нашего последнего видео.</p>
+            <div id="video-container">
+                <video controls muted playsinline poster="preview.jpg">
+                    <source src="0726.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео HTML5.
+                </video>
+            </div>
+        </section>
 
-        <a href="https://freecash.com/r/109739007749326754105" target="_blank" rel="noopener noreferrer"
-            style="text-decoration: none; display: block; width: 100%; max-width: 900px; margin: 0 auto;">
-            <section id="freecash-promo">
-                <h2>💰 Заработай Реальные Деньги Онлайн!</h2>
-                <p>Ищете способ получить немного дополнительного дохода, не отрываясь от своих увлечений? Freecash
-                    предлагает простые задания и опросы, за которые вы получаете реальные деньги. <strong>Присоединяйтесь
-                        к сообществу, которое уже заработало миллионы!</strong></p>
-                <span class="cta-button">🚀 Начать Зарабатывать Сейчас!</span>
-            </section>
-        </a>
-        <section id="cta-buttons">
-            <h2>❤ Присоединяйтесь прямо сейчас</h2>
-            <p>Выберите действие, которое вас интересует:</p>
-            <div>
-                <a href="video.html" class="cta-button">📺 Смотреть видео</a>
-                <a href="gallery.html" class="cta-button">🖼️ Перейти в галерею</a>
-                <a href="https://t.me/internetbistree_bot" target="_blank" rel="noopener noreferrer"
-                    class="cta-button">🔞 Бот Проктолог</a>
-                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer"
-                    class="cta-button">💬 Задать вопрос</a>
-                <a href="index.html#contact" class="cta-button">📬 Связаться</a>
-            </div>
-        </section>
+        <a href="https://freecash.com/r/109739007749326754105" target="_blank" rel="noopener noreferrer"
+            style="text-decoration: none; display: block; width: 100%; max-width: 900px; margin: 0 auto;">
+            <section id="freecash-promo">
+                <h2>💰 Заработай Реальные Деньги Онлайн!</h2>
+                <p>Ищете способ получить немного дополнительного дохода, не отрываясь от своих увлечений? Freecash
+                    предлагает простые задания и опросы, за которые вы получаете реальные деньги. <strong>Присоединяйтесь
+                        к сообществу, которое уже заработало миллионы!</strong></p>
+                <span class="cta-button">🚀 Начать Зарабатывать Сейчас!</span>
+            </section>
+        </a>
+        <section id="cta-buttons">
+            <h2>❤ Присоединяйтесь прямо сейчас</h2>
+            <p>Выберите действие, которое вас интересует:</p>
+            <div>
+                <a href="video.html" class="cta-button">📺 Смотреть видео</a>
+                <a href="gallery.html" class="cta-button">🖼️ Перейти в галерею</a>
+                <a href="https://t.me/internetbistree_bot" target="_blank" rel="noopener noreferrer"
+                    class="cta-button">🔞 Бот Проктолог</a>
+                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer"
+                    class="cta-button">💬 Задать вопрос</a>
+                <a href="index.html#contact" class="cta-button">📬 Связаться</a>
+            </div>
+        </section>
 
-        <section id="contact">
-            <h2>Контакты</h2>
-            <p>Если у вас возникли вопросы или предложения, мы всегда на связи! Пишите нам в Telegram.</p>
-            <p>
-                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="cta-button">Наш
-                    Telegram-канал</a>
-            </p>
-        </section>
-    </main>
+                <section id="elfsight-counter">
+          <h2>Наши достижения</h2>
+          <p>Количество людей, которые следят за нами.</p>
+                    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+          <div class="elfsight-app-f4878f27-3693-4eed-aebe-c6fcc8f00434" data-elfsight-app-lazy></div>
+        </section>
 
-    <footer>
-        <p>&copy; 2025 Глаза Проктолога. Все права защищены, как минимум, здравым смыслом.</p>
-    </footer>
+        <section id="contact">
+            <h2>Контакты</h2>
+            <p>Если у вас возникли вопросы или предложения, мы всегда на связи! Пишите нам в Telegram.</p>
+            <p>
+                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="cta-button">Наш
+                    Telegram-канал</a>
+            </p>
+        </section>
+    </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="//unpkg.com/three-globe"></script>
+    <footer>
+        <p>&copy; 2025 Глаза Проктолога. Все права защищены, как минимум, здравым смыслом.</p>
+    </footer>
 
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("loaded");
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="//unpkg.com/three-globe"></script>
+    <script src="https://d3js.org/d3-array.v3.min.js"></script>
+    <script src="https://d3js.org/d3-scale.v3.min.js"></script>
 
-    <audio id="background-music" src="5.mp3" loop autoplay></audio>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('globe-container');
-            if (!container) return;
-            
-            const myGlobe = Globe()(container)
-                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-                .pointAltitude(0.01)
-                .pointColor(() => 'red'); // Цвет по умолчанию для всех точек
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("loaded");
+        });
+    </script>
 
-            // Получаем IP-адрес посетителя и добавляем точку
-            fetch('https://ipinfo.io/json')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.loc) {
-                        const [lat, lng] = data.loc.split(',');
-                        const visitorPoint = {
-                            lat: parseFloat(lat),
-                            lng: parseFloat(lng),
-                            size: 0.2, // Увеличиваем размер для наглядности
-                            color: 'green' // Делаем точку зеленой для текущего посетителя
-                        };
-                        
-                        myGlobe.pointsData([visitorPoint]);
-                        myGlobe.pointLabel(d => `Вы находитесь здесь`); // Добавляем всплывающую подсказку
-                    }
-                })
-                .catch(error => console.error('Ошибка при получении геолокации:', error));
-            
-            // Чтобы глобус вращался
-            const state = myGlobe.to
+    <audio id="background-music" src="5.mp3" loop autoplay></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('globe-container');
+            if (!container) return;
+            
+            const myGlobe = Globe()(container)
+                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+                .pointAltitude(0.01)
+                .pointColor(() => 'rgba(255, 255, 255, 0.8)');
+
+            // Получаем IP-адрес посетителя
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loc) {
+                        const [lat, lng] = data.loc.split(',');
+                        const visitorPoint = {
+                            lat: parseFloat(lat),
+                            lng: parseFloat(lng),
+                            size: 0.2,
+                            color: 'green'
+                        };
+                        
+                        myGlobe.pointsData([visitorPoint]);
+                        myGlobe.pointLabel(d => `Вы находитесь здесь`);
+                    }
+                })
+                .catch(error => console.error('Ошибка при получении геолокации:', error));
+        });
+    </script>
+</body>
+</html>
