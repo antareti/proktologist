@@ -475,6 +475,56 @@
                 height: 250px;
             }
         }
+
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 2rem;
+                word-wrap: break-word;
+                white-space: normal;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            section {
+                margin: 0 0.5rem;
+                padding: 1.5rem 0.8rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                width: calc(100% - 2rem);
+                margin: 0.5rem 1rem;
+                box-sizing: border-box;
+            }
+
+            #cta-buttons div {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            #freecash-promo h2 {
+                font-size: 1.5rem;
+            }
+
+            #freecash-promo p {
+                font-size: 0.95rem;
+            }
+
+            #freecash-promo .cta-button {
+                font-size: 1.1rem;
+                padding: 12px 24px;
+            }
+
+            #globe-container {
+                height: 250px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -497,7 +547,10 @@
         <section id="globe-section">
             <h2>🌍 Посетители со всего мира</h2>
             <p>Наблюдайте, откуда заходят на наш сайт в режиме реального времени!</p>
-            <div id="globe-container"></div>
+            <div id="globe-container">
+                                <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+                <div class="elfsight-app-6968032f-a602-4752-b924-f772cf8d0c7a" data-elfsight-app-lazy></div>
+            </div>
         </section>
 
         <section id="video-section">
@@ -555,13 +608,6 @@
     <footer>
         <p>&copy; 2025 Глаза Проктолога. Все права защищены, как минимум, здравым смыслом.</p>
     </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="//unpkg.com/three-globe"></script>
-    <script src="https://d3js.org/d3-array.v3.min.js"></script>
-    <script src="https://d3js.org/d3-scale.v3.min.js"></script>
-
-
     <script>
         window.addEventListener("DOMContentLoaded", () => {
             document.body.classList.add("loaded");
@@ -570,35 +616,5 @@
 
     <audio id="background-music" src="5.mp3" loop autoplay></audio>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('globe-container');
-            if (!container) return;
-            
-            const myGlobe = Globe()(container)
-                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-                .pointAltitude(0.01)
-                .pointColor(() => 'rgba(255, 255, 255, 0.8)');
-
-            // Получаем IP-адрес посетителя
-            fetch('https://ipinfo.io/json')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.loc) {
-                        const [lat, lng] = data.loc.split(',');
-                        const visitorPoint = {
-                            lat: parseFloat(lat),
-                            lng: parseFloat(lng),
-                            size: 0.2,
-                            color: 'green'
-                        };
-                        
-                        myGlobe.pointsData([visitorPoint]);
-                        myGlobe.pointLabel(d => `Вы находитесь здесь`);
-                    }
-                })
-                .catch(error => console.error('Ошибка при получении геолокации:', error));
-        });
-    </script>
 </body>
 </html>
