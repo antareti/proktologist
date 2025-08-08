@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>☢Глаза Проктолога☢ | Главная</title>
-
+    <link rel="stylesheet" href="styles.css" />
     <style>
         /* Переменные CSS для удобства изменения цветов */
         :root {
@@ -315,11 +315,6 @@
             transition: box-shadow 0.3s ease;
             overflow: hidden;
         }
-        #globe-container iframe {
-            border: none;
-            width: 100%;
-            height: 100%;
-        }
 
         #globe-container:hover {
             box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
@@ -418,12 +413,12 @@
             }
 
             #freecash-promo p {
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
 
             #freecash-promo .cta-button {
-                font-size: 1.1rem;
-                padding: 12px 24px;
+                font-size: 1.2rem;
+                padding: 14px 28px;
             }
 
             #globe-container {
@@ -502,9 +497,7 @@
         <section id="globe-section">
             <h2>🌍 Посетители со всего мира</h2>
             <p>Наблюдайте, откуда заходят на наш сайт в режиме реального времени!</p>
-            <div id="globe-container">
-                                <iframe src="https://www.who.amung.us/swidget/waushm.js" width="100%" height="100%" frameborder="0"></iframe>
-            </div>
+            <div id="globe-container"></div>
         </section>
 
         <section id="video-section">
@@ -542,13 +535,6 @@
             </div>
         </section>
 
-        <section id="elfsight-counter">
-            <h2>Наши достижения</h2>
-            <p>Количество людей, которые следят за нами.</p>
-            <script src="https://static.elfsight.com/platform/platform.js" async></script>
-            <div class="elfsight-app-f4878f27-3693-4eed-aebe-c6fcc8f00434" data-elfsight-app-lazy></div>
-        </section>
-
         <section id="contact">
             <h2>Контакты</h2>
             <p>Если у вас возникли вопросы или предложения, мы всегда на связи! Пишите нам в Telegram.</p>
@@ -563,6 +549,9 @@
         <p>&copy; 2025 Глаза Проктолога. Все права защищены, как минимум, здравым смыслом.</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="//unpkg.com/three-globe"></script>
+
     <script>
         window.addEventListener("DOMContentLoaded", () => {
             document.body.classList.add("loaded");
@@ -570,5 +559,48 @@
     </script>
 
     <audio id="background-music" src="5.mp3" loop autoplay></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('globe-container');
+            if (!container) return;
+            
+            const myGlobe = Globe();
+            myGlobe(container)
+                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+                .pointColor(() => 'red'); // Цвет точек на глобусе
+
+            // Получаем IP-адрес посетителя
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const points = [{
+                        lat: data.latitude,
+                        lng: data.longitude,
+                        size: 0.1,
+                        color: 'green' // Зеленая точка для текущего посетителя
+                    }];
+                    // Добавляем точки на глобус
+                    myGlobe.pointsData(points);
+                })
+                .catch(error => console.error('Ошибка при получении геолокации:', error));
+
+            // Пример других точек (можно удалить)
+            myGlobe.pointsData(myGlobe.pointsData().concat([{
+                lat: 34.0522,
+                lng: -118.2437,
+                size: 0.1,
+                color: 'red'
+            }, {
+                lat: 51.5074,
+                lng: -0.1278,
+                size: 0.1,
+                color: 'yellow'
+            }]));
+
+            // Настраиваем анимацию
+            myGlobe.pointAnimationDuration(1000).pointAtmosphereColor('red');
+        });
+    </script>
 </body>
 </html>
