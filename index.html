@@ -413,12 +413,12 @@
             }
 
             #freecash-promo p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             #freecash-promo .cta-button {
-                font-size: 1.2rem;
-                padding: 14px 28px;
+                font-size: 1.1rem;
+                padding: 12px 24px;
             }
 
             #globe-container {
@@ -568,38 +568,27 @@
             const myGlobe = Globe();
             myGlobe(container)
                 .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-                .pointColor(() => 'red'); // Цвет точек на глобусе
+                .pointAltitude(0.01) // Устанавливаем высоту точки
+                .pointColor(() => 'rgba(255, 255, 255, 0.8)'); // Цвет по умолчанию для всех точек
 
             // Получаем IP-адрес посетителя
-            fetch('https://ipapi.co/json/')
+            fetch('https://ipinfo.io/json')
                 .then(response => response.json())
                 .then(data => {
-                    const points = [{
-                        lat: data.latitude,
-                        lng: data.longitude,
-                        size: 0.1,
-                        color: 'green' // Зеленая точка для текущего посетителя
-                    }];
-                    // Добавляем точки на глобус
-                    myGlobe.pointsData(points);
+                    if (data.loc) {
+                        const [lat, lng] = data.loc.split(',');
+                        const visitorPoint = {
+                            lat: parseFloat(lat),
+                            lng: parseFloat(lng),
+                            size: 0.2, // Увеличиваем размер для наглядности
+                            color: 'red' // Делаем точку красной
+                        };
+                        
+                        myGlobe.pointsData([visitorPoint]);
+                        myGlobe.pointLabel(d => `Вы находитесь здесь`); // Добавляем всплывающую подсказку
+                    }
                 })
                 .catch(error => console.error('Ошибка при получении геолокации:', error));
-
-            // Пример других точек (можно удалить)
-            myGlobe.pointsData(myGlobe.pointsData().concat([{
-                lat: 34.0522,
-                lng: -118.2437,
-                size: 0.1,
-                color: 'red'
-            }, {
-                lat: 51.5074,
-                lng: -0.1278,
-                size: 0.1,
-                color: 'yellow'
-            }]));
-
-            // Настраиваем анимацию
-            myGlobe.pointAnimationDuration(1000).pointAtmosphereColor('red');
         });
     </script>
 </body>
