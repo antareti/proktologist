@@ -568,8 +568,8 @@
             const myGlobe = Globe();
             myGlobe(container)
                 .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-                .pointAltitude(0.01) // Устанавливаем высоту точки
-                .pointColor(() => 'rgba(255, 255, 255, 0.8)'); // Цвет по умолчанию для всех точек
+                .pointAltitude(0.01)
+                .pointColor(() => 'rgba(255, 255, 255, 0.8)');
 
             // Получаем IP-адрес посетителя
             fetch('https://ipinfo.io/json')
@@ -580,12 +580,12 @@
                         const visitorPoint = {
                             lat: parseFloat(lat),
                             lng: parseFloat(lng),
-                            size: 0.2, // Увеличиваем размер для наглядности
-                            color: 'red' // Делаем точку красной
+                            size: 0.2,
+                            color: 'red'
                         };
                         
                         myGlobe.pointsData([visitorPoint]);
-                        myGlobe.pointLabel(d => `Вы находитесь здесь`); // Добавляем всплывающую подсказку
+                        myGlobe.pointLabel(d => `Вы находитесь здесь`);
                     }
                 })
                 .catch(error => console.error('Ошибка при получении геолокации:', error));
