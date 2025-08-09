@@ -319,7 +319,8 @@
         #globe-container:hover {
             box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
         }
-        /* Стили для нового блока с GIF и фейковыми посетителями */
+        
+        /* НОВЫЕ СТИЛИ для блока с GIF-глобусом и таблицей */
         #globe-gif-section {
             display: flex;
             flex-direction: column;
@@ -382,6 +383,7 @@
             margin-right: 8px;
             vertical-align: middle;
         }
+
         @media (max-width: 1200px) {
             header h1 {
                 font-size: 3.8rem;
@@ -562,10 +564,10 @@
             <div id="globe-container"></div>
         </section>
 
-                <section id="globe-gif-section">
+        <section id="globe-gif-section">
             <h2>🌍 Посетители (фейк)</h2>
             <div id="globe-gif-container">
-                <img src="1.gif" alt="Animated Globe" style="width: 500px; height: 300px;">
+                <img src="1.gif" alt="Animated Globe">
             </div>
             <table id="fake-visitors-table">
                 <thead>
@@ -646,6 +648,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('globe-container');
             if (container) {
+                // Инициализация 3D глобуса
                 const myGlobe = Globe()(container)
                     .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
                     .pointAltitude(0.01)
@@ -653,6 +656,7 @@
                     .pointAtmosphereColor('red')
                     .pointAtmosphereAltitude(0.3);
 
+                // Получаем реальный IP-адрес посетителя
                 fetch('https://ipinfo.io/json')
                     .then(response => response.json())
                     .then(data => {
@@ -671,6 +675,7 @@
                     })
                     .catch(error => console.error('Ошибка при получении геолокации:', error));
                 
+                // Вращение глобуса
                 myGlobe.rotation.y = 0.05;
                 (function animate() {
                     myGlobe.rotation.y += 0.001;
