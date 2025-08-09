@@ -340,6 +340,23 @@
                 height: 250px;
             }
         }
+
+        /* Кастомный тултип */
+        #tooltip {
+            position: absolute;
+            pointer-events: none;
+            background: rgba(0,0,0,0.75);
+            color: var(--neon-purple);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            box-shadow: 0 0 10px var(--neon-purple);
+            white-space: nowrap;
+            display: none;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -423,6 +440,9 @@
         <p>&copy; 2025 Глаза Проктолога. Все права защищены, как минимум, здравым смыслом.</p>
     </footer>
 
+    <!-- Кастомный тултип -->
+    <div id="tooltip"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="//unpkg.com/three-globe"></script>
 
@@ -433,6 +453,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('globe-container');
+            const tooltip = document.getElementById('tooltip');
             if (!container) return;
 
             // Создаём глобус
@@ -445,8 +466,11 @@
                 .onPointHover(point => {
                     if (point) {
                         container.style.cursor = 'pointer';
+                        tooltip.style.display = 'block';
+                        tooltip.innerHTML = `<strong>${point.city}</strong><br>IP: ${point.ip}`;
                     } else {
                         container.style.cursor = 'default';
+                        tooltip.style.display = 'none';
                     }
                 });
 
@@ -468,6 +492,16 @@
                 myGlobe.rotation.y += 0.001;
                 requestAnimationFrame(animate);
             })();
+
+            // Обновляем позицию тултипа при движении мыши по контейнеру
+            container.addEventListener('mousemove', e => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX;
+                const y = e.clientY;
+                // Смещаем тултип чуть правее и выше курсора
+                tooltip.style.left = (x + 15) + 'px';
+                tooltip.style.top = (y - 35) + 'px';
+            });
         });
     </script>
 
