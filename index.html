@@ -438,25 +438,31 @@
             // Создаём глобус
             const myGlobe = Globe()(container)
                 .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-                .pointAltitude(0.01)
+                .pointAltitude(0.03)
                 .pointColor(() => 'lime')
-                .pointAtmosphereColor('lime')
-                .pointAtmosphereAltitude(0.3);
+                .pointRadius(0.4)
+                .pointLabel(d => `${d.city}<br>IP: ${d.ip}`)
+                .onPointHover(point => {
+                    if (point) {
+                        container.style.cursor = 'pointer';
+                    } else {
+                        container.style.cursor = 'default';
+                    }
+                });
 
             // Фейковые IP-адреса с координатами (широта, долгота)
             const fakeVisitors = [
-                { lat: 55.7558, lng: 37.6173, size: 0.3, color: 'lime', ip: '195.168.1.23', city: 'Москва' },
-                { lat: 59.9343, lng: 30.3351, size: 0.3, color: 'lime', ip: '88.212.55.44', city: 'Санкт-Петербург' },
-                { lat: 40.7128, lng: -74.0060, size: 0.3, color: 'lime', ip: '203.0.113.99', city: 'Нью-Йорк' },
-                { lat: 51.5074, lng: -0.1278, size: 0.3, color: 'lime', ip: '198.51.100.42', city: 'Лондон' },
-                { lat: 35.6895, lng: 139.6917, size: 0.3, color: 'lime', ip: '203.0.113.56', city: 'Токио' }
+                { lat: 55.7558, lng: 37.6173, ip: '195.168.1.23', city: 'Москва' },
+                { lat: 59.9343, lng: 30.3351, ip: '88.212.55.44', city: 'Санкт-Петербург' },
+                { lat: 40.7128, lng: -74.0060, ip: '203.0.113.99', city: 'Нью-Йорк' },
+                { lat: 51.5074, lng: -0.1278, ip: '198.51.100.42', city: 'Лондон' },
+                { lat: 35.6895, lng: 139.6917, ip: '203.0.113.56', city: 'Токио' }
             ];
 
-            // Устанавливаем точки
+            // Добавляем точки на глобус
             myGlobe.pointsData(fakeVisitors);
-            myGlobe.pointLabel(d => `${d.city}\nIP: ${d.ip}`);
 
-            // Вращение глобуса
+            // Анимация вращения
             myGlobe.rotation.y = 0.05;
             (function animate() {
                 myGlobe.rotation.y += 0.001;
