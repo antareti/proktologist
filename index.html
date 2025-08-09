@@ -304,34 +304,20 @@
             justify-content: center;
         }
 
-        #globe-container {
+        #globe-section img {
             width: 100%;
             max-width: 800px;
+            height: auto;
             border-radius: var(--border-radius-main);
             box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark);
             transition: box-shadow 0.3s ease;
-            overflow: hidden;
-            background-color: rgba(0, 0, 0, 0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
+            margin-bottom: 2rem;
         }
 
-        #globe-container img {
-            width: 100%;
-            height: auto;
-            display: block;
+        #globe-section img:hover {
+            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
         }
-
-        #fake-visitors {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            margin-top: 2rem;
-        }
-        #fake-visitors table {
+        #fake-visitors-table {
             width: 100%;
             max-width: 600px;
             border-collapse: collapse;
@@ -340,25 +326,26 @@
             border-radius: var(--border-radius-main);
             overflow: hidden;
         }
-        #fake-visitors th, #fake-visitors td {
+        #fake-visitors-table th, #fake-visitors-table td {
             padding: 0.8rem;
             border: 1px solid rgba(138, 43, 226, 0.3);
             text-align: left;
             font-size: 0.9rem;
         }
-        #fake-visitors th {
+        #fake-visitors-table th {
             background: var(--neon-purple);
             color: white;
         }
-        #fake-visitors tr:nth-child(even) {
+        #fake-visitors-table tr:nth-child(even) {
             background: rgba(20, 0, 40, 0.85);
         }
-        #fake-visitors img.flag {
+        #fake-visitors-table img.flag {
             width: 20px;
             height: auto;
             margin-right: 8px;
             vertical-align: middle;
         }
+
         @media (max-width: 1200px) {
             header h1 {
                 font-size: 3.8rem;
@@ -520,22 +507,17 @@
         <section id="globe-section">
             <h2>🌍 Посетители со всего мира</h2>
             <p>Наблюдайте, откуда заходят на наш сайт в режиме реального времени!</p>
-            <div id="globe-container">
-                <img src="1.gif" alt="Animated Globe">
-            </div>
-            <div id="fake-visitors">
-                <h3>Последние подключения</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Страна</th>
-                            <th>IP-адрес</th>
-                        </tr>
-                    </thead>
-                    <tbody id="visitor-list">
-                                            </tbody>
-                </table>
-            </div>
+            <img src="1.gif" alt="Animated Globe">
+            <table id="fake-visitors-table">
+                <thead>
+                    <tr>
+                        <th>Страна</th>
+                        <th>IP-адрес</th>
+                    </tr>
+                </thead>
+                <tbody id="visitor-list">
+                                    </tbody>
+            </table>
         </section>
 
         <section id="video-section">
@@ -604,18 +586,18 @@
         document.addEventListener('DOMContentLoaded', () => {
             const visitorList = document.getElementById('visitor-list');
             const countries = [
-                { country: 'United States', flag: 'https://flagcdn.com/us.svg', ip: '172.217.168.164' },
-                { country: 'Germany', flag: 'https://flagcdn.com/de.svg', ip: '82.135.154.211' },
-                { country: 'Russia', flag: 'https://flagcdn.com/ru.svg', ip: '95.161.22.188' },
-                { country: 'Brazil', flag: 'https://flagcdn.com/br.svg', ip: '177.136.195.12' },
-                { country: 'China', flag: 'https://flagcdn.com/cn.svg', ip: '112.96.111.23' },
-                { country: 'United Kingdom', flag: 'https://flagcdn.com/gb.svg', ip: '81.18.232.11' },
-                { country: 'Japan', flag: 'https://flagcdn.com/jp.svg', ip: '133.160.100.23' },
-                { country: 'India', flag: 'https://flagcdn.com/in.svg', ip: '43.205.120.15' },
-                { country: 'Australia', flag: 'https://flagcdn.com/au.svg', ip: '101.190.111.45' },
-                { country: 'France', flag: 'https://flagcdn.com/fr.svg', ip: '92.204.145.76' },
-                { country: 'Canada', flag: 'https://flagcdn.com/ca.svg', ip: '205.210.150.22' },
-                { country: 'South Korea', flag: 'https://flagcdn.com/kr.svg', ip: '14.150.230.14' }
+                { country: 'United States', flag: 'https://flagcdn.com/us.svg' },
+                { country: 'Germany', flag: 'https://flagcdn.com/de.svg' },
+                { country: 'Russia', flag: 'https://flagcdn.com/ru.svg' },
+                { country: 'Brazil', flag: 'https://flagcdn.com/br.svg' },
+                { country: 'China', flag: 'https://flagcdn.com/cn.svg' },
+                { country: 'United Kingdom', flag: 'https://flagcdn.com/gb.svg' },
+                { country: 'Japan', flag: 'https://flagcdn.com/jp.svg' },
+                { country: 'India', flag: 'https://flagcdn.com/in.svg' },
+                { country: 'Australia', flag: 'https://flagcdn.com/au.svg' },
+                { country: 'France', flag: 'https://flagcdn.com/fr.svg' },
+                { country: 'Canada', flag: 'https://flagcdn.com/ca.svg' },
+                { country: 'South Korea', flag: 'https://flagcdn.com/kr.svg' }
             ];
 
             function generateFakeIP() {
