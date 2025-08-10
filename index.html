@@ -326,18 +326,16 @@
             box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
         }
 
-        /* IP окно с исправлениями */
+        /* IP окно */
         #ip-list {
-            position: relative;
-            z-index: 10;
             width: 300px;
             min-height: 300px;
-            background: rgba(0, 10, 0, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: var(--border-radius-main);
-            box-shadow: 0 0 40px #00ff00, 0 0 80px #00ff00;
+            box-shadow: 0 0 30px var(--neon-green), 0 0 60px var(--neon-green-shadow);
             padding: 20px 25px;
             font-family: 'Courier New', Courier, monospace;
-            color: #00ff00;
+            color: var(--neon-green);
             overflow-y: auto;
             user-select: none;
         }
@@ -346,12 +344,12 @@
             margin-top: 0;
             margin-bottom: 15px;
             font-size: 2rem;
-            border-bottom: 1px solid #00ff00;
+            border-bottom: 1px solid var(--neon-green);
             padding-bottom: 8px;
             text-shadow:
-                0 0 5px #00ff00,
-                0 0 10px #00ff00,
-                0 0 20px #00ff00;
+                0 0 5px var(--neon-green),
+                0 0 10px var(--neon-green),
+                0 0 20px var(--neon-green);
         }
 
         #ip-list ul {
@@ -364,9 +362,10 @@
         #ip-list ul li {
             margin-bottom: 10px;
             padding-bottom: 6px;
-            border-bottom: 1px dotted #00ff00;
+            border-bottom: 1px dotted var(--neon-green);
             cursor: default;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, opacity 0.5s ease;
+            opacity: 1;
         }
 
         #ip-list ul li:hover {
@@ -474,15 +473,19 @@
             <section id="freecash-promo">
                 <h2>💰 Заработай Реальные Деньги Онлайн!</h2>
                 <p>Ищете способ получить немного дополнительного дохода, не отрываясь от своих увлечений? Freecash
-                    предлагает простые задания и опросы, за которые вы получаете реальные деньги. <strong>Присоединяйтесь
-                        к сообществу, которое уже заработало миллионы!</strong></p>
-                <span class="cta-button">Попробовать Freecash</span>
+                    предлагает простые задания и опросы, за которые вы получаете реальные деньги. Присоединяйтесь и
+                    начните зарабатывать уже сегодня!</p>
+                <div id="cta-buttons">
+                    <div>
+                        <button class="cta-button">Перейти на Freecash</button>
+                    </div>
+                </div>
             </section>
         </a>
     </main>
 
     <footer>
-        © 2023 — Разработка: Лаврентий Павлович Берия
+        &copy; 2024 ☢Глаза Проктолога☢. Все права защищены.
     </footer>
 
     <script>
@@ -501,25 +504,35 @@
             ];
 
             const ipList = document.getElementById('ip-items');
-            fakeVisitors.forEach(visitor => {
+            let index = 0;
+
+            function showNextIP() {
+                const visitor = fakeVisitors[index];
                 const li = document.createElement('li');
                 li.textContent = `[${visitor.ip}] — ${visitor.city}`;
+                li.style.opacity = '0';
                 ipList.appendChild(li);
-            });
 
-            // Можно добавить интерактив с tooltip при наведении — по желанию
-            const globeContainer = document.getElementById('globe-container');
-            const tooltip = document.getElementById('tooltip');
-            globeContainer.addEventListener('mousemove', e => {
-                // Просто показываем координаты курсора как пример
-                tooltip.style.left = (e.offsetX + 15) + 'px';
-                tooltip.style.top = (e.offsetY + 15) + 'px';
-                tooltip.textContent = `X: ${e.offsetX}, Y: ${e.offsetY}`;
-                tooltip.style.display = 'block';
-            });
-            globeContainer.addEventListener('mouseleave', () => {
-                tooltip.style.display = 'none';
-            });
+                setTimeout(() => {
+                    li.style.transition = 'opacity 0.5s';
+                    li.style.opacity = '1';
+                }, 10);
+
+                if (ipList.children.length > 5) {
+                    const first = ipList.children[0];
+                    first.style.transition = 'opacity 0.5s';
+                    first.style.opacity = '0';
+                    setTimeout(() => {
+                        if (first.parentNode) first.parentNode.removeChild(first);
+                    }, 500);
+                }
+
+                index++;
+                if (index >= fakeVisitors.length) index = 0;
+            }
+
+            showNextIP();
+            setInterval(showNextIP, 1500);
         };
     </script>
 </body>
