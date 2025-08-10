@@ -326,16 +326,18 @@
             box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
         }
 
-        /* IP окно */
+        /* IP окно с исправлениями */
         #ip-list {
+            position: relative;
+            z-index: 10;
             width: 300px;
             min-height: 300px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 10, 0, 0.9);
             border-radius: var(--border-radius-main);
-            box-shadow: 0 0 30px var(--neon-green), 0 0 60px var(--neon-green-shadow);
+            box-shadow: 0 0 40px #00ff00, 0 0 80px #00ff00;
             padding: 20px 25px;
             font-family: 'Courier New', Courier, monospace;
-            color: var(--neon-green);
+            color: #00ff00;
             overflow-y: auto;
             user-select: none;
         }
@@ -344,12 +346,12 @@
             margin-top: 0;
             margin-bottom: 15px;
             font-size: 2rem;
-            border-bottom: 1px solid var(--neon-green);
+            border-bottom: 1px solid #00ff00;
             padding-bottom: 8px;
             text-shadow:
-                0 0 5px var(--neon-green),
-                0 0 10px var(--neon-green),
-                0 0 20px var(--neon-green);
+                0 0 5px #00ff00,
+                0 0 10px #00ff00,
+                0 0 20px #00ff00;
         }
 
         #ip-list ul {
@@ -359,25 +361,19 @@
             font-size: 1.2rem;
         }
 
-        /* Сделал текст ярко-зелёным с неоновым свечением */
         #ip-list ul li {
             margin-bottom: 10px;
             padding-bottom: 6px;
-            border-bottom: 1px dotted var(--neon-green);
+            border-bottom: 1px dotted #00ff00;
             cursor: default;
-            color: var(--neon-green);
-            text-shadow:
-                0 0 4px var(--neon-green),
-                0 0 8px var(--neon-green);
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         #ip-list ul li:hover {
             color: #0f0;
             text-shadow:
                 0 0 8px #0f0,
-                0 0 20px #0f0,
-                0 0 30px #0f0;
+                0 0 20px #0f0;
         }
 
         /* Стили для 1.gif */
@@ -480,130 +476,51 @@
                 <p>Ищете способ получить немного дополнительного дохода, не отрываясь от своих увлечений? Freecash
                     предлагает простые задания и опросы, за которые вы получаете реальные деньги. <strong>Присоединяйтесь
                         к сообществу, которое уже заработало миллионы!</strong></p>
-                <span class="cta-button">🚀 Начать Зарабатывать Сейчас!</span>
+                <span class="cta-button">Попробовать Freecash</span>
             </section>
         </a>
-        <section id="cta-buttons">
-            <h2>❤ Присоединяйтесь прямо сейчас</h2>
-            <p>Выберите действие, которое вас интересует:</p>
-            <div>
-                <a href="video.html" class="cta-button">📺 Смотреть видео</a>
-                <a href="gallery.html" class="cta-button">🖼️ Перейти в галерею</a>
-                <a href="https://t.me/internetbistree_bot" target="_blank" rel="noopener noreferrer"
-                    class="cta-button">🔞 Бот Проктолог</a>
-                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer"
-                    class="cta-button">💬 Задать вопрос</a>
-                <a href="index.html#contact" class="cta-button">📬 Связаться</a>
-            </div>
-        </section>
-
-        <section id="elfsight-counter">
-            <h2>Наши достижения</h2>
-            <p>Количество людей, которые следят за нами.</p>
-            <script src="https://static.elfsight.com/platform/platform.js" async></script>
-            <div class="elfsight-app-f4878f27-3693-4eed-aebe-c6fcc8f00434" data-elfsight-app-lazy></div>
-        </section>
-
-        <section id="contact">
-            <h2>Контакты</h2>
-            <p>Если у вас возникли вопросы или предложения, мы всегда на связи! Пишите нам в Telegram.</p>
-            <p>
-                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="cta-button">Наш
-                    Telegram-канал</a>
-            </p>
-        </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Глаза Проктолога. Все права защищены, как минимум, здравым смыслом.</p>
+        © 2023 — Разработка: Лаврентий Павлович Берия
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="//unpkg.com/three-globe"></script>
-
     <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("loaded");
-        });
+        window.onload = () => {
+            document.body.classList.add('loaded');
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('globe-container');
-            if (!container) return;
-
-            const tooltip = document.getElementById('tooltip');
-
-            // Фейковые IP-адреса с координатами (широта, долгота)
             const fakeVisitors = [
-                { lat: 55.7558, lng: 37.6173, size: 0.4, color: 'lime', ip: '195.168.1.23', city: 'Москва' },
-                { lat: 59.9343, lng: 30.3351, size: 0.35, color: 'lime', ip: '88.212.55.44', city: 'Санкт-Петербург' },
-                { lat: 40.7128, lng: -74.0060, size: 0.3, color: 'lime', ip: '203.0.113.99', city: 'Нью-Йорк' },
-                { lat: 51.5074, lng: -0.1278, size: 0.3, color: 'lime', ip: '198.51.100.42', city: 'Лондон' },
-                { lat: 35.6895, lng: 139.6917, size: 0.3, color: 'lime', ip: '203.0.113.56', city: 'Токио' }
+                { ip: '37.123.45.67', city: 'Москва' },
+                { ip: '185.45.78.9', city: 'Санкт-Петербург' },
+                { ip: '93.184.216.34', city: 'Минск' },
+                { ip: '212.58.246.79', city: 'Лондон' },
+                { ip: '66.249.66.1', city: 'Нью-Йорк' },
+                { ip: '203.0.113.42', city: 'Токио' },
+                { ip: '192.0.2.10', city: 'Берлин' },
+                { ip: '88.198.24.108', city: 'Рим' }
             ];
 
-            // Инициализация Globe
-            const globe = Globe()(container)
-                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-                .pointAltitude(0.03)
-                .pointColor(() => 'lime')
-                .pointAtmosphereColor('lime')
-                .pointAtmosphereAltitude(0.3);
-
-            globe.pointsData(fakeVisitors);
-            globe.pointLabel(d => `${d.city}\nIP: ${d.ip}`);
-
-            // Камера, сцена, рендерер
-            const scene = globe.scene();
-            const camera = globe.camera();
-            const renderer = globe.renderer();
-            const canvas = renderer.domElement;
-
-            // Raycaster для подсветки точек
-            const raycaster = new THREE.Raycaster();
-            const mouse = new THREE.Vector2();
-
-            function onMouseMove(event) {
-                const rect = canvas.getBoundingClientRect();
-                mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-                mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-                raycaster.setFromCamera(mouse, camera);
-
-                // intersectObjects с точками
-                const intersects = raycaster.intersectObjects(globe.pointsData().map(d => d.__threeObj).filter(Boolean));
-
-                if (intersects.length > 0) {
-                    const point = intersects[0].object.userData;
-                    tooltip.style.display = 'block';
-                    tooltip.style.left = event.clientX + 15 + 'px';
-                    tooltip.style.top = event.clientY + 15 + 'px';
-                    tooltip.textContent = `${point.city} — IP: ${point.ip}`;
-                } else {
-                    tooltip.style.display = 'none';
-                }
-            }
-
-            canvas.style.cursor = 'default';
-            canvas.addEventListener('mousemove', onMouseMove);
-
-            // Плавное вращение глобуса
-            globe.rotation.y = 0.05;
-            (function animate() {
-                globe.rotation.y += 0.001;
-                requestAnimationFrame(animate);
-                renderer.render(scene, camera);
-            })();
-
-            // Заполняем список IP в окне справа
             const ipList = document.getElementById('ip-items');
             fakeVisitors.forEach(visitor => {
                 const li = document.createElement('li');
                 li.textContent = `[${visitor.ip}] — ${visitor.city}`;
                 ipList.appendChild(li);
             });
-        });
-    </script>
 
-    <audio id="background-music" src="5.mp3" loop autoplay></audio>
+            // Можно добавить интерактив с tooltip при наведении — по желанию
+            const globeContainer = document.getElementById('globe-container');
+            const tooltip = document.getElementById('tooltip');
+            globeContainer.addEventListener('mousemove', e => {
+                // Просто показываем координаты курсора как пример
+                tooltip.style.left = (e.offsetX + 15) + 'px';
+                tooltip.style.top = (e.offsetY + 15) + 'px';
+                tooltip.textContent = `X: ${e.offsetX}, Y: ${e.offsetY}`;
+                tooltip.style.display = 'block';
+            });
+            globeContainer.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+            });
+        };
+    </script>
 </body>
 </html>
