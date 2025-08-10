@@ -1,539 +1,159 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>☢Глаза Проктолога☢ | Главная</title>
-    
-    <style>
-        /* Переменные CSS для удобства изменения цветов */
-        :root {
-            --neon-purple: #8A2BE2;
-            --neon-purple-hover: #AB6BEF;
-            --button-text-color: #ffffff;
-            --bg-dark: #0f001a;
-            --text-light: #e0e0e0;
-            --border-radius-main: 15px;
-            --shadow-light: rgba(138, 43, 226, 0.4);
-            --shadow-dark: rgba(138, 43, 226, 0.7);
-            --neon-green: #39ff14;
-            --neon-green-shadow: rgba(57, 255, 20, 0.7);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Неоновый сайт</title>
+<style>
+:root {
+    --neon-purple: #8A2BE2;
+    --neon-purple-hover: #AB6BEF;
+    --button-text-color: #ffffff;
+    --bg-dark: #0f001a;
+    --text-light: #e0e0e0;
+    --border-radius-main: 15px;
+    --shadow-light: rgba(138, 43, 226, 0.4);
+    --shadow-dark: rgba(138, 43, 226, 0.7);
+}
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-light);
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
-            opacity: 0;
-            transition: opacity 1s ease-out;
-        }
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        body.loaded {
-            opacity: 1;
-        }
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--neon-purple);
+    color: var(--button-text-color);
+    border-radius: 0 0 var(--border-radius-main) var(--border-radius-main);
+    box-shadow: 0 0 20px var(--shadow-dark);
+}
 
-        #background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -2;
-            background-size: cover;
-            object-fit: cover;
-            opacity: 0.8;
-            filter: grayscale(0%);
-            box-shadow: 0 0 100px rgba(255, 255, 0, 0.5), 0 0 200px rgba(255, 255, 0, 0.3);
-        }
+nav {
+    text-align: center;
+    margin: 20px 0;
+}
 
-        header {
-            padding: 2rem 1rem;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 1;
-            min-height: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+nav a {
+    color: var(--button-text-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: var(--neon-purple);
+    border-radius: var(--border-radius-main);
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
 
-        header h1 {
-            font-size: 4.5rem;
-            margin: 0;
-            padding: 0;
-            line-height: 1;
-            font-weight: bold;
-            color: transparent;
-            -webkit-text-stroke: 2px var(--neon-purple);
-            text-stroke: 2px var(--neon-purple);
-            text-shadow: 0 0 10px var(--neon-purple),
-                0 0 20px var(--neon-purple),
-                0 0 40px var(--neon-purple),
-                0 0 80px var(--shadow-dark);
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: neonPulse 1.5s infinite alternate;
-            display: inline-block;
-            white-space: nowrap;
-            max-width: 90%;
-        }
+nav a:hover {
+    background-color: var(--neon-purple-hover);
+}
 
-        @keyframes neonPulse {
-            from {
-                text-shadow: 0 0 10px var(--neon-purple),
-                    0 0 20px var(--neon-purple),
-                    0 0 30px var(--neon-purple),
-                    0 0 40px var(--shadow-dark);
-                filter: brightness(1);
-            }
+section {
+    padding: 40px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
 
-            to {
-                text-shadow: 0 0 15px var(--neon-purple),
-                    0 0 25px var(--neon-purple),
-                    0 0 50px var(--neon-purple),
-                    0 0 100px var(--shadow-dark);
-                filter: brightness(1.2);
-            }
-        }
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        header p {
-            margin-top: 1rem;
-            font-size: 1.3rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-            color: var(--text-light);
-        }
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
 
-        main {
-            flex-grow: 1;
-            padding: 2rem 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
+.gallery img {
+    width: 100%;
+    border-radius: var(--border-radius-main);
+    box-shadow: 0 0 15px var(--shadow-light);
+    transition: transform 0.3s;
+}
 
-        section {
-            padding: 2.5rem 1.5rem;
-            background: rgba(20, 0, 40, 0.85);
-            margin: 0 1rem;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2), 0 0 40px rgba(138, 43, 226, 0.1);
-            max-width: 900px;
-            width: 100%;
-            box-sizing: border-box;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.gallery img:hover {
+    transform: scale(1.05);
+}
 
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 0 60px rgba(138, 43, 226, 0.2);
-        }
+video {
+    max-width: 100%;
+    border-radius: var(--border-radius-main);
+    box-shadow: 0 0 20px var(--shadow-light);
+}
 
-        section h2 {
-            color: var(--neon-purple);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 8px var(--neon-purple);
-        }
-
-        section p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0.8rem auto;
-        }
-
-        #cta-buttons div {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
-
-        .cta-button {
-            background: var(--neon-purple);
-            color: var(--button-text-color);
-            padding: 16px 32px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 8px 20px var(--shadow-light);
-            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: all 0.5s;
-            z-index: -1;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            background: var(--neon-purple-hover);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px var(--shadow-dark);
-            color: var(--button-text-color);
-        }
-
-        footer {
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.7);
-            margin-top: auto;
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        #video-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        #video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark);
-            transition: box-shadow 0.3s ease;
-        }
-
-        #video-container:hover {
-            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
-        }
-
-        #video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: var(--border-radius-main);
-        }
-
-        #freecash-promo {
-            padding: 2.5rem 1.5rem;
-            background: rgba(30, 0, 45, 0.9);
-            margin: 0 1rem;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 0 30px rgba(255, 200, 0, 0.5), 0 0 60px rgba(255, 200, 0, 0.3);
-            max-width: 900px;
-            width: 100%;
-            box-sizing: border-box;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            cursor: pointer;
-        }
-
-        #freecash-promo:hover {
-            transform: scale(1.02) translateY(-7px);
-            box-shadow: 0 0 45px rgba(255, 200, 0, 0.7), 0 0 90px rgba(255, 200, 0, 0.5);
-        }
-
-        #freecash-promo h2 {
-            color: #FFD700;
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
-            animation: neonShine 2s infinite alternate;
-        }
-
-        @keyframes neonShine {
-            from {
-                text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
-            }
-
-            to {
-                text-shadow: 0 0 15px #FFD700, 0 0 30px rgba(255, 200, 0, 1), 0 0 40px rgba(255, 200, 0, 0.5);
-            }
-        }
-
-        #freecash-promo p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin: 1rem auto 1.5rem;
-            max-width: 750px;
-        }
-
-        #freecash-promo .cta-button {
-            background: #FFD700;
-            color: var(--bg-dark);
-            box-shadow: 0 8px 25px rgba(255, 200, 0, 0.6);
-            padding: 18px 36px;
-            font-size: 1.4rem;
-        }
-
-        #freecash-promo .cta-button:hover {
-            background: #ffe65e;
-            box-shadow: 0 12px 35px rgba(255, 200, 0, 0.9);
-        }
-
-        /* Обёртка для глобуса и IP-окна рядом */
-        #globe-ip-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            max-width: 1050px;
-            margin: 0 auto 2rem;
-        }
-
-        /* Изменён размер глобуса */
-        #globe-container {
-            width: 500px;
-            height: 300px;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark);
-            background: rgba(0, 0, 0, 0.4);
-            transition: box-shadow 0.3s ease;
-            overflow: hidden;
-            position: relative;
-        }
-
-        #globe-container:hover {
-            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
-        }
-
-        /* IP окно */
-        #ip-list {
-            width: 300px;
-            min-height: 300px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 0 30px var(--neon-green), 0 0 60px var(--neon-green-shadow);
-            padding: 20px 25px;
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--neon-green);
-            overflow-y: auto;
-            user-select: none;
-        }
-
-        #ip-list h3 {
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 2rem;
-            border-bottom: 1px solid var(--neon-green);
-            padding-bottom: 8px;
-            text-shadow:
-                0 0 5px var(--neon-green),
-                0 0 10px var(--neon-green),
-                0 0 20px var(--neon-green);
-        }
-
-        #ip-list ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 1.2rem;
-        }
-
-        #ip-list ul li {
-            margin-bottom: 10px;
-            padding-bottom: 6px;
-            border-bottom: 1px dotted var(--neon-green);
-            cursor: default;
-            transition: color 0.3s ease, opacity 0.5s ease;
-            opacity: 1;
-        }
-
-        #ip-list ul li:hover {
-            color: #0f0;
-            text-shadow:
-                0 0 8px #0f0,
-                0 0 20px #0f0;
-        }
-
-        /* Стили для 1.gif */
-        #globe-container img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--border-radius-main);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Стили для подсказки */
-        #tooltip {
-            position: absolute;
-            pointer-events: none;
-            background: rgba(0,0,0,0.85);
-            color: #0f0;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: monospace;
-            white-space: nowrap;
-            display: none;
-            z-index: 10;
-            user-select: none;
-            box-shadow: 0 0 8px #0f0;
-            transition: opacity 0.3s ease;
-        }
-
-        /* Адаптив */
-        @media (max-width: 850px) {
-            #globe-ip-wrapper {
-                flex-direction: column;
-                align-items: center;
-            }
-            #globe-container, #ip-list {
-                width: 90vw;
-                max-width: 500px;
-            }
-            #ip-list {
-                min-height: auto;
-                max-height: 300px;
-                margin-top: 20px;
-            }
-        }
-    </style>
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--neon-purple);
+    color: var(--button-text-color);
+    border-radius: var(--border-radius-main) var(--border-radius-main) 0 0;
+    margin-top: 40px;
+}
+</style>
 </head>
 <body>
-    <video autoplay loop muted playsinline id="background-video">
-        <source src="100.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео HTML5.
+
+<header>
+    <h1>Мой неоновый сайт</h1>
+    <p>Красота в фиолетовых тонах</p>
+</header>
+
+<nav>
+    <a href="#gallery">Галерея</a>
+    <a href="#video">Видео</a>
+    <a href="#contacts">Контакты</a>
+</nav>
+
+<section id="gallery">
+    <h2>Галерея</h2>
+    <div class="gallery">
+        <img src="image1.jpg" alt="Изображение 1">
+        <img src="image2.jpg" alt="Изображение 2">
+        <img src="image3.jpg" alt="Изображение 3">
+    </div>
+</section>
+
+<section id="video">
+    <h2>Видео</h2>
+    <video controls>
+        <source src="video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
     </video>
+</section>
 
-    <header>
-        <h1>☢Глаза Проктолога☢</h1>
-        <p>Странный, но запоминающийся проект.</p>
-    </header>
+<section id="contacts">
+    <h2>Контакты</h2>
+    <p>Email: example@example.com</p>
+    <p>Телефон: +7 (900) 000-00-00</p>
+</section>
 
-    <main>
-        <section id="intro">
-            <h2>Кратко о проекте</h2>
-            <p>Мы исследуем границы человеческого восприятия с лёгким налётом абсурда. Приготовьтесь к неожиданным открытиям!</p>
-        </section>
+<footer>
+    <p>&copy; 2025 Мой неоновый сайт</p>
+</footer>
 
-        <section id="globe-section">
-            <h2>🌍 Посетители со всего мира</h2>
-            <p>Наблюдайте, откуда заходят на наш сайт в режиме реального времени!</p>
-            <div id="globe-ip-wrapper">
-                <div id="globe-container">
-                    <img src="1.gif" alt="Анимация глобуса" />
-                    <div id="tooltip"></div>
-                </div>
-                <div id="ip-list">
-                    <h3>IP гостей</h3>
-                    <ul id="ip-items">
-                        <!-- Сюда скрипт вставит IP -->
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="video-section">
-            <h2>🎥 Наши Видеоматериалы</h2>
-            <p>Погрузитесь в атмосферу проекта с помощью нашего последнего видео.</p>
-            <div id="video-container">
-                <video controls muted playsinline poster="preview.jpg">
-                    <source src="0726.mp4" type="video/mp4">
-                    Ваш браузер не поддерживает видео HTML5.
-                </video>
-            </div>
-        </section>
-
-        <a href="https://freecash.com/r/109739007749326754105" target="_blank" rel="noopener noreferrer"
-            style="text-decoration: none; display: block; width: 100%; max-width: 900px; margin: 0 auto;">
-            <section id="freecash-promo">
-                <h2>💰 Заработай Реальные Деньги Онлайн!</h2>
-                <p>Ищете способ получить немного дополнительного дохода, не отрываясь от своих увлечений? Freecash
-                    предлагает простые задания и опросы, за которые вы получаете реальные деньги. Присоединяйтесь и
-                    начните зарабатывать уже сегодня!</p>
-                <div id="cta-buttons">
-                    <div>
-                        <button class="cta-button">Перейти на Freecash</button>
-                    </div>
-                </div>
-            </section>
-        </a>
-    </main>
-
-    <footer>
-        &copy; 2024 ☢Глаза Проктолога☢. Все права защищены.
-    </footer>
-
-    <script>
-        window.onload = () => {
-            document.body.classList.add('loaded');
-
-            const fakeVisitors = [
-                { ip: '37.123.45.67', city: 'Москва' },
-                { ip: '185.45.78.9', city: 'Санкт-Петербург' },
-                { ip: '93.184.216.34', city: 'Минск' },
-                { ip: '212.58.246.79', city: 'Лондон' },
-                { ip: '66.249.66.1', city: 'Нью-Йорк' },
-                { ip: '203.0.113.42', city: 'Токио' },
-                { ip: '192.0.2.10', city: 'Берлин' },
-                { ip: '88.198.24.108', city: 'Рим' }
-            ];
-
-            const ipList = document.getElementById('ip-items');
-            let index = 0;
-
-            function showNextIP() {
-                const visitor = fakeVisitors[index];
-                const li = document.createElement('li');
-                li.textContent = `[${visitor.ip}] — ${visitor.city}`;
-                li.style.opacity = '0';
-                ipList.appendChild(li);
-
-                setTimeout(() => {
-                    li.style.transition = 'opacity 0.5s';
-                    li.style.opacity = '1';
-                }, 10);
-
-                if (ipList.children.length > 5) {
-                    const first = ipList.children[0];
-                    first.style.transition = 'opacity 0.5s';
-                    first.style.opacity = '0';
-                    setTimeout(() => {
-                        if (first.parentNode) first.parentNode.removeChild(first);
-                    }, 500);
-                }
-
-                index++;
-                if (index >= fakeVisitors.length) index = 0;
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section");
+    const showOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
+        sections.forEach(sec => {
+            const secTop = sec.getBoundingClientRect().top;
+            if (secTop < triggerBottom) {
+                sec.classList.add("show");
             }
+        });
+    };
+    window.addEventListener("scroll", showOnScroll);
+    showOnScroll();
+});
+</script>
 
-            showNextIP();
-            setInterval(showNextIP, 1500);
-        };
-    </script>
 </body>
 </html>
