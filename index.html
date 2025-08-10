@@ -16,6 +16,8 @@
             --border-radius-main: 15px;
             --shadow-light: rgba(138, 43, 226, 0.4);
             --shadow-dark: rgba(138, 43, 226, 0.7);
+            --neon-green: #39ff14;
+            --neon-green-shadow: rgba(57, 255, 20, 0.7);
         }
 
         body {
@@ -297,15 +299,18 @@
             box-shadow: 0 12px 35px rgba(255, 200, 0, 0.9);
         }
 
-        /* Изменён размер глобуса */
-        #globe-section {
+        /* Обёртка для глобуса и IP-окна рядом */
+        #globe-ip-wrapper {
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 300px;
+            gap: 30px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 1050px;
+            margin: 0 auto 2rem;
         }
 
+        /* Изменён размер глобуса */
         #globe-container {
             width: 500px;
             height: 300px;
@@ -319,6 +324,54 @@
 
         #globe-container:hover {
             box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
+        }
+
+        /* IP окно */
+        #ip-list {
+            width: 300px;
+            min-height: 300px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 30px var(--neon-green), 0 0 60px var(--neon-green-shadow);
+            padding: 20px 25px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--neon-green);
+            overflow-y: auto;
+            user-select: none;
+        }
+
+        #ip-list h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 2rem;
+            border-bottom: 1px solid var(--neon-green);
+            padding-bottom: 8px;
+            text-shadow:
+                0 0 5px var(--neon-green),
+                0 0 10px var(--neon-green),
+                0 0 20px var(--neon-green);
+        }
+
+        #ip-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        #ip-list ul li {
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px dotted var(--neon-green);
+            cursor: default;
+            transition: color 0.3s ease;
+        }
+
+        #ip-list ul li:hover {
+            color: #0f0;
+            text-shadow:
+                0 0 8px #0f0,
+                0 0 20px #0f0;
         }
 
         /* Стили для 1.gif */
@@ -352,10 +405,19 @@
         }
 
         /* Адаптив */
-        @media (max-width: 576px) {
-            #globe-container {
-                width: 100%;
-                height: 250px;
+        @media (max-width: 850px) {
+            #globe-ip-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            #globe-container, #ip-list {
+                width: 90vw;
+                max-width: 500px;
+            }
+            #ip-list {
+                min-height: auto;
+                max-height: 300px;
+                margin-top: 20px;
             }
         }
     </style>
@@ -380,9 +442,17 @@
         <section id="globe-section">
             <h2>🌍 Посетители со всего мира</h2>
             <p>Наблюдайте, откуда заходят на наш сайт в режиме реального времени!</p>
-            <div id="globe-container">
-                <img src="1.gif" alt="Анимация глобуса" />
-                <div id="tooltip"></div>
+            <div id="globe-ip-wrapper">
+                <div id="globe-container">
+                    <img src="1.gif" alt="Анимация глобуса" />
+                    <div id="tooltip"></div>
+                </div>
+                <div id="ip-list">
+                    <h3>IP гостей</h3>
+                    <ul id="ip-items">
+                        <!-- Сюда скрипт вставит IP -->
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -456,14 +526,6 @@
 
             const tooltip = document.getElementById('tooltip');
 
-            // Инициализация сцены, камеры и рендера Globe
-            const globe = Globe()(container)
-                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-                .pointAltitude(0.03)
-                .pointColor(() => 'lime')
-                .pointAtmosphereColor('lime')
-                .pointAtmosphereAltitude(0.3);
-
             // Фейковые IP-адреса с координатами (широта, долгота)
             const fakeVisitors = [
                 { lat: 55.7558, lng: 37.6173, size: 0.4, color: 'lime', ip: '195.168.1.23', city: 'Москва' },
@@ -473,30 +535,35 @@
                 { lat: 35.6895, lng: 139.6917, size: 0.3, color: 'lime', ip: '203.0.113.56', city: 'Токио' }
             ];
 
-            globe.pointsData(fakeVisitors);
+            // Инициализация Globe
+            const globe = Globe()(container)
+                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+                .pointAltitude(0.03)
+                .pointColor(() => 'lime')
+                .pointAtmosphereColor('lime')
+                .pointAtmosphereAltitude(0.3);
 
+            globe.pointsData(fakeVisitors);
             globe.pointLabel(d => `${d.city}\nIP: ${d.ip}`);
 
-            // Доступ к камере и сцене
+            // Камера, сцена, рендерер
             const scene = globe.scene();
             const camera = globe.camera();
             const renderer = globe.renderer();
             const canvas = renderer.domElement;
 
-            // Raycaster для определения наведений
+            // Raycaster для подсветки точек
             const raycaster = new THREE.Raycaster();
             const mouse = new THREE.Vector2();
 
-            // Обработчик движения мыши
             function onMouseMove(event) {
-                // Координаты мыши относительно канваса
                 const rect = canvas.getBoundingClientRect();
                 mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
                 mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
                 raycaster.setFromCamera(mouse, camera);
 
-                // Находим пересечения с точками
+                // intersectObjects с точками
                 const intersects = raycaster.intersectObjects(globe.pointsData().map(d => d.__threeObj).filter(Boolean));
 
                 if (intersects.length > 0) {
@@ -520,6 +587,14 @@
                 requestAnimationFrame(animate);
                 renderer.render(scene, camera);
             })();
+
+            // Заполняем список IP в окне справа
+            const ipList = document.getElementById('ip-items');
+            fakeVisitors.forEach(visitor => {
+                const li = document.createElement('li');
+                li.textContent = `[${visitor.ip}] — ${visitor.city}`;
+                ipList.appendChild(li);
+            });
         });
     </script>
 
