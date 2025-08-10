@@ -359,19 +359,25 @@
             font-size: 1.2rem;
         }
 
+        /* Сделал текст ярко-зелёным с неоновым свечением */
         #ip-list ul li {
             margin-bottom: 10px;
             padding-bottom: 6px;
             border-bottom: 1px dotted var(--neon-green);
             cursor: default;
-            transition: color 0.3s ease;
+            color: var(--neon-green);
+            text-shadow:
+                0 0 4px var(--neon-green),
+                0 0 8px var(--neon-green);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         #ip-list ul li:hover {
             color: #0f0;
             text-shadow:
                 0 0 8px #0f0,
-                0 0 20px #0f0;
+                0 0 20px #0f0,
+                0 0 30px #0f0;
         }
 
         /* Стили для 1.gif */
