@@ -333,6 +333,24 @@
             pointer-events: none;
         }
 
+        /* Стили для подсказки */
+        #tooltip {
+            position: absolute;
+            pointer-events: none;
+            background: rgba(0,0,0,0.85);
+            color: #0f0;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: monospace;
+            white-space: nowrap;
+            display: none;
+            z-index: 10;
+            user-select: none;
+            box-shadow: 0 0 8px #0f0;
+            transition: opacity 0.3s ease;
+        }
+
         /* Адаптив */
         @media (max-width: 576px) {
             #globe-container {
@@ -364,6 +382,7 @@
             <p>Наблюдайте, откуда заходят на наш сайт в режиме реального времени!</p>
             <div id="globe-container">
                 <img src="1.gif" alt="Анимация глобуса" />
+                <div id="tooltip"></div>
             </div>
         </section>
 
@@ -435,8 +454,10 @@
             const container = document.getElementById('globe-container');
             if (!container) return;
 
-            // Создаём глобус
-            const myGlobe = Globe()(container)
+            const tooltip = document.getElementById('tooltip');
+
+            // Инициализация сцены, камеры и рендера Globe
+            const globe = Globe()(container)
                 .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
                 .pointAltitude(0.03)
                 .pointColor(() => 'lime')
@@ -452,17 +473,52 @@
                 { lat: 35.6895, lng: 139.6917, size: 0.3, color: 'lime', ip: '203.0.113.56', city: 'Токио' }
             ];
 
-            // Передаём данные точек
-            myGlobe.pointsData(fakeVisitors);
+            globe.pointsData(fakeVisitors);
 
-            // Настраиваем подписи при наведении
-            myGlobe.pointLabel(d => `${d.city}\nIP: ${d.ip}`);
+            globe.pointLabel(d => `${d.city}\nIP: ${d.ip}`);
 
-            // Вращение глобуса
-            myGlobe.rotation.y = 0.05;
+            // Доступ к камере и сцене
+            const scene = globe.scene();
+            const camera = globe.camera();
+            const renderer = globe.renderer();
+            const canvas = renderer.domElement;
+
+            // Raycaster для определения наведений
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            // Обработчик движения мыши
+            function onMouseMove(event) {
+                // Координаты мыши относительно канваса
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+                raycaster.setFromCamera(mouse, camera);
+
+                // Находим пересечения с точками
+                const intersects = raycaster.intersectObjects(globe.pointsData().map(d => d.__threeObj).filter(Boolean));
+
+                if (intersects.length > 0) {
+                    const point = intersects[0].object.userData;
+                    tooltip.style.display = 'block';
+                    tooltip.style.left = event.clientX + 15 + 'px';
+                    tooltip.style.top = event.clientY + 15 + 'px';
+                    tooltip.textContent = `${point.city} — IP: ${point.ip}`;
+                } else {
+                    tooltip.style.display = 'none';
+                }
+            }
+
+            canvas.style.cursor = 'default';
+            canvas.addEventListener('mousemove', onMouseMove);
+
+            // Плавное вращение глобуса
+            globe.rotation.y = 0.05;
             (function animate() {
-                myGlobe.rotation.y += 0.001;
+                globe.rotation.y += 0.001;
                 requestAnimationFrame(animate);
+                renderer.render(scene, camera);
             })();
         });
     </script>
