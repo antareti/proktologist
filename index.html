@@ -1,159 +1,528 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Неоновый сайт</title>
-<style>
-:root {
-    --neon-purple: #8A2BE2;
-    --neon-purple-hover: #AB6BEF;
-    --button-text-color: #ffffff;
-    --bg-dark: #0f001a;
-    --text-light: #e0e0e0;
-    --border-radius-main: 15px;
-    --shadow-light: rgba(138, 43, 226, 0.4);
-    --shadow-dark: rgba(138, 43, 226, 0.7);
-}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>☢Глаза Проктолога☢ | Главная</title>
+    
+    <style>
+        /* Переменные CSS для удобства изменения цветов */
+        :root {
+            --neon-purple: #8A2BE2;
+            --neon-purple-hover: #AB6BEF;
+            --button-text-color: #ffffff;
+            --bg-dark: #0f001a;
+            --text-light: #e0e0e0;
+            --border-radius-main: 15px;
+            --shadow-light: rgba(138, 43, 226, 0.4);
+            --shadow-dark: rgba(138, 43, 226, 0.7);
+        }
 
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
 
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: var(--neon-purple);
-    color: var(--button-text-color);
-    border-radius: 0 0 var(--border-radius-main) var(--border-radius-main);
-    box-shadow: 0 0 20px var(--shadow-dark);
-}
+        body.loaded {
+            opacity: 1;
+        }
 
-nav {
-    text-align: center;
-    margin: 20px 0;
-}
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            background-size: cover;
+            object-fit: cover;
+            opacity: 0.8;
+            filter: grayscale(0%);
+            box-shadow: 0 0 100px rgba(255, 255, 0, 0.5), 0 0 200px rgba(255, 255, 0, 0.3);
+        }
 
-nav a {
-    color: var(--button-text-color);
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: var(--neon-purple);
-    border-radius: var(--border-radius-main);
-    margin: 0 10px;
-    transition: background-color 0.3s;
-}
+        header {
+            padding: 2rem 1rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-nav a:hover {
-    background-color: var(--neon-purple-hover);
-}
+        header h1 {
+            font-size: 4.5rem;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            font-weight: bold;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--neon-purple);
+            text-stroke: 2px var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple),
+                0 0 20px var(--neon-purple),
+                0 0 40px var(--neon-purple),
+                0 0 80px var(--shadow-dark);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: neonPulse 1.5s infinite alternate;
+            display: inline-block;
+            white-space: nowrap;
+            max-width: 90%;
+        }
 
-section {
-    padding: 40px 20px;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-}
+        @keyframes neonPulse {
+            from {
+                text-shadow: 0 0 10px var(--neon-purple),
+                    0 0 20px var(--neon-purple),
+                    0 0 30px var(--neon-purple),
+                    0 0 40px var(--shadow-dark);
+                filter: brightness(1);
+            }
 
-section.show {
-    opacity: 1;
-    transform: translateY(0);
-}
+            to {
+                text-shadow: 0 0 15px var(--neon-purple),
+                    0 0 25px var(--neon-purple),
+                    0 0 50px var(--neon-purple),
+                    0 0 100px var(--shadow-dark);
+                filter: brightness(1.2);
+            }
+        }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
+        header p {
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            color: var(--text-light);
+        }
 
-.gallery img {
-    width: 100%;
-    border-radius: var(--border-radius-main);
-    box-shadow: 0 0 15px var(--shadow-light);
-    transition: transform 0.3s;
-}
+        main {
+            flex-grow: 1;
+            padding: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
 
-.gallery img:hover {
-    transform: scale(1.05);
-}
+        section {
+            padding: 2.5rem 1.5rem;
+            background: rgba(20, 0, 40, 0.85);
+            margin: 0 1rem;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2), 0 0 40px rgba(138, 43, 226, 0.1);
+            max-width: 900px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-video {
-    max-width: 100%;
-    border-radius: var(--border-radius-main);
-    box-shadow: 0 0 20px var(--shadow-light);
-}
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4), 0 0 60px rgba(138, 43, 226, 0.2);
+        }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: var(--neon-purple);
-    color: var(--button-text-color);
-    border-radius: var(--border-radius-main) var(--border-radius-main) 0 0;
-    margin-top: 40px;
-}
-</style>
+        section h2 {
+            color: var(--neon-purple);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px var(--neon-purple);
+        }
+
+        section p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0.8rem auto;
+        }
+
+        #cta-buttons div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            background: var(--neon-purple);
+            color: var(--button-text-color);
+            padding: 16px 32px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px var(--shadow-light);
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background: var(--neon-purple-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px var(--shadow-dark);
+            color: var(--button-text-color);
+        }
+
+        footer {
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            margin-top: auto;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #video-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        #video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark);
+            transition: box-shadow 0.3s ease;
+        }
+
+        #video-container:hover {
+            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
+        }
+
+        #video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--border-radius-main);
+        }
+
+        #freecash-promo {
+            padding: 2.5rem 1.5rem;
+            background: rgba(30, 0, 45, 0.9);
+            margin: 0 1rem;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 30px rgba(255, 200, 0, 0.5), 0 0 60px rgba(255, 200, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        #freecash-promo:hover {
+            transform: scale(1.02) translateY(-7px);
+            box-shadow: 0 0 45px rgba(255, 200, 0, 0.7), 0 0 90px rgba(255, 200, 0, 0.5);
+        }
+
+        #freecash-promo h2 {
+            color: #FFD700;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
+            animation: neonShine 2s infinite alternate;
+        }
+
+        @keyframes neonShine {
+            from {
+                text-shadow: 0 0 10px #FFD700, 0 0 20px rgba(255, 200, 0, 0.8);
+            }
+
+            to {
+                text-shadow: 0 0 15px #FFD700, 0 0 30px rgba(255, 200, 0, 1), 0 0 40px rgba(255, 200, 0, 0.5);
+            }
+        }
+
+        #freecash-promo p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin: 1rem auto 1.5rem;
+            max-width: 750px;
+        }
+
+        #freecash-promo .cta-button {
+            background: #FFD700;
+            color: var(--bg-dark);
+            box-shadow: 0 8px 25px rgba(255, 200, 0, 0.6);
+            padding: 18px 36px;
+            font-size: 1.4rem;
+        }
+
+        #freecash-promo .cta-button:hover {
+            background: #ffe65e;
+            box-shadow: 0 12px 35px rgba(255, 200, 0, 0.9);
+        }
+
+        /* Изменён размер глобуса */
+        #globe-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        #globe-container {
+            width: 500px;
+            height: 300px;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 0 25px var(--neon-purple), 0 0 50px var(--shadow-dark);
+            background: rgba(0, 0, 0, 0.4);
+            transition: box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #globe-container:hover {
+            box-shadow: 0 0 35px var(--neon-purple-hover), 0 0 70px var(--shadow-dark);
+        }
+
+        /* Стили для 1.gif */
+        #globe-container img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-main);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Стили для подсказки */
+        #tooltip {
+            position: absolute;
+            pointer-events: none;
+            background: rgba(0,0,0,0.85);
+            color: #0f0;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: monospace;
+            white-space: nowrap;
+            display: none;
+            z-index: 10;
+            user-select: none;
+            box-shadow: 0 0 8px #0f0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Адаптив */
+        @media (max-width: 576px) {
+            #globe-container {
+                width: 100%;
+                height: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<header>
-    <h1>Мой неоновый сайт</h1>
-    <p>Красота в фиолетовых тонах</p>
-</header>
-
-<nav>
-    <a href="#gallery">Галерея</a>
-    <a href="#video">Видео</a>
-    <a href="#contacts">Контакты</a>
-</nav>
-
-<section id="gallery">
-    <h2>Галерея</h2>
-    <div class="gallery">
-        <img src="image1.jpg" alt="Изображение 1">
-        <img src="image2.jpg" alt="Изображение 2">
-        <img src="image3.jpg" alt="Изображение 3">
-    </div>
-</section>
-
-<section id="video">
-    <h2>Видео</h2>
-    <video controls>
-        <source src="video.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="100.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео HTML5.
     </video>
-</section>
 
-<section id="contacts">
-    <h2>Контакты</h2>
-    <p>Email: example@example.com</p>
-    <p>Телефон: +7 (900) 000-00-00</p>
-</section>
+    <header>
+        <h1>☢Глаза Проктолога☢</h1>
+        <p>Странный, но запоминающийся проект.</p>
+    </header>
 
-<footer>
-    <p>&copy; 2025 Мой неоновый сайт</p>
-</footer>
+    <main>
+        <section id="intro">
+            <h2>Кратко о проекте</h2>
+            <p>Мы исследуем границы человеческого восприятия с лёгким налётом абсурда. Приготовьтесь к неожиданным открытиям!</p>
+        </section>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section");
-    const showOnScroll = () => {
-        const triggerBottom = window.innerHeight * 0.85;
-        sections.forEach(sec => {
-            const secTop = sec.getBoundingClientRect().top;
-            if (secTop < triggerBottom) {
-                sec.classList.add("show");
-            }
+        <section id="globe-section">
+            <h2>🌍 Посетители со всего мира</h2>
+            <p>Наблюдайте, откуда заходят на наш сайт в режиме реального времени!</p>
+            <div id="globe-container">
+                <img src="1.gif" alt="Анимация глобуса" />
+                <div id="tooltip"></div>
+            </div>
+        </section>
+
+        <section id="video-section">
+            <h2>🎥 Наши Видеоматериалы</h2>
+            <p>Погрузитесь в атмосферу проекта с помощью нашего последнего видео.</p>
+            <div id="video-container">
+                <video controls muted playsinline poster="preview.jpg">
+                    <source src="0726.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео HTML5.
+                </video>
+            </div>
+        </section>
+
+        <a href="https://freecash.com/r/109739007749326754105" target="_blank" rel="noopener noreferrer"
+            style="text-decoration: none; display: block; width: 100%; max-width: 900px; margin: 0 auto;">
+            <section id="freecash-promo">
+                <h2>💰 Заработай Реальные Деньги Онлайн!</h2>
+                <p>Ищете способ получить немного дополнительного дохода, не отрываясь от своих увлечений? Freecash
+                    предлагает простые задания и опросы, за которые вы получаете реальные деньги. <strong>Присоединяйтесь
+                        к сообществу, которое уже заработало миллионы!</strong></p>
+                <span class="cta-button">🚀 Начать Зарабатывать Сейчас!</span>
+            </section>
+        </a>
+        <section id="cta-buttons">
+            <h2>❤ Присоединяйтесь прямо сейчас</h2>
+            <p>Выберите действие, которое вас интересует:</p>
+            <div>
+                <a href="video.html" class="cta-button">📺 Смотреть видео</a>
+                <a href="gallery.html" class="cta-button">🖼️ Перейти в галерею</a>
+                <a href="https://t.me/internetbistree_bot" target="_blank" rel="noopener noreferrer"
+                    class="cta-button">🔞 Бот Проктолог</a>
+                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer"
+                    class="cta-button">💬 Задать вопрос</a>
+                <a href="index.html#contact" class="cta-button">📬 Связаться</a>
+            </div>
+        </section>
+
+        <section id="elfsight-counter">
+            <h2>Наши достижения</h2>
+            <p>Количество людей, которые следят за нами.</p>
+            <script src="https://static.elfsight.com/platform/platform.js" async></script>
+            <div class="elfsight-app-f4878f27-3693-4eed-aebe-c6fcc8f00434" data-elfsight-app-lazy></div>
+        </section>
+
+        <section id="contact">
+            <h2>Контакты</h2>
+            <p>Если у вас возникли вопросы или предложения, мы всегда на связи! Пишите нам в Telegram.</p>
+            <p>
+                <a href="https://t.me/+qMqimDerPgw3MGUy" target="_blank" rel="noopener noreferrer" class="cta-button">Наш
+                    Telegram-канал</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Глаза Проктолога. Все права защищены, как минимум, здравым смыслом.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="//unpkg.com/three-globe"></script>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("loaded");
         });
-    };
-    window.addEventListener("scroll", showOnScroll);
-    showOnScroll();
-});
-</script>
 
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('globe-container');
+            if (!container) return;
+
+            const tooltip = document.getElementById('tooltip');
+
+            // Инициализация сцены, камеры и рендера Globe
+            const globe = Globe()(container)
+                .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+                .pointAltitude(0.03)
+                .pointColor(() => 'lime')
+                .pointAtmosphereColor('lime')
+                .pointAtmosphereAltitude(0.3);
+
+            // Фейковые IP-адреса с координатами (широта, долгота)
+            const fakeVisitors = [
+                { lat: 55.7558, lng: 37.6173, size: 0.4, color: 'lime', ip: '195.168.1.23', city: 'Москва' },
+                { lat: 59.9343, lng: 30.3351, size: 0.35, color: 'lime', ip: '88.212.55.44', city: 'Санкт-Петербург' },
+                { lat: 40.7128, lng: -74.0060, size: 0.3, color: 'lime', ip: '203.0.113.99', city: 'Нью-Йорк' },
+                { lat: 51.5074, lng: -0.1278, size: 0.3, color: 'lime', ip: '198.51.100.42', city: 'Лондон' },
+                { lat: 35.6895, lng: 139.6917, size: 0.3, color: 'lime', ip: '203.0.113.56', city: 'Токио' }
+            ];
+
+            globe.pointsData(fakeVisitors);
+
+            globe.pointLabel(d => `${d.city}\nIP: ${d.ip}`);
+
+            // Доступ к камере и сцене
+            const scene = globe.scene();
+            const camera = globe.camera();
+            const renderer = globe.renderer();
+            const canvas = renderer.domElement;
+
+            // Raycaster для определения наведений
+            const raycaster = new THREE.Raycaster();
+            const mouse = new THREE.Vector2();
+
+            // Обработчик движения мыши
+            function onMouseMove(event) {
+                // Координаты мыши относительно канваса
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+                mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+                raycaster.setFromCamera(mouse, camera);
+
+                // Находим пересечения с точками
+                const intersects = raycaster.intersectObjects(globe.pointsData().map(d => d.__threeObj).filter(Boolean));
+
+                if (intersects.length > 0) {
+                    const point = intersects[0].object.userData;
+                    tooltip.style.display = 'block';
+                    tooltip.style.left = event.clientX + 15 + 'px';
+                    tooltip.style.top = event.clientY + 15 + 'px';
+                    tooltip.textContent = `${point.city} — IP: ${point.ip}`;
+                } else {
+                    tooltip.style.display = 'none';
+                }
+            }
+
+            canvas.style.cursor = 'default';
+            canvas.addEventListener('mousemove', onMouseMove);
+
+            // Плавное вращение глобуса
+            globe.rotation.y = 0.05;
+            (function animate() {
+                globe.rotation.y += 0.001;
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            })();
+        });
+    </script>
+
+    <audio id="background-music" src="5.mp3" loop autoplay></audio>
 </body>
 </html>
